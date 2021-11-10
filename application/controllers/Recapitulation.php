@@ -9,6 +9,7 @@ class recapitulation extends CI_Controller{
 		parent::__construct();	
 		$this->check_isvalidated();	
 		$this->load->model('t_recapitulation');
+		$this->load->model('t_teknik');
 		$this->load->helper('url');
 	}
 	private function check_isvalidated()
@@ -29,6 +30,7 @@ class recapitulation extends CI_Controller{
 		$data['recapitulation'] = $this->t_recapitulation->get_data()->result();
 		$data['client'] = $this->t_recapitulation->get_data_client()->result();
 		$data['user'] = $this->t_recapitulation->get_data_user()->result();
+		$data['teknik'] = $this->t_teknik->get_data()->result();
 		$this->load->view('template/header/index');
 		$this->load->view('template/menu/index');
 		$this->load->view('pages/administration/recapitulation/datatable',$data);

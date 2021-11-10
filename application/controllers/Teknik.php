@@ -28,6 +28,8 @@ class teknik extends CI_Controller{
    public  function index(){
 		$data['teknik'] = $this->t_teknik->get_data()->result();
 		$data['client'] = $this->t_teknik->get_data_client()->result();
+		$data['user'] = $this->t_recapitulation->get_data_user()->result();
+		$data['recapitulation'] = $this->t_recapitulation->get_data()->result();
 		$this->load->view('template/header/index');
 		$this->load->view('template/menu/index');
 		$this->load->view('pages/teknik/datatable',$data);
@@ -36,17 +38,30 @@ class teknik extends CI_Controller{
 
 	// process input
 	public function p_input(){
-		$description = $this->input->post('description');
-		$unit = $this->input->post('unit');
-		$price = $this->input->post('price');
+		$recapitulation_id = $this->input->post('recapitulation_id');
+		$planing_this_week = $this->input->post('planing_this_week');
+		$start_date= $this->input->post('start_date');
+		$finish_date = $this->input->post('finish_date');
+		$realization = $this->input->post('realization');
+		$problem = $this->input->post('problem');
+		$solution = $this->input->post('solution');
+		$planing_next_week = $this->input->post('planing_next_week');
+		$user_id = $this->input->post('user_id');
 
 		$data = array(
-			'description' => $description,
-			'unit' => $unit,
-			'price' => $price
+			'recapitulation_id'=> $recapitulation_id,
+			'planing_this_week'=> $planing_this_week,
+			'start_date' => $start_date, 
+			'finish_date' => $finish_date, 
+			'planing_this_week'=> $planing_this_week, 
+			'realization' => $realization, 
+			'problem' => $problem, 
+			'solution' => $solution, 
+			'planing_next_week' => $planing_next_week,
+			'user_id' => $user_id,
 			);
 
-		$this->t_teknik->input_data($data,'amc_m_price');
+		$this->t_teknik->input_data($data,'amc_t_teknis_progress');
 		redirect('teknik/index');
 	}
 
@@ -63,14 +78,27 @@ class teknik extends CI_Controller{
  	// process update
 	 public function update(){
 		$id= $this->input->post('id');
-		$description = $this->input->post('description');
-		$unit = $this->input->post('unit');
-		$price = $this->input->post('price');
+		$recapitulation_id = $this->input->post('recapitulation_id');
+		$planing_this_week = $this->input->post('planing_this_week');
+		$start_date= $this->input->post('start_date');
+		$finish_date = $this->input->post('finish_date');
+		$realization = $this->input->post('realization');
+		$problem = $this->input->post('problem');
+		$solution = $this->input->post('solution');
+		$planing_next_week = $this->input->post('planing_next_week');
+		$user_id = $this->input->post('user_id');
 
 		$data = array(
-			'description' => $description,
-			'unit' => $unit,
-			'price' => $price,
+			'recapitulation_id'=> $recapitulation_id,
+			'planing_this_week'=> $planing_this_week,
+			'start_date' => $start_date, 
+			'finish_date' => $finish_date, 
+			'planing_this_week'=> $planing_this_week, 
+			'realization' => $realization, 
+			'problem' => $problem, 
+			'solution' => $solution, 
+			'planing_next_week' => $planing_next_week,
+			'user_id' => $user_id,
 			'editDate'=>date('Y-m-d H:i:s')
 		);
 
@@ -78,7 +106,7 @@ class teknik extends CI_Controller{
 			'id' => $id
 		);
 
-		$this->t_teknik->update_data($where,$data,'amc_m_price');
+		$this->t_teknik->update_data($where,$data,'amc_t_teknis_progress');
 		redirect('teknik/index');
 		// var_dump ($data);
 	}
@@ -86,7 +114,7 @@ class teknik extends CI_Controller{
 	//display get data edit
 	public function edit($id=''){
 		$where = array('id' => $id);
-		$data['teknik'] = $this->t_teknik->get_data_edit($where,'amc_m_price')->result();
+		$data['teknik'] = $this->t_teknik->get_data_edit($where,'amc_t_teknis_progress')->result();
 		$this->load->view('template/header/index');
 		$this->load->view('template/menu/index');
 		$this->load->view('pages/marketing/price/edit',$data);
@@ -96,7 +124,7 @@ class teknik extends CI_Controller{
 	// process delete
 	public function delete($id){
 		$where = array('id' => $id);
-		$this->t_teknik->delete_data($where,'amc_m_price');
+		$this->t_teknik->delete_data($where,'amc_t_teknis_progress');
 		redirect('teknik/index');
 	}
 

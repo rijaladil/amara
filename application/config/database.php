@@ -81,10 +81,10 @@ $db['default'] = array(
 	'password' => '123asd456',
 	'database' => 'u6030458_app',
 
-	'hostname' => '127.0.0.1',
-	'username' => 'root',
-	'password' => '123asd456',
-	'database' => 'amc',
+// 	'hostname' => '127.0.0.1',
+// 	'username' => 'root',
+// 	'password' => '123asd456',
+// 	'database' => 'amc',
 
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
