@@ -24,7 +24,7 @@ class T_login extends CI_Model
             $this->session->set_userdata($data);
              if
                 (
-                    (in_array($this->session->userdata('level'), array(1,2)))
+                    (in_array($this->session->userdata('level'), array(1,2,3,4,5,6)))
                 )
             {
                redirect('Dashboard', 'refresh');
