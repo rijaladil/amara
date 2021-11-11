@@ -13,8 +13,14 @@
           </button>
  <div class="input-group">
           <h5 style="color:#003366">  PT. AMARA CISADANE :    
-         <B><?php echo $this->session->userdata('name')?></b>
-         
+         <b><?php echo $this->session->userdata('name')?></b> |
+         <?php if ($this->session->userdata('level') === '1') : ?> Administrator
+									<?php elseif ($this->session->userdata('level') === '2'): ?> Marketing
+									<?php elseif ($this->session->userdata('level') === '3'): ?> Admin
+									<?php elseif ($this->session->userdata('level') === '4'): ?> Teknik
+									<?php elseif ($this->session->userdata('level') === '5'): ?> Finance									
+									<?php else: ?> Customer
+									<?php endif; ?>
         </h5>
 </div>
           <!-- Topbar Search -->
