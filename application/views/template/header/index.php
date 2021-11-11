@@ -56,7 +56,7 @@
 
       <!-- MARKETING -->
       
-<?php if ( (in_array($this->session->userdata('level'), array(1,2))) ) { ?>
+<?php if ( (in_array($this->session->userdata('level'), array(1,2,3,4,5))) ) { ?>
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-cubes"></i>
@@ -120,8 +120,6 @@
         </div>
       </li>
 
-
-
 <?php } ?>
       <!-- Nav Item - Utilities Collapse Menu -->
 <?php if ( (in_array($this->session->userdata('level'), array(1))) ) { ?>  
@@ -142,7 +140,7 @@
       </li>
 <?php } ?>
 
-<?php if ( (in_array($this->session->userdata('level'), array(1,2,3))) ) { ?>  
+<?php if ( (in_array($this->session->userdata('level'), array(1,2,3,4,5))) ) { ?>  
       <!-- Divider -->
       <hr class="sidebar-divider">
       <!-- LAMAN CUSTOMER -->

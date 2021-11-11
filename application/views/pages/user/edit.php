@@ -45,13 +45,20 @@
 							<div class="form-group ">
 								<label for="inputdefault">User Level:</label>
 								<select class="form-control" name="user_level">
-									<option value="<?php echo $u->user_level ?>"><?php if ($u->user_level === '1') : ?> Administrator
-									<?php elseif ($u->user_level === '2'): ?> Employee
+									<option value="<?php echo $u->user_level ?>">
+									<?php if ($u->user_level === '1') : ?> Administrator
+									<?php elseif ($u->user_level === '2'): ?> Marketing
+									<?php elseif ($u->user_level === '3'): ?> Admin
+									<?php elseif ($u->user_level === '4'): ?> Teknik
+									<?php elseif ($u->user_level === '5'): ?> Finance	
 									<?php else: ?> Customer
 									<?php endif; ?></option>
 									<option value="1">Administrator</option>
-									<option value="2">Employee</option>
-									<option value="3">Customer</option>
+									<option value="2">Marketing</option>
+									<option value="3">Admin</option>
+									<option value="4">Teknik</option>
+									<option value="5">Finance</option>
+									<option value="6">Client</option>
 								</select>								
 							</div>
 						</td>

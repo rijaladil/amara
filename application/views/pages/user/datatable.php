@@ -40,7 +40,10 @@
 								<td><?php echo $u->department ?></td>
 								<td>
 									<?php if ($u->user_level === '1') : ?> Administrator
-									<?php elseif ($u->user_level === '2'): ?> Employee
+									<?php elseif ($u->user_level === '2'): ?> Marketing
+									<?php elseif ($u->user_level === '3'): ?> Admin
+									<?php elseif ($u->user_level === '4'): ?> Teknik
+									<?php elseif ($u->user_level === '5'): ?> Finance									
 									<?php else: ?> Customer
 									<?php endif; ?>
 								</td>
