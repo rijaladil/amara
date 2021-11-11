@@ -16,9 +16,8 @@
 						<tr>
 						<th width="2%">No</th>
 							<th width="20%">Company Name</th>
-							<th width="10%">Kegiatan Usaha</th>
+							<th width="25%">Kegiatan Usaha</th>
 							<th>Address</th>
-							<th width="10%">Status Project</th>
 							<th width="7%">Action</th>
 						</tr>
 					 </thead>
@@ -34,7 +33,6 @@
 								<td><?php echo $c->address ?>, 
 								<b><?php echo $c->city_kabupaten ?></b>, 
 								<b><i><?php echo $c->province ?></b></i></td>
-								 <td><?php echo $c->status_project ?></td>
 								<td class="row justify-content-center">										
 					                  <a href="#" class="btn btn-success btn-circle btn-sm" data-toggle="modal" data-target="#Fedit<?php echo $c->id ?>">
 					                    <span class="icon text-white-50">

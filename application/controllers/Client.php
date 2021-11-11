@@ -27,7 +27,7 @@ class client extends CI_Controller{
 	
 	// halaman utama 
 	public function index(){
-		$data['client'] = $this->m_data_client->get_data()->result();
+		$data['client'] = $this->m_data_client->get_data();
 		$this->load->view('template/header/index');
 		$this->load->view('template/menu/index');
 		$this->load->view('pages/marketing/client/datatable',$data);
