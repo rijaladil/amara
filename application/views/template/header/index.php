@@ -68,9 +68,9 @@
           <a class="collapse-item" href="<?php echo base_url();?>index.php/Client_Process/">Clients Process</a>
           <!-- <a class="collapse-item" href="<?php echo base_url();?>index.php/Client/">Clients</a> -->
           <a class="collapse-item" href="<?php echo base_url();?>index.php/tender/">Tender Recapitulation</a>
-          <a class="collapse-item" href="<?php echo base_url();?>index.php/Vendor/">Vendor</a>
           <?php if ( (in_array($this->session->userdata('level'), array(1,2))) ) { ?>
-           <a class="collapse-item" href="<?php echo base_url();?>index.php/price/">Unit Price</a>    
+          <a class="collapse-item" href="<?php echo base_url();?>index.php/Vendor/">Vendor</a>
+          <a class="collapse-item" href="<?php echo base_url();?>index.php/price/">Unit Price</a>    
            <?php }?>    
           </div>
           

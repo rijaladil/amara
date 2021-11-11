@@ -2,12 +2,14 @@
        <div class="card shadow mb-4">
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">Tender Recapitulation</h6>
+			  <?php if ( (in_array($this->session->userdata('level'), array(1,2))) ) { ?>
                			<a href="#" class="btn btn-primary btn-icon-split" style="float: right;" data-toggle="modal" data-target="#Finput">
 		                <span class="icon text-white-50">
 		                  <i class="fas fa-flag"></i>
 		                </span>
 		                <span class="text">Add +</span>
 		              </a>
+					  <?php }?>
             </div>
             <div class="card-body">
               	<div class="table-responsive">
@@ -33,7 +35,6 @@
 						    <th width="5%">Date Upload</th>
 						    <th width="5%">Date Pembuktian</th>
 						    <th width="5%">Date Pengumuman</th>
-
 						    <th width="5%">Date Download</th>
 						    <th width="5%">Date Penjelasan</th>
 						    <th width="5%">Date Upload</th>
@@ -55,7 +56,11 @@
 							    <td class="text-center"><?php echo $ct->code_tender ?></td>
 							    <td class="text-center"><?php echo $ct->product_name ?></td> <!-- NAMA PEKERJAAN -->
 							    <td class="text-center"><?php echo $ct->city_kabupaten ?></td>
-							    <td class="text-center"><?php echo number_format($ct->price_hps,2,',','.') ?></td>
+							    <td class="text-center">
+								<?php if ( (in_array($this->session->userdata('level'), array(1,2))) ) { ?>
+								<?php echo number_format($ct->price_hps,2,',','.') ?>
+								<?php }?>
+								</td>
 
 							    <td  class="text-center"><?php if($ct->dk_date_download == '0000-00-00') {?> -
 							    	<?php } else {echo '<a class="btn-sm"><i class="fas fa-check"></i></a>'. $ct->dk_date_download; }?></td>
@@ -81,7 +86,8 @@
 							    	<?php } else {echo '<a class="btn-sm"><i class="fas fa-check"></i></a>'. $ct->dp_date_pembukaan_evaluasi_harga ; }?></td>
 							    <td class="text-center"><?php echo $ct->pengumuman_pemenang ?></td>
 							    <td class="text-center"><?php echo $ct->keterangan ?></td>
-							    <td  class="row justify-content-center">										
+							    <td  class="row justify-content-center">		
+								<?php if ( (in_array($this->session->userdata('level'), array(1,2))) ) { ?>								
 					                  <a href="#" class="btn btn-success btn-circle btn-sm" data-toggle="modal" data-target="#Fedit<?php echo $ct->id ?>">
 					                    <span class="icon text-white-50">
 										  <i class="fa fa-edit"></i>
@@ -94,6 +100,7 @@
 					                      <i class="fas fa-trash"></i>
 					                    </span>					                    
 					                  </a>
+									  <?php }?>
 								</td>
 							  </tr>
 							<?php } ?>

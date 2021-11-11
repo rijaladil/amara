@@ -2,12 +2,14 @@
        <div class="card shadow mb-4">
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">Data Client Process</h6>
+			  <?php if ( (in_array($this->session->userdata('level'), array(1,2))) ) { ?>
                	<a href="#" class="btn btn-primary btn-icon-split" style="float: right;" data-toggle="modal" data-target="#Finput">
 		                <span class="icon text-white-50">
 		                  <i class="fas fa-flag"></i>
 		                </span>
 		                <span class="text">Add +</span>
 		              </a>
+					  <?php }?>
             </div>
             <div class="card-body">
               	<div class="table-responsive">
@@ -47,8 +49,10 @@
 									echo $string;
 
 								?></td>
-								<td><b>Bid Price :</b> <span style="color: red;"><?php echo number_format($c->price_bid ,0,',','.') ?></span><br>
+								<td><?php if ( (in_array($this->session->userdata('level'), array(1,2))) ) { ?>	
+									<b>Bid Price :</b> <span style="color: red;"><?php echo number_format($c->price_bid ,0,',','.') ?></span><br>
 									<b>Price     :</b> <span style="color: green;"><?php echo number_format($c->price ,0,',','.') ?></span>
+									<?php }?>
 								</td>
 								<td>
 									<?php if ( $c->date_1  === NULL or $c->date_1 === '0000-00-00'): ?>
@@ -77,7 +81,8 @@
 									        <b>PO / Kontrak :</b> <?php echo $c->date_5 ?> , <?php echo $c->process_5 ?><hr>
 									<?php endif; ?>
 								</td>
-								<td  class="row justify-content-center">										
+								<td  class="row justify-content-center">	
+								<?php if ( (in_array($this->session->userdata('level'), array(1,2))) ) { ?>									
 					                  <a href="#" class="btn btn-success btn-circle btn-sm" data-toggle="modal" data-target="#Fedit<?php echo $c->id ?>">
 					                    <span class="icon text-white-50">
 										  <i class="fa fa-edit"></i>
@@ -90,6 +95,7 @@
 					                      <i class="fas fa-trash"></i>
 					                    </span>					                    
 					                  </a>
+								<?php }?>
 								</td>
 							</tr>
 							<?php } ?>

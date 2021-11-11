@@ -5,12 +5,14 @@
        <div class="card shadow mb-4">
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">Data Client</h6>
+			  <?php if ( (in_array($this->session->userdata('level'), array(1,2))) ) { ?>
 					<a href="#" class="btn btn-primary btn-icon-split" style="float: right;" data-toggle="modal" data-target="#Finput">
 		                <span class="icon text-white-50">
 		                  <i class="fas fa-flag"></i>
 		                </span>
 		                <span class="text">Add +</span>
 		              </a>
+					  <?php }?>
             </div>
             <div class="card-body">
               	<div class="table-responsive">
@@ -46,7 +48,8 @@
 									        <b><p style="color:red;">Prospective</p></b>
 									<?php endif; ?>
 								</td>
-								<td  class="row justify-content-center">									
+								<td  class="row justify-content-center">
+								<?php if ( (in_array($this->session->userdata('level'), array(1,2))) ) { ?>									
 					                  <a href="#" class="btn btn-success btn-circle btn-sm" data-toggle="modal" data-target="#Fedit<?php echo $c->id ?>">
 					                    <span class="icon text-white-50">
 					                      <i class="fas fa-edit"></i>
@@ -58,6 +61,7 @@
 					                      <i class="fas fa-trash"></i>
 					                    </span>					                    
 					                  </a>
+									  <?php }?>
 								</td>
 							</tr>
 							<?php } ?>
