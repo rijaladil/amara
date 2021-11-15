@@ -21,9 +21,9 @@
 							      	<tr>
 							            <td>
 							            	Select Date : 
-							            	<input type="text" id="min" name="min" value="<?php echo ($setStart == '') ? date('Y-m-d') : $setStart;?>"> <b>To</b>
-							            	<input type="text" id="max" name="max" value="<?php echo ($setEnd == '') ? date('Y-m-d') : $setEnd;?>">
-							            	<input type="submit" class="btn btn-info" value="Input">
+							            	<input type="text" id="min" name="min" value="<?php echo ($min == '') ? date('Y-m-d') : $min;?>"> <b>To</b>
+							            	<input type="text" id="max" name="max" value="<?php echo ($max == '') ? date('Y-m-d') : $max;?>">
+							            	<input type="submit" class="btn" value="Select">
 							            </td>
 							        </tr>
 							    	</tbody>
@@ -54,7 +54,7 @@
 										<tbody>
 											<?php 
 											$id = 1;
-											foreach($teknik_by_date as $tk){ 
+											foreach($teknik_by_date as $tk){ 											
 											?>
 											<tr>
 									
@@ -62,8 +62,8 @@
 												<td><?php echo $tk->project_activity ?></td>	
 												<td><?php echo $tk->pemrakarsa ?></td>						
 												
-												<td><?php  $date=date_create($tk->start_date);
-												echo date_format($date,"Y-m-d"); ?></td>
+												
+													<td><?php echo $tk->start_date ?></td>
 												<td><?php echo $tk->finish_date ?></td>
 											<!-- 	<td><?php echo $tk->start_date .' s/d '.$tk->finish_date ?></td> -->
 												<td><?php echo $tk->document_product ?></td>	
