@@ -54,7 +54,7 @@
 								
 								<td class="row justify-content-center" >		
 								<?php if ( (in_array($this->session->userdata('level'), array(1,4))) ) { ?>	
-									<?php if ($this->session->userdata('name')== $tk->user) { ?>								
+									<?php if ($this->session->userdata('department') == 'Supervisor' || $this->session->userdata('name')== $tk->user ) { ?>								
 					                  <a href="#" class="btn btn-success btn-circle btn-sm" data-toggle="modal" data-target="#Fedit<?php echo $tk->id ?>">
 					                    <span class="icon text-white-50">
 										  <i class="fa fa-edit"></i>

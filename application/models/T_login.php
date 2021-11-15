@@ -19,6 +19,7 @@ class T_login extends CI_Model
                 'name'      => $row->name,
                 'email'     => $row->email,
                 'level'     => $row->user_level,
+                'department'     => $row->department,
                 'loggin'    => TRUE
             );
             $this->session->set_userdata($data);
