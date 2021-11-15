@@ -13,64 +13,79 @@
             </div>
             <div class="card-body">
               	<div class="table-responsive">
-	                <table class="table table-bordered display" id="dataTablepdf" width="100%" cellspacing="0">
+              		<table border="0" cellspacing="5" cellpadding="5" align="right">
+							      <tbody>
+							      	<tr>
+							            <td>
+							            	Select Date : 
+							            	<input type="text" id="min" name="min"> <b>To</b>
+							            	<input type="text" id="max" name="max">
+							            </td>
+							        </tr>
+							    	</tbody>
+							  	</table>
+
+	                <table id="dataTablepdf" class="table table-bordered display"  width="100%" cellspacing="0">
 						
 	                 <thead>
-						<tr>
-						    <th width="2%">No</th>
-						    <th width="15%">Project Activity</th>
-						    <th>Pemrakarsa Name</th>
-						    <th>Document Runtime</th>					 
-						   <!--  <th>Start Date</th>
-						    <th>Finish Date</th> -->
-						    <th>Document Product</th>
-						    <th>Planing This week</th>
-						    <th>Realization</th>
-						    <th>Problem</th>
-						    <th>Solution</th>
-						    <th>Planing Next Week</th>
-						    <th>PIC</th>
-						    <th>Action</th>	
-						  </tr>
-					 </thead>
-						</tbody>
-							<?php 
-							$id = 1;
-							foreach($teknik as $tk){ 
-							?>
-							<tr>
-					
-								<td><?php echo $id++ ?></td>
-								<td><?php echo $tk->project_activity ?></td>	
-								<td><?php echo $tk->pemrakarsa ?></td>						
-								<td><?php echo $tk->start_date .' s/d '.$tk->finish_date ?></td>
-								<td><?php echo $tk->document_product ?></td>	
-								<td><?php echo $tk->planing_this_week ?></td>
-								<td><?php echo $tk->realization ?></td>			
-								<td><?php echo $tk->problem ?></td>		
-								<td><?php echo $tk->solution ?></td>					
-								<td><?php echo $tk->planing_next_week ?></td>		
-								<td><?php echo $tk->user ?></td>
-								
-								<td class="row justify-content-center" >		
-								<?php if ( (in_array($this->session->userdata('level'), array(1,4))) ) { ?>	
-									<?php if ($this->session->userdata('department') == 'Supervisor' || $this->session->userdata('name')== $tk->user ) { ?>								
-					                  <a href="#" class="btn btn-success btn-circle btn-sm" data-toggle="modal" data-target="#Fedit<?php echo $tk->id ?>">
-					                    <span class="icon text-white-50">
-										  <i class="fa fa-edit"></i>
-					                    </span>
-					                  </a>
+										<tr>
+										    <th width="2%">No</th>
+										    <th width="15%">Project Activity</th>
+										    <th>Pemrakarsa Name</th>
+										    <!-- <th>Document Runtime</th>					  -->
+										    <th width="7%">Start Date</th>
+										    <th width="7%">Finish Date</th>
+										    <th>Document Product</th>
+										    <th>Planing This week</th>
+										    <th>Realization</th>
+										    <th>Problem</th>
+										    <th>Solution</th>
+										    <th>Planing Next Week</th>
+										    <th>PIC</th>
+										    <th>Action</th>	
+										  </tr>
+									 </thead>
+										</tbody>
+											<?php 
+											$id = 1;
+											foreach($teknik as $tk){ 
+											?>
+											<tr>
+									
+												<td><?php echo $id++ ?></td>
+												<td><?php echo $tk->project_activity ?></td>	
+												<td><?php echo $tk->pemrakarsa ?></td>						
+												
+												<td><?php echo $tk->start_date ?></td>
+												<td><?php echo $tk->finish_date ?></td>
+											<!-- 	<td><?php echo $tk->start_date .' s/d '.$tk->finish_date ?></td> -->
+												<td><?php echo $tk->document_product ?></td>	
+												<td><?php echo $tk->planing_this_week ?></td>
+												<td><?php echo $tk->realization ?></td>			
+												<td><?php echo $tk->problem ?></td>		
+												<td><?php echo $tk->solution ?></td>					
+												<td><?php echo $tk->planing_next_week ?></td>		
+												<td><?php echo $tk->user ?></td>
+												
+												<td class="row justify-content-center" >		
+												<?php if ( (in_array($this->session->userdata('level'), array(1,4))) ) { ?>	
+													<?php if ($this->session->userdata('department') == 'Supervisor' || $this->session->userdata('name')== $tk->user ) { ?>								
+									                  <a href="#" class="btn btn-success btn-circle btn-sm" data-toggle="modal" data-target="#Fedit<?php echo $tk->id ?>">
+									                    <span class="icon text-white-50">
+														  <i class="fa fa-edit"></i>
+									                    </span>
+									                  </a>
 
-					                   <a href="<?php echo base_url(). 'index.php/teknik/delete/'.$tk->id ; ?>" class="btn btn-danger btn-circle btn-sm">
-					                    <span class="icon text-white-50">
-					                      <i class="fas fa-trash"></i>
-					                    </span>					                    
-					                  </a>
-									  <?php } }?>
-								</td>
-								
+									                   <a href="<?php echo base_url(). 'index.php/teknik/delete/'.$tk->id ; ?>" class="btn btn-danger btn-circle btn-sm">
+									                    <span class="icon text-white-50">
+									                      <i class="fas fa-trash"></i>
+									                    </span>					                    
+									                  </a>
+													  <?php } }?>
+												</td>
+												
 
-							</tr>
+											</tr>
 							<?php } ?> 
 						</tbody>
 					</table>
