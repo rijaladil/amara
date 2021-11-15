@@ -2,7 +2,8 @@
        <div class="card shadow mb-4">
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">Data Progress Pekerjaan Teknik</h6>
-			  <?php if ( (in_array($this->session->userdata('level'), array(1,4))) ) { ?>
+
+			  		<?php if ( (in_array($this->session->userdata('level'), array(1,4))) ) { ?>
                			<a href="#" class="btn btn-primary btn-icon-split" style="float: right;" data-toggle="modal" data-target="#Finput">
 		                <span class="icon text-white-50">
 		                  <i class="fas fa-flag"></i>
@@ -10,22 +11,27 @@
 		                <span class="text">Add +</span>
 		              </a>
 					  <?php }?>
+
             </div>
             <div class="card-body">
               	<div class="table-responsive">
+              		<form method="post" action="<?php echo base_url(); ?>index.php/teknik/index">
               		<table border="0" cellspacing="5" cellpadding="5" align="right">
 							      <tbody>
 							      	<tr>
 							            <td>
 							            	Select Date : 
-							            	<input type="text" id="min" name="min"> <b>To</b>
-							            	<input type="text" id="max" name="max">
+							            	<input type="text" id="min" name="min" value="<?php echo ($setStart == '') ? date('Y-m-d') : $setStart;?>"> <b>To</b>
+							            	<input type="text" id="max" name="max" value="<?php echo ($setEnd == '') ? date('Y-m-d') : $setEnd;?>">
+							            	<input type="submit" class="btn btn-info" value="Input">
 							            </td>
 							        </tr>
 							    	</tbody>
 							  	</table>
+							  	</form>
 
-	                <table id="dataTablepdf" class="table table-bordered display"  width="100%" cellspacing="0">
+
+	                <table id="dataTablepdf" class="display table table-bordered " width="100%" cellspacing="0">
 						
 	                 <thead>
 										<tr>
@@ -45,10 +51,10 @@
 										    <th>Action</th>	
 										  </tr>
 									 </thead>
-										</tbody>
+										<tbody>
 											<?php 
 											$id = 1;
-											foreach($teknik as $tk){ 
+											foreach($teknik_by_date as $tk){ 
 											?>
 											<tr>
 									
@@ -56,7 +62,8 @@
 												<td><?php echo $tk->project_activity ?></td>	
 												<td><?php echo $tk->pemrakarsa ?></td>						
 												
-												<td><?php echo $tk->start_date ?></td>
+												<td><?php  $date=date_create($tk->start_date);
+												echo date_format($date,"Y-m-d"); ?></td>
 												<td><?php echo $tk->finish_date ?></td>
 											<!-- 	<td><?php echo $tk->start_date .' s/d '.$tk->finish_date ?></td> -->
 												<td><?php echo $tk->document_product ?></td>	
@@ -86,9 +93,9 @@
 												
 
 											</tr>
-							<?php } ?> 
-						</tbody>
-					</table>
+										<?php } ?> 
+										</tbody>
+									</table>
 			   	</div>
 			</div>
 								
@@ -319,6 +326,7 @@
 			
 		</div>
 </div>
+
 
 
 

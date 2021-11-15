@@ -26,7 +26,11 @@ class teknik extends CI_Controller{
 	
 	// halaman utama 
    public  function index(){
+	   	$data['setStart'] = $this->security->xss_clean($this->input->post('min'));
+		$data['setEnd'] = $this->security->xss_clean($this->input->post('max'));
+
 		$data['teknik'] = $this->t_teknik->get_data()->result();
+		$data['teknik_by_date'] = $this->t_teknik->get_data_by_date($data['setStart'], $data['setEnd'])->result();
 		$data['client'] = $this->t_teknik->get_data_client()->result();
 		$data['user'] = $this->t_recapitulation->get_data_user()->result();
 		$data['recapitulation'] = $this->t_recapitulation->get_data()->result();

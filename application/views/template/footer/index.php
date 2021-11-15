@@ -138,13 +138,7 @@
  
 
 
-  <!-- datatable select date -->
 
-
-<script src="<?php echo base_url(); ?>assets/js/moment.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/js/dataTables.dateTime.min.js"></script>
-
-<link href="<?php echo base_url(); ?>assets/css/dataTables.dateTime.min.css" rel="stylesheet">   
  
 <!-- datatable export table  -->
 
@@ -161,7 +155,13 @@
 
 
 
+  <!-- datatable select date -->
 
+
+<script src="<?php echo base_url(); ?>assets/js/moment.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/dataTables.dateTime.min.js"></script>
+
+<link href="<?php echo base_url(); ?>assets/css/dataTables.dateTime.min.css" rel="stylesheet">   
 
 </body>
 

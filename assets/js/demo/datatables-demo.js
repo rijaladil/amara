@@ -44,13 +44,6 @@ $(document).ready(function() {
         format: 'YYYY-MM-DD'
     });
  
-    // DataTables initialisation
-    var table = $('#dataTablepdf').DataTable();
- 
-    // Refilter the table
-    $('#min, #max').on('change', function () {
-        table.draw();
-    });
-});
 
+});
 
