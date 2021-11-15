@@ -13,7 +13,8 @@
             </div>
             <div class="card-body">
               	<div class="table-responsive">
-	                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+	                <table class="table table-bordered display" id="dataTablepdf" width="100%" cellspacing="0">
+						
 	                 <thead>
 						<tr>
 						    <th width="2%">No</th>
@@ -304,3 +305,16 @@
 		</div>
 </div>
 
+ 
+<script src="<?php echo base_url(); ?>assets/js/jquery-3.5.1.js"></scrip>
+  <script src="<?php echo base_url(); ?>assets/js/jquery.dataTables.min.js"></scrip>
+  <script src="<?php echo base_url(); ?>assets/js/dataTables.buttons.min.js"></scrip>
+  <script src="<?php echo base_url(); ?>assets/js/jszip.min.js"></scrip>
+  <script src="<?php echo base_url(); ?>assets/js/pdfmake.min.js"></scrip>
+  <script src="<?php echo base_url(); ?>assets/js/vfs_fonts.js"></scrip>
+  <script src="<?php echo base_url(); ?>assets/js/buttons.html5.min.js"></scrip>
+  <script src="<?php echo base_url(); ?>assets/js/buttons.print.min.js"></scrip>
+ 
+  
+  <link href="<?php echo base_url(); ?>assets/css/buttons.dataTables.min.css" rel="stylesheet">
+  <link href="<?php echo base_url(); ?>assets/css/jquery.dataTables.min.css" rel="stylesheet">   

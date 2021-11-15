@@ -2,3 +2,13 @@
 $(document).ready(function() {
   $('#dataTable').DataTable();
 });
+
+
+$(document).ready(function() {
+  $('#dataTablepdf').DataTable( {
+      dom: 'Bfrtip',
+      buttons: [
+          'copy', 'csv', 'excel', 'pdf', 'print'
+      ]
+  } );
+} );
