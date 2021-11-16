@@ -49,7 +49,7 @@
 									echo $string;
 
 								?></td>
-								<td><?php if ( (in_array($this->session->userdata('level'), array(1,2))) ) { ?>	
+								<td><?php if ( (in_array($this->session->userdata('level'), array(0,1,2))) ) { ?>	
 									<b>Bid Price :</b> <span style="color: red;"><?php echo number_format($c->price_bid ,0,',','.') ?></span><br>
 									<b>Price     :</b> <span style="color: green;"><?php echo number_format($c->price ,0,',','.') ?></span>
 									<?php }?>

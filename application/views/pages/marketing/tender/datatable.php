@@ -57,7 +57,7 @@
 							    <td class="text-center"><?php echo $ct->product_name ?></td> <!-- NAMA PEKERJAAN -->
 							    <td class="text-center"><?php echo $ct->city_kabupaten ?></td>
 							    <td class="text-center">
-								<?php if ( (in_array($this->session->userdata('level'), array(1,2))) ) { ?>
+								<?php if ( (in_array($this->session->userdata('level'), array(0,1,2))) ) { ?>
 								<?php echo number_format($ct->price_hps,2,',','.') ?>
 								<?php }?>
 								</td>

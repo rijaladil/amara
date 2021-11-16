@@ -18,7 +18,8 @@
 									<?php elseif ($this->session->userdata('level') === '2'): ?> Marketing
 									<?php elseif ($this->session->userdata('level') === '3'): ?> Admin
 									<?php elseif ($this->session->userdata('level') === '4'): ?> Teknik
-									<?php elseif ($this->session->userdata('level') === '5'): ?> Finance									
+									<?php elseif ($this->session->userdata('level') === '5'): ?> Finance			
+                  <?php elseif ($this->session->userdata('level') === '0'): ?> Management  						
 									<?php else: ?> Customer
 									<?php endif; ?>
         </h5>
