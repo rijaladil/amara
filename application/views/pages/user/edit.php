@@ -51,6 +51,7 @@
 									<?php elseif ($u->user_level === '3'): ?> Admin
 									<?php elseif ($u->user_level === '4'): ?> Teknik
 									<?php elseif ($u->user_level === '5'): ?> Finance	
+									<?php elseif ($u->user_level === '0'): ?> Management		
 									<?php else: ?> Customer
 									<?php endif; ?></option>
 									<option value="1">Administrator</option>
@@ -59,6 +60,7 @@
 									<option value="4">Teknik</option>
 									<option value="5">Finance</option>
 									<option value="6">Client</option>
+									<option value="0">Management</option>
 								</select>								
 							</div>
 						</td>
