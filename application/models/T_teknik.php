@@ -16,6 +16,7 @@
 			tk.problem,
 			tk.solution,
 			tk.planing_next_week,
+			tk.note,
 			u.name as user,
 			u.id as user_id
 				FROM amc_t_teknis_progress tk
@@ -57,6 +58,7 @@ public function get_data_by_date($min = '', $max = ''){
 							tk.problem,
 							tk.solution,
 							tk.planing_next_week,
+							tk.note,
 							u.name as user,
 							u.id as user_id
 			

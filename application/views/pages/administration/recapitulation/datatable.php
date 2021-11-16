@@ -78,6 +78,7 @@
 			   	</div>
 			</div>
 
+			<!-- INPUT DATA  -->
 			<div class="modal fade" id="Finput" role="dialog">
 				<div class="modal-dialog modal-lg">
 				<div class="modal-content">

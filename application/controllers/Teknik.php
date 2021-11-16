@@ -115,6 +115,27 @@ class teknik extends CI_Controller{
 		// var_dump ($data);
 	}
 
+
+	public function update_note(){
+		$id= $this->input->post('id');
+		$note = $this->input->post('note');
+
+
+		$data = array(
+			'note'=> $note,
+			'editDate'=>date('Y-m-d H:i:s')
+		);
+
+		$where = array(
+			'id' => $id
+		);
+
+		$this->t_teknik->update_data($where,$data,'amc_t_teknis_progress');
+		redirect('teknik/index');
+		// var_dump ($data);
+	}
+
+
 	//display get data edit
 	public function edit($id=''){
 		$where = array('id' => $id);
