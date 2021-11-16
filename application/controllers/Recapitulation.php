@@ -11,6 +11,7 @@ class recapitulation extends CI_Controller{
 		$this->load->model('t_recapitulation');
 		$this->load->model('t_teknik');
 		$this->load->helper('url');
+		$this->load->library('form_validation');
 	}
 	private function check_isvalidated()
     {
@@ -123,6 +124,39 @@ class recapitulation extends CI_Controller{
 		$this->t_recapitulation->delete_data($where,'amc_t_recapitulation_project');
 		redirect('recapitulation/index');
 	}
+
+
+
+	public function do_upload($id='') { 
+		 $id= $this->input->post('id');
+         $config['upload_path']   = './upload/'; 
+         $config['allowed_types'] = 'gif|jpg|png|pdf|doc|docx'; 
+         $config['max_size']      = 10000;  
+
+         $this->load->library('upload', $config);
+
+         if ( ! $this->upload->do_upload('upload')) {
+            $error = array('error' => $this->upload->display_errors()); 
+          
+            $this->load->view('pages/administration/recapitulation/datatable', $data);
+            
+         }
+
+         else { 
+         	$data = array(
+			'upload'=>$file, 
+			'editDate'=>date('Y-m-d H:i:s')
+			   );
+
+
+         	$where = array('id' => $id);
+
+         	$this->t_recapitulation->update_data($where,$data,'amc_t_recapitulation_project');         
+            $error=array('error'=>'File has been uploaded'); 
+            redirect('recapitulation/index');
+         } 
+      }
+
 
 
 

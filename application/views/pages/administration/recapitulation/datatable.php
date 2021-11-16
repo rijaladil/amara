@@ -25,7 +25,7 @@
 							<th>Company</th>
 							<th>Project Activity</th>
 							<th>PIC</th>
-							<th width="7%">Action</th>
+							<th width="10%">Action</th>
 						</tr>
 					 </thead>
 						</tbody>
@@ -50,12 +50,19 @@
 					                    </span>
 					                  </a>	
 									 &#160;		
+									 <a href="#" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#Upload<?php echo $r->id ?>">
+					                    <span class="icon text-white-50">
+					                      <i class="fas fa-upload"></i>
+					                    </span>
+					                  </a>	
+									 &#160;	
 									 <?php if ( (in_array($this->session->userdata('level'), array(1,3))) ) { ?>					
 					                  <a href="#" class="btn btn-success btn-circle btn-sm" data-toggle="modal" data-target="#Fedit<?php echo $r->id ?>">
 					                    <span class="icon text-white-50">
 					                      <i class="fas fa-edit"></i>
 					                    </span>
 					                  </a>
+
 									  &#160;	
 					                   <a href="<?php echo base_url(). 'index.php/recapitulation/delete/'.$r->id ; ?>" class="btn btn-danger btn-circle btn-sm" >
 					                    <span class="icon text-white-50">
@@ -154,6 +161,52 @@
 				</div>
 				</div>
 			</div>
+
+
+			<!-- UPLOAD DATA  -->
+			<?php $id = 1; 	foreach($recapitulation as $r){ 
+			?>
+			<div class="modal fade" id="Upload<?php echo $r->id ?>" role="dialog">
+				<div class="modal-dialog modal-xl">
+				<div class="modal-content">
+					<div class="modal-header">	
+						<h4 class="modal-title">Upload Project</h4>
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+					</div>
+					<div class="modal-body">
+					
+
+					<form action="<?php echo base_url(). 'index.php/recapitulation/do_upload'; ?>" method="post">
+						<table width="100%">
+							
+							<tr>
+								<td>
+									<div class="form-group">
+									<label for="inputdefault">Upload:</label>								
+									<input type="hidden" name="id" value="<?php echo $r->id ?>">
+									<input type="file" name="upload" class="" data-buttonName="btn-primary" id="upload"/>
+									 <span class="label label-danger">Maksimal 3MB</span>
+									</div>
+									<div class="input-group mb-3">
+
+								
+									</div>
+
+								</td>
+							</tr>
+							
+						</table>
+					
+						<div class="modal-footer">
+							<input type="submit" class="btn btn-info" value="Edit">
+							<button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+						</div>
+					</form>	
+					</div>
+				</div>
+				</div>
+			</div>
+			<?php } ?>
 
 			<!-- EDIT DATA  -->
 			<?php $id = 1; 	foreach($recapitulation as $r){ 

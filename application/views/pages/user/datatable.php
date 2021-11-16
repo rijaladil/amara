@@ -52,13 +52,13 @@
 								<td>
 							
 
-					                  <a href="<?php echo base_url(). 'index.php/user/edit/'.$u->id ; ?>"  class="btn btn-success btn-circle" >
-									  	<span class="icon text-white-50">
+					                  <a href="<?php echo base_url(). 'index.php/user/edit/'.$u->id ; ?>"  class="btn btn-success btn-circle btn-sm" >
+									  	<span class="icon text-white-50 ">
 					                      <i class="fas fa-check"></i>
 					                    </span>
 					                  </a>
 
-					                   <a href="<?php echo base_url(). 'index.php/user/delete/'.$u->id ; ?>" class="btn btn-danger btn-circle">
+					                   <a href="<?php echo base_url(). 'index.php/user/delete/'.$u->id ; ?>" class="btn btn-danger btn-circle btn-sm">
 									   <span class="icon text-white-50">
 					                      <i class="fas fa-trash"></i>
 					                    </span>	
