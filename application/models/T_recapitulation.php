@@ -14,6 +14,7 @@
 								rp.contract_finish_date,
 								rp.project_activity,
 								rp.user_id,
+								rp.upload,
 								u.name as user_name,
 								rp.percentage,
 								p. name as product_name

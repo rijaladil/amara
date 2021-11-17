@@ -352,7 +352,7 @@
 									<div class="form-group">
 									<label for="inputdefault">Project Activity:</label>
 									<input type="hidden" name="id" value="<?php echo $tk->id ?>">
-										<select class="form-control" name="recapitulation_id">
+										<select class="form-control" name="recapitulation_id" disabled>
 												<option value="<?php echo $tk->recapitulation_id ?>"><?php echo $tk->project_activity ?></option>
 												<option value="">Pilih</option>
 												<?php 
@@ -368,7 +368,7 @@
 								<td>
 									<div class="form-group">
 										<label for="inputdefault">Start Date:</label>								
-										<input class="form-control" id="start_date" type="date" name="start_date" value="<?php echo $tk->start_date ?>" readonly>
+										<input class="form-control" id="start_date" type="date" name="start_date" value="<?php echo $tk->start_date ?>" disabled>
 									</div>
 								</td>
 							</tr>
@@ -376,7 +376,7 @@
 								<td>
 									<div class="form-group">
 										<label for="inputdefault">Finish Date:</label>
-										<input class="form-control" id="start_date" type="date" name="finish_date" value="<?php echo $tk->finish_date ?>" readonly>
+										<input class="form-control" id="start_date" type="date" name="finish_date" value="<?php echo $tk->finish_date ?>" disabled>
 									</div>
 								</td>
 							</tr>
@@ -384,7 +384,7 @@
 								<td>
 									<div class="form-group ">
 										<label for="inputdefault">Planning This Weeky:</label>
-										<textarea class="form-control" rows="5" id="" name="planing_this_week" readonly ><?php echo $tk->planing_this_week ?></textarea>
+										<textarea class="form-control" rows="5" id="" name="planing_this_week" disabled ><?php echo $tk->planing_this_week ?></textarea>
 									</div>
 								</td>
 							</tr>							
@@ -392,7 +392,7 @@
 								<td>
 									<div class="form-group ">
 										<label for="inputdefault">Realization:</label>
-										<textarea class="form-control" rows="5" id="" name="realization" readonly ><?php echo $tk->realization ?></textarea>
+										<textarea class="form-control" rows="5" id="" name="realization" disabled ><?php echo $tk->realization ?></textarea>
 									</div>
 								</td>
 							</tr>							
@@ -400,7 +400,7 @@
 								<td>
 									<div class="form-group ">
 										<label for="inputdefault">Problem:</label>
-										<textarea class="form-control" rows="5" id="" name="problem" readonly><?php echo $tk->problem ?></textarea>
+										<textarea class="form-control" rows="5" id="" name="problem" disabled><?php echo $tk->problem ?></textarea>
 									</div>
 								</td>
 							</tr>
@@ -408,7 +408,7 @@
 								<td>
 									<div class="form-group ">
 										<label for="inputdefault">Solution:</label>
-										<textarea class="form-control" rows="5" id="" name="solution" readonly><?php echo $tk->solution ?></textarea>
+										<textarea class="form-control" rows="5" id="" name="solution" disabled><?php echo $tk->solution ?></textarea>
 									</div>
 								</td>
 							</tr>
@@ -416,7 +416,7 @@
 								<td>
 									<div class="form-group ">
 										<label for="inputdefault">Planning Next Weeky:</label>
-										<textarea class="form-control" rows="5" id="" name="planing_next_week" readonly ><?php echo $tk->planing_next_week ?></textarea>
+										<textarea class="form-control" rows="5" id="" name="planing_next_week" disabled ><?php echo $tk->planing_next_week ?></textarea>
 									</div>
 								</td>
 							</tr>	
@@ -424,7 +424,7 @@
 								<td>
 									<div class="form-group ">
 										<label for="inputdefault">PIC:</label>
-										<select class="form-control" name="user_id">
+										<select class="form-control" name="user_id" disabled>
 											<option value="<?php echo $tk->user_id ?>"><?php echo $tk->user ?></option>
 											<option value="0">Pilih</option>
 											<?php 

@@ -177,7 +177,7 @@
 					<div class="modal-body">
 					
 
-					<form action="<?php echo base_url(). 'index.php/recapitulation/do_upload'; ?>" method="post">
+					<form action="<?php echo base_url(). 'index.php/recapitulation/do_upload'; ?>" method="post" enctype="multipart/form-data">
 						<table width="100%">
 							
 							<tr>
@@ -202,7 +202,7 @@
 							<input type="submit" class="btn btn-info" value="Edit">
 							<button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
 						</div>
-					</form>	
+					</form>
 					</div>
 				</div>
 				</div>
@@ -369,9 +369,15 @@
 										</select>
 									</div>
 								</td>
+								<<td>
+									<div class="form-group ">
+										<label for="inputdefault">Show PDF:</label><br>
+										<a  target="_blank" href="<?php echo base_url(). 'upload/'.$r->upload ; ?>" class="btn btn-primary view-pdf" ><?php echo $r->upload ?></a>
+									</div>
+								</td>
 							</tr>
 							<tr>
-								<td>
+								<td colspan="3">
 									<div class="form-group ">
 										<label for="inputdefault">Project Activity:</label>
 										<textarea class="form-control" rows="3" id="" name="project_activity" disabled ><?php echo $r->project_activity ?></textarea>

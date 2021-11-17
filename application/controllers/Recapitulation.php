@@ -10,8 +10,8 @@ class recapitulation extends CI_Controller{
 		$this->check_isvalidated();	
 		$this->load->model('t_recapitulation');
 		$this->load->model('t_teknik');
-		$this->load->helper('url');
 		$this->load->library('form_validation');
+		$this->load->helper(array('form', 'url'));
 	}
 	private function check_isvalidated()
     {
@@ -34,6 +34,7 @@ class recapitulation extends CI_Controller{
 		$data['teknik'] = $this->t_teknik->get_data()->result();
 		$this->load->view('template/header/index');
 		$this->load->view('template/menu/index');
+		// $this->load->view('upload_form', array('error' => ' ' ));
 		$this->load->view('pages/administration/recapitulation/datatable',$data);
 		$this->load->view('template/footer/index');
 	}
@@ -129,35 +130,37 @@ class recapitulation extends CI_Controller{
 
 	public function do_upload($id='') { 
 		 $id= $this->input->post('id');
+		 $image = time().'-'.str_replace(' ', '_',$_FILES["upload"]['name']);
+		 //$newName = "<Whatever name>".".".pathinfo($image, PATHINFO_EXTENSION); 
+		 $config['file_name'] = $image;
          $config['upload_path']   = './upload/'; 
          $config['allowed_types'] = 'gif|jpg|png|pdf|doc|docx'; 
          $config['max_size']      = 10000;  
 
-         $this->load->library('upload', $config);
+         $this->load->library('upload');
+         $this->upload->initialize($config);
 
-         if ( ! $this->upload->do_upload('upload')) {
-            $error = array('error' => $this->upload->display_errors()); 
-          
-            $this->load->view('pages/administration/recapitulation/datatable', $data);
-            
-         }
+	         if ( ! $this->upload->do_upload('upload')) {
+	            $error = array('error' => $this->upload->display_errors()); 
+	            // var_dump($error);
+	          
+	            $this->load->view('pages/administration/recapitulation/datatable', $error);
+	            
+	         }
 
-         else { 
-         	$data = array(
-			'upload'=>$file, 
-			'editDate'=>date('Y-m-d H:i:s')
-			   );
+	         else { 
+	         	$data = array(
+				'upload' => $image, 
+				'editDate' =>date('Y-m-d H:i:s')
+				   );
 
 
-         	$where = array('id' => $id);
+	         	$where = array('id' => $id);
 
-         	$this->t_recapitulation->update_data($where,$data,'amc_t_recapitulation_project');         
-            $error=array('error'=>'File has been uploaded'); 
-            redirect('recapitulation/index');
-         } 
+	         	$this->t_recapitulation->update_data($where,$data,'amc_t_recapitulation_project');         
+	            $error=array('error'=>'File has been uploaded'); 
+	            redirect('recapitulation/index');
+	         } 
       }
-
-
-
 
 }
