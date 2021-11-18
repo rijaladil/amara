@@ -3,12 +3,12 @@
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">Data Client Process</h6>
 			  <?php if ( (in_array($this->session->userdata('level'), array(1,2))) ) { ?>
-               	<a href="#" class="btn btn-primary btn-icon-split" style="float: right;" data-toggle="modal" data-target="#Finput">
+<!--                	<a href="#" class="btn btn-primary btn-icon-split" style="float: right;" data-toggle="modal" data-target="#Finput">
 		                <span class="icon text-white-50">
 		                  <i class="fas fa-flag"></i>
 		                </span>
 		                <span class="text">Add +</span>
-		              </a>
+		        </a> -->
 					  <?php }?>
             </div>
             <div class="card-body">
@@ -32,7 +32,7 @@
 							?>
 							<tr>
 								<td><?php echo $id++ ?></td>
-								<td><?php echo $c->no_po ?></td>
+								<td><a  target="_blank" href="<?php echo base_url(). 'upload/'.$c->upload ; ?>" class="btn-primary view-pdf" ><?php echo $c->no_po ?></a></td>
 								<td><?php echo $c->name ?></td>
 								<td><?php
 								$string = $c->description;
@@ -89,7 +89,13 @@
 										  <!-- <i class="fas fa-check"></i> -->
 					                    </span>
 					                  </a>
-
+					                  &#160;
+					                   <a href="#" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#Upload<?php echo $c->id ?>">
+					                    <span class="icon text-white-50">
+					                      <i class="fas fa-upload"></i>
+					                    </span>
+					                  </a>	
+					                  &#160;	
 					                   <a href="<?php echo base_url(). 'index.php/Client_Process/delete/'.$c->id ; ?>" class="btn btn-danger btn-circle btn-sm">
 					                    <span class="icon text-white-50">
 					                      <i class="fas fa-trash"></i>
@@ -103,7 +109,7 @@
 					</table>
 			   	</div>
 			</div>
-								
+<!-- INPUT DATA  -->
 			<div class="modal fade" id="Finput" role="dialog">
 				<div class="modal-dialog modal-xl">
 				<div class="modal-content">
@@ -191,7 +197,8 @@
 									<label for="inputdefault">PO / Kontrak:</label>
 									<input type="text"  placeholder="NO PO" class="form-control" id="no_po" name="no_po" ><br>
 									<input type="date" class="form-control" id="date_5" name="date_5" ><br>
-									<textarea class="form-control" type='text' rows="" id="process_5" name="process_5" placeholder="Information PO / Kontrak"></textarea>
+									<textarea class="form-control" type='text' rows="" id="process_5" name="process_5" placeholder="Information PO / Kontrak"></textarea><br>
+									<input type="file" name="upload" class="" data-buttonName="btn-primary" id="upload"/>
 									</div>
 								</td>
 							</tr>
@@ -207,6 +214,51 @@
 				</div>
 			</div>
 
+<!-- UPLOAD DATA  -->
+			<?php $id = 1; 	foreach($client_process as $c){ 
+			?>
+			<div class="modal fade" id="Upload<?php echo $c->id ?>" role="dialog">
+				<div class="modal-dialog modal-xl">
+				<div class="modal-content">
+					<div class="modal-header">	
+						<h4 class="modal-title">Upload SPK</h4>
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+					</div>
+					<div class="modal-body">
+					
+
+					<form action="<?php echo base_url(). 'index.php/client_process/do_upload'; ?>" method="post" enctype="multipart/form-data">
+						<table width="100%">
+							
+							<tr>
+								<td>
+									<div class="form-group">
+									<label for="inputdefault">Upload:</label>								
+									<input type="hidden" name="id" value="<?php echo $c->id ?>">
+									<input type="file" name="upload" class="" data-buttonName="btn-primary" id="upload"/>
+									</div>
+
+								
+									</div>
+
+								</td>
+							</tr>
+							
+						</table>
+					
+						<div class="modal-footer">
+							<input type="submit" class="btn btn-info" value="Edit">
+							<button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+						</div>
+					</form>
+					</div>
+				</div>
+				</div>
+			</div>
+			<?php } ?>
+
+
+<!-- UDAPTE DATA -->
 			<?php $id = 1; 	foreach($client_process as $c){ 
 			?>
 			<div class="modal fade" id="Fedit<?php echo $c->id ?>" role="dialog">
@@ -290,10 +342,13 @@
 							<tr>
 								<td colspan="2" >
 									<div class="form-group">
-									<label for="inputdefault">PO / Kontrak:</label>
+									<label for="inputdefault">PO / Kontrak:</label>									
 									<input type="text" placeholder="NO PO" class="form-control" id="no_po" name="no_po" value="<?php echo $c->no_po ?>"><br>
 									<input type="date" class="form-control" id="date_5" name="date_5" value="<?php echo $c->date_5 ?>"><br>
-									<textarea class="form-control" type='text' rows="" id="process_5" name="process_5" placeholder="Information PO / Kontrak"><?php echo $c->process_5 ?></textarea>
+									<textarea class="form-control" type='text' rows="" id="process_5" name="process_5" placeholder="Information PO / Kontrak"><?php echo $c->process_5 ?></textarea><br>
+									<input type="file" name="upload" class="" data-buttonName="btn-primary" id="upload"/><br>
+										
+									
 									</div>
 								</td>
 							</tr>

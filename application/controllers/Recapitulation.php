@@ -130,11 +130,10 @@ class recapitulation extends CI_Controller{
 
 	public function do_upload($id='') { 
 		 $id= $this->input->post('id');
-		 $image = time().'-'.str_replace(' ', '_',$_FILES["upload"]['name']);
-		 //$newName = "<Whatever name>".".".pathinfo($image, PATHINFO_EXTENSION); 
+		 $image = 'TEKNIK'.'-'.time().'-'.str_replace(' ', '_',$_FILES["upload"]['name']);
 		 $config['file_name'] = $image;
          $config['upload_path']   = './upload/'; 
-         $config['allowed_types'] = 'gif|jpg|png|pdf|doc|docx'; 
+         $config['allowed_types'] = 'gif|jpg|png|pdf|doc|docx|xlsx|csv|xls'; 
          $config['max_size']      = 10000;  
 
          $this->load->library('upload');

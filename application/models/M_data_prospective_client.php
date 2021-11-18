@@ -24,6 +24,7 @@
 		$this->db->from('amc_m_client c');
         $this->db->join('amc_m_products p', 'p.id = c.product_id', 'left');
         $this->db->join('amc_m_sector s', 's.id = c.sector_id', 'left');
+        $this->db->where('c.status_client', 0);
         $this->db->order_by('c.id', 'DESC');
         $query = $this->db->get();
         return $query->result();

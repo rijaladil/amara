@@ -186,9 +186,7 @@
 									<label for="inputdefault">Upload:</label>								
 									<input type="hidden" name="id" value="<?php echo $r->id ?>">
 									<input type="file" name="upload" class="" data-buttonName="btn-primary" id="upload"/>
-									 <span class="label label-danger">Maksimal 3MB</span>
 									</div>
-									<div class="input-group mb-3">
 
 								
 									</div>
@@ -371,7 +369,7 @@
 								</td>
 								<<td>
 									<div class="form-group ">
-										<label for="inputdefault">Show PDF:</label><br>
+										<label for="inputdefault">Show doc upload:</label><br>
 										<a  target="_blank" href="<?php echo base_url(). 'upload/'.$r->upload ; ?>" class="btn btn-primary view-pdf" ><?php echo $r->upload ?></a>
 									</div>
 								</td>

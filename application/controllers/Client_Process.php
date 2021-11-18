@@ -151,6 +151,39 @@ class client_process extends CI_Controller{
 		redirect('Client_Process/index');
 	}
 
+	public function do_upload($id='') { 
+		 $id= $this->input->post('id');
+		 $image = 'MARKETING'.'-'.time().'-'.str_replace(' ', '_',$_FILES["upload"]['name']);
+		 $config['file_name'] = $image;
+         $config['upload_path']   = './upload/'; 
+         $config['allowed_types'] = 'gif|jpg|png|pdf|doc|docx|xlsx|csv|xls'; 
+         $config['max_size']      = 10000;  
+
+         $this->load->library('upload');
+         $this->upload->initialize($config);
+
+	         if ( ! $this->upload->do_upload('upload')) {
+	            $error = array('error' => $this->upload->display_errors()); 
+	            // var_dump($error);
+	          
+	            $this->load->view('pages/marketing/client_process/datatable', $error);
+	            
+	         }
+
+	         else { 
+	         	$data = array(
+				'upload' => $image, 
+				'editDate' =>date('Y-m-d H:i:s')
+				   );
+
+
+	         	$where = array('id' => $id);
+
+	         	$this->t_recapitulation->update_data($where,$data,'amc_t_client_process');         
+	            $error=array('error'=>'File has been uploaded'); 
+	            redirect('Client_Process/index');
+	         } 
+      }
 
 
 }
