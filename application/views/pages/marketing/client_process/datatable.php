@@ -3,12 +3,12 @@
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">Data Client Process</h6>
 			  <?php if ( (in_array($this->session->userdata('level'), array(1,2))) ) { ?>
-<!--                	<a href="#" class="btn btn-primary btn-icon-split" style="float: right;" data-toggle="modal" data-target="#Finput">
+               	<a href="#" class="btn btn-primary btn-icon-split" style="float: right;" data-toggle="modal" data-target="#Finput">
 		                <span class="icon text-white-50">
 		                  <i class="fas fa-flag"></i>
 		                </span>
 		                <span class="text">Add +</span>
-		        </a> -->
+		        </a>
 					  <?php }?>
             </div>
             <div class="card-body">
