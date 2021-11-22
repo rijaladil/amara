@@ -10,8 +10,7 @@ class work extends CI_Controller{
 	function __construct(){
 
 		parent::__construct();	
-		$this->check_isvalidated();	
-
+		$this->check_isvalidated();
 		$this->load->model('t_work');
 		$this->load->helper('url');
 

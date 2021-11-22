@@ -197,8 +197,7 @@
 									<label for="inputdefault">PO / Kontrak:</label>
 									<input type="text"  placeholder="NO PO" class="form-control" id="no_po" name="no_po" ><br>
 									<input type="date" class="form-control" id="date_5" name="date_5" ><br>
-									<textarea class="form-control" type='text' rows="" id="process_5" name="process_5" placeholder="Information PO / Kontrak"></textarea><br>
-									<input type="file" name="upload" class="" data-buttonName="btn-primary" id="upload"/>
+									<textarea class="form-control" type='text' rows="" id="process_5" name="process_5" placeholder="Information PO / Kontrak"></textarea><br>									
 									</div>
 								</td>
 							</tr>
@@ -345,10 +344,7 @@
 									<label for="inputdefault">PO / Kontrak:</label>									
 									<input type="text" placeholder="NO PO" class="form-control" id="no_po" name="no_po" value="<?php echo $c->no_po ?>"><br>
 									<input type="date" class="form-control" id="date_5" name="date_5" value="<?php echo $c->date_5 ?>"><br>
-									<textarea class="form-control" type='text' rows="" id="process_5" name="process_5" placeholder="Information PO / Kontrak"><?php echo $c->process_5 ?></textarea><br>
-									<input type="file" name="upload" class="" data-buttonName="btn-primary" id="upload"/><br>
-										
-									
+									<textarea class="form-control" type='text' rows="" id="process_5" name="process_5" placeholder="Information PO / Kontrak"><?php echo $c->process_5 ?></textarea><br>				
 									</div>
 								</td>
 							</tr>

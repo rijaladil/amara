@@ -10,6 +10,7 @@ class finance extends CI_Controller{
 		$this->check_isvalidated();	
 		$this->load->model('t_finance');
 		$this->load->helper('url');
+		$this->load->libaray('form_validation');
 	}
 	private function check_isvalidated()
     {
