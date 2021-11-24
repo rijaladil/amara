@@ -9,6 +9,7 @@ class client_process extends CI_Controller{
 		parent::__construct();	
 		$this->check_isvalidated();	
 		$this->load->model('m_data_client_process');
+		$this->load->model('m_data_prospective_client');
 		$this->load->helper('url');
 	}
 
@@ -29,6 +30,7 @@ class client_process extends CI_Controller{
 	public function index(){
 		$data['client_process'] = $this->m_data_client_process->get_data()->result();
 		$data['client'] = $this->m_data_client_process->get_data_client()->result();
+		$data['products'] = $this->m_data_prospective_client->get_data_products();
 		$this->load->view('template/header/index');
 		$this->load->view('template/menu/index');
 		$this->load->view('pages/marketing/client_process/datatable',$data);
@@ -40,6 +42,7 @@ class client_process extends CI_Controller{
 		$no_po = $this->input->post('no_po');
 		$client_id = $this->input->post('client_id');
 		$description = $this->input->post('description');
+		$product_id = $this->input->post('product_id');
 		$price_bid = $this->input->post('price_bid');
 		$price = $this->input->post('price');
 		$process_1 = $this->input->post('process_1');
@@ -59,6 +62,7 @@ class client_process extends CI_Controller{
 			'no_po' => $no_po,
 			'client_id' => $client_id,
 			'description' => $description,
+			'product_id' => $product_id,
 			'price_bid' => $price_bid,
 			'price' => $price,
 			'process_1' => $process_1,
@@ -94,6 +98,7 @@ class client_process extends CI_Controller{
 		$id= $this->input->post('id');
 		$no_po = $this->input->post('no_po');
 		$description = $this->input->post('description');
+		$product_id = $this->input->post('product_id');
 		$price_bid = $this->input->post('price_bid');
 		$price = $this->input->post('price');
 		$process_1 = $this->input->post('process_1');
@@ -110,6 +115,7 @@ class client_process extends CI_Controller{
 		$data = array(
 			'no_po' => $no_po,
 			'description' => $description,
+			'product_id' => $product_id,
 			'price_bid' => $price_bid,
 			'price' => $price,
 			'process_1' => $process_1,

@@ -22,6 +22,7 @@
 							<th width="20%">Description</th>
 							<th width="5%">Price</th>
 							<th>Process</th>
+							<th width="7%">Product</th>
 							<th width="7%">Action</th>
 						</tr>
 					 </thead>
@@ -81,6 +82,7 @@
 									        <b>PO / Kontrak :</b> <?php echo $c->date_5 ?> , <?php echo $c->process_5 ?><hr>
 									<?php endif; ?>
 								</td>
+								<td><?php echo $c->product_name ?></td>
 								<td  class="row justify-content-center">	
 								<?php if ( (in_array($this->session->userdata('level'), array(1,2))) ) { ?>									
 					                  <a href="#" class="btn btn-success btn-circle btn-sm" data-toggle="modal" data-target="#Fedit<?php echo $c->id ?>">
@@ -142,6 +144,22 @@
 									<div class="form-group">
 										<label for="inputdefault">Description:</label>
 										<textarea class="form-control" type='text' rows="" id="description" name="description"></textarea>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="form-group ">
+										<label for="inputdefault">Status Project:</label>
+										<select class="form-control" name="product_id">
+					
+											<option value="">Pilih</option>
+											<?php 
+											foreach($products as $p){ 
+											?>
+											<option value="<?php echo $p->id ?>"><?php echo $p->name ?></option>
+											<?php }?>
+										</select>
 									</div>
 								</td>
 							</tr>
@@ -289,6 +307,28 @@
 									<div class="form-group">
 										<label for="inputdefault">Description:</label>
 										<textarea class="form-control" type='text' rows="" id="description" name="description"><?php echo $c->description ?></textarea>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="form-group ">
+										<label for="inputdefault">Status Project:</label>
+										<select class="form-control" name="product_id">
+											<?php 
+											foreach($products as $p){ 
+												 if($p->id == $c->product_id) {
+											?>
+											<option value="<?php echo $p->id ?>"><?php echo $p->name ?></option>
+											<?php } }?>
+											
+											<option value="">Pilih</option>
+											<?php 
+											foreach($products as $p){ 
+											?>
+											<option value="<?php echo $p->id ?>"><?php echo $p->name ?></option>
+											<?php }?>
+										</select>
 									</div>
 								</td>
 							</tr>
