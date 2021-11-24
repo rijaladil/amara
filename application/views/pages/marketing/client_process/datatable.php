@@ -244,7 +244,7 @@
 					<div class="modal-body">
 					
 
-					<form action="<?php echo base_url(). 'index.php/client_process/do_upload'; ?>" method="post" enctype="multipart/form-data">
+					<form action="<?php echo base_url(). 'index.php/Client_Process/do_upload'; ?>" method="post" enctype="multipart/form-data">
 						<table width="100%">
 							
 							<tr>
