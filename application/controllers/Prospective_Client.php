@@ -146,6 +146,7 @@ class prospective_client extends CI_Controller{
 		$product_id = $this ->input->post('product_id');
 		$id_user = $this ->input->post('id_user');
 		$status_client = $this ->input->post('status_client');
+		$user_id = $this->session->userdata('id');
 		
 
 		$data = array(
@@ -159,6 +160,7 @@ class prospective_client extends CI_Controller{
 			'product_id' => $product_id,
 			'id_user'=> $id_user,
 			'status_client'=>$status_client,
+			'editUser'=>$user_id,
 			'editDate'=>date('Y-m-d H:i:s')
 		);
 

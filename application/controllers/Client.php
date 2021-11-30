@@ -114,6 +114,7 @@ class client extends CI_Controller{
 		$pic_5 = $this ->input->post('pic_5');
 		$pic_contact_5 = $this ->input->post('pic_contact_5');
 		$status_client = $this ->input->post('status_client');
+		$user_id = $this->session->userdata('id');
 
 		$data = array(
 			'name' => $name,
@@ -136,7 +137,7 @@ class client extends CI_Controller{
 			'pic_contact_4'=>$pic_contact_4,
 			'pic_5'=>$pic_5,
 			'pic_contact_5'=>$pic_contact_5,
-			'status_client'=>$status_client,
+			'editUser'=>$user_id,
 			'editDate'=>date('Y-m-d H:i:s')
 		);
 

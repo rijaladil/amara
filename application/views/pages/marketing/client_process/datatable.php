@@ -84,13 +84,15 @@
 								</td>
 								<td><?php echo $c->product_name ?></td>
 								<td  class="row justify-content-center">	
-								<?php if ( (in_array($this->session->userdata('level'), array(1,2))) ) { ?>									
+								<?php if ( (in_array($this->session->userdata('level'), array(1,2))) ) { ?>		
+								 	<?php if ($c->id >'0') { ?>							
 					                  <a href="#" class="btn btn-success btn-circle btn-sm" data-toggle="modal" data-target="#Fedit<?php echo $c->id ?>">
 					                    <span class="icon text-white-50">
 										  <i class="fa fa-edit"></i>
 										  <!-- <i class="fas fa-check"></i> -->
 					                    </span>
 					                  </a>
+					                  
 					                  &#160;
 					                   <a href="#" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#Upload<?php echo $c->id ?>">
 					                    <span class="icon text-white-50">
@@ -98,11 +100,21 @@
 					                    </span>
 					                  </a>	
 					                  &#160;	
+					                
 					                   <a href="<?php echo base_url(). 'index.php/Client_Process/delete/'.$c->id ; ?>" class="btn btn-danger btn-circle btn-sm">
 					                    <span class="icon text-white-50">
 					                      <i class="fas fa-trash"></i>
 					                    </span>					                    
 					                  </a>
+					                   <?php } else { ?>
+
+										<a href="#" class="btn btn-primary btn-circle btn-sm" data-toggle="modal" data-target="#Finput">
+								                <span class="icon text-white-50">
+								                  <i class="fas fa-flag"></i>
+								                </span>
+								        </a>
+
+					                   <?php } ?>
 								<?php }?>
 								</td>
 							</tr>
