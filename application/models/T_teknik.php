@@ -36,14 +36,14 @@
             LEFT JOIN amc_m_products p
             ON c.product_id = p.id
 
-			-- WHERE tk.id in (SELECT max(id) from amc_t_teknis_progress GROUP BY client_id)
+			WHERE tk.id in (SELECT max(id) from amc_t_teknis_progress)
 			ORDER by rp.project_activity
 
 			');
 		
 	}
 
-public function get_data_by_date($min = '', $max = ''){
+public function get_data_by_date($name = '', $product = '',  $min = '', $max = ''){
 		$this->db->select('
                           	tk.id,
 							c.name,
@@ -70,17 +70,32 @@ public function get_data_by_date($min = '', $max = ''){
         $this->db->join('amc_m_client_pic_contact pic', 'c.name = pic.client_name ', 'left');
         $this->db->join('amc_m_products p', 'c.product_id = p.id', 'left');
 
+
         if ($min <> '') {
             $this->db->where('tk.start_date >= ', $min);
         }else{
-            $this->db->where('tk.start_date = ', date('Y-m-d'));
+            $this->db->where('tk.start_date = ', date('Y-m'));
         }
 
         if ($max <> '') {
             $this->db->where('tk.start_date <= ', $max);
         }else{
-            $this->db->where('tk.start_date = ', date('Y-m-d'));
+            $this->db->where('tk.start_date = ', date('Y-m'));
         }
+
+        if (empty($name)) {
+			$this->db->where('c.name >', '');            
+        }else{
+        	$this->db->where('c.name', $name);
+        }
+
+		if (empty($product)) {
+			$this->db->where('p.name >', '');            
+        }else{
+        	$this->db->where('p.name', $product);
+        }
+
+
         $this->db->order_by('rp.project_activity','DESC');
         $query = $this->db->get();
         // return $query->result();
@@ -98,7 +113,12 @@ public function get_data_by_date($min = '', $max = ''){
 
 	function get_data_client(){
 		// return $this->db->get('amc_m_price');
-		return $this->db->query('SELECT * FROM `amc_m_client` WHERE status_client = 1 ');
+		return $this->db->query('SELECT * FROM `amc_m_client` WHERE status_client in (1,2) ');
+		
+	}
+
+	function get_data_product(){
+		return $this->db->query('SELECT * FROM amc_m_products');
 		
 	}
 

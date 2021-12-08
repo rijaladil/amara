@@ -19,11 +19,33 @@
               		<table border="0" cellspacing="5" cellpadding="5" align="right">
 							      <tbody>
 							      	<tr>
-							            <td>
-							            	Select Date : 
-							            	<input type="text" id="min" name="min" value="<?php echo ($min == '') ? date('Y-m-d') : $min;?>"> <b>To</b>
-							            	<input type="text" id="max" name="max" value="<?php echo ($max == '') ? date('Y-m-d') : $max;?>">
-							            	<input type="submit" class="btn btn-success" value="Select">
+							      		<td>
+
+							      			<b>Pemrakarsa :</b>
+							      			<select class="form-select" aria-label="Default select example" id="name" name="name">
+							      				<option value="">-Pilih-</option>
+							      				<?php foreach($client as $c){ 
+												?>
+												<option value="<?php echo $c->name; ?>"><?php echo $c->name; ?></option>
+												<?php } ?>
+							      			</select>&nbsp;
+
+			 				      			<b>Product : </b>
+							      			<select class="form-select w-10" aria-label="Default select example" id="product" name="product">
+							      				<option value="">-Pilih-</option>
+							      				<?php foreach($product as $prod){ 
+												?>
+												<option value="<?php echo $prod->name; ?>"><?php echo $prod->name; ?></option>
+												<?php }?>
+							      			</select>&nbsp; 
+
+							      			
+							            	<b>Select Date : </b>
+							            	<input class="text-center" type="text" id="min" name="min" value="<?php echo ($min == '') ? date('Y-m-d') : $min;?>"> <b>To</b>&nbsp;
+
+							            	<input class="text-center" type="text" id="max" name="max" value="<?php echo ($max == '') ? date('Y-m-d') : $max;?>">
+
+							            	<input type="submit" class="btn btn-success btn-sm" value="Select">
 							            </td>
 							        </tr>
 							    	</tbody>
@@ -34,78 +56,74 @@
 	                <table id="dataTablepdf" class="display table table-bordered " width="100%" cellspacing="0">
 						
 	                 <thead>
-										<tr>
-										    <th>No</th>
-										    <th width="15%">Project Activity</th>
-										    <th>Pemrakarsa Name</th>
-										    <!-- <th>Document Runtime</th>					  -->
-										    <th width="7%">Start Date</th>
-										    <th width="7%">Finish Date</th>
-										    <th>Document Product</th>
-										    <th>Planing This week</th>
-										    <th>Realization</th>
-										    <th>Problem</th>
-										    <th>Solution</th>
-										    <th>Planing Next Week</th>
-										    <th>PIC</th>
-											<th>Note</th>
-										    <th>Action</th>	
-										  </tr>
-									 </thead>
-										<tbody>
-											<?php 
-											$id = 1;
-											foreach($teknik_by_date as $tk){ 											
-											?>
-											<tr>
-									
-												<td><?php echo $id++ ?></td>
-												<td><?php echo $tk->project_activity ?></td>	
-												<td><?php echo $tk->pemrakarsa ?></td>						
-												
-												
-													<td><?php echo $tk->start_date ?></td>
-												<td><?php echo $tk->finish_date ?></td>
-											<!-- 	<td><?php echo $tk->start_date .' s/d '.$tk->finish_date ?></td> -->
-												<td><?php echo $tk->document_product ?></td>	
-												<td><?php echo $tk->planing_this_week ?></td>
-												<td><?php echo $tk->realization ?></td>			
-												<td><?php echo $tk->problem ?></td>		
-												<td><?php echo $tk->solution ?></td>					
-												<td><?php echo $tk->planing_next_week ?></td>		
-												<td><?php echo $tk->user ?></td>
-												<td><?php echo $tk->note ?></td>
-												
-												<td class="row justify-content-center" >
-												<?php if ( (in_array($this->session->userdata('level'), array(0))) ) { ?>					
-													<a href="#" class="btn btn-info btn-circle btn-sm" data-toggle="modal" data-target="#Note<?php echo $tk->id ?>">
-														<span class="icon text-white-50">
-														<i class="fas fa-edit"></i>
-														</span>
-													</a>
-													<?php  }?>		
-												<?php if ( (in_array($this->session->userdata('level'), array(0,1,4))) ) { ?>	
-													<?php if ((in_array($this->session->userdata('level'), array(0))) || $this->session->userdata('department') == 'Supervisor' || $this->session->userdata('name')== $tk->user ) { ?>								
-									                  <a href="#" class="btn btn-success btn-circle btn-sm" data-toggle="modal" data-target="#Fedit<?php echo $tk->id ?>">
-									                    <span class="icon text-white-50">
-														  <i class="fa fa-edit"></i>
-									                    </span>
-									                  </a>
-													  &#160;	
-													
-									                   <a href="<?php echo base_url(). 'index.php/teknik/delete/'.$tk->id ; ?>" class="btn btn-danger btn-circle btn-sm">
-									                    <span class="icon text-white-50">
-									                      <i class="fas fa-trash"></i>
-									                    </span>					                    
-									                  </a>
-													  <?php } }?>
-												</td>
-												
+						<tr>
+						    <th>No</th>
+						    <th width="15%">Project Activity</th>
+						    <th>Pemrakarsa Name</th>
+						    <th width="7%">Start Date</th>
+						    <th width="7%">Finish Date</th>
+						    <th>Document Product</th>
+						    <th>Planing This week</th>
+						    <th>Realization</th>
+						    <th>Problem</th>
+						    <th>Solution</th>
+						    <th>Planing Next Week</th>
+						    <th>PIC</th>
+							<th>Note</th>
+						    <th>Action</th>	
+						  </tr>
+					 </thead>
+					<tbody>
+						<?php 
+						$id = 1;
+						foreach($teknik_by_date as $tk){ 											
+						?>
+						<tr>
+				
+							<td><?php echo $id++ ?></td>
+							<td><?php echo $tk->project_activity ?></td>	
+							<td><?php echo '<b>'.$tk->name.'</b><br>'. $tk->pemrakarsa ?></td>
+							<td><?php echo $tk->start_date ?></td>
+							<td><?php echo $tk->finish_date ?></td>
+							<td><?php echo $tk->document_product ?></td>	
+							<td><?php echo $tk->planing_this_week ?></td>
+							<td><?php echo $tk->realization ?></td>			
+							<td><?php echo $tk->problem ?></td>		
+							<td><?php echo $tk->solution ?></td>					
+							<td><?php echo $tk->planing_next_week ?></td>		
+							<td><?php echo $tk->user ?></td>
+							<td><?php echo $tk->note ?></td>
+							
+							<td class="row justify-content-center" >
+							<?php if ( (in_array($this->session->userdata('level'), array(0))) ) { ?>					
+								<a href="#" class="btn btn-info btn-circle btn-sm" data-toggle="modal" data-target="#Note<?php echo $tk->id ?>">
+									<span class="icon text-white-50">
+									<i class="fas fa-edit"></i>
+									</span>
+								</a>
+								<?php  }?>		
+							<?php if ( (in_array($this->session->userdata('level'), array(0,1,4))) ) { ?>	
+								<?php if ((in_array($this->session->userdata('level'), array(0))) || $this->session->userdata('department') == 'Supervisor' || $this->session->userdata('name')== $tk->user ) { ?>								
+				                  <a href="#" class="btn btn-success btn-circle btn-sm" data-toggle="modal" data-target="#Fedit<?php echo $tk->id ?>">
+				                    <span class="icon text-white-50">
+									  <i class="fa fa-edit"></i>
+				                    </span>
+				                  </a>
+								  &#160;	
+								
+				                   <a href="<?php echo base_url(). 'index.php/teknik/delete/'.$tk->id ; ?>" class="btn btn-danger btn-circle btn-sm">
+				                    <span class="icon text-white-50">
+				                      <i class="fas fa-trash"></i>
+				                    </span>					                    
+				                  </a>
+								  <?php } }?>
+							</td>
+							
 
-											</tr>
-										<?php } ?> 
-										</tbody>
-									</table>
+						</tr>
+					<?php } ?> 
+					</tbody>
+					</table>
 			   	</div>
 			</div>
 								
