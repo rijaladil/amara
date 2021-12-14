@@ -43,8 +43,8 @@
 			');
 		
 	}
-
-public function get_data_by_date($name = '', $product = '',  $min = '', $max = ''){
+// AMDAL
+	public function get_data_by_date_amdal($name = '', $product = '',  $min = '', $max = ''){
 		$this->db->select('
                           	tk.id,
 							c.name,
@@ -76,13 +76,13 @@ public function get_data_by_date($name = '', $product = '',  $min = '', $max = '
         if ($min <> '') {
             $this->db->where('tk.start_date >= ', $min);
         }else{
-            $this->db->where('tk.start_date = ', date('Y-m'));
+         //   $this->db->where('tk.start_date >= ', date('Y-m'));
         }
 
         if ($max <> '') {
             $this->db->where('tk.start_date <= ', $max);
         }else{
-            $this->db->where('tk.start_date = ', date('Y-m'));
+          //  $this->db->where('tk.start_date <= ', date('Y-m'));
         }
 
         if (empty($name)) {
@@ -97,7 +97,77 @@ public function get_data_by_date($name = '', $product = '',  $min = '', $max = '
         	$this->db->where('p.name', $product);
         }
 
+         $this->db->where('p.category_teknik','1');//amdal
+        $this->db->order_by('rp.project_activity','DESC');
+        $query = $this->db->get();
+        // return $query->result();
 
+		$data = array();
+		if($query !== FALSE && $query->num_rows() > 0){
+		    foreach ($query->result() as $row) {
+		        $data[] = $row;
+		    }
+		}
+
+		return $data;
+	
+	}
+
+	// PERTEK
+	public function get_data_by_date_pertek($name = '', $product = '',  $min = '', $max = ''){
+		$this->db->select('
+                          	tk.id,
+							c.name,
+							rp.id as recapitulation_id,
+							rp.project_activity,
+							rp.no_report,
+							pic.pic as pemrakarsa,
+							p.name as document_product,			
+							tk.start_date,
+							tk.finish_date,
+							tk.planing_this_week,
+							tk.realization,
+							tk.problem,
+							tk.solution,
+							tk.planing_next_week,
+							tk.note,
+							u.name as user,
+							u.id as user_id
+			
+            				');
+        $this->db->from('amc_t_teknis_progress tk');
+        $this->db->join('amc_t_recapitulation_project rp', 'tk.recapitulation_id = rp.id', 'left');
+        $this->db->join('amc_m_client c', 'c.id = rp.client_id', 'left');
+        $this->db->join('amc_m_user u', 'u.id = tk.user_id', 'left');
+        $this->db->join('amc_m_client_pic_contact pic', 'c.name = pic.client_name ', 'left');
+        $this->db->join('amc_m_products p', 'c.product_id = p.id', 'left');
+
+
+        if ($min <> '') {
+            $this->db->where('tk.start_date >= ', $min);
+        }else{
+         //   $this->db->where('tk.start_date >= ', date('Y-m'));
+        }
+
+        if ($max <> '') {
+            $this->db->where('tk.start_date <= ', $max);
+        }else{
+          //  $this->db->where('tk.start_date <= ', date('Y-m'));
+        }
+
+        if (empty($name)) {
+			$this->db->where('c.name >', '');            
+        }else{
+        	$this->db->where('c.name', $name);
+        }
+
+		if (empty($product)) {
+			$this->db->where('p.name >', '');            
+        }else{
+        	$this->db->where('p.name', $product);
+        }
+
+         $this->db->where('p.category_teknik','2');//pertek
         $this->db->order_by('rp.project_activity','DESC');
         $query = $this->db->get();
         // return $query->result();
@@ -114,15 +184,21 @@ public function get_data_by_date($name = '', $product = '',  $min = '', $max = '
 	}
 
 	function get_data_client(){
-		// return $this->db->get('amc_m_price');
 		return $this->db->query('SELECT * FROM `amc_m_client` WHERE status_client in (1,2) ');
 		
 	}
 
-	function get_data_product(){
-		return $this->db->query('SELECT * FROM amc_m_products');
+	function get_data_product_amdal(){
+		return $this->db->query('SELECT * FROM amc_m_products WHERE category_teknik = 1');
 		
 	}
+
+
+	function get_data_product_pertek(){
+		return $this->db->query('SELECT * FROM amc_m_products WHERE category_teknik = 2');
+		
+	}
+
 
 
 	function input_data($data,$table){

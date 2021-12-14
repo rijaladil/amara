@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 date_default_timezone_set('Asia/Jakarta');
 
-class teknik extends CI_Controller{
+class teknikamdal extends CI_Controller{
 
 
 	function __construct(){
@@ -32,14 +32,14 @@ class teknik extends CI_Controller{
 		$data['max'] = $this->security->xss_clean($this->input->post('max'));
 
 		$data['teknik'] = $this->t_teknik->get_data()->result();
-		$data['teknik_by_date'] = $this->t_teknik->get_data_by_date($data['name'], $data['product'], $data['min'], $data['max']);
+		$data['teknik_by_date'] = $this->t_teknik->get_data_by_date_amdal($data['name'], $data['product'], $data['min'], $data['max']);
 		$data['client'] = $this->t_teknik->get_data_client()->result();
-		$data['product'] = $this->t_teknik->get_data_product()->result();
+		$data['product'] = $this->t_teknik->get_data_product_amdal()->result();
 		$data['user'] = $this->t_recapitulation->get_data_user()->result();
 		$data['recapitulation'] = $this->t_recapitulation->get_data()->result();
 		$this->load->view('template/header/index');
 		$this->load->view('template/menu/index');
-		$this->load->view('pages/teknik/datatable',$data);
+		$this->load->view('pages/teknik/amdal/datatable',$data);
 		$this->load->view('template/footer/index');
 	}
 

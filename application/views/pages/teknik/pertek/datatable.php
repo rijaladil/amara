@@ -2,6 +2,7 @@
        <div class="card shadow mb-4">
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">Data Progress Pekerjaan Teknik</h6>
+          		<h2 class="m-0 font-weight-bold text-primary">PERTEK</h2>
 
 			  		<?php if ( (in_array($this->session->userdata('level'), array(1,4))) ) { ?>
                			<a href="#" class="btn btn-primary btn-icon-split" style="float: right;" data-toggle="modal" data-target="#Finput">
@@ -41,9 +42,9 @@
 
 							      			
 							            	<b>Select Date : </b>
-							            	<input class="text-center" type="text" id="min" name="min" value="<?php echo ($min == '') ? date('Y-m-d') : $min;?>"> <b>To</b>&nbsp;
+							            	<input class="text-center" type="text" id="min" name="min" value="<?php echo ($min == '') ? date('Y-m-01') : $min;?>"> <b>To</b>&nbsp;
 
-							            	<input class="text-center" type="text" id="max" name="max" value="<?php echo ($max == '') ? date('Y-m-d') : $max;?>">
+							            	<input class="text-center" type="text" id="max" name="max" value="<?php echo ($max == '') ? date('Y-m-31') : $max;?>">
 
 							            	<input type="submit" class="btn btn-success btn-sm" value="Select">
 							            </td>
