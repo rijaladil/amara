@@ -72,6 +72,8 @@ class teknik extends CI_Controller{
 		redirect('teknik/index');
 	}
 
+
+
 	// display input
 	public function input(){
 		$data['teknik'] = $this->t_teknik->get_data()->result();
@@ -138,6 +140,26 @@ class teknik extends CI_Controller{
 		// var_dump ($data);
 	}
 
+
+
+public function update_no_report(){
+		$id= $this->input->post('id');
+		$no_report = $this->input->post('no_report');
+
+
+		$data = array(
+			'no_report'=> $no_report,
+			'editDate'=>date('Y-m-d H:i:s')
+		);
+
+		$where = array(
+			'id' => $id
+		);
+
+		$this->t_teknik->update_data($where,$data,'amc_t_recapitulation_project');
+		redirect('teknik/index');
+		// var_dump ($data);
+	}
 
 	//display get data edit
 	public function edit($id=''){

@@ -70,7 +70,7 @@
 						    <th>Planing Next Week</th>
 						    <th>PIC</th>
 							<th>Note</th>
-						    <th>Action</th>	
+						    <th width="8%" class="text-center">Action</th>	
 						  </tr>
 					 </thead>
 					<tbody>
@@ -81,7 +81,7 @@
 						<tr>
 				
 							<td><?php echo $id++ ?></td>
-							<td><?php echo $tk->project_activity ?></td>	
+							<td><u>No Report</u> :<b><?php echo $tk->no_report; ?></b><br><?php echo $tk->project_activity; ?></td>	
 							<td><?php echo '<b>'.$tk->name.'</b><br>'. $tk->pemrakarsa ?></td>
 							<td><?php echo $tk->start_date ?></td>
 							<td><?php echo $tk->finish_date ?></td>
@@ -103,7 +103,14 @@
 								</a>
 								<?php  }?>		
 							<?php if ( (in_array($this->session->userdata('level'), array(0,1,4))) ) { ?>	
-								<?php if ((in_array($this->session->userdata('level'), array(0))) || $this->session->userdata('department') == 'Supervisor' || $this->session->userdata('name')== $tk->user ) { ?>								
+								<?php if ((in_array($this->session->userdata('level'), array(0))) || $this->session->userdata('department') == 'Supervisor' || $this->session->userdata('name')== $tk->user ) { ?>		
+								<a href="#" class="btn btn-dark btn-circle btn-sm" data-toggle="modal" data-target="#InputNoReport<?php echo $tk->id ?>">
+				                    <span class="icon text-white-50">
+									 	<i class="fas fa-clipboard"></i>
+				                    </span>
+				                  </a>
+								  &#160;	
+
 				                  <a href="#" class="btn btn-success btn-circle btn-sm" data-toggle="modal" data-target="#Fedit<?php echo $tk->id ?>">
 				                    <span class="icon text-white-50">
 									  <i class="fa fa-edit"></i>
@@ -128,7 +135,7 @@
 			</div>
 								
 			
-
+<!-- INPUT PROGRESS PEKERJAAN TEKNIK -->
 			<div class="modal fade" id="Finput" role="dialog">
 				<div class="modal-dialog modal-xl">
 				<div class="modal-content">
@@ -237,9 +244,62 @@
 				</div>
 			</div>
 
+<!-- INPUT NO REPORT TEKNIK -->
+			<?php $id = 1; 	foreach($teknik_by_date as $tk){ ?>
+			<div class="modal fade" id="InputNoReport<?php echo $tk->id ?>" role="dialog">
+				<div class="modal-dialog modal-xl">
+				<div class="modal-content">
+					<div class="modal-header ">	
+						<h4 class="modal-title">Input No Report Teknik</h4>
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+					</div>
+					<div class="modal-body">
+					<form action="<?php echo base_url(). 'index.php/teknik/update_no_report'; ?>" method="post">
+
+						<table width="100%">
+							<tr>
+								<td>
+									<div class="form-group">
+									<label for="inputdefault">Project Activity:</label>
+									<input type="hidden" name="id" value="<?php echo $tk->recapitulation_id ?>">
+									<select class="form-control" name="recapitulation_id" disabled>
+											<option value="<?php echo $tk->recapitulation_id ?>"><?php echo $tk->project_activity ?></option>
+											<option value="">Pilih</option>
+											<?php 
+											foreach($recapitulation as $rp){ 
+											?>
+											<option value="<?php echo $rp->id ?>"><?php echo $rp->project_activity ?></option>
+											<?php }?>
+									</select>
+									</div>
+								</td>
+							</tr>
+
+							<tr>
+								<td>
+									<div class="form-group">
+									<label for="inputdefault">No Report:</label>
+									<input class="form-control" id="no_report" type="text" name="no_report" value="<?php echo $tk->no_report ?>">
+									</div>
+								</td>
+							</tr>
+							
+						</table>
+
+					</div>
+					<div class="modal-footer">
+						<input type="submit" class="btn btn-info" value="Input">
+						<button type="submit" class="btn btn-info" data-dismiss="modal">Close</button>
+					</div>
+					</form>	
+				</div>
+				</div>
+			</div>
+			<?php } ?>
 
 
-			<?php $id = 1; 	foreach($teknik as $tk){ ?>
+<!-- EDIT PROGRESS PEKERJAAN TEKNIK -->
+			<?php $id = 1; 	foreach($teknik_by_date as $tk){ ?>
 			<div class="modal fade" id="Fedit<?php echo $tk->id ?>" role="dialog">
 				<div class="modal-dialog modal-xl">
 				<div class="modal-content">
@@ -353,7 +413,8 @@
 			<?php } ?>
 			
 
-			<?php $id = 1; 	foreach($teknik as $tk){ ?>
+<!-- NOTE PROGRESS PEKERJAAN TEKNIK -->
+			<?php $id = 1; 	foreach($teknik_by_date as $tk){ ?>
 			<div class="modal fade" id="Note<?php echo $tk->id ?>" role="dialog">
 				<div class="modal-dialog modal-xl">
 				<div class="modal-content">

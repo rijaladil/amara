@@ -18,7 +18,8 @@
 	                 <thead>
 						<tr >
 							<th width="2%">No</th>
-							<th width="10%">No. Order</th>
+							<th width="7%">No. Order</th>
+							<th width="7%">No. Report</th>
 							<th>Contract Start Date</th>
 							<th>Contract Finish Date</th>
 							<th>Product Document</th>
@@ -36,6 +37,7 @@
 							<tr>
 								<td><?php echo $id++ ?></td>
 								<td><?php echo $r->no_order ?></td>
+								<td><?php echo $r->no_report ?></td>
 								<td><?php echo $r->contract_start_date ?></td>
 								<td><?php echo $r->contract_start_date ?></td>
 								<td><?php echo $r->product_name ?></td>
