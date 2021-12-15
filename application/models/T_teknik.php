@@ -7,7 +7,6 @@
 			c.name,
 			rp.id as recapitulation_id,
 			rp.project_activity,
-			rp.no_report,
 			pic.pic as pemrakarsa,
 			p.name as document_product,
 			rp.no_report,			
@@ -38,7 +37,7 @@
             LEFT JOIN amc_m_products p
             ON c.product_id = p.id
 
-
+			WHERE tk.id in (SELECT max(id) from amc_t_teknis_progress)
 			ORDER by rp.project_activity
 
 			');

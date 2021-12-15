@@ -1,7 +1,7 @@
 <div class="container-fluid">
        <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Data Progress Pekerjaan Teknik</h6>
+              <h6 class="m-0 font-weight-bold text-primary">Data Progress Pekerjaan TekniK</h6>
               <h2 class="m-0 font-weight-bold text-primary">AMDAL</h2>
 
 			  		<?php if ( (in_array($this->session->userdata('level'), array(1,4))) ) { ?>
