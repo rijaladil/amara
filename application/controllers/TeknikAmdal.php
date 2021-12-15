@@ -69,7 +69,7 @@ class teknikamdal extends CI_Controller{
 			);
 
 		$this->t_teknik->input_data($data,'amc_t_teknis_progress');
-		redirect('teknik/index');
+		redirect('TeknikAmdal/index');
 	}
 
 
@@ -116,7 +116,7 @@ class teknikamdal extends CI_Controller{
 		);
 
 		$this->t_teknik->update_data($where,$data,'amc_t_teknis_progress');
-		redirect('teknik/index');
+		redirect('TeknikAmdal/index');
 		// var_dump ($data);
 	}
 
@@ -136,7 +136,7 @@ class teknikamdal extends CI_Controller{
 		);
 
 		$this->t_teknik->update_data($where,$data,'amc_t_teknis_progress');
-		redirect('teknik/index');
+		redirect('TeknikAmdal/index');
 		// var_dump ($data);
 	}
 
@@ -157,7 +157,7 @@ public function update_no_report(){
 		);
 
 		$this->t_teknik->update_data($where,$data,'amc_t_recapitulation_project');
-		redirect('teknik/index');
+		redirect('TeknikAmdal/index');
 		// var_dump ($data);
 	}
 
@@ -175,7 +175,7 @@ public function update_no_report(){
 	public function delete($id){
 		$where = array('id' => $id);
 		$this->t_teknik->delete_data($where,'amc_t_teknis_progress');
-		redirect('teknik/index');
+		redirect('TeknikAmdal/index');
 	}
 
 

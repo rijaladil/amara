@@ -16,7 +16,7 @@
             </div>
             <div class="card-body">
               	<div class="table-responsive">
-              		<form method="post" action="<?php echo base_url(); ?>index.php/teknik/index">
+              		<form method="post" action="<?php echo base_url(); ?>index.php/TekniPertek/index">
               		<table border="0" cellspacing="5" cellpadding="5" align="right">
 							      <tbody>
 							      	<tr>
@@ -119,7 +119,7 @@
 				                  </a>
 								  &#160;	
 								
-				                   <a href="<?php echo base_url(). 'index.php/teknik/delete/'.$tk->id ; ?>" class="btn btn-danger btn-circle btn-sm">
+				                   <a href="<?php echo base_url(). 'index.php/TekniPertek/delete/'.$tk->id ; ?>" class="btn btn-danger btn-circle btn-sm">
 				                    <span class="icon text-white-50">
 				                      <i class="fas fa-trash"></i>
 				                    </span>					                    
@@ -145,7 +145,7 @@
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
 					</div>
 					<div class="modal-body">
-					<form action="<?php echo base_url(). 'index.php/teknik/p_input'; ?>" method="post">
+					<form action="<?php echo base_url(). 'index.php/TekniPertek/p_input'; ?>" method="post">
 
 						<table width="100%">
 							<tr>
@@ -255,7 +255,7 @@
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
 					</div>
 					<div class="modal-body">
-					<form action="<?php echo base_url(). 'index.php/teknik/update_no_report'; ?>" method="post">
+					<form action="<?php echo base_url(). 'index.php/TekniPertek/update_no_report'; ?>" method="post">
 
 						<table width="100%">
 							<tr>
@@ -310,7 +310,7 @@
 					</div>
 					<div class="modal-body">
 					
-					<form action="<?php echo base_url(). 'index.php/teknik/update'; ?>" method="post">
+					<form action="<?php echo base_url(). 'index.php/TekniPertek/update'; ?>" method="post">
 					<table width="100%">
 							<tr>
 								<td>
@@ -425,7 +425,7 @@
 					</div>
 					<div class="modal-body">
 					
-					<form action="<?php echo base_url(). 'index.php/teknik/update_note'; ?>" method="post">
+					<form action="<?php echo base_url(). 'index.php/TekniPertek/update_note'; ?>" method="post">
 					<table width="100%">
 							<tr>
 								<td>
