@@ -1,8 +1,13 @@
 <div class="container-fluid">
        <div class="card shadow mb-4">
             <div class="card-header py-3">
+<<<<<<< HEAD:application/views/pages/teknik/pertek/datatable.php
+              <h6 class="m-0 font-weight-bold text-primary">Data Progress Pekerjaan Teknik</h6>
+          		<h2 class="m-0 font-weight-bold text-primary">PERTEK</h2>
+=======
               <h6 class="m-0 font-weight-bold text-primary">Data Progress Pekerjaan TekniK</h6>
               <h2 class="m-0 font-weight-bold text-primary">AMDAL</h2>
+>>>>>>> 8da2a7831f84caa1f6d9ca5b3138cb70ae5eb6f8:application/views/pages/teknik/amdal/datatable.php
 
 			  		<?php if ( (in_array($this->session->userdata('level'), array(1,4))) ) { ?>
                			<a href="#" class="btn btn-primary btn-icon-split" style="float: right;" data-toggle="modal" data-target="#Finput">
@@ -16,7 +21,11 @@
             </div>
             <div class="card-body">
               	<div class="table-responsive">
+<<<<<<< HEAD:application/views/pages/teknik/pertek/datatable.php
+              		<form method="post" action="<?php echo base_url(); ?>index.php/TeknikPertek/index">
+=======
               		<form method="post" action="<?php echo base_url(); ?>index.php/TeknikAmdal/index">
+>>>>>>> 8da2a7831f84caa1f6d9ca5b3138cb70ae5eb6f8:application/views/pages/teknik/amdal/datatable.php
               		<table border="0" cellspacing="5" cellpadding="5" align="right">
 							      <tbody>
 							      	<tr>
@@ -131,7 +140,11 @@
 				                  </a>
 								  &#160;	
 								
+<<<<<<< HEAD:application/views/pages/teknik/pertek/datatable.php
+				                   <a href="<?php echo base_url(). 'index.php/TeknikPertek/delete/'.$tk->id ; ?>" class="btn btn-danger btn-circle btn-sm">
+=======
 				                   <a href="<?php echo base_url(). 'index.php/TeknikAmdal/delete/'.$tk->id ; ?>" class="btn btn-danger btn-circle btn-sm">
+>>>>>>> 8da2a7831f84caa1f6d9ca5b3138cb70ae5eb6f8:application/views/pages/teknik/amdal/datatable.php
 				                    <span class="icon text-white-50">
 				                      <i class="fas fa-trash"></i>
 				                    </span>					                    
@@ -157,7 +170,11 @@
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
 					</div>
 					<div class="modal-body">
+<<<<<<< HEAD:application/views/pages/teknik/pertek/datatable.php
+					<form action="<?php echo base_url(). 'index.php/TeknikPertek/p_input'; ?>" method="post">
+=======
 					<form action="<?php echo base_url(). 'index.php/TeknikAmdal/p_input'; ?>" method="post">
+>>>>>>> 8da2a7831f84caa1f6d9ca5b3138cb70ae5eb6f8:application/views/pages/teknik/amdal/datatable.php
 
 						<table width="100%">
 							<tr>
@@ -267,7 +284,11 @@
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
 					</div>
 					<div class="modal-body">
+<<<<<<< HEAD:application/views/pages/teknik/pertek/datatable.php
+					<form action="<?php echo base_url(). 'index.php/TeknikPertek/update_no_report'; ?>" method="post">
+=======
 					<form action="<?php echo base_url(). 'index.php/TeknikAmdal/update_no_report'; ?>" method="post">
+>>>>>>> 8da2a7831f84caa1f6d9ca5b3138cb70ae5eb6f8:application/views/pages/teknik/amdal/datatable.php
 
 						<table width="100%">
 							<tr>
@@ -322,7 +343,11 @@
 					</div>
 					<div class="modal-body">
 					
+<<<<<<< HEAD:application/views/pages/teknik/pertek/datatable.php
+					<form action="<?php echo base_url(). 'index.php/TeknikPertek/update'; ?>" method="post">
+=======
 					<form action="<?php echo base_url(). 'index.php/TeknikAmdal/update'; ?>" method="post">
+>>>>>>> 8da2a7831f84caa1f6d9ca5b3138cb70ae5eb6f8:application/views/pages/teknik/amdal/datatable.php
 					<table width="100%">
 							<tr>
 								<td>
@@ -437,7 +462,11 @@
 					</div>
 					<div class="modal-body">
 					
+<<<<<<< HEAD:application/views/pages/teknik/pertek/datatable.php
+					<form action="<?php echo base_url(). 'index.php/TeknikPertek/update_note'; ?>" method="post">
+=======
 					<form action="<?php echo base_url(). 'index.php/TeknikAmdal/update_note'; ?>" method="post">
+>>>>>>> 8da2a7831f84caa1f6d9ca5b3138cb70ae5eb6f8:application/views/pages/teknik/amdal/datatable.php
 					<table width="100%">
 							<tr>
 								<td>
@@ -553,4 +582,4 @@
 
 
 
-
+ 
