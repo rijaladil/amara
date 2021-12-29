@@ -2,6 +2,7 @@
        <div class="card shadow mb-4">
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">Data Progress Pekerjaan Teknik</h6>
+          		<h2 class="m-0 font-weight-bold text-primary">PERTEK</h2>
 
 			  		<?php if ( (in_array($this->session->userdata('level'), array(1,4))) ) { ?>
                			<a href="#" class="btn btn-primary btn-icon-split" style="float: right;" data-toggle="modal" data-target="#Finput">
@@ -15,7 +16,7 @@
             </div>
             <div class="card-body">
               	<div class="table-responsive">
-              		<form method="post" action="<?php echo base_url(); ?>index.php/teknik/index">
+              		<form method="post" action="<?php echo base_url(); ?>index.php/TeknikPertek/index">
               		<table border="0" cellspacing="5" cellpadding="5" align="right">
 							      <tbody>
 							      	<tr>
@@ -41,9 +42,9 @@
 
 							      			
 							            	<b>Select Date : </b>
-							            	<input class="text-center" type="text" id="min" name="min" value="<?php echo ($min == '') ? date('Y-m-d') : $min;?>"> <b>To</b>&nbsp;
+							            	<input class="text-center" type="text" id="min" name="min" value="<?php echo ($min == '') ? date('Y-m-01') : $min;?>"> <b>To</b>&nbsp;
 
-							            	<input class="text-center" type="text" id="max" name="max" value="<?php echo ($max == '') ? date('Y-m-d') : $max;?>">
+							            	<input class="text-center" type="text" id="max" name="max" value="<?php echo ($max == '') ? date('Y-m-31') : $max;?>">
 
 							            	<input type="submit" class="btn btn-success btn-sm" value="Select">
 							            </td>
@@ -59,10 +60,10 @@
 						<tr>
 						    <th>No</th>
 						    <th width="15%">Project Activity</th>
-						    <th>Pemrakarsa Name</th>
+						    <!-- <th>Pemrakarsa Name</th> -->
 						    <th width="7%">Start Date</th>
 						    <th width="7%">Finish Date</th>
-						    <th>Document Product</th>
+						    <!-- <th>Document Product</th> -->
 						    <th>Planing This week</th>
 						    <th>Realization</th>
 						    <th>Problem</th>
@@ -81,11 +82,23 @@
 						<tr>
 				
 							<td><?php echo $id++ ?></td>
-							<td><u>No Report</u> :<b><?php echo $tk->no_report; ?></b><br><?php echo $tk->project_activity; ?></td>	
-							<td><?php echo '<b>'.$tk->name.'</b><br>'. $tk->pemrakarsa ?></td>
+							<td>
+								<table>
+									<tr>
+										<td width="350px"><b>Project Activity:</b><br>
+											<u>No Report</u> :<b><?php echo $tk->no_report; ?></b><br><?php echo $tk->project_activity; ?></td>
+										<td width="350px"><b>Pemrakarsa Name:</b><br>
+											<?php echo '<b>'.$tk->name.'</b><br>'. $tk->pemrakarsa ?></td>
+										<td width="350px"><b>Document Product:</b><br>
+											<?php echo $tk->document_product ?></td>
+
+									</tr>
+								</table>
+							</td>	
+							<!-- <td><?php echo '<b>'.$tk->name.'</b><br>'. $tk->pemrakarsa ?></td> -->
 							<td><?php echo $tk->start_date ?></td>
 							<td><?php echo $tk->finish_date ?></td>
-							<td><?php echo $tk->document_product ?></td>	
+							<!-- <td><?php echo $tk->document_product ?></td>	 -->
 							<td><?php echo $tk->planing_this_week ?></td>
 							<td><?php echo $tk->realization ?></td>			
 							<td><?php echo $tk->problem ?></td>		
@@ -118,7 +131,7 @@
 				                  </a>
 								  &#160;	
 								
-				                   <a href="<?php echo base_url(). 'index.php/teknik/delete/'.$tk->id ; ?>" class="btn btn-danger btn-circle btn-sm">
+				                   <a href="<?php echo base_url(). 'index.php/TeknikPertek/delete/'.$tk->id ; ?>" class="btn btn-danger btn-circle btn-sm">
 				                    <span class="icon text-white-50">
 				                      <i class="fas fa-trash"></i>
 				                    </span>					                    
@@ -144,7 +157,7 @@
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
 					</div>
 					<div class="modal-body">
-					<form action="<?php echo base_url(). 'index.php/teknik/p_input'; ?>" method="post">
+					<form action="<?php echo base_url(). 'index.php/TeknikPertek/p_input'; ?>" method="post">
 
 						<table width="100%">
 							<tr>
@@ -254,7 +267,7 @@
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
 					</div>
 					<div class="modal-body">
-					<form action="<?php echo base_url(). 'index.php/teknik/update_no_report'; ?>" method="post">
+					<form action="<?php echo base_url(). 'index.php/TeknikPertek/update_no_report'; ?>" method="post">
 
 						<table width="100%">
 							<tr>
@@ -309,7 +322,7 @@
 					</div>
 					<div class="modal-body">
 					
-					<form action="<?php echo base_url(). 'index.php/teknik/update'; ?>" method="post">
+					<form action="<?php echo base_url(). 'index.php/TeknikPertek/update'; ?>" method="post">
 					<table width="100%">
 							<tr>
 								<td>
@@ -424,7 +437,7 @@
 					</div>
 					<div class="modal-body">
 					
-					<form action="<?php echo base_url(). 'index.php/teknik/update_note'; ?>" method="post">
+					<form action="<?php echo base_url(). 'index.php/TeknikPertek/update_note'; ?>" method="post">
 					<table width="100%">
 							<tr>
 								<td>

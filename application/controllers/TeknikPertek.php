@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 date_default_timezone_set('Asia/Jakarta');
 
-class teknik extends CI_Controller{
+class teknikpertek extends CI_Controller{
 
 
 	function __construct(){
@@ -32,14 +32,14 @@ class teknik extends CI_Controller{
 		$data['max'] = $this->security->xss_clean($this->input->post('max'));
 
 		$data['teknik'] = $this->t_teknik->get_data()->result();
-		$data['teknik_by_date'] = $this->t_teknik->get_data_by_date($data['name'], $data['product'], $data['min'], $data['max']);
+		$data['teknik_by_date'] = $this->t_teknik->get_data_by_date_pertek($data['name'], $data['product'], $data['min'], $data['max']);
 		$data['client'] = $this->t_teknik->get_data_client()->result();
-		$data['product'] = $this->t_teknik->get_data_product()->result();
+		$data['product'] = $this->t_teknik->get_data_product_pertek()->result();
 		$data['user'] = $this->t_recapitulation->get_data_user()->result();
 		$data['recapitulation'] = $this->t_recapitulation->get_data()->result();
 		$this->load->view('template/header/index');
 		$this->load->view('template/menu/index');
-		$this->load->view('pages/teknik/datatable',$data);
+		$this->load->view('pages/teknik/pertek/datatable',$data);
 		$this->load->view('template/footer/index');
 	}
 
@@ -69,7 +69,7 @@ class teknik extends CI_Controller{
 			);
 
 		$this->t_teknik->input_data($data,'amc_t_teknis_progress');
-		redirect('teknik/index');
+		redirect('TeknikPertek/index');
 	}
 
 
@@ -116,7 +116,7 @@ class teknik extends CI_Controller{
 		);
 
 		$this->t_teknik->update_data($where,$data,'amc_t_teknis_progress');
-		redirect('teknik/index');
+		redirect('TeknikPertek/index');
 		// var_dump ($data);
 	}
 
@@ -136,7 +136,7 @@ class teknik extends CI_Controller{
 		);
 
 		$this->t_teknik->update_data($where,$data,'amc_t_teknis_progress');
-		redirect('teknik/index');
+		redirect('TeknikPertek/index');
 		// var_dump ($data);
 	}
 
@@ -157,7 +157,7 @@ public function update_no_report(){
 		);
 
 		$this->t_teknik->update_data($where,$data,'amc_t_recapitulation_project');
-		redirect('teknik/index');
+		redirect('TeknikPertek/index');
 		// var_dump ($data);
 	}
 
@@ -175,7 +175,7 @@ public function update_no_report(){
 	public function delete($id){
 		$where = array('id' => $id);
 		$this->t_teknik->delete_data($where,'amc_t_teknis_progress');
-		redirect('teknik/index');
+		redirect('TeknikPertek/index');
 	}
 
 

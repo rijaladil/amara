@@ -228,7 +228,7 @@
 							<tr> -->
 								<td valign="top">
 									<div class="form-group">
-										<label for="inputdefault">Mailing Address:</label>
+										<label for="inputdefault">Project Location:</label>
 										<textarea class="form-control" type='text' rows="" id="address2" name="address2"></textarea>
 									</div>
 								</td>
@@ -407,7 +407,7 @@
 							<tr> -->
 								<td valign="top">
 									<div class="form-group">
-										<label for="inputdefault">Mailing Address:</label>
+										<label for="inputdefault">Project Location:</label>
 										<textarea class="form-control" type='text' rows="" id="address2" name="address2"><?php echo $c->address2 ?></textarea>
 									</div>
 								</td>

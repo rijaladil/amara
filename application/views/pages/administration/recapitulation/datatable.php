@@ -314,7 +314,6 @@
 					</div>
 					<div class="modal-body">
 					
-
 					<form>
 						<table width="100%">
 							<tr>
@@ -369,7 +368,7 @@
 										</select>
 									</div>
 								</td>
-								<<td>
+								<td>
 									<div class="form-group ">
 										<label for="inputdefault">Show doc upload:</label><br>
 										<a  target="_blank" href="<?php echo base_url(). 'upload/'.$r->upload ; ?>" class="btn btn-primary view-pdf" ><?php echo $r->upload ?></a>
@@ -390,8 +389,8 @@
 	                 <thead>
 						<tr>
 						    <th width="2%">No</th>
-						    <th width="15%">Project Activity</th>
-						    <th>Pemrakarsa Name</th>
+						    <!--<th width="15%">Project Activity</th>-->
+						    <!--<th>Pemrakarsa Name</th>-->
 						    <th>Document Runtime</th>
 						    <th>Document Product</th>
 						    <th>Planing This week</th>
@@ -411,8 +410,8 @@
 							<tr>
 					
 								<td><?php echo $id++ ?></td>
-								<td><?php echo $tk->project_activity ?></td>	
-								<td><?php echo $tk->pemrakarsa ?></td>						
+								<!--<td><?php echo $tk->project_activity ?></td>	-->
+								<!--<td><?php echo $tk->pemrakarsa ?></td>						-->
 								<td><?php echo $tk->start_date .' s/d '.$tk->finish_date ?></td>
 								<td><?php echo $tk->document_product ?></td>	
 								<td><?php echo $tk->planing_this_week ?></td>

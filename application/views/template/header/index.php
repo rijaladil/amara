@@ -106,7 +106,8 @@
         </a>
         <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="<?php echo base_url();?>index.php/teknik/">Progress</a>
+            <a class="collapse-item" href="<?php echo base_url();?>index.php/TeknikAmdal">Amdal</a>
+            <a class="collapse-item" href="<?php echo base_url();?>index.php/TeknikPertek">Pertek</a>
           </div>
         </div>
       </li>
