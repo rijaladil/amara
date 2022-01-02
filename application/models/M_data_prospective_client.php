@@ -11,6 +11,8 @@
 		   					c.city_kabupaten,
 		   	 				c.province,
 		     				c.address2,
+		     				c.city_kabupaten2,
+		   	 				c.province2,
 		      				c.contact,
 		       				c.email,
 		        			c.sector_id,

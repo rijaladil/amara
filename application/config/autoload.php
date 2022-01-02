@@ -147,6 +147,8 @@ $autoload['model'] = array(
 	'm_data_price',
 	'm_data_user',
 	'm_data_vendor',
+	'm_data_product',
+	'm_data_sector',
 	't_login',
 	't_recapitulation',
 	't_work',

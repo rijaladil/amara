@@ -47,8 +47,10 @@
 									        <b><p style="color:orange;">Process</p></b>
 									<?php elseif ( $c->status_client  === '2'): ?>
 									        <b><p style="color:blue;">Closing</p></b>
+									<?php elseif ( $c->status_client  === '0'): ?>
+									        <b><p style="color:blue;">Prospective</p></b>
 									<?php else: ?>
-									        <b><p style="color:red;">Prospective</p></b>
+									        <b><p style="color:red;">Black List</p></b>
 									<?php endif; ?>
 								</td>
 								<td  class="row justify-content-center">
@@ -104,8 +106,10 @@
 									        <b><p style="color:orange;">Process</p></b>
 									<?php elseif ( $c->status_client  === '2'): ?>
 									        <b><p style="color:blue;">Closing</p></b>
+									<?php elseif ( $c->status_client  === '0'): ?>
+									        <b><p style="color:blue;">Prospective</p></b>
 									<?php else: ?>
-									        <b><p style="color:red;">Prospective</p></b>
+									        <b><p style="color:red;">Black List</p></b>
 									<?php endif; ?>
 								</td>
 								<td  class="row justify-content-center">
@@ -161,8 +165,10 @@
 									        <b><p style="color:orange;">Process</p></b>
 									<?php elseif ( $c->status_client  === '2'): ?>
 									        <b><p style="color:blue;">Closing</p></b>
+									<?php elseif ( $c->status_client  === '0'): ?>
+									        <b><p style="color:blue;">Prospective</p></b>
 									<?php else: ?>
-									        <b><p style="color:red;">Prospective</p></b>
+									        <b><p style="color:red;">Black List</p></b>
 									<?php endif; ?>
 								</td>
 								<td  class="row justify-content-center">
@@ -185,6 +191,66 @@
 						</tbody>
 					</table>
 			   	</div>
+
+			   <!-- client Black List -->
+			   	<h5>Client Black</h5>
+			   	<div class="table-responsive">
+	                <table class="table table-bordered" id="dataTable4" width="100%" cellspacing="0">
+	                 <thead class=" btn-dark">
+						<tr>
+							<th width="2%">No</th>
+							<th width="20%">Company Name</th>
+							<th width="25%">Kegiatan Usaha</th>
+							<th>Address</th>
+							<th width="10%">Status Project</th>
+							<th width="5%">Action</th>
+						</tr>
+					 </thead>
+						<tbody>
+							<?php 
+							$id = 1;
+							foreach($prospective_client as $c){ 
+								if( $c->status_client  == 3){ 
+							?>
+							<tr>
+								<td><?php echo $id++ ?></td>
+								<td><b><?php echo $c->name ?></b></td>
+								<td><?php echo $c->information ?></td>
+								<td><?php echo $c->address ?>, 
+								<b><?php echo $c->city_kabupaten ?></b>, 
+								<b><i><?php echo $c->province ?></b></i></td>
+								<td><?php echo $c->product_name ?><br>
+									<?php if ( $c->status_client  === '1'): ?>
+									        <b><p style="color:orange;">Process</p></b>
+									<?php elseif ( $c->status_client  === '2'): ?>
+									        <b><p style="color:blue;">Closing</p></b>
+									<?php elseif ( $c->status_client  === '0'): ?>
+									        <b><p style="color:blue;">Prospective</p></b>
+									<?php else: ?>
+									        <b><p style="color:red;">Black List</p></b>
+									<?php endif; ?>
+								</td>
+								<td  class="row justify-content-center">
+								<?php if ( (in_array($this->session->userdata('level'), array(1,2))) ) { ?>									
+					                  <a href="#" class="btn btn-success btn-circle btn-sm" data-toggle="modal" data-target="#Fedit<?php echo $c->id ?>">
+					                    <span class="icon text-white-50">
+					                      <i class="fas fa-edit"></i>
+					                    </span>
+					                  </a>
+
+					                   <a href="<?php echo base_url(). 'index.php/Prospective_Client/delete/'.$c->id ;; ?>" class="btn btn-danger btn-circle btn-sm">
+					                    <span class="icon text-white-50">
+					                      <i class="fas fa-trash"></i>
+					                    </span>					                    
+					                  </a>
+									  <?php }?>
+								</td>
+							</tr>
+							<?php } }?>
+						</tbody>
+					</table>
+			   	</div>
+
 
 			</div>
 <!-- +ADD  -->
@@ -229,7 +295,9 @@
 								<td valign="top">
 									<div class="form-group">
 										<label for="inputdefault">Project Location:</label>
-										<textarea class="form-control" type='text' rows="" id="address2" name="address2"></textarea>
+										<textarea class="form-control" type='text' rows="" id="address2" name="address2"></textarea><br>
+										<input class="form-control" id="city_kabupaten2" type="text" name="city_kabupaten2" placeholder="City or Kabupaten"><br>
+										<input class="form-control" id="province2" type="text" name="province2" placeholder="Provinsi">
 									</div>
 								</td>
 							</tr>
@@ -408,7 +476,9 @@
 								<td valign="top">
 									<div class="form-group">
 										<label for="inputdefault">Project Location:</label>
-										<textarea class="form-control" type='text' rows="" id="address2" name="address2"><?php echo $c->address2 ?></textarea>
+										<textarea class="form-control" type='text' rows="" id="address2" name="address2"><?php echo $c->address2 ?></textarea><br>
+										<input class="form-control" id="city_kabupaten2" type="text" name="city_kabupaten2" placeholder="City or Kabupaten" value="<?php echo$c->city_kabupaten2 ?>"><br>
+										<input class="form-control" id="province2" type="text" name="province2" placeholder="Provinsi" value="<?php echo $c->province2 ?>">
 									</div>
 								</td>
 							</tr>

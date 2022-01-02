@@ -1,12 +1,8 @@
 <div class="container-fluid">
        <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Data Progress Pekerjaan Teknik</h6>
-<<<<<<< HEAD:application/views/pages/teknik/amdal/datatable.php
-              <h2 class="m-0 font-weight-bold text-primary">AMDAL</h2>
-=======
+
           		<h2 class="m-0 font-weight-bold text-primary">PERTEK</h2>
->>>>>>> a3e8a7309ccf2b571a6e193f3e78e6b3d71a7ad7:application/views/pages/teknik/pertek/datatable.php
 
 			  		<?php if ( (in_array($this->session->userdata('level'), array(1,4))) ) { ?>
                			<a href="#" class="btn btn-primary btn-icon-split" style="float: right;" data-toggle="modal" data-target="#Finput">
@@ -20,11 +16,7 @@
             </div>
             <div class="card-body">
               	<div class="table-responsive">
-<<<<<<< HEAD:application/views/pages/teknik/amdal/datatable.php
-              		<form method="post" action="<?php echo base_url(); ?>index.php/TeknikAmdal/index">
-=======
               		<form method="post" action="<?php echo base_url(); ?>index.php/TekniPertek/index">
->>>>>>> a3e8a7309ccf2b571a6e193f3e78e6b3d71a7ad7:application/views/pages/teknik/pertek/datatable.php
               		<table border="0" cellspacing="5" cellpadding="5" align="right">
 							      <tbody>
 							      	<tr>

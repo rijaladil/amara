@@ -140,6 +140,8 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <!-- <h6 class="collapse-header">Custom:</h6> -->
             <a class="collapse-item" href="<?php echo base_url();?>index.php/user/">User</a>
+            <a class="collapse-item" href="<?php echo base_url();?>index.php/product/">Product</a>
+            <a class="collapse-item" href="<?php echo base_url();?>index.php/sector/">Sector</a>
           </div>
         </div>
       </li>
