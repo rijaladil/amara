@@ -28,7 +28,7 @@ class Sector extends CI_Controller{
 		$data['sector'] = $this->m_data_sector->get_data()->result();
 		$this->load->view('template/header/index');
 		$this->load->view('template/menu/index');
-		$this->load->view('pages/user/datatable',$data);
+		$this->load->view('pages/sector/datatable',$data);
 		$this->load->view('template/footer/index');
 	}
 
@@ -38,20 +38,13 @@ class Sector extends CI_Controller{
  	public function p_input(){
  		
 		$name = $this->input->post('name');
-		$email = $this->input->post('email');
-		$contact = $this->input->post('contact');
-		$department = $this->input->post('department');
-		$user_level = $this->input->post('user_level');
-		$client_id = $this->input->post('client_id');
+		$ket = $this->input->post('ket');
+
 
 		$data = array(
 			'name' => $name,
-			'email' => $email,
-			'contact' => $contact,
-			'department' => $department,
-			'user_level'=> $user_level,
-			'client_id' => $client_id
-			);
+			'ket' => $ket
+		);
 
 		$this->m_data_sector->input_data($data,'amc_m_sector');
 		redirect('sector/index');
@@ -62,7 +55,7 @@ class Sector extends CI_Controller{
 		$data['sector'] = $this->m_data_sector->get_data()->result();
 		$this->load->view('template/header/index');
 		$this->load->view('template/menu/index');
-		$this->load->view('pages/user/input',$data);
+		$this->load->view('pages/sector/input',$data);
 		$this->load->view('template/footer/index');
 	}
 
@@ -70,21 +63,13 @@ class Sector extends CI_Controller{
 	function update(){
 		$id= $this->input->post('id');
 		$name = $this->input->post('name');
-		$email = $this->input->post('email');
-		$contact = $this->input->post('contact');
-		$department = $this->input->post('department');
-		$user_level = $this->input->post('user_level');
-		$password = $this->input->post('password');
-		$client_id = $this->input->post('client_id');
+		$ket = $this->input->post('ket');
+
 		
 		$data = array(
 			'name' => $name,
-			'email' => $email,
-			'contact' => $contact,
-			'department' => $department,
-			'password' => sha1($password),
-			'user_level'=> $user_level,
-			'client_id' => $client_id
+			'ket' => $ket
+
 		);
 		$where = array(
 			'id' => $id

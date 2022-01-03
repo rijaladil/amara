@@ -28,7 +28,7 @@ class Product extends CI_Controller{
 		$data['product'] = $this->m_data_product->get_data()->result();
 		$this->load->view('template/header/index');
 		$this->load->view('template/menu/index');
-		$this->load->view('pages/user/datatable',$data);
+		$this->load->view('pages/product/datatable',$data);
 		$this->load->view('template/footer/index');
 	}
 
@@ -54,7 +54,7 @@ class Product extends CI_Controller{
 		$data['product'] = $this->m_data_product->get_data()->result();
 		$this->load->view('template/header/index');
 		$this->load->view('template/menu/index');
-		$this->load->view('pages/user/input',$data);
+		$this->load->view('pages/product/input',$data);
 		$this->load->view('template/footer/index');
 	}
 
