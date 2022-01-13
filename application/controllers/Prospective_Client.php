@@ -75,12 +75,16 @@ class prospective_client extends CI_Controller{
 			'status_client'=> $status_client
 			);
 
+		$this->m_data_prospective_client->input_data($data,'amc_m_client');
+		$insert_id = $this->db->insert_id(); 
+		
 		// INPUT EMAIL
 		$this->form_validation->set_rules('email[]', 'email', 'required|trim|xss_clean');
 		$email = $this->input->post('email');
 	    $result = array();
 	    foreach($email AS $key => $val){
 		     $result[] = array(
+		     	  "client_id" => $insert_id,
 			      "client_name" => $name,
 			      "email"  => $_POST['email'][$key]
 		     );
@@ -92,6 +96,7 @@ class prospective_client extends CI_Controller{
 	    $result2 = array();
 	    foreach($contact AS $key => $val){
 		     $result2[] = array(
+		     	  "client_id" => $insert_id,
 			      "client_name" => $name,
 			      "tlp"  => $_POST['contact'][$key]
 		     );
@@ -107,6 +112,7 @@ class prospective_client extends CI_Controller{
 	    $result3 = array();
 	    foreach($pic AS $key => $val){
 		     $result3[] = array(
+		     	  "client_id" => $insert_id,
 			      "client_name" => $name,
 			      "pic"  => $_POST['pic'][$key],
 			      "pic_contact"  => $_POST['pic_contact'][$key],
@@ -117,7 +123,7 @@ class prospective_client extends CI_Controller{
 	    $this->db->insert_batch('amc_m_client_email', $result);
 	    $this->db->insert_batch('amc_m_client_tlp', $result2); 
 	    $this->db->insert_batch('amc_m_client_pic_contact', $result3); 
-		$this->m_data_prospective_client->input_data($data,'amc_m_client');
+
 		redirect('Prospective_Client/index');
 		
 		
@@ -177,9 +183,10 @@ class prospective_client extends CI_Controller{
 		);
 
 		$this->m_data_prospective_client->update_data($where,$data,'amc_m_client');
+		
 
-		// INPUT EMAIL
 
+		// EDIT EMAIL
 	    $where = array("client_name" => $name);
 		$this->m_data_prospective_client->delete_data($where,'amc_m_client_email');
 		$this->form_validation->set_rules('email[]', 'email', 'required|trim|xss_clean');
@@ -192,7 +199,7 @@ class prospective_client extends CI_Controller{
 		     );
 	    } 
 
-	    // INPUT TELP
+	    // EDIT TELP
 	    $where = array("client_name" => $name);
 		$this->m_data_prospective_client->delete_data($where,'amc_m_client_tlp');
 		$this->form_validation->set_rules('contact[]', 'contact', 'required|trim|xss_clean');
@@ -205,7 +212,7 @@ class prospective_client extends CI_Controller{
 		     );
 	    }       
 
-	 // INPUT PIC CONTACT
+	 	// EDIT PIC CONTACT
 	    $where = array("client_name" => $name);
 		$this->m_data_prospective_client->delete_data($where,'amc_m_client_pic_contact');
 		$this->form_validation->set_rules('pic[]' , 'pic', 'required|trim|xss_clean');
