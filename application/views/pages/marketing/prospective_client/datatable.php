@@ -715,6 +715,7 @@
 
         $('#newRow_contact').append(html);
     });
+    
 <?php $id = 1; 	foreach($prospective_client as $c){ ?>
     //edit row contact
     $("#addRow_contact_<?php echo $c->id ?>").click(function () {

@@ -20,34 +20,43 @@
               		<table border="0" cellspacing="5" cellpadding="5" align="right">
 							      <tbody>
 							      	<tr>
+							      		<td><b>Pemrakarsa</b></td>
 							      		<td>
+											
+								      			<select class="form-select" aria-label="Default select example" id="name" name="name">
+								      				<option value="">-Pilih-</option>
+								      				<?php foreach($client as $c){ 
+													?>
+													<option value="<?php echo $c->name; ?>"><?php echo $c->name; ?></option>
+													<?php } ?>
+								      			</select>&nbsp;
+							            	</td>
+							            	<td><b>Product</b></td>
+							            	<td>
+							            		
+								      			<select class="form-select w-10" aria-label="Default select example" id="product" name="product">
+								      				<option value="">-Pilih-</option>
+								      				<?php foreach($product as $prod){ 
+													?>
+													<option value="<?php echo $prod->name; ?>"><?php echo $prod->name; ?></option>
+													<?php }?>
+								      			</select>&nbsp; 
+										</td>
+										<td><b>Date</b></td>
+							            	<td>
+							            		
+							            		<input class="text-center" type="text" id="min" name="min" value="<?php echo ($min == '') ? date('Y-m-01') : $min;?>"> 
+							            		
+							            	</td>
+							            	<td><b>To</b></td>
+							            	<td>
+							            		
+							            		<input class="text-center" type="text" id="max" name="max" value="<?php echo ($max == '') ? date('Y-m-31') : $max;?>">
+							            	</td>
+							            	<td> 
+							            		<input type="submit" class="btn btn-success btn-sm" value="Select">
+							            	</td>
 
-							      			<b>Pemrakarsa :</b>
-							      			<select class="form-select" aria-label="Default select example" id="name" name="name">
-							      				<option value="">-Pilih-</option>
-							      				<?php foreach($client as $c){ 
-												?>
-												<option value="<?php echo $c->name; ?>"><?php echo $c->name; ?></option>
-												<?php } ?>
-							      			</select>&nbsp;
-
-			 				      			<b>Product : </b>
-							      			<select class="form-select w-10" aria-label="Default select example" id="product" name="product">
-							      				<option value="">-Pilih-</option>
-							      				<?php foreach($product as $prod){ 
-												?>
-												<option value="<?php echo $prod->name; ?>"><?php echo $prod->name; ?></option>
-												<?php }?>
-							      			</select>&nbsp; 
-
-							      			
-							            	<b>Select Date : </b>
-							            	<input class="text-center" type="text" id="min" name="min" value="<?php echo ($min == '') ? date('Y-m-01') : $min;?>"> <b>To</b>&nbsp;
-
-							            	<input class="text-center" type="text" id="max" name="max" value="<?php echo ($max == '') ? date('Y-m-31') : $max;?>">
-
-							            	<input type="submit" class="btn btn-success btn-sm" value="Select">
-							            </td>
 							        </tr>
 							    	</tbody>
 							  	</table>

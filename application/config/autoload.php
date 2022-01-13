@@ -151,6 +151,7 @@ $autoload['model'] = array(
 	'm_data_sector',
 	't_login',
 	't_recapitulation',
+	't_payment',
 	't_work',
 	't_teknik',
 	't_finance',

@@ -89,10 +89,11 @@
         </a>
         <div id="collapseFive" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="#">Contract</a>
+            <!-- <a class="collapse-item" href="#">Contract</a> -->
             <a class="collapse-item" href="<?php echo base_url();?>index.php/recapitulation/">Recapitulation Project</a>
             <a class="collapse-item" href="<?php echo base_url();?>index.php/project/">Project</a>
             <a class="collapse-item" href="<?php echo base_url();?>index.php/work/">Working Report</a>
+            <a class="collapse-item" href="<?php echo base_url();?>index.php/payment/">Payment</a>
           </div>
         </div>
       </li>

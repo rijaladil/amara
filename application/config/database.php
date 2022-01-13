@@ -83,7 +83,7 @@ $db['default'] = array(
 
 	'hostname' => '127.0.0.1',
 	'username' => 'root',
-	'password' => '',
+	'password' => '123asd456',
 	'database' => 'amc',
 
 	'dbdriver' => 'mysqli',

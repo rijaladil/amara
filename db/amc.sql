@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 10, 2022 at 06:18 PM
--- Server version: 10.4.17-MariaDB
--- PHP Version: 7.3.26
+-- Generation Time: Jan 13, 2022 at 01:13 PM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 7.3.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -167,13 +167,6 @@ CREATE TABLE `amc_m_price` (
   `editDate` datetime NOT NULL,
   `editUser` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `amc_m_price`
---
-
-INSERT INTO `amc_m_price` (`id`, `description`, `unit`, `price`, `createDate`, `createUser`, `editDate`, `editUser`) VALUES
-(1, 'AMDAL', '1', 10000000, '2021-09-11 19:33:06', 0, '2022-01-04 00:22:31', 0);
 
 -- --------------------------------------------------------
 
@@ -751,12 +744,19 @@ CREATE TABLE `amc_t_adm_payment` (
   `percentage` int(3) NOT NULL,
   `price` decimal(20,0) NOT NULL,
   `info` text NOT NULL,
-  `status` int(1) NOT NULL,
-  `createDate` datetime NOT NULL,
-  `createUser` int(11) NOT NULL DEFAULT current_timestamp(),
+  `status` int(1) NOT NULL COMMENT '0=Outstanding\r\n1=Paid',
+  `createDate` datetime NOT NULL DEFAULT current_timestamp(),
+  `createUser` int(11) NOT NULL,
   `editDate` datetime NOT NULL,
   `editeUser` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `amc_t_adm_payment`
+--
+
+INSERT INTO `amc_t_adm_payment` (`id`, `client_id`, `tahap`, `percentage`, `price`, `info`, `status`, `createDate`, `createUser`, `editDate`, `editeUser`) VALUES
+(1, 11, 2, 100, '4000000', 'Setelah Tandatangan Kontrak edit', 0, '2022-01-13 18:12:33', 0, '2022-01-13 19:11:05', 0);
 
 -- --------------------------------------------------------
 
@@ -908,6 +908,7 @@ CREATE TABLE `amc_t_finance` (
   `id` int(11) NOT NULL,
   `client_id` int(11) NOT NULL,
   `invoice_no` varchar(50) NOT NULL,
+  `price` decimal(20,0) NOT NULL,
   `date` date NOT NULL,
   `due_date` date NOT NULL,
   `date_confirmation` date NOT NULL,
@@ -917,6 +918,13 @@ CREATE TABLE `amc_t_finance` (
   `editDate` datetime NOT NULL,
   `editUser` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `amc_t_finance`
+--
+
+INSERT INTO `amc_t_finance` (`id`, `client_id`, `invoice_no`, `price`, `date`, `due_date`, `date_confirmation`, `info`, `createDate`, `createUser`, `editDate`, `editUser`) VALUES
+(2, 11, '001/amc/I/2022', '9100000000', '2022-01-13', '2022-01-13', '2022-01-13', 'test', '2022-01-13 16:08:31', 0, '2022-01-13 16:50:50', 0);
 
 -- --------------------------------------------------------
 
@@ -1222,7 +1230,7 @@ ALTER TABLE `amc_m_vendor`
 -- AUTO_INCREMENT for table `amc_t_adm_payment`
 --
 ALTER TABLE `amc_t_adm_payment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `amc_t_client_confirmation`
@@ -1264,7 +1272,7 @@ ALTER TABLE `amc_t_client_rekapitulasi_tender`
 -- AUTO_INCREMENT for table `amc_t_finance`
 --
 ALTER TABLE `amc_t_finance`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `amc_t_recapitulation_project`

@@ -1,22 +1,20 @@
 <?php 
 
- class t_finance extends CI_Model{
+ class t_payment extends CI_Model{
 	function get_data(){
-		// return $this->db->get('amc_t_finance');
 		return $this->db->query('SELECT  
-										f.id, 
+										p.id, 
 										c.name,
-										f.client_id, 
-										f.invoice_no, 
-										f.price,
-										f.date, 
-										f.due_date, 
-										f.date_confirmation, 
-										f.info
+										p.client_id, 
+										p.tahap, 
+										p.percentage, 
+										p.price, 
+										p.info, 
+										p.status
 
-								FROM amc_t_finance f
+								FROM amc_t_adm_payment p
 								LEFT JOIN amc_m_client c
-								ON f.client_id = c.id
+								ON p.client_id = c.id
 								');
 
 		
