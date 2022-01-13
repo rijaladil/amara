@@ -337,7 +337,7 @@
 								</td>
 							</tr>
 							<tr>
-								<td>
+								<td valign="top">
 									<div class="form-group ">
 										<label for="inputdefault">Sector:</label>
 										<select class="form-control" id="sector_id" name="sector_id">
@@ -353,14 +353,21 @@
 								<td>
 									<div class="form-group ">
 										<label for="inputdefault">Status Project:</label>
-										<select class="form-control" id="product_id" name="product_id">
-											<option value="">Pilih</option>
-											<?php 
-											foreach($products as $p){ 
-											?>
-											<option value="<?php echo $p->id ?>"><?php echo $p->name ?></option>
-											<?php }?>
-										</select>
+										 <div id="inputFormRow_product">
+										 	<div class="input-group mb-3">
+												<select class="form-control" id="product_id" name="product_id">
+													<option value="">Pilih</option>
+													<?php foreach($products as $p){ ?>
+													<option value="<?php echo $p->id ?>"><?php echo $p->name ?></option>
+													<?php }?>
+												</select>
+												<div class="input-group-append">
+													<button id="removeRow_product" type="button" class="btn btn-danger">-</button>
+												</div>
+											</div>
+										</div>
+										<div id="newRow_email"></div>
+							            <button id="addRow_product" type="button" class="btn btn-facebook">+Add</button>
 									</div>
 								</td>
 							</tr>
@@ -397,9 +404,7 @@
 										<label for="inputdefault">Marketing By:</label>
 										<select class="form-control" id="id_user" name="id_user">
 											<option value="">Pilih</option>
-											<?php 
-											foreach($marketing as $mar){ 
-											?>
+											<?php foreach($marketing as $mar){ ?>
 											<option value="<?php echo $mar->id ?>"><?php echo $mar->name ?></option>
 											<?php }?>
 										</select>
@@ -532,7 +537,7 @@
 								</td>
 							</tr>
 							<tr>
-								<td>
+								<td valign="top" >
 									<div class="form-group ">
 										<label for="inputdefault">Sector:</label>
 										<select class="form-control" name="sector_id">
@@ -554,21 +559,30 @@
 								<td>
 									<div class="form-group ">
 										<label for="inputdefault">Status Project:</label>
-										<select class="form-control" name="product_id">
-											<?php 
-											foreach($products as $p){ 
-												 if($p->id == $c->product_id) {
-											?>
-											<option value="<?php echo $p->id ?>"><?php echo $p->name ?></option>
-											<?php } }?>
-											
-											<option value="">Pilih</option>
-											<?php 
-											foreach($products as $p){ 
-											?>
-											<option value="<?php echo $p->id ?>"><?php echo $p->name ?></option>
-											<?php }?>
-										</select>
+										 <div id="inputFormRow_product">
+										 	<div class="input-group mb-3">
+												<select class="form-control" name="product_id">
+													<?php 
+													foreach($products as $p){ 
+														 if($p->id == $c->product_id) {
+													?>
+													<option value="<?php echo $p->id ?>"><?php echo $p->name ?></option>
+													<?php } }?>
+													
+													<option value="">Pilih</option>
+													<?php 
+													foreach($products as $p){ 
+													?>
+													<option value="<?php echo $p->id ?>"><?php echo $p->name ?></option>
+													<?php }?>
+												</select>
+												<div class="input-group-append">
+													<button id="removeRow_product" type="button" class="btn btn-danger">-</button>
+												</div>
+											</div>
+										</div>
+										<div id="newRow_email"></div>
+							            <button id="addRow_product" type="button" class="btn btn-facebook">+Add</button>
 									</div>
 								</td>
 							</tr>
@@ -681,6 +695,7 @@
 
         $('#newRow_pic').append(html);
     });
+    
     //edit row pic
 <?php $id = 1; 	foreach($prospective_client as $c){ ?>
     $(document).on('click', '#addRow_pic_<?php echo $c->id ?>', function () {
@@ -701,6 +716,8 @@
         console.log('#newRow_pic_<?php echo $c->id ?>');
     });
 
+    // ================================================//
+
 <?php } ?>
     // add row contact
     $("#addRow_contact").click(function () {
@@ -717,7 +734,6 @@
     });
     
 
-    // ================================================//
 <?php $id = 1; 	foreach($prospective_client as $c){ ?>
     //edit row contact
     $("#addRow_contact_<?php echo $c->id ?>").click(function () {
@@ -734,6 +750,8 @@
     });
 <?php } ?>
 
+    // ================================================//
+
     // add row email
     $("#addRow_email").click(function () {
         var html = '';
@@ -747,6 +765,7 @@
 
         $('#newRow_email').append(html);
     });
+
 <?php $id = 1; 	foreach($prospective_client as $c){ ?>
     //edit row email
         $("#addRow_email_<?php echo $c->id ?>").click(function () {
@@ -779,5 +798,9 @@
         $(this).closest('#inputFormRow_email').remove();
     });
 
+    // remove row project
+    $(document).on('click', '#removeRow_product', function () {
+        $(this).closest('#inputFormRow_product').remove();
+    });
     
 </script>
