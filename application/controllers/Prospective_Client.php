@@ -35,6 +35,7 @@ class prospective_client extends CI_Controller{
 		$data['prospective_client'] = $this->m_data_prospective_client->get_data_prospec();
 		$data['sector'] = $this->m_data_prospective_client->get_data_sector();
 		$data['products'] = $this->m_data_prospective_client->get_data_products();
+		$data['project'] = $this->m_data_prospective_client->get_data_project();
 		$data['tlp'] = $this->m_data_prospective_client->get_data_tlp();
 		$data['email'] = $this->m_data_prospective_client->get_data_email();
 		$data['pic'] = $this->m_data_prospective_client->get_data_pic_contact();
@@ -203,8 +204,7 @@ class prospective_client extends CI_Controller{
 
 
 		// EDIT EMAIL
-	    $where = array("client_name" => $name);
-		$this->m_data_prospective_client->delete_data($where,'amc_m_client_email');
+	    $where = array("client_id" => $id);
 		$this->form_validation->set_rules('email[]', 'email', 'required|trim|xss_clean');
 		$email = $this->input->post('email');
 	    $result = array();
@@ -214,10 +214,10 @@ class prospective_client extends CI_Controller{
 			      "email"  => $_POST['email'][$key]
 		     );
 	    } 
+	    $this->m_data_prospective_client->update_data($where,$result,'amc_m_client_email');
 
 	    // EDIT TELP
-	    $where = array("client_name" => $name);
-		$this->m_data_prospective_client->delete_data($where,'amc_m_client_tlp');
+	    $where = array("client_id" => $id);
 		$this->form_validation->set_rules('contact[]', 'contact', 'required|trim|xss_clean');
 		$contact = $this->input->post('contact');
 	    $result2 = array();
@@ -226,30 +226,27 @@ class prospective_client extends CI_Controller{
 			      "client_name" => $name,
 			      "tlp"  => $_POST['contact'][$key]
 		     );
-	    }       
+	    }  
+	    $this->m_data_prospective_client->update_data($where,$result2,'amc_m_client_email');   
 
 	 	// EDIT PIC CONTACT
-	    $where = array("client_name" => $name);
-		$this->m_data_prospective_client->delete_data($where,'amc_m_client_pic_contact');
+	    $where = array("client_id" => $id);
 		$this->form_validation->set_rules('pic[]', 'pic', 'required|trim|xss_clean');
 		$this->form_validation->set_rules('pic_contact[]', 'pic_contact', 'required|trim|xss_clean');
 		$this->form_validation->set_rules('pic_email[]', 'pic_email', 'required|trim|xss_clean');
 		$pic = $this->input->post('pic');
 		$pic = $this->input->post('pic_contact');
 		$pic = $this->input->post('pic_email');
-	    $result3 = array();
+	    $result4 = array();
 	    foreach($pic AS $key => $val){
-		     $result3[] = array(
+		     $result4[] = array(
 			      "client_name" => $name,
 			      "pic"  => $_POST['pic'][$key],
 			      "pic_contact"  => $_POST['pic_contact'][$key],
 			      "email"  => $_POST['pic_email'][$key]
 		     );
-	    }   
-
-	    $this->db->insert_batch('amc_m_client_email', $result);
-	    $this->db->insert_batch('amc_m_client_tlp', $result2); 
-	    $this->db->insert_batch('amc_m_client_pic_contact', $result3); 
+	    }       
+	    $this->m_data_prospective_client->update_data($where,$result4,'amc_m_client_email');
 		
 
 		redirect('Prospective_Client/index');

@@ -559,30 +559,28 @@
 								<td>
 									<div class="form-group ">
 										<label for="inputdefault">Status Project:</label>
-										 <div id="inputFormRow_product">
+										 <div id="inputFormRow_project">
+										 	<?php foreach($project as $pj){ 
+												if($c->id == $pj->client_id) { ?>
 										 	<div class="input-group mb-3">
-												<select class="form-control" name="product_id">
-													<?php 
-													foreach($products as $p){ 
-														 if($p->id == $c->product_id) {
-													?>
+										 		<?php foreach($products as $p){
+													if($p->id == $pj->project_id) { ?>
+												<select class="form-control" id="project_id" name="project_id[]">													
 													<option value="<?php echo $p->id ?>"><?php echo $p->name ?></option>
-													<?php } }?>
-													
+													<?php } } ?>
 													<option value="">Pilih</option>
-													<?php 
-													foreach($products as $p){ 
-													?>
+													<?php foreach($products as $p){ ?>
 													<option value="<?php echo $p->id ?>"><?php echo $p->name ?></option>
 													<?php }?>
 												</select>
 												<div class="input-group-append">
-													<button id="removeRow_product" type="button" class="btn btn-danger">-</button>
+													<button id="removeRow_project" type="button" class="btn btn-danger">-</button>
 												</div>
 											</div>
+											<?php }  }?>
 										</div>
-										<div id="newRow_email"></div>
-							            <button id="addRow_product" type="button" class="btn btn-facebook">+Add</button>
+										<div id="newRow_project_<?php echo $c->id ?>"></div>
+							            <button id="addRow_project_<?php echo $c->id ?>" type="button" class="btn btn-facebook">+Add</button>
 									</div>
 								</td>
 							</tr>
