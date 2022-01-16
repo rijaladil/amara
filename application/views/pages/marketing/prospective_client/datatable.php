@@ -310,7 +310,7 @@
 										<label for="inputdefault">Contact:</label>
 										<div id="inputFormRow_contact">
 										 	<div class="input-group mb-3">
-												<input class="form-control" id="inputdefault" type="text" name="contact[]"  placeholder="Company Contact">
+												<input class="form-control" id="contact" type="text" name="contact[]"  placeholder="Company Contact">
 												<div class="input-group-append">
 													<button id="removeRow_contact" type="button" class="btn btn-danger">-</button>
 												</div>
@@ -353,21 +353,21 @@
 								<td>
 									<div class="form-group ">
 										<label for="inputdefault">Status Project:</label>
-										 <div id="inputFormRow_product">
+										 <div id="inputFormRow_project">
 										 	<div class="input-group mb-3">
-												<select class="form-control" id="product_id" name="product_id">
+												<select class="form-control" id="project_id" name="project_id[]">
 													<option value="">Pilih</option>
 													<?php foreach($products as $p){ ?>
 													<option value="<?php echo $p->id ?>"><?php echo $p->name ?></option>
 													<?php }?>
 												</select>
 												<div class="input-group-append">
-													<button id="removeRow_product" type="button" class="btn btn-danger">-</button>
+													<button id="removeRow_project" type="button" class="btn btn-danger">-</button>
 												</div>
 											</div>
 										</div>
-										<div id="newRow_email"></div>
-							            <button id="addRow_product" type="button" class="btn btn-facebook">+Add</button>
+										<div id="newRow_project"></div>
+							            <button id="addRow_project" type="button" class="btn btn-facebook">+Add</button>
 									</div>
 								</td>
 							</tr>
@@ -385,9 +385,9 @@
 							        <div class="col-lg-12">
 							            <div id="inputFormRow_pic">
 							                <div class="input-group mb-3">
-							                    <input size="100" type="text" name="pic[]" class="form-control m-input" placeholder="Pic Name" autocomplete="off">
-							                    <input type="text" name="pic_contact[]" class="form-control m-input" placeholder="Contact Pic" autocomplete="off">
-							                    <input type="email" name="pic_email[]" class="form-control m-input" placeholder="pic@example.com" autocomplete="off">
+							                    <input size="100" type="text" id="pic" name="pic[]" class="form-control m-input" placeholder="Pic Name" autocomplete="off">
+							                    <input type="text" id="pic_contact" name="pic_contact[]" class="form-control m-input" placeholder="Contact Pic" autocomplete="off">
+							                    <input type="email" id="pic_email" name="pic_email[]" class="form-control m-input" placeholder="pic@example.com" autocomplete="off">
 							                    <div class="input-group-append">                
 							                        <button id="removeRow_pic" type="button" class="btn btn-danger">-</button>
 							                    </div>
@@ -500,7 +500,7 @@
 										<div id="inputFormRow_contact">
 											<?php 	
 											foreach($tlp as $t){
-												 if($t->client_name == $c->name) {
+												 if($t->client_id == $c->id) {
 											?>
 										 	<div class="input-group mb-3">																												 		 
 												<input class="form-control" id="" type="text" name="contact[]"  placeholder="Company Contact" value="<?php echo $t->tlp ?>">																
@@ -521,7 +521,7 @@
 										 <div id="inputFormRow_email">
 										 	<?php 	
 											foreach($email as $e){
-												 if($e->client_name == $c->name) {
+												 if( $c->id == $e->client_id) {
 											?>
 										 	<div class="input-group mb-3">
 												<input type="email" class="form-control" id="inputdefault"  name="email[]" placeholder="company@example.com" value="<?php echo $e->email ?>">
@@ -601,7 +601,7 @@
 							            <div id="inputFormRow_pic">
 							            	<?php 	
 											foreach($pic as $p){
-												 if($p->client_name == $c->name) {
+												 if($p->client_id == $c->id) {
 											?>
 							                <div class="input-group mb-3">
 							                    <input size="100" type="text" name="pic[]" class="form-control m-input" placeholder="Pic Name" autocomplete="off" value="<?php echo $p->pic ?>">
@@ -716,15 +716,15 @@
         console.log('#newRow_pic_<?php echo $c->id ?>');
     });
 
-    // ================================================//
-
 <?php } ?>
+
+    // ================================================//
     // add row contact
     $("#addRow_contact").click(function () {
         var html = '';
         html += '<div id="inputFormRow_contact">';
         html += '<div class="input-group mb-3">';
-        html += '<input class="form-control" id="inputdefault" type="text" name="contact[]" placeholder="Company Contact">';
+        html += '<input class="form-control" id="contact" type="text" name="contact[]" placeholder="Company Contact">';
         html += '<div class="input-group-append">';
         html += '<button id="removeRow_contact" type="button" class="btn btn-danger">-</button>';
         html += '</div>';
@@ -740,7 +740,7 @@
         var html = '';
         html += '<div id="inputFormRow_contact">';
         html += '<div class="input-group mb-3">';
-        html += '<input class="form-control" id="inputdefault" type="text" name="contact[]" placeholder="Company Contact">';
+        html += '<input class="form-control" id="contact" type="text" name="contact[]" placeholder="Company Contact">';
         html += '<div class="input-group-append">';
         html += '<button id="removeRow_contact" type="button" class="btn btn-danger">-</button>';
         html += '</div>';
@@ -751,7 +751,49 @@
 <?php } ?>
 
     // ================================================//
+	// add row project
+	$("#addRow_project").click(function () {
+        var html = '';
+		 html += '<div id="inputFormRow_project">';
+		 html += '<div class="input-group mb-3">';
+		 html += '<select class="form-control" id="project_id" name="project_id[]">';
+		 html += '<option value="">Pilih</option>';
+		<?php foreach($products as $p){ ?>
+		 html += '<option value="<?php echo $p->id ?>"><?php echo $p->name ?></option>';
+		<?php }?>
+		 html += '</select>';
+		 html += '<div class="input-group-append">';
+		 html += '<button id="removeRow_project" type="button" class="btn btn-danger">-</button>';
+		 html += '</div>';
+		 html += '</div>';
 
+		  $('#newRow_project').append(html);
+    });
+
+    <?php $id = 1; 	foreach($prospective_client as $c){ ?>
+    //edit row project
+
+    	$("#addRow_project_<?php echo $c->id ?>").click(function () {
+        var html = '';
+		 html += '<div id="inputFormRow_project">';
+		 html += '<div class="input-group mb-3">';
+		 html += '<select class="form-control" id="project_id" name="project_id[]">';
+		 html += '<option value="">Pilih</option>';
+		<?php foreach($products as $p){ ?>
+		 html += '<option value="<?php echo $p->id ?>"><?php echo $p->name ?></option>';
+		<?php }?>
+		 html += '</select>';
+		 html += '<div class="input-group-append">';
+		 html += '<button id="removeRow_project" type="button" class="btn btn-danger">-</button>';
+		 html += '</div>';
+		 html += '</div>';
+
+		  $('#newRow_project_<?php echo $c->id ?>').append(html);
+    });
+    <?php } ?>
+
+										
+    // ================================================//
     // add row email
     $("#addRow_email").click(function () {
         var html = '';

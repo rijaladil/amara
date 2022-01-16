@@ -56,7 +56,7 @@ class prospective_client extends CI_Controller{
 		$city_kabupaten2 = $this->input->post('city_kabupaten2');
 		$province2 = $this->input->post('province2');
 		$sector_id = $this ->input->post('sector_id');
-		$product_id = $this ->input->post('product_id');
+		// $product_id = $this ->input->post('product_id');
 		$status_client = $this ->input->post('status_client');
 		$id_user = $this ->input->post('id_user');
 
@@ -70,7 +70,7 @@ class prospective_client extends CI_Controller{
 			'city_kabupaten2' => $city_kabupaten2,
 			'province2' => $province2,
 			'sector_id' => $sector_id,
-			'product_id' => $product_id,
+			// 'product_id' => $product_id,
 			'id_user'=> $id_user,
 			'status_client'=> $status_client
 			);
@@ -78,6 +78,9 @@ class prospective_client extends CI_Controller{
 		$this->m_data_prospective_client->input_data($data,'amc_m_client');
 		$insert_id = $this->db->insert_id(); 
 		
+
+
+
 		// INPUT EMAIL
 		$this->form_validation->set_rules('email[]', 'email', 'required|trim|xss_clean');
 		$email = $this->input->post('email');
@@ -89,6 +92,7 @@ class prospective_client extends CI_Controller{
 			      "email"  => $_POST['email'][$key]
 		     );
 	    } 
+	    $this->db->insert_batch('amc_m_client_email', $result);
 
 	    // INPUT TELP
 		$this->form_validation->set_rules('contact[]', 'contact', 'required|trim|xss_clean');
@@ -100,29 +104,41 @@ class prospective_client extends CI_Controller{
 			      "client_name" => $name,
 			      "tlp"  => $_POST['contact'][$key]
 		     );
+	    }  
+	    $this->db->insert_batch('amc_m_client_tlp', $result2);
+
+	   // INPUT PRODUCT
+		$this->form_validation->set_rules('project_id[]', 'project_id', 'required|trim|xss_clean');
+		$project_id = $this->input->post('project_id');
+	    $result2 = array();
+	    foreach($project_id AS $key => $val){
+		     $result3[] = array(
+		     	  "client_id" => $insert_id,
+			      "client_name" => $name,
+			      "project_id"  => $_POST['project_id'][$key]
+		     );
 	    }       
+     	$this->db->insert_batch('amc_m_client_project', $result3);  
 
 	 // INPUT PIC CONTACT
-		$this->form_validation->set_rules('pic[]' , 'pic', 'required|trim|xss_clean');
-		$this->form_validation->set_rules('pic_contact[]' , 'pic_contact', 'required|trim|xss_clean');
-		$this->form_validation->set_rules('pic_email[]' , 'pic_email', 'required|trim|xss_clean');
+		$this->form_validation->set_rules('pic[]', 'pic', 'required|trim|xss_clean');
+		$this->form_validation->set_rules('pic_contact[]', 'pic_contact', 'required|trim|xss_clean');
+		$this->form_validation->set_rules('pic_email[]', 'pic_email', 'required|trim|xss_clean');
 		$pic = $this->input->post('pic');
 		$pic = $this->input->post('pic_contact');
 		$pic = $this->input->post('pic_email');
-	    $result3 = array();
+	    $result4 = array();
 	    foreach($pic AS $key => $val){
-		     $result3[] = array(
+		     $result4[] = array(
 		     	  "client_id" => $insert_id,
 			      "client_name" => $name,
 			      "pic"  => $_POST['pic'][$key],
 			      "pic_contact"  => $_POST['pic_contact'][$key],
 			      "email"  => $_POST['pic_email'][$key]
 		     );
-	    }   
+	    }    
+	    $this->db->insert_batch('amc_m_client_pic_contact', $result4); 
 
-	    $this->db->insert_batch('amc_m_client_email', $result);
-	    $this->db->insert_batch('amc_m_client_tlp', $result2); 
-	    $this->db->insert_batch('amc_m_client_pic_contact', $result3); 
 
 		redirect('Prospective_Client/index');
 		
@@ -155,7 +171,7 @@ class prospective_client extends CI_Controller{
 		$city_kabupaten2 = $this->input->post('city_kabupaten2');
 		$province2 = $this->input->post('province2');
 		$sector_id = $this ->input->post('sector_id');
-		$product_id = $this ->input->post('product_id');
+		// $product_id = $this ->input->post('product_id');
 		$id_user = $this ->input->post('id_user');
 		$status_client = $this ->input->post('status_client');
 		$user_id = $this->session->userdata('id');
@@ -171,7 +187,7 @@ class prospective_client extends CI_Controller{
 			'city_kabupaten2' => $city_kabupaten2,
 			'province2' => $province2,
 			'sector_id' => $sector_id,
-			'product_id' => $product_id,
+			// 'product_id' => $product_id,
 			'id_user'=> $id_user,
 			'status_client'=>$status_client,
 			'editUser'=>$user_id,
@@ -215,9 +231,9 @@ class prospective_client extends CI_Controller{
 	 	// EDIT PIC CONTACT
 	    $where = array("client_name" => $name);
 		$this->m_data_prospective_client->delete_data($where,'amc_m_client_pic_contact');
-		$this->form_validation->set_rules('pic[]' , 'pic', 'required|trim|xss_clean');
-		$this->form_validation->set_rules('pic_contact[]' , 'pic_contact', 'required|trim|xss_clean');
-		$this->form_validation->set_rules('pic_email[]' , 'pic_email', 'required|trim|xss_clean');
+		$this->form_validation->set_rules('pic[]', 'pic', 'required|trim|xss_clean');
+		$this->form_validation->set_rules('pic_contact[]', 'pic_contact', 'required|trim|xss_clean');
+		$this->form_validation->set_rules('pic_email[]', 'pic_email', 'required|trim|xss_clean');
 		$pic = $this->input->post('pic');
 		$pic = $this->input->post('pic_contact');
 		$pic = $this->input->post('pic_email');
