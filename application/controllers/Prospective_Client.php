@@ -57,7 +57,6 @@ class prospective_client extends CI_Controller{
 		$city_kabupaten2 = $this->input->post('city_kabupaten2');
 		$province2 = $this->input->post('province2');
 		$sector_id = $this ->input->post('sector_id');
-		// $product_id = $this ->input->post('product_id');
 		$status_client = $this ->input->post('status_client');
 		$id_user = $this ->input->post('id_user');
 
@@ -71,7 +70,6 @@ class prospective_client extends CI_Controller{
 			'city_kabupaten2' => $city_kabupaten2,
 			'province2' => $province2,
 			'sector_id' => $sector_id,
-			// 'product_id' => $product_id,
 			'id_user'=> $id_user,
 			'status_client'=> $status_client
 			);
@@ -111,7 +109,7 @@ class prospective_client extends CI_Controller{
 	   // INPUT PRODUCT
 		$this->form_validation->set_rules('project_id[]', 'project_id', 'required|trim|xss_clean');
 		$project_id = $this->input->post('project_id');
-	    $result2 = array();
+	    $result3 = array();
 	    foreach($project_id AS $key => $val){
 		     $result3[] = array(
 		     	  "client_id" => $insert_id,
@@ -172,7 +170,6 @@ class prospective_client extends CI_Controller{
 		$city_kabupaten2 = $this->input->post('city_kabupaten2');
 		$province2 = $this->input->post('province2');
 		$sector_id = $this ->input->post('sector_id');
-		// $product_id = $this ->input->post('product_id');
 		$id_user = $this ->input->post('id_user');
 		$status_client = $this ->input->post('status_client');
 		$user_id = $this->session->userdata('id');
@@ -188,7 +185,6 @@ class prospective_client extends CI_Controller{
 			'city_kabupaten2' => $city_kabupaten2,
 			'province2' => $province2,
 			'sector_id' => $sector_id,
-			// 'product_id' => $product_id,
 			'id_user'=> $id_user,
 			'status_client'=>$status_client,
 			'editUser'=>$user_id,
@@ -202,10 +198,9 @@ class prospective_client extends CI_Controller{
 		$this->m_data_prospective_client->update_data($where,$data,'amc_m_client');
 		
 
-
 		// EDIT EMAIL
-	    $where = array("client_id" => $id);
 		$this->form_validation->set_rules('email[]', 'email', 'required|trim|xss_clean');
+		$id= $this->input->post('id');
 		$email = $this->input->post('email');
 	    $result = array();
 	    foreach($email AS $key => $val){
@@ -214,11 +209,12 @@ class prospective_client extends CI_Controller{
 			      "email"  => $_POST['email'][$key]
 		     );
 	    } 
+	    $where = array("client_id" => $id);
 	    $this->m_data_prospective_client->update_data($where,$result,'amc_m_client_email');
 
 	    // EDIT TELP
-	    $where = array("client_id" => $id);
 		$this->form_validation->set_rules('contact[]', 'contact', 'required|trim|xss_clean');
+		$id= $this->input->post('id');
 		$contact = $this->input->post('contact');
 	    $result2 = array();
 	    foreach($contact AS $key => $val){
@@ -227,13 +223,30 @@ class prospective_client extends CI_Controller{
 			      "tlp"  => $_POST['contact'][$key]
 		     );
 	    }  
-	    $this->m_data_prospective_client->update_data($where,$result2,'amc_m_client_email');   
+	    $where = array("client_id" => $id);
+	    $this->m_data_prospective_client->update_data($where,$result2,'amc_m_client_tlp');   
+
+
+	   // EDIT PRODUCT
+	 //    $where = array("client_id" => $id);
+		// $this->form_validation->set_rules('project_id[]', 'project_id', 'required|trim|xss_clean');
+		// $project_id = $this->input->post('project_id');
+	 //    $result3 = array();
+	 //    foreach($project_id AS $key => $val){
+		//      $result3[] = array(
+		// 	      "client_name" => $name,
+		// 	      "project_id"  => $_POST['project_id'][$key]
+		//      );
+	 //    }       
+  //    	$this->m_data_prospective_client->update_data($where,$result3,'amc_m_client_project');
+
 
 	 	// EDIT PIC CONTACT
-	    $where = array("client_id" => $id);
+	    
 		$this->form_validation->set_rules('pic[]', 'pic', 'required|trim|xss_clean');
 		$this->form_validation->set_rules('pic_contact[]', 'pic_contact', 'required|trim|xss_clean');
 		$this->form_validation->set_rules('pic_email[]', 'pic_email', 'required|trim|xss_clean');
+		$id= $this->input->post('id');
 		$pic = $this->input->post('pic');
 		$pic = $this->input->post('pic_contact');
 		$pic = $this->input->post('pic_email');
@@ -245,8 +258,9 @@ class prospective_client extends CI_Controller{
 			      "pic_contact"  => $_POST['pic_contact'][$key],
 			      "email"  => $_POST['pic_email'][$key]
 		     );
-	    }       
-	    $this->m_data_prospective_client->update_data($where,$result4,'amc_m_client_email');
+	    }      
+	    $where = array("client_id" => $id); 
+	    $this->m_data_prospective_client->update_data($where,$result4,'amc_m_client_pic_contact');
 		
 
 		redirect('Prospective_Client/index');
