@@ -197,72 +197,82 @@ class prospective_client extends CI_Controller{
 
 		$this->m_data_prospective_client->update_data($where,$data,'amc_m_client');
 		
-
-		// EDIT EMAIL
+		//EDIT EMAIL
+		$where = array("client_id" => $id);
+		$this->m_data_prospective_client->delete_data($where,'amc_m_client_email');
 		$this->form_validation->set_rules('email[]', 'email', 'required|trim|xss_clean');
-		$id= $this->input->post('id');
+		$idemail= $this->input->post('idemail');
 		$email = $this->input->post('email');
 	    $result = array();
 	    foreach($email AS $key => $val){
 		     $result[] = array(
+		     	  // "id"=> $idemail,
+		     	  "client_id"=> $id,
 			      "client_name" => $name,
 			      "email"  => $_POST['email'][$key]
 		     );
 	    } 
-	    $where = array("client_id" => $id);
-	    $this->m_data_prospective_client->update_data($where,$result,'amc_m_client_email');
 
 	    // EDIT TELP
+	    $where = array("client_id" => $id);
+		$this->m_data_prospective_client->delete_data($where,'amc_m_client_tlp');
 		$this->form_validation->set_rules('contact[]', 'contact', 'required|trim|xss_clean');
-		$id= $this->input->post('id');
+		$idcontact= $this->input->post('idcontact');
 		$contact = $this->input->post('contact');
 	    $result2 = array();
 	    foreach($contact AS $key => $val){
 		     $result2[] = array(
+		     	  // "id"=>$idcontact ,
+		     	  "client_id"=> $id,
 			      "client_name" => $name,
 			      "tlp"  => $_POST['contact'][$key]
 		     );
-	    }  
-	    $where = array("client_id" => $id);
-	    $this->m_data_prospective_client->update_data($where,$result2,'amc_m_client_tlp');   
+	    }     
 
 
 	   // EDIT PRODUCT
-	 //    $where = array("client_id" => $id);
+	    
 		// $this->form_validation->set_rules('project_id[]', 'project_id', 'required|trim|xss_clean');
+		// $id= $this->input->post('id');
 		// $project_id = $this->input->post('project_id');
 	 //    $result3 = array();
 	 //    foreach($project_id AS $key => $val){
 		//      $result3[] = array(
-		// 	      "client_name" => $name,
+		// 	    //  "client_name" => $name,
 		// 	      "project_id"  => $_POST['project_id'][$key]
 		//      );
-	 //    }       
+	 //    }     
+	 //    $where = array("client_id" => $id);  
   //    	$this->m_data_prospective_client->update_data($where,$result3,'amc_m_client_project');
 
 
 	 	// EDIT PIC CONTACT
 	    
-		$this->form_validation->set_rules('pic[]', 'pic', 'required|trim|xss_clean');
-		$this->form_validation->set_rules('pic_contact[]', 'pic_contact', 'required|trim|xss_clean');
-		$this->form_validation->set_rules('pic_email[]', 'pic_email', 'required|trim|xss_clean');
-		$id= $this->input->post('id');
+	    $where = array("client_id" => $id);
+		$this->m_data_prospective_client->delete_data($where,'amc_m_client_pic_contact');
+		$this->form_validation->set_rules('pic[]' , 'pic', 'required|trim|xss_clean');
+		$this->form_validation->set_rules('pic_contact[]' , 'pic_contact', 'required|trim|xss_clean');
+		$this->form_validation->set_rules('pic_email[]' , 'pic_email', 'required|trim|xss_clean');
+		$idpic= $this->input->post('idpic');
 		$pic = $this->input->post('pic');
 		$pic = $this->input->post('pic_contact');
 		$pic = $this->input->post('pic_email');
 	    $result4 = array();
 	    foreach($pic AS $key => $val){
 		     $result4[] = array(
+		     	  // "id"=> $idpic,
+		          "client_id"=> $id,
 			      "client_name" => $name,
 			      "pic"  => $_POST['pic'][$key],
 			      "pic_contact"  => $_POST['pic_contact'][$key],
 			      "email"  => $_POST['pic_email'][$key]
 		     );
-	    }      
-	    $where = array("client_id" => $id); 
-	    $this->m_data_prospective_client->update_data($where,$result4,'amc_m_client_pic_contact');
-		
+	    }   
 
+		
+	    $this->db->insert_batch('amc_m_client_email', $result);
+	    $this->db->insert_batch('amc_m_client_tlp', $result2); 
+	    $this->db->insert_batch('amc_m_client_pic_contact', $result4); 
 		redirect('Prospective_Client/index');
 	}
 

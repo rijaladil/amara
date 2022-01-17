@@ -49,7 +49,7 @@
 
 	public function get_data_tlp($id=''){
 
-		$this->db->select('c.id as id, c.name, t.client_name, t.client_id,  t.tlp');
+		$this->db->select('c.id as idc,  c.name, t.id,  t.id_tlp, t.client_name, t.client_id,  t.tlp');
 		$this->db->from('amc_m_client_tlp t');		
 		$this->db->join('amc_m_client c', 't.client_id = c.id', 'left');
         $this->db->order_by('id', 'DESC');
@@ -60,7 +60,7 @@
 
 	public function get_data_email($id=''){
 
-		$this->db->select('c.id as id,  c.name, e.client_name, e.client_id, e.email');
+		$this->db->select('c.id as idc,  c.name, e.id, e.id_email, e.client_name, e.client_id, e.email');
 		$this->db->from('amc_m_client_email e');		
 		$this->db->join('amc_m_client c', 'e.client_id = c.id', 'left');
         $this->db->order_by('id', 'DESC');
@@ -71,7 +71,7 @@
 
 	public function get_data_pic_contact($id=''){
 
-		$this->db->select('c.id as id,  c.name, p.client_name, p.client_id,  p.pic, p.pic_contact ,p.email');
+		$this->db->select('c.id as idc,  c.name, p.id, p.id_pic, p.client_name, p.client_id,  p.pic, p.pic_contact ,p.email');
 		$this->db->from('amc_m_client_pic_contact p');		
 		$this->db->join('amc_m_client c', 'p.client_id = c.id', 'left');
         $this->db->order_by('id', 'DESC');
@@ -83,7 +83,7 @@
 
 	public function get_data_project($id=''){
 
-		$this->db->select('c.id as id,  c.name, pj.client_name, pj.client_id, pj.project_id');
+		$this->db->select('c.id as idc, c.name,  pj.id, pj.id_project,  pj.client_name, pj.client_id, pj.project_id');
 		$this->db->from('amc_m_client_project pj');		
 		$this->db->join('amc_m_client c', 'pj.client_id = c.id', 'left');
         $this->db->order_by('id', 'DESC');
@@ -121,8 +121,6 @@
 		$this->db->where($where);
 		$this->db->update($table,$data);
 	}	
-
-
 
 
 }

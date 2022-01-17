@@ -495,17 +495,15 @@
 								<td valign="top" width=50%>
 									
 									<div class="form-group ">
-										<label for="inputdefault">Contact:</label>
-										
-										<div id="inputFormRow_contact">
-											<?php 	
-											foreach($tlp as $t){
-												 if($t->client_id == $c->id) {
-											?>
-										 	<div class="input-group mb-3">																												 		 
-												<input class="form-control" id="" type="text" name="contact[]"  placeholder="Company Contact" value="<?php echo $t->tlp ?>">																
+										<label for="inputdefault">Contact:</label>	
+										<?php foreach($tlp as $t){
+												 if($t->client_id == $c->id) {?>									
+										<div id="inputFormRow_contact_<?php echo $t->id ?>">											
+										 	<div class="input-group mb-3">	
+										 		<input type="hidden" name="idcontact" value="<?php echo $t->id ?> " >																					 		 
+												<input class="form-control" id="" type="text" name="contact[]"  placeholder="Company Contact" value="<?php echo $t->tlp ?>">										
 												<div class="input-group-append">
-													<button id="removeRow_contact" type="button" class="btn btn-danger">-</button>
+													<button id="removeRow_contact_<?php echo $t->id ?>" type="button" class="btn btn-danger">-</button>
 												</div>
 											</div>
 											<?php }  }?>	
@@ -518,15 +516,14 @@
 								<td valign="top" width=50%>
 									<div class="form-group ">
 										<label for="inputdefault">Email:</label>
-										 <div id="inputFormRow_email">
-										 	<?php 	
-											foreach($email as $e){
-												 if( $c->id == $e->client_id) {
-											?>
+								 		<?php foreach($email as $e){ 
+								 			if( $c->id == $e->client_id) { ?>
+										  <div id="inputFormRow_email_<?php echo $e->id ?>">
 										 	<div class="input-group mb-3">
-												<input type="email" class="form-control" id="inputdefault"  name="email[]" placeholder="company@example.com" value="<?php echo $e->email ?>">
+										 		<input type="hidden" name="idemail" value="<?php echo $e->id ?> " >
+												<input type="email" class="form-control" id=""  name="email[]" placeholder="company@example.com" value="<?php echo $e->email ?>">
 												<div class="input-group-append">
-													<button id="removeRow_email" type="button" class="btn btn-danger">-</button>
+													<button id="removeRow_email_<?php echo $e->id ?>" type="button" class="btn btn-danger">-</button>
 												</div>
 											</div>
 											<?php }  }?>
@@ -537,7 +534,7 @@
 								</td>
 							</tr>
 							<tr>
-								<td valign="top" >
+								<td valign="top" width="50%">
 									<div class="form-group ">
 										<label for="inputdefault">Sector:</label>
 										<select class="form-control" name="sector_id">
@@ -556,25 +553,27 @@
 										</select>
 									</div>
 								</td>
-								<td>
+								<td valign="top" width="50%">
 									<div class="form-group ">
 										<label for="inputdefault">Status Project:</label>
-										 <div id="inputFormRow_project">
-										 	<?php foreach($project as $pj){ 
-												if($c->id == $pj->client_id) { ?>
+										<?php foreach($project as $pj){ ?>
+										 <div id="inputFormRow_project_<?php echo $pj->id ?>">
+										 	
+												<?php if($c->id == $pj->client_id) { ?>
 										 	<div class="input-group mb-3">
 										 		<?php foreach($products as $p){
 													if($p->id == $pj->project_id) { ?>
-												<select class="form-control" id="project_id" name="project_id[]">													
+												<select class="form-control" id="project_id" name="project_id[]">					
 													<option value="<?php echo $p->id ?>"><?php echo $p->name ?></option>
-													<?php } } ?>
+												<?php } } ?>
 													<option value="">Pilih</option>
 													<?php foreach($products as $p){ ?>
 													<option value="<?php echo $p->id ?>"><?php echo $p->name ?></option>
 													<?php }?>
+												
 												</select>
 												<div class="input-group-append">
-													<button id="removeRow_project" type="button" class="btn btn-danger">-</button>
+													<button id="removeRow_project_<?php echo $pj->id ?>" type="button" class="btn btn-danger">-</button>
 												</div>
 											</div>
 											<?php }  }?>
@@ -596,17 +595,17 @@
 							<tr>
 								<td>
 							        <div class="col-lg-12">
-							            <div id="inputFormRow_pic">
-							            	<?php 	
-											foreach($pic as $p){
-												 if($p->client_id == $c->id) {
-											?>
+							        	<?php foreach($pic as $p){
+												 if($p->client_id == $c->id) {?>
+							            <div id="inputFormRow_pic_<?php echo $p->id ?>">
+							            	
 							                <div class="input-group mb-3">
+							                	<input type="hidden" name="idpic" value="<?php echo $p->id ?> " >
 							                    <input size="100" type="text" name="pic[]" class="form-control m-input" placeholder="Pic Name" autocomplete="off" value="<?php echo $p->pic ?>">
 							                    <input type="text" name="pic_contact[]" class="form-control m-input" placeholder="Contact Pic" autocomplete="off" value="<?php echo $p->pic_contact ?>">
 							                    <input type="email" name="pic_email[]" class="form-control m-input" placeholder="pic@example.com" autocomplete="off" value="<?php echo $p->email ?>">
 							                    <div class="input-group-append">                
-							                        <button id="removeRow_pic" type="button" class="btn btn-danger">-</button>
+							                        <button id="removeRow_pic_<?php echo $p->id ?>" type="button" class="btn btn-danger">-</button>
 							                    </div>
 							                </div>
 							                <?php }  }?>
@@ -822,11 +821,11 @@
     });
 <?php } ?>
 
+
     // remove row pic
     $(document).on('click', '#removeRow_pic', function () {
         $(this).closest('#inputFormRow_pic').remove();
     });
-
 
     // remove row contact
     $(document).on('click', '#removeRow_contact', function () {
@@ -839,8 +838,41 @@
     });
 
     // remove row project
-    $(document).on('click', '#removeRow_product', function () {
-        $(this).closest('#inputFormRow_product').remove();
+    $(document).on('click', '#removeRow_project', function () {
+        $(this).closest('#inputFormRow_project').remove();
     });
     
+
+
+
+<?php foreach($pic as $p){ ?>
+ 	// remove row pic
+    $(document).on('click', '#removeRow_pic_<?php echo $p->id ?>', function () {
+        $(this).closest('#inputFormRow_pic_<?php echo $p->id ?>').remove();
+        console.log('#removeRow_pic_<?php echo $p->id ?>');
+    });
+<?php }?>
+
+<?php foreach($tlp as $t){ ?>
+    // remove row contact
+    $(document).on('click', '#removeRow_contact_<?php echo $t->id ?>', function () {
+        $(this).closest('#inputFormRow_contact_<?php echo $t->id ?>').remove();
+    });
+<?php }?>
+
+<?php foreach($email as $e){ ?>
+    // remove row email
+    $(document).on('click', '#removeRow_email_<?php echo $e->id ?>', function () {
+        $(this).closest('#inputFormRow_email_<?php echo $e->id ?>').remove();
+        //console.log('#removeRow_email_<?php echo $e->id ?>');
+    });
+<?php }?>
+
+<?php foreach($project as $pj){ ?>
+    // remove row project
+    $(document).on('click', '#removeRow_project_<?php echo $pj->id ?>', function () {
+        $(this).closest('#inputFormRow_project_<?php echo $pj->id ?>').remove();
+    });
+<?php }?>
+
 </script>

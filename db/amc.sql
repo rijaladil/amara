@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 17, 2022 at 03:28 AM
--- Server version: 10.4.17-MariaDB
--- PHP Version: 7.3.26
+-- Generation Time: Jan 17, 2022 at 12:52 PM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 7.3.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -49,13 +49,6 @@ CREATE TABLE `amc_m_client` (
   `editUser` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `amc_m_client`
---
-
-INSERT INTO `amc_m_client` (`id`, `name`, `information`, `address`, `city_kabupaten`, `province`, `address2`, `city_kabupaten2`, `province2`, `contact`, `email`, `sector_id`, `product_id`, `status_client`, `id_user`, `createDate`, `createUser`, `editDate`, `editUser`) VALUES
-(1, 'RSJ KEADILAN SEJAHTERA', '', '', '', '', '', '', '', '', '', 0, 0, 0, 0, '2022-01-17 01:06:27', 0, '2022-01-17 01:25:00', 43);
-
 -- --------------------------------------------------------
 
 --
@@ -64,17 +57,11 @@ INSERT INTO `amc_m_client` (`id`, `name`, `information`, `address`, `city_kabupa
 
 CREATE TABLE `amc_m_client_email` (
   `id` int(11) NOT NULL,
+  `id_email` int(11) NOT NULL,
   `client_id` int(11) NOT NULL,
   `client_name` varchar(255) NOT NULL,
   `email` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `amc_m_client_email`
---
-
-INSERT INTO `amc_m_client_email` (`id`, `client_id`, `client_name`, `email`) VALUES
-(1, 1, 'RSJ KEADILAN SEJAHTERA', 'admi1@admin.com');
 
 -- --------------------------------------------------------
 
@@ -84,19 +71,13 @@ INSERT INTO `amc_m_client_email` (`id`, `client_id`, `client_name`, `email`) VAL
 
 CREATE TABLE `amc_m_client_pic_contact` (
   `id` int(11) NOT NULL,
+  `id_pic` int(11) NOT NULL,
   `client_id` int(11) NOT NULL,
   `client_name` varchar(255) NOT NULL,
   `pic` varchar(50) NOT NULL COMMENT 'pemrakarsa',
   `pic_contact` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `amc_m_client_pic_contact`
---
-
-INSERT INTO `amc_m_client_pic_contact` (`id`, `client_id`, `client_name`, `pic`, `pic_contact`, `email`) VALUES
-(1, 1, 'RSJ KEADILAN SEJAHTERA', 'A', 'A', 'A@ADMIN.COM');
 
 -- --------------------------------------------------------
 
@@ -106,19 +87,11 @@ INSERT INTO `amc_m_client_pic_contact` (`id`, `client_id`, `client_name`, `pic`,
 
 CREATE TABLE `amc_m_client_project` (
   `id` int(11) NOT NULL,
+  `id_project` int(11) NOT NULL,
   `client_id` int(11) NOT NULL,
   `client_name` varchar(255) NOT NULL,
   `project_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `amc_m_client_project`
---
-
-INSERT INTO `amc_m_client_project` (`id`, `client_id`, `client_name`, `project_id`) VALUES
-(1, 1, 'RSJ KEADILAN SEJAHTERA', 15),
-(2, 1, 'RSJ KEADILAN SEJAHTERA', 13),
-(3, 1, 'RSJ KEADILAN SEJAHTERA', 3);
 
 -- --------------------------------------------------------
 
@@ -128,17 +101,11 @@ INSERT INTO `amc_m_client_project` (`id`, `client_id`, `client_name`, `project_i
 
 CREATE TABLE `amc_m_client_tlp` (
   `id` int(11) NOT NULL,
+  `id_tlp` int(11) NOT NULL,
   `client_id` int(11) NOT NULL,
   `client_name` varchar(255) NOT NULL,
   `tlp` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `amc_m_client_tlp`
---
-
-INSERT INTO `amc_m_client_tlp` (`id`, `client_id`, `client_name`, `tlp`) VALUES
-(1, 1, 'RSJ KEADILAN SEJAHTERA', '021-7565859');
 
 -- --------------------------------------------------------
 
@@ -1165,31 +1132,31 @@ ALTER TABLE `amc_t_work`
 -- AUTO_INCREMENT for table `amc_m_client`
 --
 ALTER TABLE `amc_m_client`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `amc_m_client_email`
 --
 ALTER TABLE `amc_m_client_email`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `amc_m_client_pic_contact`
 --
 ALTER TABLE `amc_m_client_pic_contact`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `amc_m_client_project`
 --
 ALTER TABLE `amc_m_client_project`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `amc_m_client_tlp`
 --
 ALTER TABLE `amc_m_client_tlp`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `amc_m_job`
