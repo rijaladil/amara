@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 13, 2022 at 01:13 PM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 7.3.28
+-- Generation Time: Jan 17, 2022 at 03:28 AM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 7.3.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -54,8 +54,7 @@ CREATE TABLE `amc_m_client` (
 --
 
 INSERT INTO `amc_m_client` (`id`, `name`, `information`, `address`, `city_kabupaten`, `province`, `address2`, `city_kabupaten2`, `province2`, `contact`, `email`, `sector_id`, `product_id`, `status_client`, `id_user`, `createDate`, `createUser`, `editDate`, `editUser`) VALUES
-(11, 'PT PLN (Persero) Unit Induk Distribusi Banten', 'Penyediaan Tenaga Listrik (Pembangkit, Penyaluran dan Distribusi)', 'Jl. Jend. Sudirman No. 1 Tangerang', 'Kota Tangerang', 'Banten', 'Jl. Jend. Sudirman No. 1 Tangerang', 'Kota Tangerang', 'Banten', '', '', 7, 3, 1, 41, '2021-12-22 15:36:30', 0, '2022-01-02 23:06:52', 43),
-(12, 'PT Gapura Pundi Akvtiva', 'Konsultan Amdal', 'Amarapura', 'Tangerang Selatan', 'Banten', 'Amarapura', 'Tangerang Selatan', 'Banten', '', '', 8, 1, 0, 0, '2022-01-02 23:07:40', 0, '2022-01-02 23:09:32', 43);
+(1, 'RSJ KEADILAN SEJAHTERA', '', '', '', '', '', '', '', '', '', 0, 0, 0, 0, '2022-01-17 01:06:27', 0, '2022-01-17 01:25:00', 43);
 
 -- --------------------------------------------------------
 
@@ -66,7 +65,7 @@ INSERT INTO `amc_m_client` (`id`, `name`, `information`, `address`, `city_kabupa
 CREATE TABLE `amc_m_client_email` (
   `id` int(11) NOT NULL,
   `client_id` int(11) NOT NULL,
-  `client_name` varchar(50) NOT NULL,
+  `client_name` varchar(255) NOT NULL,
   `email` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -75,8 +74,7 @@ CREATE TABLE `amc_m_client_email` (
 --
 
 INSERT INTO `amc_m_client_email` (`id`, `client_id`, `client_name`, `email`) VALUES
-(102, 0, 'PT PLN (Persero) Unit Induk Distribusi Banten', 'k3lpln.disbanten@gmail.com'),
-(105, 0, 'PT Gapura Pundi Akvtiva', '');
+(1, 1, 'RSJ KEADILAN SEJAHTERA', 'admi1@admin.com');
 
 -- --------------------------------------------------------
 
@@ -87,7 +85,7 @@ INSERT INTO `amc_m_client_email` (`id`, `client_id`, `client_name`, `email`) VAL
 CREATE TABLE `amc_m_client_pic_contact` (
   `id` int(11) NOT NULL,
   `client_id` int(11) NOT NULL,
-  `client_name` varchar(50) NOT NULL,
+  `client_name` varchar(255) NOT NULL,
   `pic` varchar(50) NOT NULL COMMENT 'pemrakarsa',
   `pic_contact` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL
@@ -98,13 +96,29 @@ CREATE TABLE `amc_m_client_pic_contact` (
 --
 
 INSERT INTO `amc_m_client_pic_contact` (`id`, `client_id`, `client_name`, `pic`, `pic_contact`, `email`) VALUES
-(39, 0, 'PT PLN (Persero) Unit Induk Distribusi Banten tt', 'Pak Sriwiyono', '08557120170', 'SRIWIYONO@pln.co.id'),
-(40, 0, 'PT PLN (Persero) Unit Induk Distribusi Banten tt', 'Pak Zaki', '081261970916', ''),
-(41, 0, 'PT PLN (Persero) Unit Induk Distribusi Banten tt', 'Pak Akmal', '082138999875', 'akmal.ilyasa@gmail.com'),
-(42, 0, 'PT PLN (Persero) Unit Induk Distribusi Banten tt', 'Ibu Inez', '08170746226', ''),
-(43, 0, 'PT PLN (Persero) Unit Induk Distribusi Banten tt', 'Pak Utoro', '08119478907', ''),
-(417, 0, 'PT PLN (Persero) Unit Induk Distribusi Banten', 'Pak Edy', '08111092121', 'edaymunadi@yahoo.com'),
-(420, 0, 'PT Gapura Pundi Akvtiva', '', '', '');
+(1, 1, 'RSJ KEADILAN SEJAHTERA', 'A', 'A', 'A@ADMIN.COM');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `amc_m_client_project`
+--
+
+CREATE TABLE `amc_m_client_project` (
+  `id` int(11) NOT NULL,
+  `client_id` int(11) NOT NULL,
+  `client_name` varchar(255) NOT NULL,
+  `project_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `amc_m_client_project`
+--
+
+INSERT INTO `amc_m_client_project` (`id`, `client_id`, `client_name`, `project_id`) VALUES
+(1, 1, 'RSJ KEADILAN SEJAHTERA', 15),
+(2, 1, 'RSJ KEADILAN SEJAHTERA', 13),
+(3, 1, 'RSJ KEADILAN SEJAHTERA', 3);
 
 -- --------------------------------------------------------
 
@@ -115,7 +129,7 @@ INSERT INTO `amc_m_client_pic_contact` (`id`, `client_id`, `client_name`, `pic`,
 CREATE TABLE `amc_m_client_tlp` (
   `id` int(11) NOT NULL,
   `client_id` int(11) NOT NULL,
-  `client_name` varchar(50) NOT NULL,
+  `client_name` varchar(255) NOT NULL,
   `tlp` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -124,8 +138,7 @@ CREATE TABLE `amc_m_client_tlp` (
 --
 
 INSERT INTO `amc_m_client_tlp` (`id`, `client_id`, `client_name`, `tlp`) VALUES
-(102, 0, 'PT PLN (Persero) Unit Induk Distribusi Banten', '0217988266'),
-(105, 0, 'PT Gapura Pundi Akvtiva', '');
+(1, 1, 'RSJ KEADILAN SEJAHTERA', '021-7565859');
 
 -- --------------------------------------------------------
 
@@ -192,7 +205,7 @@ INSERT INTO `amc_m_products` (`id`, `name`, `category_teknik`, `ket`) VALUES
 (4, 'DELH', 1, '1'),
 (5, 'DPLH', 1, '1'),
 (6, 'Implementasi Izin Lingkungan', 2, '2'),
-(7, 'Jasa survey dan analisis data lingkungan (aspek fisika, kimia, biologi , social ekonomi budaya dan Kesehatan masyarakat)\r\n', 2, '2'),
+(7, 'SURVEY LINGKUNGAN', 2, '2'),
 (8, 'Kajian Hidrologi (Peil Banjir)', 1, '2'),
 (9, 'Analisis Dampak Lalu Lintas', 1, '2'),
 (10, 'Penelitian Lingkungan', 2, '2'),
@@ -859,18 +872,6 @@ INSERT INTO `amc_t_client_process` (`id`, `no_po`, `product_id`, `client_id`, `d
 -- --------------------------------------------------------
 
 --
--- Table structure for table `amc_t_client_project`
---
-
-CREATE TABLE `amc_t_client_project` (
-  `id` int(11) NOT NULL,
-  `client_id` int(11) NOT NULL,
-  `project_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `amc_t_client_rekapitulasi_tender`
 --
 
@@ -1043,6 +1044,12 @@ ALTER TABLE `amc_m_client_pic_contact`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `amc_m_client_project`
+--
+ALTER TABLE `amc_m_client_project`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `amc_m_client_tlp`
 --
 ALTER TABLE `amc_m_client_tlp`
@@ -1121,12 +1128,6 @@ ALTER TABLE `amc_t_client_process`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `amc_t_client_project`
---
-ALTER TABLE `amc_t_client_project`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `amc_t_client_rekapitulasi_tender`
 --
 ALTER TABLE `amc_t_client_rekapitulasi_tender`
@@ -1164,25 +1165,31 @@ ALTER TABLE `amc_t_work`
 -- AUTO_INCREMENT for table `amc_m_client`
 --
 ALTER TABLE `amc_m_client`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `amc_m_client_email`
 --
 ALTER TABLE `amc_m_client_email`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `amc_m_client_pic_contact`
 --
 ALTER TABLE `amc_m_client_pic_contact`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=421;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `amc_m_client_project`
+--
+ALTER TABLE `amc_m_client_project`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `amc_m_client_tlp`
 --
 ALTER TABLE `amc_m_client_tlp`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `amc_m_job`
@@ -1255,12 +1262,6 @@ ALTER TABLE `amc_t_client_po`
 --
 ALTER TABLE `amc_t_client_process`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT for table `amc_t_client_project`
---
-ALTER TABLE `amc_t_client_project`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `amc_t_client_rekapitulasi_tender`
