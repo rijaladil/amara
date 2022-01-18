@@ -10,7 +10,7 @@
 
           <div class="copyright text-center my-auto">
 
-            <span >Copyright &copy; RIJALADIL.CORP <?php echo date("Y");?></span>
+            <span >Copyright &copy; AMC <?php echo date("Y");?></span>
 
           </div>
 

@@ -120,7 +120,7 @@
 					                    </span>
 					                  </a>
 
-					                   <a href="<?php echo base_url(). 'index.php/Prospective_Client/delete/'.$c->id ;; ?>" class="btn btn-danger btn-circle btn-sm">
+					                   <a hidden href="<?php echo base_url(). 'index.php/Prospective_Client/delete/'.$c->id ;; ?>" class="btn btn-danger btn-circle btn-sm">
 					                    <span class="icon text-white-50">
 					                      <i class="fas fa-trash"></i>
 					                    </span>					                    
@@ -179,7 +179,7 @@
 					                    </span>
 					                  </a>
 
-					                   <a href="<?php echo base_url(). 'index.php/Prospective_Client/delete/'.$c->id ;; ?>" class="btn btn-danger btn-circle btn-sm">
+					                   <a hidden href="<?php echo base_url(). 'index.php/Prospective_Client/delete/'.$c->id ;; ?>" class="btn btn-danger btn-circle btn-sm">
 					                    <span class="icon text-white-50">
 					                      <i class="fas fa-trash"></i>
 					                    </span>					                    
@@ -238,7 +238,7 @@
 					                    </span>
 					                  </a>
 
-					                   <a href="<?php echo base_url(). 'index.php/Prospective_Client/delete/'.$c->id ;; ?>" class="btn btn-danger btn-circle btn-sm">
+					                   <a hidden href="<?php echo base_url(). 'index.php/Prospective_Client/delete/'.$c->id ;; ?>" class="btn btn-danger btn-circle btn-sm">
 					                    <span class="icon text-white-50">
 					                      <i class="fas fa-trash"></i>
 					                    </span>					                    
@@ -355,7 +355,7 @@
 										<label for="inputdefault">Status Project:</label>
 										 <div id="inputFormRow_project">
 										 	<div class="input-group mb-3">
-												<select class="form-control" id="project_id" name="project_id[]">
+												<select class="form-control" id="project_id" name="project_id[]" required>
 													<option value="">Pilih</option>
 													<?php foreach($products as $p){ ?>
 													<option value="<?php echo $p->id ?>"><?php echo $p->name ?></option>
@@ -500,10 +500,10 @@
 												 if($t->client_id == $c->id) {?>									
 										<div id="inputFormRow_contact_<?php echo $t->id ?>">											
 										 	<div class="input-group mb-3">	
-										 		<input type="hidden" name="idcontact" value="<?php echo $t->id ?> " >																					 		 
+										 		<input type="hidden" name="id_tlp" value="<?php echo $t->id_tlp ?> " >																					 		 
 												<input class="form-control" id="" type="text" name="contact[]"  placeholder="Company Contact" value="<?php echo $t->tlp ?>">										
 												<div class="input-group-append">
-													<button id="removeRow_contact_<?php echo $t->id ?>" type="button" class="btn btn-danger">-</button>
+													<!-- <button id="removeRow_contact_<?php echo $t->id ?>" type="button" class="btn btn-danger">-</button> -->
 												</div>
 											</div>
 											<?php }  }?>	
@@ -520,10 +520,10 @@
 								 			if( $c->id == $e->client_id) { ?>
 										  <div id="inputFormRow_email_<?php echo $e->id ?>">
 										 	<div class="input-group mb-3">
-										 		<input type="hidden" name="idemail" value="<?php echo $e->id ?> " >
+										 		<input type="hidden" name="id_email" value="<?php echo $e->id_email ?> " >
 												<input type="email" class="form-control" id=""  name="email[]" placeholder="company@example.com" value="<?php echo $e->email ?>">
 												<div class="input-group-append">
-													<button id="removeRow_email_<?php echo $e->id ?>" type="button" class="btn btn-danger">-</button>
+													<!-- <button id="removeRow_email_<?php echo $e->id ?>" type="button" class="btn btn-danger">-</button> -->
 												</div>
 											</div>
 											<?php }  }?>
@@ -557,8 +557,8 @@
 									<div class="form-group ">
 										<label for="inputdefault">Status Project:</label>
 										<?php foreach($project as $pj){ ?>
-										 <div id="inputFormRow_project_<?php echo $pj->id ?>">
-										 	
+											<input type="hidden" name="id_project" value="<?php echo $pj->id_project ?> " >
+										 <div id="inputFormRow_project_<?php echo $pj->id ?>">										 	
 												<?php if($c->id == $pj->client_id) { ?>
 										 	<div class="input-group mb-3">
 										 		<?php foreach($products as $p){
@@ -573,7 +573,7 @@
 												
 												</select>
 												<div class="input-group-append">
-													<button id="removeRow_project_<?php echo $pj->id ?>" type="button" class="btn btn-danger">-</button>
+													<!-- <button id="removeRow_project_<?php echo $pj->id ?>" type="button" class="btn btn-danger">-</button> -->
 												</div>
 											</div>
 											<?php }  }?>
@@ -600,12 +600,12 @@
 							            <div id="inputFormRow_pic_<?php echo $p->id ?>">
 							            	
 							                <div class="input-group mb-3">
-							                	<input type="hidden" name="idpic" value="<?php echo $p->id ?> " >
+							                	<input type="hidden" name="id_pic" value="<?php echo $p->id_pic ?> " >
 							                    <input size="100" type="text" name="pic[]" class="form-control m-input" placeholder="Pic Name" autocomplete="off" value="<?php echo $p->pic ?>">
 							                    <input type="text" name="pic_contact[]" class="form-control m-input" placeholder="Contact Pic" autocomplete="off" value="<?php echo $p->pic_contact ?>">
 							                    <input type="email" name="pic_email[]" class="form-control m-input" placeholder="pic@example.com" autocomplete="off" value="<?php echo $p->email ?>">
 							                    <div class="input-group-append">                
-							                        <button id="removeRow_pic_<?php echo $p->id ?>" type="button" class="btn btn-danger">-</button>
+							                        <!-- <button id="removeRow_pic_<?php echo $p->id ?>" type="button" class="btn btn-danger">-</button> -->
 							                    </div>
 							                </div>
 							                <?php }  }?>

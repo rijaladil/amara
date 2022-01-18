@@ -17,6 +17,7 @@
   <!-- <link href="<?php echo base_url(); ?>assets/css/sb-admin-2.min.css" rel="stylesheet"> -->
   <link href="<?php echo base_url(); ?>assets/css/sb-admin-2.css" rel="stylesheet">
   <link href="<?php echo base_url(); ?>assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+  <link rel="icon" href="<?php echo base_url(); ?>assets/img/ico.png" type="image/gif">
 
 
  
@@ -32,8 +33,7 @@
 
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url()?>">
-        <div class="sidebar-brand-icon"><i class="fas fa-home fa-10x" ></i></div>
-        <div class="sidebar-brand-text" style="margin-top:1em">AMC</div>
+        <div class="sidebar-brand-icon"> <img  src="<?php echo base_url(); ?>assets/img/ico.png" width="100em"></div>
       </a>
 
       <!-- Divider -->

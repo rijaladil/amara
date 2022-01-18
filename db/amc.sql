@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 17, 2022 at 12:52 PM
+-- Generation Time: Jan 18, 2022 at 05:23 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.3.28
 
@@ -57,7 +57,7 @@ CREATE TABLE `amc_m_client` (
 
 CREATE TABLE `amc_m_client_email` (
   `id` int(11) NOT NULL,
-  `id_email` int(11) NOT NULL,
+  `id_email` varchar(20) NOT NULL,
   `client_id` int(11) NOT NULL,
   `client_name` varchar(255) NOT NULL,
   `email` varchar(50) NOT NULL
@@ -71,7 +71,7 @@ CREATE TABLE `amc_m_client_email` (
 
 CREATE TABLE `amc_m_client_pic_contact` (
   `id` int(11) NOT NULL,
-  `id_pic` int(11) NOT NULL,
+  `id_pic` varchar(20) NOT NULL,
   `client_id` int(11) NOT NULL,
   `client_name` varchar(255) NOT NULL,
   `pic` varchar(50) NOT NULL COMMENT 'pemrakarsa',
@@ -87,7 +87,7 @@ CREATE TABLE `amc_m_client_pic_contact` (
 
 CREATE TABLE `amc_m_client_project` (
   `id` int(11) NOT NULL,
-  `id_project` int(11) NOT NULL,
+  `id_project` varchar(20) NOT NULL,
   `client_id` int(11) NOT NULL,
   `client_name` varchar(255) NOT NULL,
   `project_id` int(11) NOT NULL
@@ -101,7 +101,7 @@ CREATE TABLE `amc_m_client_project` (
 
 CREATE TABLE `amc_m_client_tlp` (
   `id` int(11) NOT NULL,
-  `id_tlp` int(11) NOT NULL,
+  `id_tlp` varchar(20) NOT NULL,
   `client_id` int(11) NOT NULL,
   `client_name` varchar(255) NOT NULL,
   `tlp` varchar(50) NOT NULL
