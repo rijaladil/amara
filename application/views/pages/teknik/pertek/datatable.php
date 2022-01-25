@@ -128,11 +128,9 @@
 				                  </a>
 								  &#160;	
 								
-<<<<<<< HEAD:application/views/pages/teknik/amdal/datatable.php
-				                   <a href="<?php echo base_url(). 'index.php/TeknikAmdal/delete/'.$tk->id ; ?>" class="btn btn-danger btn-circle btn-sm">
-=======
+
 				                   <a href="<?php echo base_url(). 'index.php/TekniPertek/delete/'.$tk->id ; ?>" class="btn btn-danger btn-circle btn-sm">
->>>>>>> a3e8a7309ccf2b571a6e193f3e78e6b3d71a7ad7:application/views/pages/teknik/pertek/datatable.php
+
 				                    <span class="icon text-white-50">
 				                      <i class="fas fa-trash"></i>
 				                    </span>					                    
@@ -158,11 +156,9 @@
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
 					</div>
 					<div class="modal-body">
-<<<<<<< HEAD:application/views/pages/teknik/amdal/datatable.php
-					<form action="<?php echo base_url(). 'index.php/TeknikAmdal/p_input'; ?>" method="post">
-=======
+
 					<form action="<?php echo base_url(). 'index.php/TekniPertek/p_input'; ?>" method="post">
->>>>>>> a3e8a7309ccf2b571a6e193f3e78e6b3d71a7ad7:application/views/pages/teknik/pertek/datatable.php
+
 
 						<table width="100%">
 							<tr>
@@ -272,11 +268,8 @@
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
 					</div>
 					<div class="modal-body">
-<<<<<<< HEAD:application/views/pages/teknik/amdal/datatable.php
-					<form action="<?php echo base_url(). 'index.php/TeknikAmdal/update_no_report'; ?>" method="post">
-=======
+
 					<form action="<?php echo base_url(). 'index.php/TekniPertek/update_no_report'; ?>" method="post">
->>>>>>> a3e8a7309ccf2b571a6e193f3e78e6b3d71a7ad7:application/views/pages/teknik/pertek/datatable.php
 
 						<table width="100%">
 							<tr>
@@ -331,11 +324,8 @@
 					</div>
 					<div class="modal-body">
 					
-<<<<<<< HEAD:application/views/pages/teknik/amdal/datatable.php
-					<form action="<?php echo base_url(). 'index.php/TeknikAmdal/update'; ?>" method="post">
-=======
+
 					<form action="<?php echo base_url(). 'index.php/TekniPertek/update'; ?>" method="post">
->>>>>>> a3e8a7309ccf2b571a6e193f3e78e6b3d71a7ad7:application/views/pages/teknik/pertek/datatable.php
 					<table width="100%">
 							<tr>
 								<td>
@@ -450,11 +440,9 @@
 					</div>
 					<div class="modal-body">
 					
-<<<<<<< HEAD:application/views/pages/teknik/amdal/datatable.php
-					<form action="<?php echo base_url(). 'index.php/TeknikAmdal/update_note'; ?>" method="post">
-=======
+
 					<form action="<?php echo base_url(). 'index.php/TekniPertek/update_note'; ?>" method="post">
->>>>>>> a3e8a7309ccf2b571a6e193f3e78e6b3d71a7ad7:application/views/pages/teknik/pertek/datatable.php
+
 					<table width="100%">
 							<tr>
 								<td>

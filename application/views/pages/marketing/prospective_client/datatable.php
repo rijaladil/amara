@@ -566,7 +566,7 @@
 												<select class="form-control" id="project_id" name="project_id[]">					
 													<option value="<?php echo $p->id ?>"><?php echo $p->name ?></option>
 												<?php } } ?>
-													<option value="">Pilih</option>
+													
 													<?php foreach($products as $p){ ?>
 													<option value="<?php echo $p->id ?>"><?php echo $p->name ?></option>
 													<?php }?>
@@ -754,7 +754,6 @@
 		 html += '<div id="inputFormRow_project">';
 		 html += '<div class="input-group mb-3">';
 		 html += '<select class="form-control" id="project_id" name="project_id[]">';
-		 html += '<option value="">Pilih</option>';
 		<?php foreach($products as $p){ ?>
 		 html += '<option value="<?php echo $p->id ?>"><?php echo $p->name ?></option>';
 		<?php }?>
@@ -775,7 +774,6 @@
 		 html += '<div id="inputFormRow_project">';
 		 html += '<div class="input-group mb-3">';
 		 html += '<select class="form-control" id="project_id" name="project_id[]">';
-		 html += '<option value="">Pilih</option>';
 		<?php foreach($products as $p){ ?>
 		 html += '<option value="<?php echo $p->id ?>"><?php echo $p->name ?></option>';
 		<?php }?>
