@@ -6,13 +6,11 @@ date_default_timezone_set('Asia/Jakarta');
 class prospective_client extends CI_Controller{
 
 
-	
 	function __construct(){
 		parent::__construct();
 		$this->check_isvalidated();
 		$this->load->model('m_data_prospective_client');
-		$this->load->helper('url');
-		
+		$this->load->helper('url');		
 	}
 
 	// login

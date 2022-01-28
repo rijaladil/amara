@@ -1,4 +1,5 @@
 <?php 
+
 defined('BASEPATH') OR exit('No direct script access allowed');
 date_default_timezone_set('Asia/Jakarta');
 
@@ -28,7 +29,12 @@ class client_process extends CI_Controller{
 	
 	// halaman utama 
 	public function index(){
-		$data['client_process'] = $this->m_data_client_process->get_data()->result();
+		$data['client_process'] = $this->m_data_client_process->get_data();
+
+		$data['confirmation'] = $this->m_data_client_process->get_data_client_confimation();
+		$data['penawaran'] = $this->m_data_client_process->get_data_client_penawaran();
+		$data['po'] = $this->m_data_client_process->get_data_client_po();
+
 		$data['client'] = $this->m_data_client_process->get_data_client()->result();
 		$data['products'] = $this->m_data_prospective_client->get_data_products();
 		$this->load->view('template/header/index');
