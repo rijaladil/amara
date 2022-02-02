@@ -36,7 +36,7 @@
 								<td><a  target="_blank" href="<?php echo base_url(). 'upload/'.$c->upload ; ?>" class="btn-primary view-pdf" ><?php echo $c->no_po ?></a></td>
 								<td><?php echo $c->name ?></td>
 								<td><?php
-								$string = $c->description;
+								$string = $c->info_po;
 									if (strlen($string) > 500) {
 
 									    // truncate string

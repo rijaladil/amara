@@ -19,12 +19,28 @@
 				 			c.product_id,
 				  			c.status_client,
 				   			c.id_user,
+
 							p.name as product_name,
-							s.name as sector_name
+							s.name as sector_name,
+
+							po.no_po,
+							po.date as date_po,
+							po.price as price_po,
+							po.info as info_po,
+							po.upload,
+
+							pen.no_penawaran,
+							pen.date as date_penawaran,
+							pen.price as price_penawaran,
+							pen.info as info_penawaran
+
+
 							');
 		$this->db->from('amc_m_client c');
         $this->db->join('amc_m_products p', 'p.id = c.product_id', 'left');
         $this->db->join('amc_m_sector s', 's.id = c.sector_id', 'left');
+        $this->db->join('amc_t_client_po po','c.id = po.client_id ','left');
+        $this->db->join('amc_t_client_penawaran pen' , 'c.id = pen.client_id' , 'left');
         $this->db->where('c.status_client', 1);
         $this->db->order_by('c.id', 'DESC');
         $query = $this->db->get();
