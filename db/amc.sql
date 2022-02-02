@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 18, 2022 at 05:23 AM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 7.3.28
+-- Generation Time: Feb 02, 2022 at 03:24 AM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 7.3.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -49,6 +49,13 @@ CREATE TABLE `amc_m_client` (
   `editUser` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `amc_m_client`
+--
+
+INSERT INTO `amc_m_client` (`id`, `name`, `information`, `address`, `city_kabupaten`, `province`, `address2`, `city_kabupaten2`, `province2`, `contact`, `email`, `sector_id`, `product_id`, `status_client`, `id_user`, `createDate`, `createUser`, `editDate`, `editUser`) VALUES
+(6, 'KEADILAN SEJAHTERA', 'PARTAI POLITIK', 'DKI JAKARTA', '', '', 'DKI JAKARTA', '', '', '', '', 9, 0, 1, 28, '2022-01-24 21:36:43', 0, '2022-01-24 21:38:56', 43);
+
 -- --------------------------------------------------------
 
 --
@@ -62,6 +69,13 @@ CREATE TABLE `amc_m_client_email` (
   `client_name` varchar(255) NOT NULL,
   `email` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `amc_m_client_email`
+--
+
+INSERT INTO `amc_m_client_email` (`id`, `id_email`, `client_id`, `client_name`, `email`) VALUES
+(15, 'E620220124213643  ', 6, 'KEADILAN SEJAHTERA', 'admin@admin.com');
 
 -- --------------------------------------------------------
 
@@ -79,6 +93,13 @@ CREATE TABLE `amc_m_client_pic_contact` (
   `email` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `amc_m_client_pic_contact`
+--
+
+INSERT INTO `amc_m_client_pic_contact` (`id`, `id_pic`, `client_id`, `client_name`, `pic`, `pic_contact`, `email`) VALUES
+(15, 'P620220124213643  ', 6, 'KEADILAN SEJAHTERA', '', '', '');
+
 -- --------------------------------------------------------
 
 --
@@ -93,6 +114,16 @@ CREATE TABLE `amc_m_client_project` (
   `project_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `amc_m_client_project`
+--
+
+INSERT INTO `amc_m_client_project` (`id`, `id_project`, `client_id`, `client_name`, `project_id`) VALUES
+(26, 'PJ620220124213643  ', 6, 'KEADILAN SEJAHTERA', 1),
+(27, 'PJ620220124213643  ', 6, 'KEADILAN SEJAHTERA', 3),
+(28, 'PJ620220124213643  ', 6, 'KEADILAN SEJAHTERA', 4),
+(29, 'PJ620220124213643  ', 6, 'KEADILAN SEJAHTERA', 5);
+
 -- --------------------------------------------------------
 
 --
@@ -106,6 +137,13 @@ CREATE TABLE `amc_m_client_tlp` (
   `client_name` varchar(255) NOT NULL,
   `tlp` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `amc_m_client_tlp`
+--
+
+INSERT INTO `amc_m_client_tlp` (`id`, `id_tlp`, `client_id`, `client_name`, `tlp`) VALUES
+(15, 'T620220124213643  ', 6, 'KEADILAN SEJAHTERA', '021-7565859');
 
 -- --------------------------------------------------------
 
@@ -736,7 +774,7 @@ CREATE TABLE `amc_t_adm_payment` (
 --
 
 INSERT INTO `amc_t_adm_payment` (`id`, `client_id`, `tahap`, `percentage`, `price`, `info`, `status`, `createDate`, `createUser`, `editDate`, `editeUser`) VALUES
-(1, 11, 2, 100, '4000000', 'Setelah Tandatangan Kontrak edit', 0, '2022-01-13 18:12:33', 0, '2022-01-13 19:11:05', 0);
+(1, 6, 2, 100, '4000000', 'Setelah Tandatangan Kontrak edit', 0, '2022-01-13 18:12:33', 0, '2022-01-24 21:51:50', 0);
 
 -- --------------------------------------------------------
 
@@ -787,6 +825,7 @@ CREATE TABLE `amc_t_client_po` (
   `date` int(11) NOT NULL,
   `price` double(20,0) NOT NULL,
   `info` text NOT NULL,
+  `upload` text NOT NULL,
   `createDate` datetime NOT NULL DEFAULT current_timestamp(),
   `createUser` int(11) NOT NULL,
   `editDate` datetime NOT NULL,
@@ -829,12 +868,7 @@ CREATE TABLE `amc_t_client_process` (
 --
 
 INSERT INTO `amc_t_client_process` (`id`, `no_po`, `product_id`, `client_id`, `description`, `price_bid`, `price`, `process_1`, `date_1`, `process_2`, `date_2`, `process_3`, `date_3`, `process_4`, `date_4`, `process_5`, `date_5`, `upload`, `createDate`, `createUser`, `editDate`, `editUser`) VALUES
-(1, 'PO-TEST-2012', 10, 5, '-', '0', '0', '', '2021-11-29', '', '0000-00-00', '', '0000-00-00', '', '0000-00-00', '', '0000-00-00', 'MARKETING-1638170757-List_Room_Peserta.pdf', '2021-11-29 14:21:38', 0, '2021-12-15 08:50:53', 0),
-(2, '012/M-AmC/X/2021', 10, 6, 'kegiatan pembangunan coba aja ', '12000000', '10000000', 'AWAL PERTAMA', '2021-12-12', 'KEDUA TAHAPAN', '2021-12-15', 'FOLLUP LAGI', '2021-12-20', 'PO BERHASIL', '2021-12-29', 'BERHASIL PENGERJAAN 3 BULAN', '2021-12-30', 'MARKETING-1638848438-21NOP2021_LapJumantik.pdf', '2021-11-29 14:44:09', 0, '2021-12-15 08:52:36', 0),
-(3, '120', 11, 8, 'ninur@amaracisadane.co.id', '20000', '20000', 'ninur@amaracisadane.co.id', '2021-12-12', 'ninur@amaracisadane.co.id', '2021-12-12', 'ninur@amaracisadane.co.id', '2022-12-12', 'ninur@amaracisadane.co.id', '2022-12-12', 'ninur@amaracisadane.co.id', '2022-12-12', 'MARKETING-1638848452-SE_Walikota_Perpanjangan_PPKM_Level_2_.pdf', '2021-12-07 10:13:23', 0, '2021-12-07 10:40:52', 0),
-(4, 'ffqwfqwf', 10, 7, 'afegewgeqfqw', '12121', '1212121', '112eqwe', '1222-02-12', '', '1222-12-12', '', '1212-12-12', '', '1212-12-12', 'wdwdw', '1212-12-12', '', '2021-12-15 08:54:24', 0, '0000-00-00 00:00:00', 0),
-(5, 'faaffafa', 0, 9, 'Jasa Penyusunan Dokumen Surat Pernyataan Kesangupan Pengelolaan dan Pemantauan Lingkungan Hidup (SPPL) Gudang Kelapa Dua', '807807', '7078078', 'sasa', '2021-12-30', 'asasa', '2021-12-31', 'adadfasd', '2022-01-01', 'aegsgeeg', '2021-12-31', 'wfawffawfaw', '2021-12-27', '', '2021-12-22 14:58:47', 0, '0000-00-00 00:00:00', 0),
-(6, '001/PO-AmC/XII/2021', 3, 11, 'Penyusunan Dokumen AMDAL, Pertek Air Limbah , Emisi, Andalalin Kegiatan Industri Plastik', '1000000', '1000000', 'Contac 1', '2021-12-26', 'SP 1', '2021-12-26', 'Konfimrais oleh User', '2021-12-26', 'Langsung ', '2021-12-26', 'Test', '2021-12-26', '', '2021-12-26 08:59:42', 0, '2021-12-26 10:10:21', 0);
+(1, '013/PO-AmC/X/2021', 0, 6, '', '100000000', '100000000', '', '2022-01-24', '', '0000-00-00', '', '0000-00-00', '', '0000-00-00', '', '2022-01-24', '', '2022-01-24 21:44:52', 0, '2022-01-24 21:50:58', 0);
 
 -- --------------------------------------------------------
 
@@ -922,7 +956,7 @@ CREATE TABLE `amc_t_recapitulation_project` (
 --
 
 INSERT INTO `amc_t_recapitulation_project` (`id`, `client_id`, `no_order`, `no_report`, `contract_start_date`, `contract_finish_date`, `project_activity`, `user_id`, `percentage`, `upload`, `createDate`, `createUser`, `editDate`, `editUser`) VALUES
-(8, 11, '002/AMC/1/2021', '', '2021-12-01', '2021-12-26', 'Penyusunan Dokumen AMDAL, Pertek Air Limbah , Emisi, Andalalin Kegiatan Industri Plastik', 35, 0, '', '2021-12-26 10:12:00', 0, '2021-12-26 10:12:30', 0);
+(10, 6, '031/LO-Amc/VI/2019', '', '2022-01-24', '2022-01-25', 'TEST PROJECT ACTIVITY', 42, 0, '', '2022-01-24 21:49:53', 0, '2022-01-24 21:50:32', 0);
 
 -- --------------------------------------------------------
 
@@ -1132,31 +1166,31 @@ ALTER TABLE `amc_t_work`
 -- AUTO_INCREMENT for table `amc_m_client`
 --
 ALTER TABLE `amc_m_client`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `amc_m_client_email`
 --
 ALTER TABLE `amc_m_client_email`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `amc_m_client_pic_contact`
 --
 ALTER TABLE `amc_m_client_pic_contact`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `amc_m_client_project`
 --
 ALTER TABLE `amc_m_client_project`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `amc_m_client_tlp`
 --
 ALTER TABLE `amc_m_client_tlp`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `amc_m_job`
@@ -1228,7 +1262,7 @@ ALTER TABLE `amc_t_client_po`
 -- AUTO_INCREMENT for table `amc_t_client_process`
 --
 ALTER TABLE `amc_t_client_process`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `amc_t_client_rekapitulasi_tender`
@@ -1246,7 +1280,7 @@ ALTER TABLE `amc_t_finance`
 -- AUTO_INCREMENT for table `amc_t_recapitulation_project`
 --
 ALTER TABLE `amc_t_recapitulation_project`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `amc_t_teknis_progress`
