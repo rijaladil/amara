@@ -131,27 +131,69 @@
 							<tr>
 								<td>
 							        <div class="form-group">
+							        	<label>Surat Penawaran :</label>
 							            <div id="inputFormRow_pic">
 							                <div class="input-group mb-3">
-							                    <input size="100" type="text" id="pic" name="pic[]" class="form-control m-input" placeholder="NO Penwaran" autocomplete="off">
+							                    <input size="100" type="text" id="no_penawaran" name="no_penawaran[]" class="form-control m-input" placeholder="No Penwaran" autocomplete="off">	                
+							                    <input type="date" id="date" name="date[]" class="form-control m-input" placeholder="date" autocomplete="off">							               
+							                    <input type="number" id="price" name="price[]" class="form-control m-input" placeholder="Price" autocomplete="off">
+							                     <div class="input-group-append">                
+							                        <button id="removeRow_pic" type="button" class="btn btn-primary btn-danger btn-sm">-</button>
+							                    </div>								                    				                
 							                </div>
-							                 <div class="input-group mb-3">
-							                    <input type="date" id="date" name="date[]" class="form-control m-input" placeholder="date" autocomplete="off">
+							                <div class="input-group mb-3">
+							                    <textarea class="form-control" type='text' rows="" id="info_penawaran" name="info_penawaran"  placeholder="Information"></textarea>
+							                </div>    
+							            </div>
+							            <div id="newRow_pic"></div>
+							            <button id="addRow_pic" type="button" class="btn btn-facebook">+Add</button>
+							        </div><hr>
+								</td>
+							</tr>
+							<!-- <tr>
+								<td>
+							        <div class="form-group">
+							            <div id="inputFormRow_pic">
+							            	<label>Surat Penawaran :</label>
+							                <div class="input-group mb-3" class="border">
+							                    <input size="100" type="text" id="no_penawaran" name="no_penawaran[]" class="form-control m-input" placeholder="No Penwaran" autocomplete="off">	                
+							                    <input type="date" id="date" name="date[]" class="form-control m-input" placeholder="date" autocomplete="off">							               
+							                    <input type="number" id="price" name="price[]" class="form-control m-input" placeholder="Price" autocomplete="off">
+							                     <div class="input-group-append">                
+							                        <button id="removeRow_pic" type="button" class="btn btn-primary btn-danger btn-sm">-</button>
+							                    </div>								                    				                
 							                </div>
-							                    <input type="number" id="price" name="price[]" class="form-control m-input" placeholder="price" autocomplete="off">
-							                    <textarea class="form-control" type='text' rows="" id="address2" name="address2"></textarea>
-							                    <div class="input-group-append">                
-							                        <button id="removeRow_pic" type="button" class="btn btn-danger">-</button>
-							                    </div>
-							                
+							                <div class="input-group mb-3">
+							                    <textarea class="form-control" type='text' rows="" id="info_penawaran" name="info_penawaran"  placeholder="Information"></textarea>
+							                </div>    
+							            </div>
+							            <div id="newRow_pic"></div>
+							            <button id="addRow_pic" type="button" class="btn btn-facebook">+Add</button>
+							        </div><hr>
+								</td>
+							</tr>
+							<tr>
+								<td>
+							        <div class="form-group">
+							            <div id="inputFormRow_pic">
+							            	<label>Surat Penawaran :</label>
+							                <div class="input-group mb-3" class="border">
+							                    <input size="100" type="text" id="no_penawaran" name="no_penawaran[]" class="form-control m-input" placeholder="No Penwaran" autocomplete="off">	                
+							                    <input type="date" id="date" name="date[]" class="form-control m-input" placeholder="date" autocomplete="off">							               
+							                    <input type="number" id="price" name="price[]" class="form-control m-input" placeholder="Price" autocomplete="off">
+							                     <div class="input-group-append">                
+							                        <button id="removeRow_pic" type="button" class="btn btn-primary btn-danger btn-sm">-</button>
+							                    </div>								                    				                
 							                </div>
+							                <div class="input-group mb-3">
+							                    <textarea class="form-control" type='text' rows="" id="info_penawaran" name="info_penawaran"  placeholder="Information"></textarea>
+							                </div>    
 							            </div>
 							            <div id="newRow_pic"></div>
 							            <button id="addRow_pic" type="button" class="btn btn-facebook">+Add</button>
 							        </div>
 								</td>
-							</tr>
-							
+							</tr> -->
 							
 						</table>
 					</div>
@@ -259,12 +301,16 @@
         var html = '';
         html += '<div id="inputFormRow_pic">';
         html += '<div class="input-group mb-3">';
-        html += '<input type="text" name="pic[]" class="form-control m-input" placeholder="Pic Name" autocomplete="off">';
-        html += '<input type="text" name="pic_contact[]" class="form-control m-input" placeholder="Contact Pic" autocomplete="off">';
-        html += '<input type="text" name="pic_email[]" class="form-control m-input" placeholder="pic@example.com" autocomplete="off">';
-        html += '<div class="input-group-append">';
-        html += '<button id="removeRow_pic" type="button" class="btn btn-danger">-</button>';
+        html += '<input size="100" type="text" id="no_penawaran" name="no_penawaran[]" class="form-control m-input" placeholder="No Penwaran" autocomplete="off">';	                
+        html += '<input type="date" id="date" name="date[]" class="form-control m-input" placeholder="date" autocomplete="off">';							               
+        html += '<input type="number" id="price" name="price[]" class="form-control m-input" placeholder="Price" autocomplete="off">';
+        html += '<div class="input-group-append">';                
+        html += '<button id="removeRow_pic" type="button" class="btn btn-primary btn-danger btn-sm">-</button>';
+        html += '</div>';								                    				                
         html += '</div>';
+        html += '<div class="input-group mb-3">';
+        html += '<textarea class="form-control" type="text" rows="" id="info_penawaran" name="info_penawaran"  placeholder="Information"></textarea>';
+        html += '</div>'; 
         html += '</div>';
 
         $('#newRow_pic').append(html);
