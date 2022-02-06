@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 02, 2022 at 03:24 AM
+-- Generation Time: Feb 06, 2022 at 06:50 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.3.26
 
@@ -54,7 +54,7 @@ CREATE TABLE `amc_m_client` (
 --
 
 INSERT INTO `amc_m_client` (`id`, `name`, `information`, `address`, `city_kabupaten`, `province`, `address2`, `city_kabupaten2`, `province2`, `contact`, `email`, `sector_id`, `product_id`, `status_client`, `id_user`, `createDate`, `createUser`, `editDate`, `editUser`) VALUES
-(6, 'KEADILAN SEJAHTERA', 'PARTAI POLITIK', 'DKI JAKARTA', '', '', 'DKI JAKARTA', '', '', '', '', 9, 0, 1, 28, '2022-01-24 21:36:43', 0, '2022-01-24 21:38:56', 43);
+(6, 'KEADILAN SEJAHTERA', 'PARTAI POLITIK', 'DKI JAKARTA', '', '', 'DKI JAKARTA', '', '', '', '', 9, 0, 1, 28, '2022-01-24 21:36:43', 0, '2022-02-07 00:49:44', 43);
 
 -- --------------------------------------------------------
 
@@ -75,7 +75,7 @@ CREATE TABLE `amc_m_client_email` (
 --
 
 INSERT INTO `amc_m_client_email` (`id`, `id_email`, `client_id`, `client_name`, `email`) VALUES
-(15, 'E620220124213643  ', 6, 'KEADILAN SEJAHTERA', 'admin@admin.com');
+(39, 'E620220124213643    ', 6, 'KEADILAN SEJAHTERA', 'admin@admin.com');
 
 -- --------------------------------------------------------
 
@@ -98,7 +98,7 @@ CREATE TABLE `amc_m_client_pic_contact` (
 --
 
 INSERT INTO `amc_m_client_pic_contact` (`id`, `id_pic`, `client_id`, `client_name`, `pic`, `pic_contact`, `email`) VALUES
-(15, 'P620220124213643  ', 6, 'KEADILAN SEJAHTERA', '', '', '');
+(39, 'P620220124213643    ', 6, 'KEADILAN SEJAHTERA', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -119,10 +119,10 @@ CREATE TABLE `amc_m_client_project` (
 --
 
 INSERT INTO `amc_m_client_project` (`id`, `id_project`, `client_id`, `client_name`, `project_id`) VALUES
-(26, 'PJ620220124213643  ', 6, 'KEADILAN SEJAHTERA', 1),
-(27, 'PJ620220124213643  ', 6, 'KEADILAN SEJAHTERA', 3),
-(28, 'PJ620220124213643  ', 6, 'KEADILAN SEJAHTERA', 4),
-(29, 'PJ620220124213643  ', 6, 'KEADILAN SEJAHTERA', 5);
+(122, 'PJ620220124213643   ', 6, 'KEADILAN SEJAHTERA', 1),
+(123, 'PJ620220124213643   ', 6, 'KEADILAN SEJAHTERA', 3),
+(124, 'PJ620220124213643   ', 6, 'KEADILAN SEJAHTERA', 4),
+(125, 'PJ620220124213643   ', 6, 'KEADILAN SEJAHTERA', 5);
 
 -- --------------------------------------------------------
 
@@ -143,7 +143,7 @@ CREATE TABLE `amc_m_client_tlp` (
 --
 
 INSERT INTO `amc_m_client_tlp` (`id`, `id_tlp`, `client_id`, `client_name`, `tlp`) VALUES
-(15, 'T620220124213643  ', 6, 'KEADILAN SEJAHTERA', '021-7565859');
+(39, 'T620220124213643    ', 6, 'KEADILAN SEJAHTERA', '021-7565859');
 
 -- --------------------------------------------------------
 
@@ -793,6 +793,14 @@ CREATE TABLE `amc_t_client_confirmation` (
   `editUSer` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `amc_t_client_confirmation`
+--
+
+INSERT INTO `amc_t_client_confirmation` (`id`, `client_id`, `date`, `info`, `createDate`, `createUser`, `editDate`, `editUSer`) VALUES
+(21, 6, '2022-02-07', 'OKE YANG PENTING GAJIAN', '2022-02-07 00:49:12', 0, '0000-00-00 00:00:00', 0),
+(22, 6, '2022-02-06', 'OKE YG PENTING LUNAS', '2022-02-07 00:49:12', 0, '0000-00-00 00:00:00', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -802,7 +810,7 @@ CREATE TABLE `amc_t_client_confirmation` (
 CREATE TABLE `amc_t_client_penawaran` (
   `id` int(11) NOT NULL,
   `client_id` int(11) NOT NULL,
-  `no_penawaran` varchar(50) NOT NULL,
+  `no_penawaran` varchar(100) NOT NULL,
   `date` date NOT NULL,
   `price` decimal(20,0) NOT NULL,
   `info` text NOT NULL,
@@ -811,6 +819,14 @@ CREATE TABLE `amc_t_client_penawaran` (
   `editDate` datetime NOT NULL,
   `editUSer` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `amc_t_client_penawaran`
+--
+
+INSERT INTO `amc_t_client_penawaran` (`id`, `client_id`, `no_penawaran`, `date`, `price`, `info`, `createDate`, `createUser`, `editDate`, `editUSer`) VALUES
+(31, 6, 'AMC/01/XXI/2022', '2022-02-08', '10000000', 'OKE YG PENTING ENAK 2', '2022-02-07 00:49:12', 0, '0000-00-00 00:00:00', 0),
+(32, 6, 'AMC/02/XXI/2022', '2022-02-09', '20000000', 'OKE YG PENTING ASIK 1', '2022-02-07 00:49:12', 0, '0000-00-00 00:00:00', 0);
 
 -- --------------------------------------------------------
 
@@ -821,8 +837,8 @@ CREATE TABLE `amc_t_client_penawaran` (
 CREATE TABLE `amc_t_client_po` (
   `id` int(11) NOT NULL,
   `client_id` int(11) NOT NULL,
-  `no_po` int(11) NOT NULL,
-  `date` int(11) NOT NULL,
+  `no_po` varchar(100) NOT NULL,
+  `date` date NOT NULL,
   `price` double(20,0) NOT NULL,
   `info` text NOT NULL,
   `upload` text NOT NULL,
@@ -831,6 +847,14 @@ CREATE TABLE `amc_t_client_po` (
   `editDate` datetime NOT NULL,
   `editUser` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `amc_t_client_po`
+--
+
+INSERT INTO `amc_t_client_po` (`id`, `client_id`, `no_po`, `date`, `price`, `info`, `upload`, `createDate`, `createUser`, `editDate`, `editUser`) VALUES
+(21, 6, 'AMC/2/X/2022', '2022-02-07', 2000000, 'RAME LEBIH ASIK', '', '2022-02-07 00:49:12', 0, '0000-00-00 00:00:00', 0),
+(22, 6, 'AMC/3/X/2022', '2022-02-06', 1000000, 'RAME RAME AJA ', '', '2022-02-07 00:49:12', 0, '0000-00-00 00:00:00', 0);
 
 -- --------------------------------------------------------
 
@@ -843,7 +867,7 @@ CREATE TABLE `amc_t_client_process` (
   `no_po` varchar(50) NOT NULL,
   `product_id` int(11) NOT NULL,
   `client_id` int(11) NOT NULL,
-  `description` text NOT NULL,
+  `project_activity` text NOT NULL,
   `price_bid` decimal(20,0) NOT NULL,
   `price` decimal(20,0) NOT NULL,
   `process_1` text NOT NULL COMMENT 'contact',
@@ -867,8 +891,8 @@ CREATE TABLE `amc_t_client_process` (
 -- Dumping data for table `amc_t_client_process`
 --
 
-INSERT INTO `amc_t_client_process` (`id`, `no_po`, `product_id`, `client_id`, `description`, `price_bid`, `price`, `process_1`, `date_1`, `process_2`, `date_2`, `process_3`, `date_3`, `process_4`, `date_4`, `process_5`, `date_5`, `upload`, `createDate`, `createUser`, `editDate`, `editUser`) VALUES
-(1, '013/PO-AmC/X/2021', 0, 6, '', '100000000', '100000000', '', '2022-01-24', '', '0000-00-00', '', '0000-00-00', '', '0000-00-00', '', '2022-01-24', '', '2022-01-24 21:44:52', 0, '2022-01-24 21:50:58', 0);
+INSERT INTO `amc_t_client_process` (`id`, `no_po`, `product_id`, `client_id`, `project_activity`, `price_bid`, `price`, `process_1`, `date_1`, `process_2`, `date_2`, `process_3`, `date_3`, `process_4`, `date_4`, `process_5`, `date_5`, `upload`, `createDate`, `createUser`, `editDate`, `editUser`) VALUES
+(31, '', 0, 6, 'SATU DUA TIGA EMPAT LIMA', '0', '0', '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', '2022-02-06 19:14:54', 0, '2022-02-07 00:49:12', 0);
 
 -- --------------------------------------------------------
 
@@ -950,13 +974,6 @@ CREATE TABLE `amc_t_recapitulation_project` (
   `editDate` datetime NOT NULL,
   `editUser` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `amc_t_recapitulation_project`
---
-
-INSERT INTO `amc_t_recapitulation_project` (`id`, `client_id`, `no_order`, `no_report`, `contract_start_date`, `contract_finish_date`, `project_activity`, `user_id`, `percentage`, `upload`, `createDate`, `createUser`, `editDate`, `editUser`) VALUES
-(10, 6, '031/LO-Amc/VI/2019', '', '2022-01-24', '2022-01-25', 'TEST PROJECT ACTIVITY', 42, 0, '', '2022-01-24 21:49:53', 0, '2022-01-24 21:50:32', 0);
 
 -- --------------------------------------------------------
 
@@ -1172,25 +1189,25 @@ ALTER TABLE `amc_m_client`
 -- AUTO_INCREMENT for table `amc_m_client_email`
 --
 ALTER TABLE `amc_m_client_email`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `amc_m_client_pic_contact`
 --
 ALTER TABLE `amc_m_client_pic_contact`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `amc_m_client_project`
 --
 ALTER TABLE `amc_m_client_project`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=126;
 
 --
 -- AUTO_INCREMENT for table `amc_m_client_tlp`
 --
 ALTER TABLE `amc_m_client_tlp`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `amc_m_job`
@@ -1244,25 +1261,25 @@ ALTER TABLE `amc_t_adm_payment`
 -- AUTO_INCREMENT for table `amc_t_client_confirmation`
 --
 ALTER TABLE `amc_t_client_confirmation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `amc_t_client_penawaran`
 --
 ALTER TABLE `amc_t_client_penawaran`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `amc_t_client_po`
 --
 ALTER TABLE `amc_t_client_po`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `amc_t_client_process`
 --
 ALTER TABLE `amc_t_client_process`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `amc_t_client_rekapitulasi_tender`

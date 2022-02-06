@@ -20,8 +20,16 @@
 				  			c.status_client,
 				   			c.id_user,
 
+				   			cp.project_activity,
+				   			cp.upload,
+
 							p.name as product_name,
 							s.name as sector_name,
+
+							pen.no_penawaran,
+							pen.date as date_penawaran,
+							pen.price as price_penawaran,
+							pen.info as info_penawaran,
 
 							po.no_po,
 							po.date as date_po,
@@ -29,70 +37,79 @@
 							po.info as info_po,
 							po.upload,
 
-							pen.no_penawaran,
-							pen.date as date_penawaran,
-							pen.price as price_penawaran,
-							pen.info as info_penawaran
-
+				  			con.date as date_confirmation,
+							con.info as info_confirmation
 
 							');
 		$this->db->from('amc_m_client c');
+		$this->db->join('amc_t_client_process cp','c.id = cp.client_id ','left');
         $this->db->join('amc_m_products p', 'p.id = c.product_id', 'left');
         $this->db->join('amc_m_sector s', 's.id = c.sector_id', 'left');
-        $this->db->join('amc_t_client_po po','c.id = po.client_id ','left');
+      
         $this->db->join('amc_t_client_penawaran pen' , 'c.id = pen.client_id' , 'left');
+        $this->db->join('amc_t_client_confirmation con' , 'c.id = con.client_id' , 'left');
+        $this->db->join('amc_t_client_po po','c.id = po.client_id ','left');
         $this->db->where('c.status_client', 1);
         $this->db->order_by('c.id', 'DESC');
+        $this->db->group_by('c.id');
         $query = $this->db->get();
         return $query->result();
 
 	}
 
-	
-	public function get_data_client_confimation($id=''){
- 		
-		$this->db->select('c.id as idc,
-						   c.name,
-						   cc.id,
-						   cc.date,
-						   cc.info ');
-		$this->db->from('amc_t_client_confirmation cc');
-		$this->db->join('amc_m_client c', 'cc.client_id = c.id', 'left');
-		$this->db->order_by('id', 'DESC');
- 		$query = $this->db->get();
-        return $query->result();
-
-	}
 
 	public function get_data_client_penawaran($id=''){
  		
  		$this->db->select('c.id as idc,
 						   c.name,
 						   cp.id,
+						   cp.client_id,
+						   cp.id as id_penawaran,
 						   cp.no_penawaran,
-						   cp.date,
-						   cp.price,
-						   cp.info');
+						   cp.date as date_penawaran,
+						   cp.price as bid_price,
+						   cp.info as info_penawaran');
  		$this->db->from('amc_t_client_penawaran cp');
 		$this->db->join('amc_m_client c', 'cp.client_id = c.id', 'left');
-		$this->db->order_by('id', 'DESC');
+		$this->db->order_by('cp.id', 'ASC');
+ 		$query = $this->db->get();
+        return $query->result();
+
+	}
+	
+	public function get_data_client_confirmation($id=''){
+ 		
+		$this->db->select('c.id as idc,
+						   c.name,
+						   cc.id,
+						   cc.client_id,
+						   cc.id as id_confirmation,
+						   cc.date as date_confirmation,
+						   cc.info as info_confirmation ');
+		$this->db->from('amc_t_client_confirmation cc');
+		$this->db->join('amc_m_client c', 'cc.client_id = c.id', 'left');
+		$this->db->order_by('cc.id', 'ASC');
  		$query = $this->db->get();
         return $query->result();
 
 	}
 
+
+
 	public function get_data_client_po($id=''){
  		
 		$this->db->select('c.id as idc,
 						   c.name,
-						   cpo.id,
-						   cpo.no_po,
-						   cpo.date,
-						   cpo.price,
-						   cpo.info');
- 		$this->db->from('amc_t_client_po cpo');
-		$this->db->join('amc_m_client c', 'cpo.client_id = c.id', 'left');
-		$this->db->order_by('id', 'DESC');
+						   po.id,
+						   po.client_id,
+						   po.id as id_po,
+						   po.no_po,
+						   po.date as date_po,
+						   po.price,
+						   po.info as info_po');
+ 		$this->db->from('amc_t_client_po po');
+		$this->db->join('amc_m_client c', 'po.client_id = c.id', 'left');
+		$this->db->order_by('po.id', 'ASC');
  		$query = $this->db->get();
         return $query->result();
 

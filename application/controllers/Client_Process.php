@@ -30,11 +30,9 @@ class client_process extends CI_Controller{
 	// halaman utama 
 	public function index(){
 		$data['client_process'] = $this->m_data_client_process->get_data();
-
-		$data['confirmation'] = $this->m_data_client_process->get_data_client_confimation();
+		$data['confirmation'] = $this->m_data_client_process->get_data_client_confirmation();
 		$data['penawaran'] = $this->m_data_client_process->get_data_client_penawaran();
 		$data['po'] = $this->m_data_client_process->get_data_client_po();
-
 		$data['client'] = $this->m_data_client_process->get_data_client()->result();
 		$data['products'] = $this->m_data_prospective_client->get_data_products();
 		$this->load->view('template/header/index');
@@ -45,103 +43,172 @@ class client_process extends CI_Controller{
 
 	// process input
 	public function p_input(){
-		$no_po = $this->input->post('no_po');
 		$client_id = $this->input->post('client_id');
-		$description = $this->input->post('description');
-		$product_id = $this->input->post('product_id');
-		$price_bid = $this->input->post('price_bid');
-		$price = $this->input->post('price');
-		$process_1 = $this->input->post('process_1');
-		$date_1 = $this->input->post('date_1');
-		$process_2 = $this->input->post('process_2');
-		$date_2 = $this->input->post('date_2');
-		$process_3 = $this->input->post('process_3');
-		$date_3 = $this->input->post('date_3');
-		$process_4 = $this->input->post('process_4');
-		$date_4 = $this->input->post('date_4');
-		$process_5 = $this->input->post('process_5');
-		$date_5 = $this->input->post('date_5');
+		$project_activity = $this->input->post('project_activity');
 		
 		
 
 		$data = array(
-			'no_po' => $no_po,
 			'client_id' => $client_id,
-			'description' => $description,
-			'product_id' => $product_id,
-			'price_bid' => $price_bid,
-			'price' => $price,
-			'process_1' => $process_1,
-			'date_1' => $date_1,
-			'process_2' => $process_2,
-			'date_2' => $date_2,
-			'process_3' => $process_3,
-			'date_3' => $date_3,
-			'process_4' => $process_4,
-			'date_4' => $date_4,
-			'process_5' => $process_5,
-			'date_5' => $date_5
-			
+			'project_activity' => $project_activity
 			);
 
 		$this->m_data_client_process->input_data($data,'amc_t_client_process');
+
+	// INPUT PENWARAN 
+		$this->form_validation->set_rules('no_penawaran[]', 'no_penawaran', 'required|trim|xss_clean');
+		$this->form_validation->set_rules('date_penawaran[]', 'date_penawaran', 'required|trim|xss_clean');
+		$this->form_validation->set_rules('bid_price[]', 'bid_price', 'required|trim|xss_clean');
+		$this->form_validation->set_rules('info_penawaran[]', 'info_penawaran', 'required|trim|xss_clean');
+		$penawaran = $this->input->post('no_penawaran');
+		$penawaran = $this->input->post('date_penawaran');
+		$penawaran = $this->input->post('bid_price');
+		$penawaran = $this->input->post('info_penawaran');
+	    $result = array();
+		    foreach($penawaran AS $key => $val){
+			     $result[] = array(
+			     	  "client_id" 		=> $client_id,
+				      "no_penawaran" 	=> $_POST['no_penawaran'][$key],
+				      "date"  			=> $_POST['date_penawaran'][$key],
+				      "price"  			=> $_POST['bid_price'][$key],
+				      "info"  			=> $_POST['info_penawaran'][$key]
+			     );
+		    }    
+	    $this->db->insert_batch('amc_t_client_penawaran', $result); 
+
+	// INPUT CONFIRMATION
+	    $this->form_validation->set_rules('date_confirmation[]', 'date_confirmation', 'required|trim|xss_clean');
+		$this->form_validation->set_rules('info_confirmation[]', 'info_confirmation', 'required|trim|xss_clean');
+		$confirmation = $this->input->post('date_confirmation');
+		$confirmation = $this->input->post('info_confirmation');
+	    $result2 = array();
+		    foreach($confirmation AS $key => $val){
+			     $result2[] = array(
+			     	  "client_id" 		=> $client_id,
+				      "date" 			=> $_POST['date_confirmation'][$key],
+				      "info"  			=> $_POST['info_confirmation'][$key]
+			     );
+		    }    
+	    $this->db->insert_batch('amc_t_client_confirmation', $result2); 
+
+	// INPUT PO / KONTRAK
+	    $this->form_validation->set_rules('no_po[]', 'no_po', 'required|trim|xss_clean');
+		$this->form_validation->set_rules('date_po[]', 'date_po', 'required|trim|xss_clean');
+		$this->form_validation->set_rules('price[]', 'price', 'required|trim|xss_clean');
+		$this->form_validation->set_rules('info_po[]', 'info_po', 'required|trim|xss_clean');
+		$po = $this->input->post('no_po');
+		$po = $this->input->post('date_po');
+		$po = $this->input->post('price');
+		$po = $this->input->post('info_po');
+	    $result3 = array();
+		    foreach($po AS $key => $val){
+			     $result3[] = array(
+			     	  "client_id" 		=> $client_id,
+				      "no_po" 			=> $_POST['no_po'][$key],
+				      "date"  			=> $_POST['date_po'][$key],
+				      "price"  			=> $_POST['price'][$key],
+				      "info"  			=> $_POST['info_po'][$key]
+			     );
+		    }    
+	    $this->db->insert_batch('amc_t_client_po', $result3); 
+
+
 		redirect('Client_Process/index');
 	}
 
-	// display input
-	public function input(){		
-		$data['client_process'] = $this->m_data_client_process->get_data()->result();
-		$data['client'] = $this->m_data_client_process->get_data_client()->result();
-		$this->load->view('template/header/index');
-		$this->load->view('template/menu/index');
-		$this->load->view('pages/marketing/client_process/input',$data);
-		$this->load->view('template/footer/index');
-
-	}
+	
 
  	// process update
 	 public function update(){
-		$id= $this->input->post('id');
-		$no_po = $this->input->post('no_po');
-		$description = $this->input->post('description');
-		$product_id = $this->input->post('product_id');
-		$price_bid = $this->input->post('price_bid');
-		$price = $this->input->post('price');
-		$process_1 = $this->input->post('process_1');
-		$date_1 = $this->input->post('date_1');
-		$process_2 = $this->input->post('process_2');
-		$date_2 = $this->input->post('date_2');
-		$process_3 = $this->input->post('process_3');
-		$date_3 = $this->input->post('date_3');
-		$process_4 = $this->input->post('process_4');
-		$date_4 = $this->input->post('date_4');
-		$process_5 = $this->input->post('process_5');
-		$date_5 = $this->input->post('date_5');
+		$client_id = $this->input->post('client_id');
+		$project_activity = $this->input->post('project_activity');
+		$status_client = $this->input->post('status_client');
 
 		$data = array(
-			'no_po' => $no_po,
-			'description' => $description,
-			'product_id' => $product_id,
-			'price_bid' => $price_bid,
-			'price' => $price,
-			'process_1' => $process_1,
-			'date_1' => $date_1,
-			'process_2' => $process_2,
-			'date_2' => $date_2,
-			'process_3' => $process_3,
-			'date_3' => $date_3,
-			'process_4' => $process_4,
-			'date_4' => $date_4,
-			'process_5' => $process_5,
-			'date_5' => $date_5,
+			'project_activity' => $project_activity,
 			'editDate'=>date('Y-m-d H:i:s')
 		);
 
-		$where = array(
-			'id' => $id
-		);
+		$where = array('client_id' => $client_id );
 
 		$this->m_data_client_process->update_data($where,$data,'amc_t_client_process');
+
+		//update client status black list
+		$data2 = array(
+			'status_client' => $status_client,
+			'editDate'=>date('Y-m-d H:i:s')
+		);
+		
+		$where2 = array(
+			'id' => $client_id
+		);
+
+		$this->m_data_client_process->update_data($where2,$data2,'amc_m_client');
+
+
+		// EDIT PENWARAN 
+		$where = array("client_id" => $client_id);
+		$this->m_data_client_process->delete_data($where,'amc_t_client_penawaran');
+		$this->form_validation->set_rules('no_penawaran[]', 'no_penawaran', 'required|trim|xss_clean');
+		$this->form_validation->set_rules('date_penawaran[]', 'date_penawaran', 'required|trim|xss_clean');
+		$this->form_validation->set_rules('bid_price[]', 'bid_price', 'required|trim|xss_clean');
+		$this->form_validation->set_rules('info_penawaran[]', 'info_penawaran', 'required|trim|xss_clean');
+		$penawaran = $this->input->post('no_penawaran');
+		$penawaran = $this->input->post('date_penawaran');
+		$penawaran = $this->input->post('bid_price');
+		$penawaran = $this->input->post('info_penawaran');
+	    $result = array();
+		    foreach($penawaran AS $key => $val){
+			     $result[] = array(
+			     	  "client_id" 		=> $client_id,
+				      "no_penawaran" 	=> $_POST['no_penawaran'][$key],
+				      "date"  			=> $_POST['date_penawaran'][$key],
+				      "price"  			=> $_POST['bid_price'][$key],
+				      "info"  			=> $_POST['info_penawaran'][$key]
+			     );
+		    }    
+	    $this->db->insert_batch('amc_t_client_penawaran', $result); 
+
+	// EDIT CONFIRMATION
+	    $where = array("client_id" => $client_id);
+		$this->m_data_client_process->delete_data($where,'amc_t_client_confirmation');
+	    $this->form_validation->set_rules('date_confirmation[]', 'date_confirmation', 'required|trim|xss_clean');
+		$this->form_validation->set_rules('info_confirmation[]', 'info_confirmation', 'required|trim|xss_clean');
+		$confirmation = $this->input->post('date_confirmation');
+		$confirmation = $this->input->post('info_confirmation');
+	    $result2 = array();
+		    foreach($confirmation AS $key => $val){
+			     $result2[] = array(
+			     	  "client_id" 		=> $client_id,
+				      "date" 			=> $_POST['date_confirmation'][$key],
+				      "info"  			=> $_POST['info_confirmation'][$key]
+			     );
+		    }    
+	    $this->db->insert_batch('amc_t_client_confirmation', $result2); 
+
+	// EDIT PO / KONTRAK
+	    $where = array("client_id" => $client_id);
+		$this->m_data_client_process->delete_data($where,'amc_t_client_po');
+	    $this->form_validation->set_rules('no_po[]', 'no_po', 'required|trim|xss_clean');
+		$this->form_validation->set_rules('date_po[]', 'date_po', 'required|trim|xss_clean');
+		$this->form_validation->set_rules('price[]', 'price', 'required|trim|xss_clean');
+		$this->form_validation->set_rules('info_po[]', 'info_po', 'required|trim|xss_clean');
+		$po = $this->input->post('no_po');
+		$po = $this->input->post('date_po');
+		$po = $this->input->post('price');
+		$po = $this->input->post('info_po');
+	    $result3 = array();
+		    foreach($po AS $key => $val){
+			     $result3[] = array(
+			     	  "client_id" 		=> $client_id,
+				      "no_po" 			=> $_POST['no_po'][$key],
+				      "date"  			=> $_POST['date_po'][$key],
+				      "price"  			=> $_POST['price'][$key],
+				      "info"  			=> $_POST['info_po'][$key]
+			     );
+		    }    
+	    $this->db->insert_batch('amc_t_client_po', $result3); 
+
 		redirect('Client_Process/index');
 		// var_dump ($data);
 	}
@@ -158,8 +225,16 @@ class client_process extends CI_Controller{
 
 	// process delete
 	public function delete($id){
-		$where = array('id' => $id);
+		$data = array('status_client'=>'0');
+		$where1 = array('id' => $id);
+		$this->m_data_client_process->update_data($where1,$data,'amc_m_client');
+
+		$where = array('client_id' => $id);
 		$this->m_data_client_process->delete_data($where,'amc_t_client_process');
+		$this->m_data_client_process->delete_data($where,'amc_t_client_penawaran');
+		$this->m_data_client_process->delete_data($where,'amc_t_client_confirmation');
+		$this->m_data_client_process->delete_data($where,'amc_t_client_po');
+
 		redirect('Client_Process/index');
 	}
 

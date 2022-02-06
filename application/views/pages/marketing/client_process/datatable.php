@@ -20,7 +20,7 @@
 						<th width="2%">No</th>
 							<th width="10%">NO PO</th>
 							<th width="10%">Company Name</th>
-							<th width="20%">Description</th>
+							<th width="20%">Project Activity</th>
 							<th width="5%">Price</th>
 							<th>Process</th>
 							<th width="7%">Product</th>
@@ -31,13 +31,15 @@
 							<?php 
 							$id = 1;
 							foreach($client_process as $c){ 
+								foreach($po as $a) {
+								if($c->no_po == $a->no_po){
 							?>
 							<tr>
 								<td><?php echo $id++ ?></td>
 								<td><a  target="_blank" href="<?php echo base_url(). 'upload/'.$c->upload ; ?>" class="btn-primary view-pdf" ><?php echo $c->no_po ?></a></td>
 								<td><?php echo $c->name ?></td>
 								<td><?php
-									$string = $c->info_po;
+									$string = $c->project_activity;
 									if (strlen($string) > 500) {
 
 									    // truncate string
@@ -57,7 +59,22 @@
 									<?php }?>
 								</td>
 								<td>
-									 Kosong
+									 <b>Penwaran : </b><br>
+									 <?php echo $c->no_penawaran;?> - 
+									 <?php echo $c->date_penawaran;?> - 
+									 <?php echo $c->price_penawaran;?> - 
+									 <?php echo $c->info_penawaran;?>
+									 <hr>
+									 <b>Confirmation : </b><br>
+									 <?php echo $c->date_confirmation;?> - 
+									 <?php echo $c->info_confirmation;?> 
+									 <hr>
+									 <b>PO/ Kontrak : </b><br>
+									 <?php echo $c->date_po;?> - 
+									 <?php echo $c->price_po;?> - 
+									 <?php echo $c->info_po;?> 
+
+
 								</td>
 								<td><?php echo $c->product_name ?></td>
 								<td  class="row justify-content-center">	
@@ -95,7 +112,7 @@
 								<?php }?>
 								</td>
 							</tr>
-							<?php } ?>
+							<?php } } } ?>
 						</tbody>
 					</table>
 			   	</div>
@@ -110,9 +127,7 @@
 					</div>
 					<div class="modal-body">
 					<form action="<?php echo base_url(). 'index.php/Client_Process/p_input'; ?>" method="post">
-
-						<table width="100%">
-				
+						<table width="100%">		
 							<tr>
 								<td>
 									<div class="form-group ">
@@ -130,71 +145,76 @@
 							</tr>
 							<tr>
 								<td>
-							        <div class="form-group">
-							        	<label>Surat Penawaran :</label>
-							            <div id="inputFormRow_pic">
-							                <div class="input-group mb-3">
-							                    <input size="100" type="text" id="no_penawaran" name="no_penawaran[]" class="form-control m-input" placeholder="No Penwaran" autocomplete="off">	                
-							                    <input type="date" id="date" name="date[]" class="form-control m-input" placeholder="date" autocomplete="off">							               
-							                    <input type="number" id="price" name="price[]" class="form-control m-input" placeholder="Price" autocomplete="off">
-							                     <div class="input-group-append">                
-							                        <button id="removeRow_pic" type="button" class="btn btn-primary btn-danger btn-sm">-</button>
-							                    </div>								                    				                
-							                </div>
-							                <div class="input-group mb-3">
-							                    <textarea class="form-control" type='text' rows="" id="info_penawaran" name="info_penawaran"  placeholder="Information"></textarea>
-							                </div>    
-							            </div>
-							            <div id="newRow_pic"></div>
-							            <button id="addRow_pic" type="button" class="btn btn-facebook">+Add</button>
-							        </div><hr>
+									<div class="form-group ">
+										<label for="inputdefault">Project Activity:</label>
+										<textarea class="form-control" type='text' rows="" id="project_activity" name="project_activity"  placeholder="Activity"></textarea>
+									</div>
 								</td>
 							</tr>
-							<!-- <tr>
+							<tr>
 								<td>
 							        <div class="form-group">
-							            <div id="inputFormRow_pic">
-							            	<label>Surat Penawaran :</label>
-							                <div class="input-group mb-3" class="border">
-							                    <input size="100" type="text" id="no_penawaran" name="no_penawaran[]" class="form-control m-input" placeholder="No Penwaran" autocomplete="off">	                
-							                    <input type="date" id="date" name="date[]" class="form-control m-input" placeholder="date" autocomplete="off">							               
-							                    <input type="number" id="price" name="price[]" class="form-control m-input" placeholder="Price" autocomplete="off">
+							        	<label>Surat Penawaran :</label>
+							            <div id="inputFormRow_penawaran">
+							                <div class="input-group mb-3">
+							                    <input size="100" type="text" id="no_penawaran" name="no_penawaran[]" class="form-control m-input" placeholder="No penawaran" autocomplete="off">	               
+							                    <input type="date" id="date_penawaran" name="date_penawaran[]" class="form-control m-input" placeholder="date" autocomplete="off">
+							                    <input type="number" id="bid_price" name="bid_price[]" class="form-control m-input" placeholder="Bid Price" autocomplete="off">
 							                     <div class="input-group-append">                
-							                        <button id="removeRow_pic" type="button" class="btn btn-primary btn-danger btn-sm">-</button>
+							                        <button id="removeRow_penawaran" type="button" class="btn btn-primary btn-danger btn-sm">-</button>
 							                    </div>								                    				                
 							                </div>
 							                <div class="input-group mb-3">
-							                    <textarea class="form-control" type='text' rows="" id="info_penawaran" name="info_penawaran"  placeholder="Information"></textarea>
+							                    <textarea class="form-control" type='text' rows="" id="info_penawaran" name="info_penawaran[]"  placeholder="Information" autocomplete="off"></textarea>
 							                </div>    
 							            </div>
-							            <div id="newRow_pic"></div>
-							            <button id="addRow_pic" type="button" class="btn btn-facebook">+Add</button>
+							            <div id="newRow_penawaran"></div>
+							            <button id="addRow_penawaran" type="button" class="btn btn-facebook">+Add</button>
 							        </div><hr>
 								</td>
 							</tr>
 							<tr>
 								<td>
 							        <div class="form-group">
-							            <div id="inputFormRow_pic">
-							            	<label>Surat Penawaran :</label>
-							                <div class="input-group mb-3" class="border">
-							                    <input size="100" type="text" id="no_penawaran" name="no_penawaran[]" class="form-control m-input" placeholder="No Penwaran" autocomplete="off">	                
-							                    <input type="date" id="date" name="date[]" class="form-control m-input" placeholder="date" autocomplete="off">							               
+							        	<label>History Confirmation :</label>
+							            <div id="inputFormRow_confirmation">
+							                <div class="input-group mb-3">                
+							                    <input type="date" id="date_confirmation" name="date_confirmation[]" class="form-control m-input" placeholder="date" autocomplete="off">
+							                    <div class="input-group-append">                
+							                        <button id="removeRow_confirmation" type="button" class="btn btn-primary btn-danger btn-sm">-</button>
+							                    </div>		                
+							                </div>
+							                <div class="input-group mb-3">
+							                    <textarea class="form-control" type="text" rows="" id="info_confirmation" name="info_confirmation[]"  placeholder="Information" autocomplete="off"></textarea>
+							                </div>    
+							            </div>
+							            <div id="newRow_confirmation"></div>
+							            <button id="addRow_confirmation" type="button" class="btn btn-facebook">+Add</button>
+							        </div><hr>
+								</td>
+							</tr>
+							<tr>
+								<td>
+							        <div class="form-group">
+							        	<label>PO / Kontrak :</label>
+							            <div id="inputFormRow_po">
+							                <div class="input-group mb-3">
+							                    <input size="100" type="text" id="no_po" name="no_po[]" class="form-control m-input" placeholder="No PO / Kontrak" autocomplete="off">       
+							                    <input type="date" id="date_po" name="date_po[]" class="form-control m-input" placeholder="date" autocomplete="off">		               
 							                    <input type="number" id="price" name="price[]" class="form-control m-input" placeholder="Price" autocomplete="off">
 							                     <div class="input-group-append">                
-							                        <button id="removeRow_pic" type="button" class="btn btn-primary btn-danger btn-sm">-</button>
+							                        <button id="removeRow_po" type="button" class="btn btn-primary btn-danger btn-sm">-</button>
 							                    </div>								                    				                
 							                </div>
 							                <div class="input-group mb-3">
-							                    <textarea class="form-control" type='text' rows="" id="info_penawaran" name="info_penawaran"  placeholder="Information"></textarea>
+							                    <textarea class="form-control" type="text" rows="" id="info_po" name="info_po[]"  placeholder="Information" autocomplete="off"></textarea>
 							                </div>    
 							            </div>
-							            <div id="newRow_pic"></div>
-							            <button id="addRow_pic" type="button" class="btn btn-facebook">+Add</button>
+							            <div id="newRow_po"></div>
+							            <button id="addRow_po" type="button" class="btn btn-facebook">+Add</button>
 							        </div>
 								</td>
-							</tr> -->
-							
+							</tr>						
 						</table>
 					</div>
 					<div class="modal-footer">
@@ -205,6 +225,150 @@
 				</div>
 				</div>
 			</div>
+
+
+
+<!-- UDAPTE DATA -->
+			<?php $id = 1; 	foreach($client_process as $c){ 
+			?>
+			<div class="modal fade" id="Fedit<?php echo $c->id ?>" role="dialog">
+				<div class="modal-dialog modal-xl">
+				<div class="modal-content">
+					<div class="modal-header">	
+						<h4 class="modal-title">Edit Client Process</h4>
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+					</div>
+					<div class="modal-body">					
+					<form action="<?php echo base_url(). 'index.php/Client_Process/update'; ?>" method="post">
+						<table width="100%">				
+							<tr>
+								<td>
+									<div class="form-group ">
+										<label for="inputdefault">Company Name:</label>
+										<div class="input-group mb-3">
+										<input type="text" name="client_id" value="<?php echo $c->id; ?>" hidden>
+										<input type="text" name="name" id="name" value="<?php echo $c->name; ?>" class="form-control m-input" readonly>
+										</div>
+										
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="form-group ">
+										<label for="inputdefault">Project Activity:</label>
+										<textarea class="form-control" type='text' rows="" id="project_activity" name="project_activity"  placeholder="Activity"><?php echo $c->project_activity; ?></textarea>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+							        <div class="form-group">
+							        	<label>Surat Penawaran :</label>
+							        	<?php foreach($penawaran as $p){ 
+							        		if($p->client_id == $c->id) {?>
+							            <div id="inputFormRow_penawaran_<?php echo $c->id ?>">
+							                <div class="input-group mb-3">
+							                	<input type="hidden" name="id_penawaran" value="<?php echo $p->id_penawaran ?>" >  
+							                    <input size="100" type="text" id="no_penawaran" name="no_penawaran[]" class="form-control m-input" placeholder="No penawaran" autocomplete="off" value="<?php echo $p->no_penawaran ?>" >	                
+							                    <input type="date" id="date_penawaran" name="date_penawaran[]" class="form-control m-input" placeholder="date" autocomplete="off" value="<?php echo $p->date_penawaran ?>" >
+							                    <input type="number" id="bid_price" name="bid_price[]" class="form-control m-input" placeholder="Bid Price" autocomplete="off" value="<?php echo $p->bid_price ?>" >
+							                     <div class="input-group-append">                
+							                        <button id="removeRow_penawaran_<?php echo $p->id ?>" type="button" class="btn btn-primary btn-danger btn-sm" hidden>-</button>
+							                    </div>								                    				                
+							                </div>
+							                <div class="input-group mb-3">
+							                    <textarea class="form-control" type='text' rows="" id="info_penawaran" name="info_penawaran[]"  placeholder="Information" autocomplete="off"><?php echo $p->info_penawaran ?></textarea>
+							                </div>    
+							            </div>
+							            <?php }  }?>
+							            <div id="newRow_penawaran_<?php echo $c->id ?>"></div>
+							            <button id="addRow_penawaran_<?php echo $c->id ?>" type="button" class="btn btn-facebook">+Add</button>
+							        </div><hr>
+								</td>
+							</tr>
+							<tr>
+								<td>
+							        <div class="form-group">							        	
+							        	<label>History Confirmation :</label>
+							        	<?php foreach($confirmation as $co){ 
+							        		if($co->client_id == $c->id) {?>
+							            <div id="inputFormRow_confirmation_<?php echo $co->id ?>">
+							                <div class="input-group mb-3">  
+							                	<input type="hidden" name="id_confirmation" value="<?php echo $co->id_confirmation ?> " >              
+							                    <input type="date" id="date_confirmation" name="date_confirmation[]" class="form-control m-input" placeholder="date" autocomplete="off" value="<?php echo $co->date_confirmation ?>">
+							                    <div class="input-group-append">                
+							                        <button id="removeRow_confirmation_<?php echo $co->id ?>" type="button" class="btn btn-primary btn-danger btn-sm" hidden>-</button>
+							                    </div>		                
+							                </div>							               
+							                <div class="input-group mb-3">
+							                    <textarea class="form-control" type="text" rows="" id="info_confirmation" name="info_confirmation[]"  placeholder="Information" autocomplete="off"><?php echo $co->info_confirmation ?></textarea>
+							                </div>    
+							            </div>
+							             <?php }  }?>
+							            <div id="newRow_confirmation_<?php echo $c->id ?>"></div>
+							            <button id="addRow_confirmation_<?php echo $c->id ?>" type="button" class="btn btn-facebook">+Add</button>
+							        </div><hr>
+								</td>
+							</tr>
+							<tr>
+								<td>
+							        <div class="form-group">							        	
+							        	<label>PO / Kontrak :</label>
+							        	<?php foreach($po as $po){ 
+							        		if($po->client_id == $c->id) { ?>
+							            <div id="inputFormRow_po_<?php echo $po->id ?>">
+							                <div class="input-group mb-3">
+							                	<input type="hidden" name="id_po" value="<?php echo $po->id_po ?>" >
+							                    <input size="100" type="text" id="no_po" name="no_po[]" class="form-control m-input" placeholder="No PO / Kontrak" autocomplete="off" value="<?php echo $po->no_po ?>">       
+							                    <input type="date" id="date_po" name="date_po[]" class="form-control m-input" placeholder="date" autocomplete="off" value="<?php echo $po->date_po ?>">		               
+							                    <input type="number" id="price" name="price[]" class="form-control m-input" placeholder="Price" autocomplete="off" value="<?php echo $po->price ?>">
+							                     <div class="input-group-append">                
+							                        <button id="removeRow_po_<?php echo $po->id ?>" type="button" class="btn btn-primary btn-danger btn-sm" hidden>-</button>
+							                    </div>								                    				                
+							                </div>							                
+							                <div class="input-group mb-3">
+							                    <textarea class="form-control" type="text" rows="" id="info_po" name="info_po[]"  placeholder="Information" autocomplete="off"><?php echo $po->info_po ?></textarea>
+							                </div>    
+							            </div>
+							            <?php }  }?>
+							            <div id="newRow_po_<?php echo $c->id ?>"></div>
+							            <button id="addRow_po_<?php echo $c->id ?>" type="button" class="btn btn-facebook">+Add</button>
+							        </div>
+								</td>
+							</tr>	
+							<tr>
+								<td>
+									<div class="form-group">
+										<label for="inputdefault">Tipe Process:</label>
+										<select class="form-control" name="status_client">
+											<option value="<?php echo $c->status_client ?>">
+												<?php if ($c->status_client === '0') : ?> Contact
+												<?php elseif ($c->status_client === '1'): ?> Client Process
+												<?php else: ?> Client Closing
+												<?php endif; ?>
+											</option><hr>	
+											<option value="1">Client Process</option>
+											<option value="2">Client Closing</option>
+											<option value="3">Black List</option>
+										</select>
+									</div>
+								</td>
+							</tr>					
+						</table>			
+					
+						<div class="modal-footer">
+							<input type="submit" class="btn btn-info" value="Edit">
+							<button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+						</div>
+					</form>	
+					</div>
+				</div>
+				</div>
+			</div>
+			<?php } ?>
+
+
 
 <!-- UPLOAD DATA  -->
 			<?php $id = 1; 	foreach($client_process as $c){ 
@@ -249,85 +413,185 @@
 			</div>
 			<?php } ?>
 
-
-<!-- UDAPTE DATA -->
-			<?php $id = 1; 	foreach($client_process as $c){ 
-			?>
-			<div class="modal fade" id="Fedit<?php echo $c->id ?>" role="dialog">
-				<div class="modal-dialog modal-xl">
-				<div class="modal-content">
-					<div class="modal-header">	
-						<h4 class="modal-title">Edit Client Process</h4>
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-					</div>
-					<div class="modal-body">
-					
-					<form action="<?php echo base_url(). 'index.php/Client_Process/update'; ?>" method="post">
-						<table width="100%">
-				
-							<tr>
-								<td>
-									<div class="form-group ">
-										<label for="inputdefault">Company Name:</label>
-										<input type="hidden" name="id" value="<?php echo $c->id ?> " >
-										<select class="form-control" id="" name="" required>
-											<option>
-												<?php echo $c->name ?>
-											</option>
-										</select>
-									</div>
-								</td>
-
-						</table>			
-					
-						<div class="modal-footer">
-							<input type="submit" class="btn btn-info" value="Edit">
-							<button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
-						</div>
-					</form>	
-					</div>
-				</div>
-				</div>
-			</div>
-			<?php } ?>
 			
 		</div>
 </div>
 
 <script type="text/javascript">
 
-    // add row pic
-    $("#addRow_pic").click(function () {
+    // add row penawaran
+    $("#addRow_penawaran").click(function () {
         var html = '';
-        html += '<div id="inputFormRow_pic">';
+        html += '<div id="inputFormRow_penawaran">';
         html += '<div class="input-group mb-3">';
-        html += '<input size="100" type="text" id="no_penawaran" name="no_penawaran[]" class="form-control m-input" placeholder="No Penwaran" autocomplete="off">';	                
-        html += '<input type="date" id="date" name="date[]" class="form-control m-input" placeholder="date" autocomplete="off">';							               
-        html += '<input type="number" id="price" name="price[]" class="form-control m-input" placeholder="Price" autocomplete="off">';
+        html += '<input size="100" type="text" id="no_penawaran" name="no_penawaran[]" class="form-control m-input" placeholder="No penawaran" autocomplete="off">';	                
+        html += '<input type="date" id="date_penawaran" name="date_penawaran[]" class="form-control m-input" placeholder="date" autocomplete="off">';				               
+        html += '<input type="number" id="bid_price" name="bid_price[]" class="form-control m-input" placeholder="Price" autocomplete="off">';
         html += '<div class="input-group-append">';                
-        html += '<button id="removeRow_pic" type="button" class="btn btn-primary btn-danger btn-sm">-</button>';
+        html += '<button id="removeRow_penawaran" type="button" class="btn btn-primary btn-danger btn-sm">-</button>';
         html += '</div>';								                    				                
         html += '</div>';
         html += '<div class="input-group mb-3">';
-        html += '<textarea class="form-control" type="text" rows="" id="info_penawaran" name="info_penawaran"  placeholder="Information"></textarea>';
+        html += '<textarea class="form-control" type="text" rows="" id="info_penawaran" name="info_penawaran[]"  placeholder="Information" autocomplete="off"></textarea>';
         html += '</div>'; 
         html += '</div>';
 
-        $('#newRow_pic').append(html);
+        $('#newRow_penawaran').append(html);
     });
-    
 
-// remove row pic
-    $(document).on('click', '#removeRow_pic', function () {
-        $(this).closest('#inputFormRow_pic').remove();
+    // edit row penawaran
+    <?php  foreach($client_process as $c){  ?>
+    $("#addRow_penawaran_<?php echo $c->id ?>").click(function () {
+        var html = '';
+        html += '<div id="inputFormRow_penawaran">';
+        html += '<div class="input-group mb-3">';
+        html += '<input size="100" type="text" id="no_penawaran" name="no_penawaran[]" class="form-control m-input" placeholder="No penawaran" autocomplete="off">';	                
+        html += '<input type="date" id="date_penawaran" name="date_penawaran[]" class="form-control m-input" placeholder="date" autocomplete="off">';				               
+        html += '<input type="number" id="bid_price" name="bid_price[]" class="form-control m-input" placeholder="Price" autocomplete="off">';
+        html += '<div class="input-group-append">';                
+        html += '<button id="removeRow_penawaran" type="button" class="btn btn-primary btn-danger btn-sm">-</button>';
+        html += '</div>';								                    				                
+        html += '</div>';
+        html += '<div class="input-group mb-3">';
+        html += '<textarea class="form-control" type="text" rows="" id="info_penawaran" name="info_penawaran[]"  placeholder="Information" autocomplete="off"></textarea>';
+        html += '</div>'; 
+        html += '</div>';
+
+        $('#newRow_penawaran_<?php echo $c->id ?>').append(html);
     });
+    <?php } ?>
+
+
+ // ================================================//
+    // add row confirmation
+    $("#addRow_confirmation").click(function () {
+    	var html = '';
+	    html += '<div id="inputFormRow_confirmation">';
+	    html += '<div class="input-group mb-3">';                
+	    html += '<input type="date" id="date_confirmation" name="date_confirmation[]" class="form-control m-input" placeholder="date" autocomplete="off">';
+	    html += '<div class="input-group-append">';                
+	    html += '<button id="removeRow_confirmation" type="button" class="btn btn-primary btn-danger btn-sm">-</button>';
+	    html += '</div>';		                
+	    html += '</div>';
+	    html += '<div class="input-group mb-3">';
+	    html += '<textarea class="form-control" type="text" rows="" id="info_confirmation" name="info_confirmation[]"  placeholder="Information" autocomplete="off"></textarea>';
+	    html += '</div>';   
+		html += '</div>';
+
+		$('#newRow_confirmation').append(html);
+    });
+
+	// edit row confirmation
+	<?php  foreach($client_process as $c){  ?>
+    $("#addRow_confirmation_<?php echo $c->id ?>").click(function () {
+    	var html = '';
+	    html += '<div id="inputFormRow_confirmation">';
+	    html += '<div class="input-group mb-3">';                
+	    html += '<input type="date" id="date_confirmation" name="date_confirmation[]" class="form-control m-input" placeholder="date" autocomplete="off">';
+	    html += '<div class="input-group-append">';                
+	    html += '<button id="removeRow_confirmation" type="button" class="btn btn-primary btn-danger btn-sm">-</button>';
+	    html += '</div>';		                
+	    html += '</div>';
+	    html += '<div class="input-group mb-3">';
+	    html += '<textarea class="form-control" type="text" rows="" id="info_confirmation" name="info_confirmation[]"  placeholder="Information" autocomplete="off"></textarea>';
+	    html += '</div>';   
+		html += '</div>';
+
+		$('#newRow_confirmation_<?php echo $c->id ?>').append(html);
+    });
+    <?php } ?>
+
+
+ // ================================================//
+    // add row po
+    $("#addRow_po").click(function () {
+    	var html = '';
+	    html += '<div id="inputFormRow_po">';
+        html += '<div class="input-group mb-3">';
+        html += '<input size="100" type="text" id="no_po" name="no_po[]" class="form-control m-input" placeholder="No PO / Kontrak" autocomplete="off">';       
+        html += '<input type="date" id="date_po" name="date_po[]" class="form-control m-input" placeholder="date" autocomplete="off">';		               
+        html += '<input type="number" id="price" name="price[]" class="form-control m-input" placeholder="Price" autocomplete="off">';
+        html += '<div class="input-group-append">';                
+        html += '<button id="removeRow_po" type="button" class="btn btn-primary btn-danger btn-sm">-</button>';
+        html += '</div>	';							                    				                
+        html += '</div>';
+        html += '<div class="input-group mb-3">';
+        html += '<textarea class="form-control" type="text" rows="" id="info_po" name="info_po[]"  placeholder="Information" autocomplete="off"></textarea>';
+        html += ' </div> ';   
+    	html += '</div>';
+
+
+		$('#newRow_po').append(html);
+    });
+
+    // edit row po
+    <?php  foreach($client_process as $c){  ?>
+    $("#addRow_po_<?php echo $c->id ?>").click(function () {
+    	var html = '';
+	    html += '<div id="inputFormRow_po">';
+        html += '<div class="input-group mb-3">';
+        html += '<input size="100" type="text" id="no_po" name="no_po[]" class="form-control m-input" placeholder="No PO / Kontrak" autocomplete="off">';       
+        html += '<input type="date" id="date_po" name="date_po[]" class="form-control m-input" placeholder="date" autocomplete="off">';		               
+        html += '<input type="number" id="price" name="price[]" class="form-control m-input" placeholder="Price" autocomplete="off">';
+        html += '<div class="input-group-append">';                
+        html += '<button id="removeRow_po" type="button" class="btn btn-primary btn-danger btn-sm">-</button>';
+        html += '</div>	';							                    				                
+        html += '</div>';
+        html += '<div class="input-group mb-3">';
+        html += '<textarea class="form-control" type="text" rows="" id="info_po" name="info_po[]"  placeholder="Information" autocomplete="off"></textarea>';
+        html += ' </div> ';   
+    	html += '</div>';
+
+
+		$('#newRow_po_<?php echo $c->id ?>').append(html);
+    });
+    <?php } ?>
+
+
+
+// remove row penawaran
+    $(document).on('click', '#removeRow_penawaran', function () {
+        $(this).closest('#inputFormRow_penawaran').remove();
+    });
+
+
+// remove row confirmation
+    $(document).on('click', '#removeRow_confirmation', function () {
+        $(this).closest('#inputFormRow_confirmation').remove();
+    });
+
+
+// remove row po
+    $(document).on('click', '#removeRow_po', function () {
+        $(this).closest('#inputFormRow_po').remove();
+    });
+
 
 <?php foreach($penawaran as $p){ ?>
- 	// remove row pic
-    $(document).on('click', '#removeRow_pic_<?php echo $p->id ?>', function () {
-        $(this).closest('#inputFormRow_pic_<?php echo $p->id ?>').remove();
-        console.log('#removeRow_pic_<?php echo $p->id ?>');
+ 	// remove row penawaran
+    $(document).on('click', '#removeRow_penawaran_<?php echo $p->id ?>', function () {
+        $(this).closest('#inputFormRow_penawaran_<?php echo $p->id ?>').remove();
+        console.log('#removeRow_penawaran_<?php echo $p->id ?>');
     });
 <?php }?>
+
+
+<?php foreach($confirmation as $co){ ?>
+ 	// remove row confirmation
+    $(document).on('click', '#removeRow_confirmation_<?php echo $co->id ?>', function () {
+        $(this).closest('#inputFormRow_confirmation_<?php echo $co->id ?>').remove();
+        console.log('#removeRow_confirmation_<?php echo $co->id ?>');
+    });
+<?php }?>
+
+
+<?php foreach($po as $pa){ ?>
+ 	// remove row po
+    $(document).on('click', '#removeRow_po_<?php echo $po->id ?>', function () {
+        $(this).closest('#inputFormRow_po_<?php echo $po->id ?>').remove();
+        console.log('#removeRow_po_<?php echo $po->id ?>');
+    });
+<?php }?>
+
 
 </script>
