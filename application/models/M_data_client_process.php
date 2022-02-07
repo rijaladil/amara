@@ -35,7 +35,7 @@
 							po.date as date_po,
 							po.price as price_po,
 							po.info as info_po,
-							po.upload,
+							po.upload  as po_upload,
 
 				  			con.date as date_confirmation,
 							con.info as info_confirmation

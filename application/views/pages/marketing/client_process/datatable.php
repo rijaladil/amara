@@ -1,4 +1,5 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 <div class="container-fluid">
        <div class="card shadow mb-4">
             <div class="card-header py-3">
@@ -272,7 +273,7 @@
 							                	<input type="hidden" name="id_penawaran" value="<?php echo $p->id_penawaran ?>" >  
 							                    <input size="100" type="text" id="no_penawaran" name="no_penawaran[]" class="form-control m-input" placeholder="No penawaran" autocomplete="off" value="<?php echo $p->no_penawaran ?>" >	                
 							                    <input type="date" id="date_penawaran" name="date_penawaran[]" class="form-control m-input" placeholder="date" autocomplete="off" value="<?php echo $p->date_penawaran ?>" >
-							                    <input type="number" id="bid_price" name="bid_price[]" class="form-control m-input" placeholder="Bid Price" autocomplete="off" value="<?php echo $p->bid_price ?>" >
+							                    <input oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" type="text" id="bid_price" name="bid_price[]" class="form-control m-input" placeholder="Bid Price" autocomplete="off" value="<?php echo number_format($p->bid_price,0,'.',',') ?>" >
 							                     <div class="input-group-append">                
 							                        <button id="removeRow_penawaran_<?php echo $p->id ?>" type="button" class="btn btn-primary btn-danger btn-sm" hidden>-</button>
 							                    </div>								                    				                
@@ -322,7 +323,7 @@
 							                	<input type="hidden" name="id_po" value="<?php echo $po->id_po ?>" >
 							                    <input size="100" type="text" id="no_po" name="no_po[]" class="form-control m-input" placeholder="No PO / Kontrak" autocomplete="off" value="<?php echo $po->no_po ?>">       
 							                    <input type="date" id="date_po" name="date_po[]" class="form-control m-input" placeholder="date" autocomplete="off" value="<?php echo $po->date_po ?>">		               
-							                    <input type="number" id="price" name="price[]" class="form-control m-input" placeholder="Price" autocomplete="off" value="<?php echo $po->price ?>">
+							                    <input oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" type="text" id="price" name="price[]" class="numbers form-control m-input" placeholder="Price" autocomplete="off" value="<?php echo number_format($po->price, 0,'.',',')?>">
 							                     <div class="input-group-append">                
 							                        <button id="removeRow_po_<?php echo $po->id ?>" type="button" class="btn btn-primary btn-danger btn-sm" hidden>-</button>
 							                    </div>								                    				                
@@ -592,6 +593,7 @@
         console.log('#removeRow_po_<?php echo $po->id ?>');
     });
 <?php }?>
+
 
 
 </script>

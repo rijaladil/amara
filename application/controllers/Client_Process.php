@@ -163,7 +163,7 @@ class client_process extends CI_Controller{
 			     	  "client_id" 		=> $client_id,
 				      "no_penawaran" 	=> $_POST['no_penawaran'][$key],
 				      "date"  			=> $_POST['date_penawaran'][$key],
-				      "price"  			=> $_POST['bid_price'][$key],
+				      "price"  			=> str_replace(",", "", $_POST['bid_price'][$key]),
 				      "info"  			=> $_POST['info_penawaran'][$key]
 			     );
 		    }    
@@ -203,7 +203,7 @@ class client_process extends CI_Controller{
 			     	  "client_id" 		=> $client_id,
 				      "no_po" 			=> $_POST['no_po'][$key],
 				      "date"  			=> $_POST['date_po'][$key],
-				      "price"  			=> $_POST['price'][$key],
+				      "price"  			=> str_replace(",", "",$_POST['price'][$key]),
 				      "info"  			=> $_POST['info_po'][$key]
 			     );
 		    }    
@@ -213,15 +213,6 @@ class client_process extends CI_Controller{
 		// var_dump ($data);
 	}
 
-	//display get data edit
-	public function edit($id=''){
-		$where = array('id' => $id);
-		$data['client_process'] = $this->m_data_client_process->get_data_edit($where,'amc_t_client_process')->result();
-		$this->load->view('template/header/index');
-		$this->load->view('template/menu/index');
-		$this->load->view('pages/marketing/client_process/edit',$data);
-		$this->load->view('template/footer/index');
-	}
 
 	// process delete
 	public function delete($id){
@@ -239,7 +230,7 @@ class client_process extends CI_Controller{
 	}
 
 	public function do_upload($id='') { 
-		 $id= $this->input->post('id');
+		 $client_id= $this->input->post('id');
 		 $image = 'MARKETING'.'-'.time().'-'.str_replace(' ', '_',$_FILES["upload"]['name']);
 		 $config['file_name'] = $image;
          $config['upload_path']   = './upload/'; 
@@ -264,7 +255,7 @@ class client_process extends CI_Controller{
 				   );
 
 
-	         	$where = array('id' => $id);
+	         	$where = array('client_id' => $client_id);
 
 	         	$this->t_recapitulation->update_data($where,$data,'amc_t_client_process');         
 	            $error=array('error'=>'File has been uploaded'); 
