@@ -31,16 +31,14 @@
 						</tbody>
 							<?php 
 							$id = 1;
-							foreach($client_process as $c){ 
-								foreach($po as $a) {
-								if($c->no_po == $a->no_po){
+							foreach($client_process_table as $ct){ 
 							?>
 							<tr>
 								<td><?php echo $id++ ?></td>
-								<td><a  target="_blank" href="<?php echo base_url(). 'upload/'.$c->upload ; ?>" class="btn-primary view-pdf" ><?php echo $c->no_po ?></a></td>
-								<td><?php echo $c->name ?></td>
+								<td><a  target="_blank" href="<?php echo base_url(). 'upload/'.$ct->upload ; ?>" class="btn-primary view-pdf" ><?php echo $ct->no_po ?></a></td>
+								<td><?php echo $ct->name ?></td>
 								<td><?php
-									$string = $c->project_activity;
+									$string = $ct->project_activity;
 									if (strlen($string) > 500) {
 
 									    // truncate string
@@ -55,33 +53,33 @@
 
 								?></td>
 								<td><?php if ( (in_array($this->session->userdata('level'), array(0,1,2))) ) { ?>	
-									<b>Bid Price :</b> <span style="color: red;"><?php echo number_format($c->price_penawaran ,0,',','.') ?></span><br>
-									<b>Price     :</b> <span style="color: green;"><?php echo number_format($c->price_po ,0,',','.') ?></span>
+									<b>Bid Price :</b> <span style="color: red;"><?php echo number_format($ct->price_penawaran ,0,',','.') ?></span><br>
+									<b>Price     :</b> <span style="color: green;"><?php echo number_format($ct->price_po ,0,',','.') ?></span>
 									<?php }?>
 								</td>
 								<td>
 									 <b>Penwaran : </b><br>
-									 <?php echo $c->no_penawaran;?> - 
-									 <?php echo $c->date_penawaran;?> - 
-									 <?php echo $c->price_penawaran;?> - 
-									 <?php echo $c->info_penawaran;?>
+									 <?php echo $ct->no_penawaran;?> - 
+									 <?php echo $ct->date_penawaran;?> - 
+									 <?php echo $ct->price_penawaran;?> - 
+									 <?php echo $ct->info_penawaran;?>
 									 <hr>
 									 <b>Confirmation : </b><br>
-									 <?php echo $c->date_confirmation;?> - 
-									 <?php echo $c->info_confirmation;?> 
+									 <?php echo $ct->date_confirmation;?> - 
+									 <?php echo $ct->info_confirmation;?> 
 									 <hr>
 									 <b>PO/ Kontrak : </b><br>
-									 <?php echo $c->date_po;?> - 
-									 <?php echo $c->price_po;?> - 
-									 <?php echo $c->info_po;?> 
+									 <?php echo $ct->date_po;?> - 
+									 <?php echo $ct->price_po;?> - 
+									 <?php echo $ct->info_po;?> 
 
 
 								</td>
-								<td><?php echo $c->product_name ?></td>
+								<td><?php echo $ct->product_name ?></td>
 								<td  class="row justify-content-center">	
 								<?php if ( (in_array($this->session->userdata('level'), array(1,2))) ) { ?>		
-								 	<?php if ($c->id >'0') { ?>							
-					                  <a href="#" class="btn btn-success btn-circle btn-sm" data-toggle="modal" data-target="#Fedit<?php echo $c->id ?>">
+								 	<?php if ($ct->id >'0') { ?>							
+					                  <a href="#" class="btn btn-success btn-circle btn-sm" data-toggle="modal" data-target="#Fedit<?php echo $ct->id ?>">
 					                    <span class="icon text-white-50">
 										  <i class="fa fa-edit"></i>
 										  <!-- <i class="fas fa-check"></i> -->
@@ -89,14 +87,14 @@
 					                  </a>
 					                  
 					                  &#160;
-					                   <a href="#" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#Upload<?php echo $c->id ?>">
+					                   <a href="#" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#Upload<?php echo $ct->id ?>">
 					                    <span class="icon text-white-50">
 					                      <i class="fas fa-upload"></i>
 					                    </span>
 					                  </a>	
 					                  &#160;	
 					                
-					                   <a href="<?php echo base_url(). 'index.php/Client_Process/delete/'.$c->id ; ?>" class="btn btn-danger btn-circle btn-sm">
+					                   <a href="<?php echo base_url(). 'index.php/Client_Process/delete/'.$ct->id ; ?>" class="btn btn-danger btn-circle btn-sm">
 					                    <span class="icon text-white-50">
 					                      <i class="fas fa-trash"></i>
 					                    </span>					                    
@@ -113,7 +111,7 @@
 								<?php }?>
 								</td>
 							</tr>
-							<?php } } } ?>
+							<?php }?>
 						</tbody>
 					</table>
 			   	</div>
@@ -586,7 +584,7 @@
 <?php }?>
 
 
-<?php foreach($po as $pa){ ?>
+<?php foreach($po as $po){ ?>
  	// remove row po
     $(document).on('click', '#removeRow_po_<?php echo $po->id ?>', function () {
         $(this).closest('#inputFormRow_po_<?php echo $po->id ?>').remove();

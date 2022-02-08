@@ -30,6 +30,7 @@ class client_process extends CI_Controller{
 	// halaman utama 
 	public function index(){
 		$data['client_process'] = $this->m_data_client_process->get_data();
+		$data['client_process_table'] = $this->m_data_client_process->get_datatable();
 		$data['confirmation'] = $this->m_data_client_process->get_data_client_confirmation();
 		$data['penawaran'] = $this->m_data_client_process->get_data_client_penawaran();
 		$data['po'] = $this->m_data_client_process->get_data_client_po();
