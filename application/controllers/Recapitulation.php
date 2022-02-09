@@ -32,6 +32,7 @@ class recapitulation extends CI_Controller{
 		$data['client'] = $this->t_recapitulation->get_data_client()->result();
 		$data['user'] = $this->t_recapitulation->get_data_user()->result();
 		$data['teknik'] = $this->t_teknik->get_data()->result();
+		$data['data_product'] = $this->t_recapitulation->get_data_products()->result();		
 		$this->load->view('template/header/index');
 		$this->load->view('template/menu/index');
 		// $this->load->view('upload_form', array('error' => ' ' ));

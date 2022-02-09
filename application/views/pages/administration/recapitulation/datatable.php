@@ -33,6 +33,7 @@
 							<?php 
 							$id = 1;
 							foreach($recapitulation as $r){ 
+								
 							?>
 							<tr>
 								<td><?php echo $id++ ?></td>
@@ -40,9 +41,18 @@
 								<td><?php echo $r->no_report ?></td>
 								<td><?php echo $r->contract_start_date ?></td>
 								<td><?php echo $r->contract_start_date ?></td>
-								<td><?php echo $r->product_name ?></td>
-								<td><?php echo $r->name ?></a></td>
-								<td><?php echo $r->project_activity ?></td>
+								<td class="text-left">
+									<?php $id = 1; foreach($data_product as $dp){
+									if($dp->client_id == $r->client_id){
+										echo $id++.".";
+										echo "&#160;";
+										echo $dp->product_name ; 
+										echo "<br>";
+									} }?>
+										
+								</td>
+								<td class="text-left"><?php echo $r->name ?></a></td>
+								<td class="text-left"><?php echo $r->project_activity ?></td>
 								<td><?php echo $r->user_name ?></td>
 								<td  class="row justify-content-center">	
 								
@@ -186,7 +196,7 @@
 								<td>
 									<div class="form-group">
 									<label for="inputdefault">Upload:</label>								
-									<input type="text" name="id" value="<?php echo $ru->id ?>">
+									<input type="hidden" name="id" value="<?php echo $ru->id ?>">
 									<input type="file" name="upload" class="" data-buttonName="btn-primary" id="upload"/>
 									</div>
 

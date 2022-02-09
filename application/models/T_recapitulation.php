@@ -66,12 +66,26 @@
 		       ');
 	}
 
-		public function get_data_client(){
+	public function get_data_client(){
 		return $this->db->query('SELECT * FROM amc_m_client WHERE status_client = 1 ORDER by name ASC');
 	}
 
-		public function get_data_user(){
+	public function get_data_user(){
 		return $this->db->query('SELECT * FROM amc_m_user ');
+	}
+
+
+	public function get_data_products(){
+		return $this->db->query('SELECT cp.id,
+		 								cp.id_project,
+		  								cp.client_id,
+		   								cp.client_name,
+		   								cp.project_id,
+		   								p.name as product_name
+							    FROM amc_m_client_project  cp
+							    LEFT JOIN amc_m_products p
+							    ON p.id = cp.project_id'
+		);
 	}
 
 	function input_data($data,$table){
