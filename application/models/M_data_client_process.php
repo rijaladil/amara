@@ -76,6 +76,7 @@
 				  			c.status_client,
 				   			c.id_user,
 
+				   			cp.id as id_process,
 				   			cp.project_activity,
 				   			cp.upload,
 
@@ -158,7 +159,6 @@
 						   c.name,
 						   po.id,
 						   po.client_id,
-						   po.id as id_po,
 						   po.no_po,
 						   po.date as date_po,
 						   po.price,

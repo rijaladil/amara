@@ -105,7 +105,14 @@ class recapitulation extends CI_Controller{
 			'id' => $id
 		);
 
-		$this->t_recapitulation->update_data($where,$data,'amc_t_recapitulation_project');
+		   if ( $id <> '' ) 
+		   {
+		      $this->t_recapitulation->update_data($where,$data,'amc_t_recapitulation_project');
+		   } else {
+		      $this->t_recapitulation->input_data($data,'amc_t_recapitulation_project');
+		   }
+
+		//$this->t_recapitulation->update_data($where,$data,'amc_t_recapitulation_project');
 		redirect('recapitulation/index');
 	}
 

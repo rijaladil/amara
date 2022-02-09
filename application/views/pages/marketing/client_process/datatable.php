@@ -78,7 +78,7 @@
 								<td><?php echo $ct->product_name ?></td>
 								<td  class="row justify-content-center">	
 								<?php if ( (in_array($this->session->userdata('level'), array(1,2))) ) { ?>		
-								 	<?php if ($ct->id >'0') { ?>							
+								 	<?php if ($ct->id_process >'0') { ?>							
 					                  <a href="#" class="btn btn-success btn-circle btn-sm" data-toggle="modal" data-target="#Fedit<?php echo $ct->id ?>">
 					                    <span class="icon text-white-50">
 										  <i class="fa fa-edit"></i>
@@ -314,11 +314,11 @@
 								<td>
 							        <div class="form-group">							        	
 							        	<label>PO / Kontrak :</label>
-							        	<?php foreach($po as $po){ 
+							        	<?php foreach($data_po as $po){ 
 							        		if($po->client_id == $c->id) { ?>
 							            <div id="inputFormRow_po_<?php echo $po->id ?>">
 							                <div class="input-group mb-3">
-							                	<input type="hidden" name="id_po" value="<?php echo $po->id_po ?>" >
+							                	<input type="hidden" name="id" value="<?php echo $po->id ?>" >
 							                    <input size="100" type="text" id="no_po" name="no_po[]" class="form-control m-input" placeholder="No PO / Kontrak" autocomplete="off" value="<?php echo $po->no_po ?>">       
 							                    <input type="date" id="date_po" name="date_po[]" class="form-control m-input" placeholder="date" autocomplete="off" value="<?php echo $po->date_po ?>">		               
 							                    <input oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" type="text" id="price" name="price[]" class="numbers form-control m-input" placeholder="Price" autocomplete="off" value="<?php echo number_format($po->price, 0,'.',',')?>">
@@ -584,11 +584,11 @@
 <?php }?>
 
 
-<?php foreach($po as $po){ ?>
+<?php foreach($data_po as $p){ ?>
  	// remove row po
-    $(document).on('click', '#removeRow_po_<?php echo $po->id ?>', function () {
-        $(this).closest('#inputFormRow_po_<?php echo $po->id ?>').remove();
-        console.log('#removeRow_po_<?php echo $po->id ?>');
+    $(document).on('click', '#removeRow_po_<?php echo $p->id ?>', function () {
+        $(this).closest('#inputFormRow_po_<?php echo $p->id ?>').remove();
+        console.log('#removeRow_po_<?php echo $p->id ?>');
     });
 <?php }?>
 

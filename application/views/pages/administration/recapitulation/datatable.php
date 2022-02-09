@@ -59,7 +59,7 @@
 					                  </a>	
 									 &#160;	
 									 <?php if ( (in_array($this->session->userdata('level'), array(1,3))) ) { ?>					
-					                  <a href="#" class="btn btn-success btn-circle btn-sm" data-toggle="modal" data-target="#Fedit<?php echo $r->id ?>">
+					                  <a href="#" class="btn btn-success btn-circle btn-sm" data-toggle="modal" data-target="#Fedit<?php echo $r->client_id ?>">
 					                    <span class="icon text-white-50">
 					                      <i class="fas fa-edit"></i>
 					                    </span>
@@ -167,9 +167,9 @@
 
 
 			<!-- UPLOAD DATA  -->
-			<?php $id = 1; 	foreach($recapitulation as $r){ 
+			<?php foreach($recapitulation as $ru){ 
 			?>
-			<div class="modal fade" id="Upload<?php echo $r->id ?>" role="dialog">
+			<div class="modal fade" id="Upload<?php echo $ru->id ?>" role="dialog">
 				<div class="modal-dialog modal-xl">
 				<div class="modal-content">
 					<div class="modal-header">	
@@ -186,7 +186,7 @@
 								<td>
 									<div class="form-group">
 									<label for="inputdefault">Upload:</label>								
-									<input type="hidden" name="id" value="<?php echo $r->id ?>">
+									<input type="text" name="id" value="<?php echo $ru->id ?>">
 									<input type="file" name="upload" class="" data-buttonName="btn-primary" id="upload"/>
 									</div>
 
@@ -212,7 +212,7 @@
 			<!-- EDIT DATA  -->
 			<?php $id = 1; 	foreach($recapitulation as $r){ 
 			?>
-			<div class="modal fade" id="Fedit<?php echo $r->id ?>" role="dialog">
+			<div class="modal fade" id="Fedit<?php echo $r->client_id ?>" role="dialog">
 				<div class="modal-dialog modal-xl">
 				<div class="modal-content">
 					<div class="modal-header">	
@@ -229,6 +229,7 @@
 									<div class="form-group">
 									<label for="inputdefault">No Order:</label>
 									<input type="hidden" name="id" value="<?php echo $r->id ?>">
+									<input type="hidden" name="client_id" value="<?php echo $r->client_id ?>">
 									<input type="text" class="form-control" id="" name="no_order" value="<?php echo $r->no_order ?>">
 									</div>
 								</td>

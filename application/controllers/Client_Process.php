@@ -33,7 +33,7 @@ class client_process extends CI_Controller{
 		$data['client_process_table'] = $this->m_data_client_process->get_datatable();
 		$data['confirmation'] = $this->m_data_client_process->get_data_client_confirmation();
 		$data['penawaran'] = $this->m_data_client_process->get_data_client_penawaran();
-		$data['po'] = $this->m_data_client_process->get_data_client_po();
+		$data['data_po'] = $this->m_data_client_process->get_data_client_po();
 		$data['client'] = $this->m_data_client_process->get_data_client()->result();
 		$data['products'] = $this->m_data_prospective_client->get_data_products();
 		$this->load->view('template/header/index');
