@@ -35,6 +35,7 @@ class teknikamdal extends CI_Controller{
 		$data['teknik_by_date'] = $this->t_teknik->get_data_by_date_amdal($data['name'], $data['product'], $data['min'], $data['max']);
 		$data['client'] = $this->t_teknik->get_data_client()->result();
 		$data['product'] = $this->t_teknik->get_data_product_amdal()->result();
+		$data['project'] = $this->t_teknik->get_data_project()->result();
 		$data['user'] = $this->t_recapitulation->get_data_user()->result();
 		$data['recapitulation'] = $this->t_recapitulation->get_data()->result();
 		$this->load->view('template/header/index');

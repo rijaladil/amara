@@ -651,6 +651,7 @@
 											<option value="0">Contact</option>
 											<option value="1">Client Process</option>
 											<option value="2">Client Closing</option>
+											<option value="3">Black List</option>
 										</select>
 									</div>
 								</td>

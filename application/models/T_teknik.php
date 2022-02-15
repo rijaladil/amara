@@ -20,7 +20,8 @@
 			tk.note,
 			u.name as user,
 			u.id as user_id
-				FROM amc_t_teknis_progress tk
+
+			FROM amc_t_teknis_progress tk
 
  			LEFT JOIN amc_t_recapitulation_project rp
             ON tk.recapitulation_id = rp.id
@@ -32,10 +33,13 @@
             ON u.id = tk.user_id
                     
             LEFT JOIN amc_m_client_pic_contact pic
-            ON c.name = pic.client_name 
+            ON c.id = pic.client_id 
+         
+            LEFT JOIN amc_m_client_project cp 
+            ON c.id = cp.client_id
 
             LEFT JOIN amc_m_products p
-            ON c.product_id = p.id
+            ON cp.project_id = p.id
 
 			WHERE tk.id in (SELECT max(id) from amc_t_teknis_progress)
 			ORDER by rp.project_activity
@@ -69,8 +73,9 @@
         $this->db->join('amc_t_recapitulation_project rp', 'tk.recapitulation_id = rp.id', 'left');
         $this->db->join('amc_m_client c', 'c.id = rp.client_id', 'left');
         $this->db->join('amc_m_user u', 'u.id = tk.user_id', 'left');
-        $this->db->join('amc_m_client_pic_contact pic', 'c.name = pic.client_name ', 'left');
-        $this->db->join('amc_m_products p', 'c.product_id = p.id', 'left');
+        $this->db->join('amc_m_client_pic_contact pic', 'c.id = pic.client_id ', 'left');
+        $this->db->join('amc_m_client_project cp', 'c.id = cp.client_id', 'left');
+        $this->db->join('amc_m_products p', 'cp.project_id = p.id', 'left');
 
 
         if ($min <> '') {
@@ -139,8 +144,9 @@
         $this->db->join('amc_t_recapitulation_project rp', 'tk.recapitulation_id = rp.id', 'left');
         $this->db->join('amc_m_client c', 'c.id = rp.client_id', 'left');
         $this->db->join('amc_m_user u', 'u.id = tk.user_id', 'left');
-        $this->db->join('amc_m_client_pic_contact pic', 'c.name = pic.client_name ', 'left');
-        $this->db->join('amc_m_products p', 'c.product_id = p.id', 'left');
+        $this->db->join('amc_m_client_pic_contact pic', 'c.id = pic.client_id ', 'left');
+        $this->db->join('amc_m_client_project cp', 'c.id = cp.client_id', 'left');
+        $this->db->join('amc_m_products p', 'cp.project_id = p.id', 'left');
 
 
         if ($min <> '') {
@@ -187,6 +193,38 @@
 		return $this->db->query('SELECT * FROM `amc_m_client` WHERE status_client in (1,2) ');
 		
 	}
+
+
+	function get_data_project(){
+		return $this->db->query('SELECT 
+										cp.id,
+										cp.project_id,
+										mp.name as product_name,
+										c.name,
+										p.project_activity
+
+
+
+								 FROM amc_m_client_project cp
+								
+								 LEFT JOIN amc_m_client c
+								 ON c.id = cp.client_id
+
+								 LEFT JOIN amc_t_client_process p
+								 ON c.id = p.client_id
+
+								 LEFT JOIN amc_m_products mp
+								 ON. cp.project_id = mp.id
+
+
+
+								 WHERE c.status_client in (1) 
+
+								 ');
+		
+	}
+
+
 
 	function get_data_product_amdal(){
 		return $this->db->query('SELECT * FROM amc_m_products WHERE category_teknik = 1');
