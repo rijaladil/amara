@@ -20,7 +20,7 @@
 
 </head>
 
-<body class="bg-gradient-primary" style="background-image: url('<?php echo base_url(); ?>assets/img/bg.jpg');">
+<body class="bg-gradient-primary" style="background-image: url('<?php echo base_url(); ?>assets/img/bg.png');">
 
   <div class="container">
 
