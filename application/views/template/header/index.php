@@ -66,8 +66,8 @@
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-          <a class="collapse-item" href="<?php echo base_url();?>index.php/Prospective_Client/">Clients</a>
-          <a class="collapse-item" href="<?php echo base_url();?>index.php/Client_Process/">Clients Process</a>
+          <a class="collapse-item" href="<?php echo base_url();?>index.php/Prospective_Client/"><i class="fa fa-address-book" aria-hidden="true"></i><span> Clients</span></a>
+          <a class="collapse-item" href="<?php echo base_url();?>index.php/Client_Process/"><i class="fa fa-chevron-right" aria-hidden="true"></i><span> Clients Process</span></a>
           <!-- <a class="collapse-item" href="<?php echo base_url();?>index.php/Client/">Clients</a> -->
           <a class="collapse-item" href="<?php echo base_url();?>index.php/tender/">Tender Recapitulation</a>
           <?php if ( (in_array($this->session->userdata('level'), array(0,1,2))) ) { ?>
