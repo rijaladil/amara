@@ -10,7 +10,8 @@
   <title>AMC Smart System</title>
 
   <!-- Custom fonts for this template-->
-  <link href="<?php echo base_url(); ?>assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <!-- <link href="<?php echo base_url(); ?>assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"> -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template-->
@@ -69,10 +70,10 @@
           <a class="collapse-item" href="<?php echo base_url();?>index.php/Prospective_Client/"><i class="fa fa-address-book" aria-hidden="true"></i><span> Clients</span></a>
           <a class="collapse-item" href="<?php echo base_url();?>index.php/Client_Process/"><i class="fa fa-chevron-right" aria-hidden="true"></i><span> Clients Process</span></a>
           <!-- <a class="collapse-item" href="<?php echo base_url();?>index.php/Client/">Clients</a> -->
-          <a class="collapse-item" href="<?php echo base_url();?>index.php/tender/">Tender Recapitulation</a>
+          <a class="collapse-item" href="<?php echo base_url();?>index.php/tender/"><i class="fa fa-window-restore" aria-hidden="true"></i><span> Tender Recapitulation</span></a>
           <?php if ( (in_array($this->session->userdata('level'), array(0,1,2))) ) { ?>
-          <a class="collapse-item" href="<?php echo base_url();?>index.php/Vendor/">Vendor</a>
-          <a class="collapse-item" href="<?php echo base_url();?>index.php/price/">Unit Price</a>    
+          <a class="collapse-item" href="<?php echo base_url();?>index.php/Vendor/"><i class="fa fa-link" aria-hidden="true"></i><span> Vendor</span></a>
+          <a class="collapse-item" href="<?php echo base_url();?>index.php/price/"><i class="fa fa-th-large" aria-hidden="true"></i><span> Unit Price</span></a>    
            <?php }?>    
           </div>
           
@@ -90,10 +91,10 @@
         <div id="collapseFive" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <!-- <a class="collapse-item" href="#">Contract</a> -->
-            <a class="collapse-item" href="<?php echo base_url();?>index.php/recapitulation/">Recapitulation Project</a>
-            <a class="collapse-item" href="<?php echo base_url();?>index.php/project/">Project</a>
-            <a class="collapse-item" href="<?php echo base_url();?>index.php/work/">Working Report</a>
-            <a class="collapse-item" href="<?php echo base_url();?>index.php/payment/">Payment</a>
+            <a class="collapse-item" href="<?php echo base_url();?>index.php/recapitulation/"><i class="fa fa-clone" aria-hidden="true"></i><span> Recapitulation Project</span></a>
+            <a class="collapse-item" href="<?php echo base_url();?>index.php/project/"><i class="fa fa-check" aria-hidden="true"></i><span> Project</span></a>
+            <a class="collapse-item" href="<?php echo base_url();?>index.php/work/"><i class="fa fa-child" aria-hidden="true"></i><span> Working Report</span></a>
+            <a class="collapse-item" href="<?php echo base_url();?>index.php/payment/"><i class="fa fa-credit-card" aria-hidden="true"></i><span> Payment</span></a>
           </div>
         </div>
       </li>
