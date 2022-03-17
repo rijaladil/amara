@@ -2,7 +2,7 @@
        <div class="card shadow mb-4">
             <div class="card-header py-3">
 
-              <h6 class="m-0 font-weight-bold text-primary">Data Progress Pekerjaan TekniK</h6>
+              <h6 class="m-0 font-weight-bold text-primary">Data Progress Pekerjaan Teknik</h6>
               <h2 class="m-0 font-weight-bold text-primary">AMDAL</h2>
 
 			  		<?php if ( (in_array($this->session->userdata('level'), array(1,4))) ) { ?>
@@ -28,13 +28,14 @@
 							      			<select class="form-select" aria-label="Default select example" id="name" name="name">
 							      				<option value="">-Pilih-</option>
 							      				<?php foreach($client as $c){ 
+							      					if($c->category_teknik == 1){
 												?>
 												<option value="<?php echo $c->name; ?>"><?php echo $c->name; ?></option>
-												<?php } ?>
+												<?php } }?>
 							      			</select>&nbsp;
 
 			 				      			<b>Product : </b>
-							      			<select class="form-select w-10" aria-label="Default select example" id="product" name="product">
+							      			<select class="form-select w-60" aria-label="Default select example" id="product" name="product">
 							      				<option value="">-Pilih-</option>
 							      				<?php foreach($product as $prod){ 
 												?>
@@ -43,7 +44,7 @@
 							      			</select>&nbsp; 
 
 							      			
-							            	<b>Select Date : </b>
+							            	<b>Date : </b>
 							            	<input class="text-center" type="text" id="min" name="min" value="<?php echo ($min == '') ? date('Y-m-01') : $min;?>"> <b>To</b>&nbsp;
 
 							            	<input class="text-center" type="text" id="max" name="max" value="<?php echo ($max == '') ? date('Y-m-31') : $max;?>">

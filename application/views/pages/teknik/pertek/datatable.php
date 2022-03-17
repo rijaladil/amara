@@ -1,7 +1,7 @@
 <div class="container-fluid">
        <div class="card shadow mb-4">
             <div class="card-header py-3">
-
+            		<h6 class="m-0 font-weight-bold text-primary">Data Progress Pekerjaan Teknik</h6>
           		<h2 class="m-0 font-weight-bold text-primary">PERTEK</h2>
 
 			  		<?php if ( (in_array($this->session->userdata('level'), array(1,4))) ) { ?>
@@ -16,46 +16,36 @@
             </div>
             <div class="card-body">
               	<div class="table-responsive">
-              		<form method="post" action="<?php echo base_url(); ?>index.php/TekniPertek/index">
+              		<form method="post" action="<?php echo base_url(); ?>index.php/TeknikPertek/index">
               		<table border="0" cellspacing="5" cellpadding="5" align="right">
 							      <tbody>
 							      	<tr>
-							      		<td><b>Pemrakarsa</b></td>
-							      		<td>
-											
-								      			<select class="form-select" aria-label="Default select example" id="name" name="name">
-								      				<option value="">-Pilih-</option>
-								      				<?php foreach($client as $c){ 
-													?>
-													<option value="<?php echo $c->name; ?>"><?php echo $c->name; ?></option>
-													<?php } ?>
-								      			</select>&nbsp;
-							            	</td>
-							            	<td><b>Product</b></td>
-							            	<td>
-							            		
-								      			<select class="form-select w-10" aria-label="Default select example" id="product" name="product">
-								      				<option value="">-Pilih-</option>
-								      				<?php foreach($product as $prod){ 
-													?>
-													<option value="<?php echo $prod->name; ?>"><?php echo $prod->name; ?></option>
-													<?php }?>
-								      			</select>&nbsp; 
-										</td>
-										<td><b>Date</b></td>
-							            	<td>
-							            		
-							            		<input class="text-center" type="text" id="min" name="min" value="<?php echo ($min == '') ? date('Y-m-01') : $min;?>"> 
-							            		
-							            	</td>
-							            	<td><b>To</b></td>
-							            	<td>
-							            		
-							            		<input class="text-center" type="text" id="max" name="max" value="<?php echo ($max == '') ? date('Y-m-31') : $max;?>">
-							            	</td>
-							            	<td> 
-							            		<input type="submit" class="btn btn-success btn-sm" value="Select">
-							            	</td>
+							      		<td><b>Pemrakarsa</b>	      		
+										<select class="form-select" aria-label="Default select example" id="name" name="name">
+						      				<option value="">-Pilih-</option>
+						      				<?php foreach($client as $c){ 
+						      					if($c->category_teknik == 2){
+											?>
+											<option value="<?php echo $c->name; ?>"><?php echo $c->name; ?></option>
+											<?php } }?>
+						      			</select>&nbsp;
+							            	
+							            	<b>Product</b>
+						      			<select class="form-select w-60" aria-label="Default select example" id="product" name="product">
+						      				<option value="">-Pilih-</option>
+						      				<?php foreach($product as $prod){ 
+											?>
+											<option value="<?php echo $prod->name; ?>"><?php echo $prod->name; ?></option>
+											<?php }?>
+						      			</select>&nbsp; 
+										
+										<b>Date</b>							            
+							            	<input class="text-center" type="text" id="min" name="min" value="<?php echo ($min == '') ? date('Y-m-01') : $min;?>"><b>To</b>&nbsp;
+							            	
+							            	<input class="text-center" type="text" id="max" name="max" value="<?php echo ($max == '') ? date('Y-m-31') : $max;?>">
+							            	
+							            	<input type="submit" class="btn btn-success btn-sm" value="Select">
+							            </td>
 
 							        </tr>
 							    	</tbody>
@@ -69,10 +59,10 @@
 						<tr>
 						    <th>No</th>
 						    <th width="15%">Project Activity</th>
-						    <th>Pemrakarsa Name</th>
+						    <!-- <th>Pemrakarsa Name</th> -->
 						    <th width="7%">Start Date</th>
 						    <th width="7%">Finish Date</th>
-						    <th>Document Product</th>
+						    <!-- <th>Document Product</th> -->
 						    <th>Planing This week</th>
 						    <th>Realization</th>
 						    <th>Problem</th>
@@ -89,13 +79,26 @@
 						foreach($teknik_by_date as $tk){ 											
 						?>
 						<tr>
-				
+
 							<td><?php echo $id++ ?></td>
+							<td>
+								<table>
+									<tr>
+										<td width="350px"><b>Project Activity:</b><br>
+											<u>No Report</u> :<b><?php echo $tk->no_report; ?></b><br><?php echo $tk->project_activity; ?></td>
+										<td width="350px"><b>Pemrakarsa Name:</b><br>
+											<?php echo '<b>'.$tk->name.'</b><br>'. $tk->pemrakarsa ?></td>
+										<td width="350px"><b>Document Product:</b><br>
+											<?php echo $tk->document_product ?></td>
+
+									</tr>
+								</table>
+							</td>	
 							<td><u>No Report</u> :<b><?php echo $tk->no_report; ?></b><br><?php echo $tk->project_activity; ?></td>	
-							<td><?php echo '<b>'.$tk->name.'</b><br>'. $tk->pemrakarsa ?></td>
+							<!-- <td><?php echo '<b>'.$tk->name.'</b><br>'. $tk->pemrakarsa ?></td> -->
 							<td><?php echo $tk->start_date ?></td>
 							<td><?php echo $tk->finish_date ?></td>
-							<td><?php echo $tk->document_product ?></td>	
+							<!-- <td><?php echo $tk->document_product ?></td>	 -->
 							<td><?php echo $tk->planing_this_week ?></td>
 							<td><?php echo $tk->realization ?></td>			
 							<td><?php echo $tk->problem ?></td>		
