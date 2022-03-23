@@ -42,9 +42,9 @@
 								<td><?php echo $r->contract_start_date ?></td>
 								<td><?php echo $r->contract_start_date ?></td>
 								<td class="text-left">
-									<?php $id = 1; foreach($data_product as $dp){
+									<?php $ids = 1; foreach($data_product as $dp){
 									if($dp->client_id == $r->client_id){
-										echo $id++.".";
+										echo $ids++.".";
 										echo "&#160;";
 										echo $dp->product_name ; 
 										echo "<br>";
