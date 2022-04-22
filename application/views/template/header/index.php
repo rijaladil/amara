@@ -108,8 +108,8 @@
         </a>
         <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="<?php echo base_url();?>index.php/TeknikAmdal">Amdal</a>
-            <a class="collapse-item" href="<?php echo base_url();?>index.php/TeknikPertek">Pertek</a>
+            <a class="collapse-item" href="<?php echo base_url();?>index.php/TeknikAmdal"><i class="fa fa-rocket" aria-hidden="true"></i><span> Amdal</span></a>
+            <a class="collapse-item" href="<?php echo base_url();?>index.php/TeknikPertek"><i class="fa fa-space-shuttle" aria-hidden="true"></i><span> Pertek</span></a>
           </div>
         </div>
       </li>
@@ -122,7 +122,7 @@
         </a>
         <div id="collapseFour" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="<?php echo base_url();?>index.php/finance/">Invoice</a>
+            <a class="collapse-item" href="<?php echo base_url();?>index.php/finance/"><i class="fa fa-university" aria-hidden="true"></i><span> Invoice</span></a>
           </div>
         </div>
       </li>
@@ -141,9 +141,9 @@
         <div id="collapseSix" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <!-- <h6 class="collapse-header">Custom:</h6> -->
-            <a class="collapse-item" href="<?php echo base_url();?>index.php/user/">User</a>
-            <a class="collapse-item" href="<?php echo base_url();?>index.php/product/">Product</a>
-            <a class="collapse-item" href="<?php echo base_url();?>index.php/sector/">Sector</a>
+            <a class="collapse-item" href="<?php echo base_url();?>index.php/user/"><i class="fa fa-universal-access" aria-hidden="true"></i><span> User</span></a>
+            <a class="collapse-item" href="<?php echo base_url();?>index.php/product/"><i class="fa fa-database" aria-hidden="true"></i><span> Product</span></a>
+            <a class="collapse-item" href="<?php echo base_url();?>index.php/sector/"><i class="fa fa-database" aria-hidden="true"></i><span> Sector</span></a>
           </div>
         </div>
       </li>
