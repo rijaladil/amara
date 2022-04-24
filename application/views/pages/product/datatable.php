@@ -32,8 +32,9 @@
 								<td><?php echo $id++ ?></td>
 								<td><b><?php echo $p->name ?></b></td>
 								<td>
-									<?php if ($p->category_teknik === '1') : ?> AMDAL
+									<?php if ($p->category_teknik === '1') : ?> Dokumen Lingkungan
 									<?php elseif ($p->category_teknik === '2'): ?> PERTEK
+									<?php elseif ($p->category_teknik === '3'): ?> IPAL
 									<?php endif; ?>
 								</td>
 							
@@ -85,8 +86,9 @@
 										<select class="form-control" name="category_teknik">
 											
 											<option value="">Pilih</option>
-											<option value="1">AMDAL</option>
+											<option value="1">Dokumen Lingkungan</option>
 											<option value="2">PERTEK</option>
+											<option value="3">IPAL</option>
 										</select>	
 									</div>
 								</td>
@@ -133,14 +135,16 @@
 										<select class="form-control" name="category_teknik">
 											
 											<option value="<?php echo $p->category_teknik ?>">
-												<?php if ($p->category_teknik === '1') : ?> AMDAL
+												<?php if ($p->category_teknik === '1') : ?> Dokumen Lingkungan
 												<?php elseif ($p->category_teknik === '2'): ?> PERTEK
+												<?php elseif ($p->category_teknik === '3'): ?> IPAL
 												<?php endif; ?>
 
 											</option>
 											<option value="">Pilih</option>
-											<option value="1">AMDAL</option>
+											<option value="1">Dokumen Lingkungan</option>
 											<option value="2">PERTEK</option>
+											<option value="3">IPAL</option>
 										</select>					
 									</div>
 								</td>

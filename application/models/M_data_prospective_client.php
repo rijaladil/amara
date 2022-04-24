@@ -6,6 +6,7 @@
 		$this->db->select( '
 							c.id,
 							c.name,
+							c.npwp,
 							c.information,
 		  					c.address,
 		   					c.city_kabupaten,

@@ -86,14 +86,12 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-book"></i>
-          <span>Administration</span>
+          <span>Admin</span>
         </a>
         <div id="collapseFive" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <!-- <a class="collapse-item" href="#">Contract</a> -->
             <a class="collapse-item" href="<?php echo base_url();?>index.php/recapitulation/"><i class="fa fa-clone" aria-hidden="true"></i><span> Recapitulation Project</span></a>
-            <a class="collapse-item" href="<?php echo base_url();?>index.php/project/"><i class="fa fa-check" aria-hidden="true"></i><span> Project</span></a>
-            <a class="collapse-item" href="<?php echo base_url();?>index.php/work/"><i class="fa fa-child" aria-hidden="true"></i><span> Working Report</span></a>
             <a class="collapse-item" href="<?php echo base_url();?>index.php/payment/"><i class="fa fa-credit-card" aria-hidden="true"></i><span> Payment</span></a>
           </div>
         </div>
@@ -108,8 +106,9 @@
         </a>
         <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="<?php echo base_url();?>index.php/TeknikAmdal"><i class="fa fa-rocket" aria-hidden="true"></i><span> Amdal</span></a>
+            <a class="collapse-item" href="<?php echo base_url();?>index.php/TeknikAmdal"><i class="fa fa-rocket" aria-hidden="true"></i><span> Dokumen Lingkungan</span></a>
             <a class="collapse-item" href="<?php echo base_url();?>index.php/TeknikPertek"><i class="fa fa-space-shuttle" aria-hidden="true"></i><span> Pertek</span></a>
+            <a class="collapse-item" href="<?php echo base_url();?>index.php/TeknikIpal"><i class="fa fa-rocket" aria-hidden="true"></i><span> IPAL</span></a>
           </div>
         </div>
       </li>
@@ -142,6 +141,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <!-- <h6 class="collapse-header">Custom:</h6> -->
             <a class="collapse-item" href="<?php echo base_url();?>index.php/user/"><i class="fa fa-universal-access" aria-hidden="true"></i><span> User</span></a>
+            <a class="collapse-item" href="<?php echo base_url();?>index.php/project/"><i class="fa fa-check" aria-hidden="true"></i><span> Project</span></a>
             <a class="collapse-item" href="<?php echo base_url();?>index.php/product/"><i class="fa fa-database" aria-hidden="true"></i><span> Product</span></a>
             <a class="collapse-item" href="<?php echo base_url();?>index.php/sector/"><i class="fa fa-database" aria-hidden="true"></i><span> Sector</span></a>
           </div>
@@ -156,12 +156,11 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSiy" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-user"></i>
-          <span>Customer</span>
+          <span>Employee</span>
         </a>
         <div id="collapseSiy" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <!-- <h6 class="collapse-header">Custom:</h6> -->
-            <!-- <a class="collapse-item" href="<?php echo base_url();?>index.php/customer/">Info</a> -->
+              <a class="collapse-item" href="<?php echo base_url();?>index.php/work/"><i class="fa fa-child" aria-hidden="true"></i><span> Working Report</span></a>
           </div>
         </div>
       </li>

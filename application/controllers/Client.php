@@ -37,6 +37,7 @@ class client extends CI_Controller{
 	// process input
 	public function p_input(){
 		$name = $this->input->post('name');
+		$npwp = $this->input->post('npwp');
 		$address = $this->input->post('address');
 		$city_kabupaten = $this->input->post('city_kabupaten');
 		$province = $this->input->post('province');
@@ -58,6 +59,7 @@ class client extends CI_Controller{
 
 		$data = array(
 			'name' => $name,
+			'npwp' =>$npwp,
 			'city_kabupaten' => $city_kabupaten,
 			'province' => $province,
 			'address2' => $address2,
@@ -94,6 +96,7 @@ class client extends CI_Controller{
 	 public function update(){
 		$id= $this->input->post('id');
 		$name = $this->input->post('name');
+		$npwp = $this->input->post('npwp')
 		$information = $this->input->post('information');
 		$address = $this->input->post('address');
 		$city_kabupaten = $this->input->post('city_kabupaten');
@@ -118,6 +121,7 @@ class client extends CI_Controller{
 
 		$data = array(
 			'name' => $name,
+			'npwp' => $npwp,
 			'information' => $information,
 			'address' => $address,
 			'city_kabupaten' => $city_kabupaten,

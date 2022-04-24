@@ -276,6 +276,14 @@
 							<tr>
 								<td colspan="2" >
 									<div class="form-group">
+									<label for="inputdefault">NPWP:</label>
+									<input type="text" class="form-control" id="npwp" name="npwp" required>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2" >
+									<div class="form-group">
 										<label for="inputdefault">Kegiatan Usaha:</label>
 										<textarea class="form-control" rows="" id="information" name="information" ></textarea>
 									</div>
@@ -456,6 +464,14 @@
 									<label for="inputdefault">Company Name:</label>
 									<input type="hidden" name="id" value="<?php echo $c->id ?> " >
 									<input type="text" class="form-control" id="name" name="name" required value="<?php echo $c->name ?>">
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2" >
+									<div class="form-group">
+									<label for="inputdefault">NPWP:</label>
+									<input type="text" class="form-control" id="npwp" name="npwp" required value="<?php echo $c->npwp ?>">
 									</div>
 								</td>
 							</tr>
