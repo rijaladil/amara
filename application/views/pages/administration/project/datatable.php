@@ -117,17 +117,12 @@
 											<label for="inputdefault">Project:</label>
 											<select class="form-control" id="project" name="project">
 											<option value="<?php echo $p->project ?>"><?php echo $p->project ?></option>
-											<option value="ADDENDUM AMDAL (ANDAL, RKL-RPL)">ADDENDUM AMDAL (ANDAL, RKL-RPL)</option>
-											<option value="AMDAL (ANDAL, RKL-RPL)">AMDAL (ANDAL, RKL-RPL)</option>
-											<option value="ANDALALIN">ANDALALIN</option>
-											<option value="DELH">DELH</option>
-											<option value="DPPL/DPLH">DPPL/DPLH</option>
-											<option value="IMB">IMB</option>
-											<option value="KAJIAN LINGKUNGAN">KAJIAN LINGKUNGAN</option>
-											<option value="KAJIAN LINGKUNGAN (PERTEK)">KAJIAN LINGKUNGAN (PERTEK)</option>
-											<option value="PEMANTAUAN LINGKUNGAN">PEMANTAUAN LINGKUNGAN</option>
-											<option value="SIPA">SIPA</option>
-											<option value="UKL-UPL">UKL-UPL</option>
+											<?php 
+											foreach($product as $prod){ 
+											?>
+											<option value="<?php echo strtoupper($prod->name); ?>"><?php echo strtoupper($prod->name); ?></option>
+											<?php }?>
+		
 										</select>
 										</div>
 									</td>
@@ -204,17 +199,11 @@
 										<label for="inputdefault">Project:</label>
 										<select class="form-control" id="project" name="project">
 											<option value="">Pilih</option>
-											<option value="ADDENDUM AMDAL (ANDAL, RKL-RPL)">ADDENDUM AMDAL (ANDAL, RKL-RPL)</option>
-											<option value="AMDAL (ANDAL, RKL-RPL)">AMDAL (ANDAL, RKL-RPL)</option>
-											<option value="ANDALALIN">ANDALALIN</option>
-											<option value="DELH">DELH</option>
-											<option value="DPPL/DPLH">DPPL/DPLH</option>
-											<option value="IMB">IMB</option>
-											<option value="KAJIAN LINGKUNGAN">KAJIAN LINGKUNGAN</option>
-											<option value="KAJIAN LINGKUNGAN (PERTEK)">KAJIAN LINGKUNGAN (PERTEK)</option>
-											<option value="PEMANTAUAN LINGKUNGAN">PEMANTAUAN LINGKUNGAN</option>
-											<option value="SIPA">SIPA</option>
-											<option value="UKL-UPL">UKL-UPL</option>
+											<?php 
+											foreach($product as $prod){ 
+											?>
+											<option value="<?php echo strtoupper($prod->name); ?>"><?php echo strtoupper($prod->name); ?></option>
+											<?php }?>
 										</select>
 									</div>
 								</td>

@@ -12,6 +12,7 @@ class Project extends CI_Controller{
 		parent::__construct();		
 		$this->check_isvalidated();
 		$this->load->model('m_data_project');
+		$this->load->model('m_data_product');
 		$this->load->helper('url');
 
 	}
@@ -38,6 +39,7 @@ class Project extends CI_Controller{
 	 function index(){
 
 		$data['project'] = $this->m_data_project->get_data()->result();
+		$data['product'] = $this->m_data_product->get_data()->result();
 		$this->load->view('template/header/index');
 		$this->load->view('template/menu/index');
 		$this->load->view('pages/administration/project/datatable',$data);
