@@ -12,6 +12,7 @@ class work extends CI_Controller{
 		parent::__construct();	
 		$this->check_isvalidated();
 		$this->load->model('t_work');
+		$this->load->model('m_data_user');
 		$this->load->helper('url');
 
 	}
@@ -33,7 +34,7 @@ class work extends CI_Controller{
 	// halaman utama 
 
 	 function index(){
-
+	 	$data['user'] = $this->m_data_user->get_data()->result();
 		$data['work'] = $this->t_work->get_data()->result();
 		$this->load->view('template/header/index');
 		$this->load->view('template/menu/index');
@@ -80,7 +81,7 @@ class work extends CI_Controller{
 	// display input
 
 	function input(){
-
+		$data['user'] = $this->m_data_user->get_data()->result();
 		$data['work'] = $this->t_work->get_data()->result();
 		$this->load->view('template/header/index');
 		$this->load->view('template/menu/index');
@@ -139,6 +140,7 @@ class work extends CI_Controller{
 	function edit($id=''){
 
 		$where = array('id' => $id);
+		$data['user'] = $this->m_data_user->get_data()->result();
 		$data['work'] = $this->t_work->get_data_edit($where,'amc_t_work')->result();
 		$this->load->view('template/header/index');
 		$this->load->view('template/menu/index');
@@ -159,6 +161,40 @@ class work extends CI_Controller{
 
 	}
 
+
+public function do_upload($id='') { 
+		 $id= $this->input->post('id');
+		 $image = 'ACTIVITY'.'-'.time().'-'.str_replace(' ', '_',$_FILES["upload"]['name']);
+		 $config['file_name'] = $image;
+         $config['upload_path']   = './upload_working/'; 
+         $config['allowed_types'] = 'gif|jpg|png|pdf|doc|docx|xlsx|csv|xls'; 
+         $config['max_size']      = 10000;  
+
+         $this->load->library('upload');
+         $this->upload->initialize($config);
+
+	         if ( ! $this->upload->do_upload('upload')) {
+	            $error = array('error' => $this->upload->display_errors()); 
+	            // var_dump($error);
+	          
+	            $this->load->view('pages/administration/work/datatablee', $error);
+	            
+	         }
+
+	         else { 
+	         	$data = array(
+				'upload' => $image, 
+				'editDate' =>date('Y-m-d H:i:s')
+				   );
+
+
+	         	$where = array('id' => $id);
+
+	         	$this->t_recapitulation->update_data($where,$data,'amc_t_work');         
+	            $error=array('error'=>'File has been uploaded'); 
+	            redirect('work/index');
+	         } 
+      }
 
 
  
