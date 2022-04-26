@@ -11,6 +11,7 @@
             </div>
             <div class="card-body">
               	<div class="table-responsive">
+              		
 	                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 	                 <thead>
 						<tr">
@@ -29,6 +30,7 @@
 							<?php 
 							$id = 1;
 							foreach($work as $w){ 
+								 if ($w->id_user === $this->session->userdata('id')) {
 							?>
 							<tr>
 								<td><?php echo $id++ ?></td>
@@ -67,9 +69,10 @@
 
 								</td>
 							</tr>
-							<?php } ?>
+							<?php } }?>
 						</tbody>
 					</table>
+
 			   	</div>
 			</div>
 		</div>
