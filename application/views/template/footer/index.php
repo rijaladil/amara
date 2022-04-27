@@ -170,6 +170,13 @@
 <script type="text/javascript" src="https://cdn.datatables.net/rowgroup/1.1.4/js/dataTables.rowGroup.min.js"></script>
 
 
+    <script>
+      $(document).ready(function(){
+      $(".preloader").fadeOut();
+      })
+    </script>
+    
+
 </body>
 
 
