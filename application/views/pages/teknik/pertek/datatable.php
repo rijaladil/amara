@@ -20,7 +20,7 @@
               		<table border="0" cellspacing="5" cellpadding="5" align="right">
 							      <tbody>
 							      	<tr>
-							      		<td><b>Pemrakarsa</b>	      		
+							      		<td><b>Pemrakarsa Company :</b>	      		
 										<select class="form-select" aria-label="Default select example" id="name" name="name">
 						      				<option value="">-Pilih-</option>
 						      				<?php foreach($client as $c){ 
@@ -30,7 +30,7 @@
 											<?php } }?>
 						      			</select>&nbsp;
 							            	
-							            	<b>Product</b>
+							            	<b>Product :</b>
 						      			<select class="form-select w-60" aria-label="Default select example" id="product" name="product">
 						      				<option value="">-Pilih-</option>
 						      				<?php foreach($product as $prod){ 
@@ -39,7 +39,7 @@
 											<?php }?>
 						      			</select>&nbsp; 
 										
-										<b>Date</b>							            
+										<b>Date :</b>							            
 							            	<input class="text-center" type="text" id="min" name="min" value="<?php echo ($min == '') ? date('Y-m-01') : $min;?>"><b>To</b>&nbsp;
 							            	
 							            	<input class="text-center" type="text" id="max" name="max" value="<?php echo ($max == '') ? date('Y-m-31') : $max;?>">
@@ -59,10 +59,8 @@
 						<tr>
 						    <th>No</th>
 						    <th width="15%">Project Activity</th>
-						    <!-- <th>Pemrakarsa Name</th> -->
 						    <th width="7%">Start Date</th>
 						    <th width="7%">Finish Date</th>
-						    <!-- <th>Document Product</th> -->
 						    <th>Planing This week</th>
 						    <th>Realization</th>
 						    <th>Problem</th>
@@ -86,19 +84,16 @@
 									<tr>
 										<td width="350px"><b>Project Activity:</b><br>
 											<u>No Report</u> :<b><?php echo $tk->no_report; ?></b><br><?php echo $tk->project_activity; ?></td>
-										<td width="350px"><b>Pemrakarsa Name:</b><br>
-											<?php echo '<b>'.$tk->name.'</b><br>'. $tk->pemrakarsa ?></td>
+										<td width="350px"><b>Pemrakarsa Company:</b><br>
+											<?php echo '<b>'.$tk->name.'</b><br>' ?></td>
 										<td width="350px"><b>Document Product:</b><br>
 											<?php echo $tk->document_product ?></td>
 
 									</tr>
 								</table>
 							</td>	
-							<td><u>No Report</u> :<b><?php echo $tk->no_report; ?></b><br><?php echo $tk->project_activity; ?></td>	
-							<!-- <td><?php echo '<b>'.$tk->name.'</b><br>'. $tk->pemrakarsa ?></td> -->
 							<td><?php echo $tk->start_date ?></td>
 							<td><?php echo $tk->finish_date ?></td>
-							<!-- <td><?php echo $tk->document_product ?></td>	 -->
 							<td><?php echo $tk->planing_this_week ?></td>
 							<td><?php echo $tk->realization ?></td>			
 							<td><?php echo $tk->problem ?></td>		

@@ -55,7 +55,6 @@
 							rp.id as recapitulation_id,
 							rp.project_activity,
 							rp.no_report,
-							pic.pic as pemrakarsa,
 							p.name as document_product,			
 							tk.start_date,
 							tk.finish_date,
@@ -73,7 +72,6 @@
         $this->db->join('amc_t_recapitulation_project rp', 'tk.recapitulation_id = rp.id', 'left');
         $this->db->join('amc_m_client c', 'c.id = rp.client_id', 'left');
         $this->db->join('amc_m_user u', 'u.id = tk.user_id', 'left');
-        $this->db->join('amc_m_client_pic_contact pic', 'c.id = pic.client_id ', 'left');
         $this->db->join('amc_m_client_project cp', 'c.id = cp.client_id', 'left');
         $this->db->join('amc_m_products p', 'cp.project_id = p.id', 'left');
 
@@ -126,7 +124,6 @@
 							rp.id as recapitulation_id,
 							rp.project_activity,
 							rp.no_report,
-							pic.pic as pemrakarsa,
 							p.name as document_product,			
 							tk.start_date,
 							tk.finish_date,
@@ -144,7 +141,6 @@
         $this->db->join('amc_t_recapitulation_project rp', 'tk.recapitulation_id = rp.id', 'left');
         $this->db->join('amc_m_client c', 'c.id = rp.client_id', 'left');
         $this->db->join('amc_m_user u', 'u.id = tk.user_id', 'left');
-        $this->db->join('amc_m_client_pic_contact pic', 'c.id = pic.client_id ', 'left');
         $this->db->join('amc_m_client_project cp', 'c.id = cp.client_id', 'left');
         $this->db->join('amc_m_products p', 'cp.project_id = p.id', 'left');
 

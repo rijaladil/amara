@@ -268,6 +268,7 @@
 							        		if($p->client_id == $c->id) {?>
 							            <div id="inputFormRow_penawaran_<?php echo $c->id ?>">
 							                <div class="input-group mb-3">
+							                	<input type="hidden" id="id" name="id[]"  value="<?php echo $p->id ?>" >  
 							                	<input type="hidden" name="id_penawaran" value="<?php echo $p->id_penawaran ?>" >  
 							                    <input size="100" type="text" id="no_penawaran" name="no_penawaran[]" class="form-control m-input" placeholder="No penawaran" autocomplete="off" value="<?php echo $p->no_penawaran ?>" >	                
 							                    <input type="date" id="date_penawaran" name="date_penawaran[]" class="form-control m-input" placeholder="date" autocomplete="off" value="<?php echo $p->date_penawaran ?>" >
@@ -294,6 +295,7 @@
 							        		if($co->client_id == $c->id) {?>
 							            <div id="inputFormRow_confirmation_<?php echo $co->id ?>">
 							                <div class="input-group mb-3">  
+							                	<input type="hidden" id="id" name="id[]" value="<?php echo $co->id ?> " >        
 							                	<input type="hidden" name="id_confirmation" value="<?php echo $co->id_confirmation ?> " >              
 							                    <input type="date" id="date_confirmation" name="date_confirmation[]" class="form-control m-input" placeholder="date" autocomplete="off" value="<?php echo $co->date_confirmation ?>">
 							                    <div class="input-group-append">                
@@ -318,7 +320,7 @@
 							        		if($po->client_id == $c->id) { ?>
 							            <div id="inputFormRow_po_<?php echo $po->id ?>">
 							                <div class="input-group mb-3">
-							                	<input type="hidden" name="id" value="<?php echo $po->id ?>" >
+							                	<input type="hidden" id="id" name="id[]" value="<?php echo $po->id ?>" >
 							                    <input size="100" type="text" id="no_po" name="no_po[]" class="form-control m-input" placeholder="No PO / Kontrak" autocomplete="off" value="<?php echo $po->no_po ?>">       
 							                    <input type="date" id="date_po" name="date_po[]" class="form-control m-input" placeholder="date" autocomplete="off" value="<?php echo $po->date_po ?>">		               
 							                    <input oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" type="text" id="price" name="price[]" class="numbers form-control m-input" placeholder="Price" autocomplete="off" value="<?php echo number_format($po->price, 0,'.',',')?>">

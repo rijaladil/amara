@@ -150,10 +150,12 @@ class client_process extends CI_Controller{
 		// EDIT PENWARAN 
 		$where = array("client_id" => $client_id);
 		$this->m_data_client_process->delete_data($where,'amc_t_client_penawaran');
+		$this->form_validation->set_rules('id[]', 'id', 'required|trim|xss_clean');
 		$this->form_validation->set_rules('no_penawaran[]', 'no_penawaran', 'required|trim|xss_clean');
 		$this->form_validation->set_rules('date_penawaran[]', 'date_penawaran', 'required|trim|xss_clean');
 		$this->form_validation->set_rules('bid_price[]', 'bid_price', 'required|trim|xss_clean');
-		$this->form_validation->set_rules('info_penawaran[]', 'info_penawaran', 'required|trim|xss_clean');
+		$this->form_validation->set_rules('info_penawaran[]', 'info_penawaran', 'required|trim|xss_clean');	
+		$penawaran = $this->input->post('id');
 		$penawaran = $this->input->post('no_penawaran');
 		$penawaran = $this->input->post('date_penawaran');
 		$penawaran = $this->input->post('bid_price');
@@ -161,11 +163,13 @@ class client_process extends CI_Controller{
 	    $result = array();
 		    foreach($penawaran AS $key => $val){
 			     $result[] = array(
+			     	  "id"				=> $_POST['id'][$key],
 			     	  "client_id" 		=> $client_id,
 				      "no_penawaran" 	=> $_POST['no_penawaran'][$key],
 				      "date"  			=> $_POST['date_penawaran'][$key],
 				      "price"  			=> str_replace(",", "", $_POST['bid_price'][$key]),
-				      "info"  			=> $_POST['info_penawaran'][$key]
+				      "info"  			=> $_POST['info_penawaran'][$key],
+				      'editDate'=>date('Y-m-d H:i:s')
 			     );
 		    }    
 	    $this->db->insert_batch('amc_t_client_penawaran', $result); 
@@ -173,16 +177,20 @@ class client_process extends CI_Controller{
 	// EDIT CONFIRMATION
 	    $where = array("client_id" => $client_id);
 		$this->m_data_client_process->delete_data($where,'amc_t_client_confirmation');
+		$this->form_validation->set_rules('id[]', 'id', 'required|trim|xss_clean');
 	    $this->form_validation->set_rules('date_confirmation[]', 'date_confirmation', 'required|trim|xss_clean');
 		$this->form_validation->set_rules('info_confirmation[]', 'info_confirmation', 'required|trim|xss_clean');
+		$confirmation = $this->input->post('id');
 		$confirmation = $this->input->post('date_confirmation');
 		$confirmation = $this->input->post('info_confirmation');
 	    $result2 = array();
 		    foreach($confirmation AS $key => $val){
 			     $result2[] = array(
+			     	  "id"				=> $_POST['id'][$key],
 			     	  "client_id" 		=> $client_id,
 				      "date" 			=> $_POST['date_confirmation'][$key],
-				      "info"  			=> $_POST['info_confirmation'][$key]
+				      "info"  			=> $_POST['info_confirmation'][$key],
+				      'editDate'=>date('Y-m-d H:i:s')
 			     );
 		    }    
 	    $this->db->insert_batch('amc_t_client_confirmation', $result2); 
@@ -190,10 +198,12 @@ class client_process extends CI_Controller{
 	// EDIT PO / KONTRAK
 	    $where = array("client_id" => $client_id);
 		$this->m_data_client_process->delete_data($where,'amc_t_client_po');
+		$this->form_validation->set_rules('id[]', 'id', 'required|trim|xss_clean');
 	    $this->form_validation->set_rules('no_po[]', 'no_po', 'required|trim|xss_clean');
 		$this->form_validation->set_rules('date_po[]', 'date_po', 'required|trim|xss_clean');
 		$this->form_validation->set_rules('price[]', 'price', 'required|trim|xss_clean');
 		$this->form_validation->set_rules('info_po[]', 'info_po', 'required|trim|xss_clean');
+		$po = $this->input->post('id');
 		$po = $this->input->post('no_po');
 		$po = $this->input->post('date_po');
 		$po = $this->input->post('price');
@@ -201,11 +211,13 @@ class client_process extends CI_Controller{
 	    $result3 = array();
 		    foreach($po AS $key => $val){
 			     $result3[] = array(
+			     	  "id"				=> $_POST['id'][$key],
 			     	  "client_id" 		=> $client_id,
 				      "no_po" 			=> $_POST['no_po'][$key],
 				      "date"  			=> $_POST['date_po'][$key],
 				      "price"  			=> str_replace(",", "",$_POST['price'][$key]),
-				      "info"  			=> $_POST['info_po'][$key]
+				      "info"  			=> $_POST['info_po'][$key],
+				      'editDate'=>date('Y-m-d H:i:s')
 			     );
 		    }    
 	    $this->db->insert_batch('amc_t_client_po', $result3); 

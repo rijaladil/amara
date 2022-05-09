@@ -24,7 +24,7 @@
 							      	<tr>
 							      		<td>
 
-							      			<b>Pemrakarsa :</b>
+							      			<b>Pemrakarsa Company:</b>
 							      			<select class="form-select" aria-label="Default select example" id="name" name="name">
 							      				<option value="">-Pilih-</option>
 							      				<?php foreach($client as $c){ 
@@ -90,18 +90,18 @@
 									<tr>
 										<td width="350px"><b>Project Activity:</b><br>
 											<u>No Report</u> :<b><?php echo $tk->no_report; ?></b><br><?php echo $tk->project_activity; ?></td>
-										<td width="350px"><b>Pemrakarsa Name:</b><br>
-											<?php echo '<b>'.$tk->name.'</b><br>'. $tk->pemrakarsa ?></td>
+										<td width="350px"><b>Pemrakarsa Company:</b><br>
+											<?php echo '<b>'.$tk->name.'</b><br>';  
+											 ?></td>
 										<td width="350px"><b>Document Product:</b><br>
 											<?php echo $tk->document_product ?></td>
+
 
 									</tr>
 								</table>
 							</td>	
-							<!-- <td><?php echo '<b>'.$tk->name.'</b><br>'. $tk->pemrakarsa ?></td> -->
 							<td><?php echo $tk->start_date ?></td>
 							<td><?php echo $tk->finish_date ?></td>
-							<!-- <td><?php echo $tk->document_product ?></td>	 -->
 							<td><?php echo $tk->planing_this_week ?></td>
 							<td><?php echo $tk->realization ?></td>			
 							<td><?php echo $tk->problem ?></td>		

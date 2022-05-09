@@ -208,11 +208,13 @@ class prospective_client extends CI_Controller{
 		$where = array("client_id" => $id);
 		$this->m_data_prospective_client->delete_data($where,'amc_m_client_email');
 		$this->form_validation->set_rules('email[]', 'email', 'required|trim|xss_clean');
+		$hid= $this->input->post('id');
 		$id_email= $this->input->post('id_email');
 		$email = $this->input->post('email');
 	    $result = array();
 		    foreach($email AS $key => $val){
 			     $result[] = array(
+			     	  "id"=>$hid,
 			     	  "id_email"=> $id_email,
 			     	  "client_id"=> $id,
 				      "client_name" => $name,
@@ -225,11 +227,13 @@ class prospective_client extends CI_Controller{
 	    $where = array("client_id" => $id);
 		$this->m_data_prospective_client->delete_data($where,'amc_m_client_tlp');
 		$this->form_validation->set_rules('contact[]', 'contact', 'required|trim|xss_clean');
+		$hid= $this->input->post('id');
 		$id_tlp= $this->input->post('id_tlp');
 		$contact = $this->input->post('contact');
 	    $result2 = array();
 		    foreach($contact AS $key => $val){
 			     $result2[] = array(
+			     	  "id"=>$hid,
 			     	  "id_tlp"=>$id_tlp,
 			     	  "client_id"=> $id,
 				      "client_name" => $name,
@@ -242,11 +246,13 @@ class prospective_client extends CI_Controller{
 	    $where = array("client_id" => $id);
 	    $this->m_data_prospective_client->delete_data($where,'amc_m_client_project');   
 		$this->form_validation->set_rules('project_id[]', 'project_id', 'required|trim|xss_clean');
+		$hid= $this->input->post('id');
 		$id_project= $this->input->post('id_project');
 		$project_id = $this->input->post('project_id');
 	    $result3 = array();
 		    foreach($project_id AS $key => $val){
 			     $result3[] = array(
+			     	  "id"=>$hid,
 			     	  "id_project" => $id_project,
 			     	  "client_id"=> $id,
 				      "client_name" => $name,
@@ -262,6 +268,7 @@ class prospective_client extends CI_Controller{
 		$this->form_validation->set_rules('pic[]' , 'pic', 'required|trim|xss_clean');
 		$this->form_validation->set_rules('pic_contact[]' , 'pic_contact', 'required|trim|xss_clean');
 		$this->form_validation->set_rules('pic_email[]' , 'pic_email', 'required|trim|xss_clean');
+		$hid= $this->input->post('id');
 		$id_pic= $this->input->post('id_pic');
 		$pic = $this->input->post('pic');
 		$pic = $this->input->post('pic_contact');
@@ -269,6 +276,7 @@ class prospective_client extends CI_Controller{
 	    $result4 = array();
 	    foreach($pic AS $key => $val){
 		     $result4[] = array(
+		     	  "id"=>$hid,
 		     	  "id_pic"=> $id_pic,
 		          "client_id"=> $id,
 			      "client_name" => $name,
