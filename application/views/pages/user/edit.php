@@ -10,6 +10,14 @@
 					<tr>
 						<td>
 							<div class="form-group">
+							  <label for="inputdefault">NIP:</label>
+							  <input type="text" class="form-control" id="nip" name="nip" value="<?php echo $u->nip ?>">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="form-group">
 							  <label for="inputdefault">Name:</label>
 							  <input type="hidden" name="id" value="<?php echo $u->id ?>">
 							  <input type="text" class="form-control" id="usr" name="name" value="<?php echo $u->name ?>">

@@ -7,7 +7,8 @@ class m_data_user extends CI_Model{
 		// return $this->db->get('amc_m_user');
 		return $this->db->query('SELECT  
 										u.id, 
-										u.name, 
+										u.nip,
+										u.name,
 										u.email, 
 										u.contact, 
 										u.department, 

@@ -16,6 +16,7 @@
 	                 <thead>
 						<tr>
 							<th width="5%">No</th>
+							<th>NIP</th>
 							<th>Name</th>
 							<th>Email</th>
 							<th>Contact</th>
@@ -34,6 +35,7 @@
 
 							<tr>
 								<td><?php echo $id++ ?></td>
+								<td><b><?php echo $u->nip ?></b></td>
 								<td><b><?php echo $u->name ?></b></td>
 								<td><a href = "mailto:<?php echo $u->email ?>"><?php echo $u->email ?></a></td>
 								<td><?php echo $u->contact ?></td>
@@ -54,7 +56,7 @@
 
 					                  <a href="<?php echo base_url(). 'index.php/user/edit/'.$u->id ; ?>"  class="btn btn-success btn-circle btn-sm" >
 									  	<span class="icon text-white-50 ">
-					                      <i class="fas fa-check"></i>
+					                      <i class="fas fa-edit"></i>
 					                    </span>
 					                  </a>
 

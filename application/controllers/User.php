@@ -36,7 +36,7 @@ class User extends CI_Controller{
 
 	// process input
  	public function p_input(){
- 		
+ 		$nip = $this->input->post('nip');
 		$name = $this->input->post('name');
 		$email = $this->input->post('email');
 		$contact = $this->input->post('contact');
@@ -45,6 +45,7 @@ class User extends CI_Controller{
 		$client_id = $this->input->post('client_id');
 
 		$data = array(
+			'nip' => $nip,
 			'name' => $name,
 			'email' => $email,
 			'contact' => $contact,
@@ -70,6 +71,7 @@ class User extends CI_Controller{
  	// process update
 	function update(){
 		$id= $this->input->post('id');
+		$nip = $this->input->post('nip');
 		$name = $this->input->post('name');
 		$email = $this->input->post('email');
 		$contact = $this->input->post('contact');
@@ -79,6 +81,7 @@ class User extends CI_Controller{
 		$client_id = $this->input->post('client_id');
 		
 		$data = array(
+			'nip' => $nip,
 			'name' => $name,
 			'email' => $email,
 			'contact' => $contact,

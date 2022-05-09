@@ -8,6 +8,14 @@
 					<tr>
 						<td>
 							<div class="form-group">
+							  <label for="inputdefault">NIP:</label>
+							  <input type="text" class="form-control" id="nip" name="nip" required>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="form-group">
 							  <label for="inputdefault">Name:</label>
 							  <input type="text" class="form-control" id="usr" name="name" required>
 							</div>

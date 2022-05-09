@@ -96,7 +96,7 @@ class client extends CI_Controller{
 	 public function update(){
 		$id= $this->input->post('id');
 		$name = $this->input->post('name');
-		$npwp = $this->input->post('npwp')
+		$npwp = $this->input->post('npwp');
 		$information = $this->input->post('information');
 		$address = $this->input->post('address');
 		$city_kabupaten = $this->input->post('city_kabupaten');
