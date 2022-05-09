@@ -46,7 +46,7 @@
 								<?php if ( (in_array($this->session->userdata('level'), array(1,2,3))) ) { ?>
 									 <a href="#" class="btn btn-success btn-circle btn-sm" data-toggle="modal" data-target="#Fedit<?php echo $p->id; ?>">
 					                    <span class="icon text-white-50">
-					                      <i class="fas fa-check"></i>
+					                      <i class="fas fa-edit"></i>
 					                    </span>
 					                  </a>
 
