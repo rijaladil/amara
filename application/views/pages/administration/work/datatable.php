@@ -15,7 +15,16 @@
               		<table border="0" cellspacing="5" cellpadding="5" align="right">
 				      <tbody>
 				      	<tr>
-				      		<td> 				      			
+				      		<td> 		
+				      			<b>Worker : </b>
+				            	<select class="form-select" ria-label="Default select example" id="id_user" name="id_user">
+									<option value="">Pilih</option>
+									<?php 
+									foreach($user as $u){ 
+									?>
+									<option value="<?php echo $u->id ?>"><?php echo $u->name ?></option>
+									<?php }?>
+								</select>      			
 				            	<b>Date : </b>
 				            	<input class="text-center" type="text" id="min" name="min" value="<?php echo ($min == '') ? date('Y-m-01') : $min;?>"> <b>To</b>&nbsp;
 
@@ -40,7 +49,7 @@
 							<th>Start Time</th>
 							<th>Finish Time</th>
 							<th>Note</th>
-							<th>User</th>
+							<th>Worker</th>
 							<th width="8%"  align="center">Action</th>
 						</tr>
 						</thead>
@@ -54,8 +63,8 @@
 							?>
 							<tr>
 								<td><?php echo $id++ ?></td>
-								<td><a  target="_blank" href="<?php echo base_url(). 'upload_working/'.$w->upload ; ?>" class="btn btn-primary btn-sm" >
-									<?php echo $w->item ?></a>
+								<td><?php if (!empty($w->upload)){?> <a  target="_blank" href="<?php echo base_url(). 'upload_working/'.$w->upload ; ?>" class="btn btn-primary btn-sm" >
+									<?php } echo $w->item ?></a>
 								</td>
 								<td><?php echo $w->id_job ?></td>
 								<td><?php echo $w->date ?></td>
@@ -151,7 +160,7 @@
 						<td>
 							<div class="form-group">
 							  <label for="inputdefault">Jenis Pekerjaan:</label>
-							  <input type="text" class="form-control" id="item" name="item">
+							  <input type="text" class="form-control" id="item" name="item" required>
 							</div>
 						</td>
 					</tr>
@@ -175,7 +184,7 @@
 						<td>
 							<div class="form-group ">
 								<label for="inputdefault">Start Time:</label>
-								<input class="form-control" id="start" type="time" name="start">
+								<input class="form-control" id="start" type="time" name="start" required>
 							</div>
 						</td>
 					</tr>
@@ -183,7 +192,7 @@
 						<td>
 							<div class="form-group ">
 								<label for="inputdefault">Finish Time:</label>
-								<input class="form-control" id="finish" type="time" name="finish">
+								<input class="form-control" id="finish" type="time" name="finish" required>
 							</div>
 						</td>
 					</tr>
@@ -199,7 +208,7 @@
 						<td>
 							<div class="form-group ">
 								<label for="inputdefault">Worker:</label>
-								<select class="form-control" id="id_user" name="id_user">
+								<select class="form-control" id="id_user" name="id_user" required>
 									<option value="">Pilih</option>
 									<?php 
 									foreach($user as $u){ 

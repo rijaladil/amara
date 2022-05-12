@@ -8,10 +8,13 @@ class t_work extends CI_Model{
 	}
 
 	
-	function get_data_by_date( $min = '', $max = ''){
+	function get_data_by_date( $min = '', $max = '',  $id_user = ''){
 		// $this->db->select('');
 		$this->db->from('amc_t_work');
 		
+
+
+
 		if ($min <> '') {
             $this->db->where('date >= ', $min);
         }else{
@@ -21,6 +24,13 @@ class t_work extends CI_Model{
             $this->db->where('date <= ', $max);
         }else{
         }
+
+	  if (empty($id_user)) {
+            $this->db->where('id_user >', '');            
+        }else{
+        	$this->db->where('id_user', $id_user);
+        }
+
         $query = $this->db->get();
 
 		$data = array();

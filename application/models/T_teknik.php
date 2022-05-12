@@ -95,9 +95,9 @@
         }
 
 		if (empty($product)) {
-			$this->db->where('p.name >', '');            
+			$this->db->where('p.product >', '');            
         }else{
-        	$this->db->where('p.name', $product);
+        	$this->db->where('p.product', $product);
         }
 
          $this->db->where('p.category_teknik','1');//amdal
@@ -164,9 +164,9 @@
         }
 
 		if (empty($product)) {
-			$this->db->where('p.name >', '');            
+			$this->db->where('p.product >', '');            
         }else{
-        	$this->db->where('p.name', $product);
+        	$this->db->where('p.product', $product);
         }
 
          $this->db->where('p.category_teknik','2');//pertek

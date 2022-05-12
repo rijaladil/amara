@@ -35,11 +35,12 @@ class work extends CI_Controller{
 
 	 function index(){
 	 	$data['user'] = $this->m_data_user->get_data()->result();
+	 	$data['id_user'] = $this->security->xss_clean($this->input->post('id_user'));
 	 	$data['min'] = $this->security->xss_clean($this->input->post('min'));
 		$data['max'] = $this->security->xss_clean($this->input->post('max'));
 		$data['work'] = $this->t_work->get_data()->result();
 		
-		$data['work_by_date'] = $this->t_work->get_data_by_date($data['min'], $data['max']);
+		$data['work_by_date'] = $this->t_work->get_data_by_date($data['min'], $data['max'], $data['id_user']);
 		$this->load->view('template/header/index');
 		$this->load->view('template/menu/index');
 		$this->load->view('pages/administration/work/datatable',$data);
