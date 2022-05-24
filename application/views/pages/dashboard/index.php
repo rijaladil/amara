@@ -153,12 +153,114 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Summary Working Log</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d253801.61008413736!2d106.83683583051321!3d-6.309607723950669!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69e5abf5b452cf%3A0x880768222a9016cf!2sPT.%20Amara%20Cisadane!5e0!3m2!1sid!2sid!4v1646906756566!5m2!1sid!2sid" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <form method="post" action="<?php echo base_url(); ?>index.php/dashboard/index">
+                <table border="0" cellspacing="5" cellpadding="5" align="right">
+                  <tbody>
+                    <tr>
+                        <td>                                    
+                            <b>Date : </b>
+                            <input id="bday-month" type="month" name="month" value="<?php echo date('Y-m')?>">
+                            <input type="submit" class="btn btn-success btn-sm" value="Select">
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                </form>
+               <table class="table table-bordered" id="dataTablex" width="100%" cellspacing="0" border="1">
+                <thead>
+                 <tr>
+                    <th rowspan="2" width="2%">No</th>
+                    <th rowspan="2" width="15%">Name</th>
+                    <th colspan="31" >Bulan <?php echo date('M');?></th>
+                    <th rowspan="2" width="2%">Total</th>
+                  </tr>
+                  <tr>
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                    <th>4</th>
+                    <th>5</th>
+                    <th>6</th>
+                    <th>7</th>
+                    <th>8</th>
+                    <th>8</th>
+                    <th>10</th>
+                    <th>11</th>
+                    <th>12</th>
+                    <th>13</th>
+                    <th>14</th>
+                    <th>15</th>
+                    <th>16</th>
+                    <th>17</th>
+                    <th>18</th>
+                    <th>18</th>
+                    <th>20</th>
+                    <th>21</th>
+                    <th>22</th>
+                    <th>23</th>
+                    <th>24</th>
+                    <th>25</th>
+                    <th>26</th>
+                    <th>27</th>
+                    <th>28</th>
+                    <th>28</th>
+                    <th>30</th>
+                    <th>31</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <?php $total = 0; $id = 1; foreach($score as $swl) 
+     
+                    
+                    { ?>
+                  <tr>
+                    <td><?php echo $id++ ?></td>
+                    <td><?php echo $swl->name ?></td>
+                    <td><?php echo $swl->tgl1; ?></td>
+                    <td><?php echo $swl->tgl2; ?></td>
+                    <td><?php echo $swl->tgl3; ?></td>
+                    <td><?php echo $swl->tgl4; ?></td>
+                    <td><?php echo $swl->tgl5; ?></td>
+                    <td><?php echo $swl->tgl6; ?></td>
+                    <td><?php echo $swl->tgl7; ?></td>
+                    <td><?php echo $swl->tgl8; ?></td>
+                    <td><?php echo $swl->tgl9; ?></td>
+                    <td><?php echo $swl->tgl10; ?></td>
+                    <td><?php echo $swl->tgl11; ?></td>
+                    <td><?php echo $swl->tgl12; ?></td>
+                    <td><?php echo $swl->tgl13; ?></td>
+                    <td><?php echo $swl->tgl14; ?></td>
+                    <td><?php echo $swl->tgl15; ?></td>
+                    <td><?php echo $swl->tgl16; ?></td>
+                    <td><?php echo $swl->tgl17; ?></td>
+                    <td><?php echo $swl->tgl18; ?></td>
+                    <td><?php echo $swl->tgl19; ?></td>
+                    <td><?php echo $swl->tgl20; ?></td>
+                    <td><?php echo $swl->tgl21; ?></td>
+                    <td><?php echo $swl->tgl22; ?></td>
+                    <td><?php echo $swl->tgl23; ?></td>
+                    <td><?php echo $swl->tgl24; ?></td>
+                    <td><?php echo $swl->tgl25; ?></td>
+                    <td><?php echo $swl->tgl26; ?></td>
+                    <td><?php echo $swl->tgl27; ?></td>
+                    <td><?php echo $swl->tgl28; ?></td>
+                    <td><?php echo $swl->tgl29; ?></td>
+                    <td><?php echo $swl->tgl30; ?></td>
+                    <td><?php echo $swl->tgl31; ?></td>
+                                 <?php $total= $swl->tgl1+$swl->tgl2+$swl->tgl3+$swl->tgl4+$swl->tgl5+$swl->tgl6+$swl->tgl7+$swl->tgl8+$swl->tgl9+$swl->tgl10+$swl->tgl11+$swl->tgl12+$swl->tgl13+$swl->tgl14+$swl->tgl15+$swl->tgl16+$swl->tgl17+$swl->tgl18+$swl->tgl19+$swl->tgl20+$swl->tgl21+$swl->tgl22+$swl->tgl23+$swl->tgl24+$swl->tgl25+$swl->tgl26+$swl->tgl27+$swl->tgl28+$swl->tgl29+$swl->tgl30+$swl->tgl31 ; ?>
 
+                     <td><b><?php echo $total ; ?></b></td> 
+                    
+                  </tr>
+
+
+                    <?php }?>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
@@ -174,3 +276,8 @@
                     <!-- Content Row -->
               
 
+<style type="text/css">
+    body table {
+        line-height: 0.7;
+    }
+</style>

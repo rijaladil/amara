@@ -31,6 +31,56 @@
 		');
 	}
 
+	public function get_score_working_log(){
+			
+		return $this->db->query('
+								SELECT 
+										u.name
+
+										,SUM(IF(DATE_FORMAT(w.date, "%d") = "1", 1, NULL )) AS "tgl1" 
+										,SUM(IF(DATE_FORMAT(w.date, "%d") = "2", 1,  NULL )) AS "tgl2" 
+										,SUM(IF(DATE_FORMAT(w.date, "%d") = "3", 1,  NULL )) AS "tgl3" 
+										,SUM(IF(DATE_FORMAT(w.date, "%d") = "4", 1,  NULL )) AS "tgl4" 
+										,SUM(IF(DATE_FORMAT(w.date, "%d") = "5", 1,  NULL )) AS "tgl5" 
+										,SUM(IF(DATE_FORMAT(w.date, "%d") = "6", 1,  NULL )) AS "tgl6" 
+										,SUM(IF(DATE_FORMAT(w.date, "%d") = "7", 1,  NULL )) AS "tgl7" 
+										,SUM(IF(DATE_FORMAT(w.date, "%d") = "8", 1,  NULL )) AS "tgl8" 
+										,SUM(IF(DATE_FORMAT(w.date, "%d") = "8", 1,  NULL )) AS "tgl9" 
+										,SUM(IF(DATE_FORMAT(w.date, "%d") = "10", 1,  NULL )) AS "tgl10" 
+
+
+										,SUM(IF(DATE_FORMAT(w.date, "%d") = "11", 1,  NULL )) AS "tgl11" 
+										,SUM(IF(DATE_FORMAT(w.date, "%d") = "12", 1,  NULL )) AS "tgl12" 
+										,SUM(IF(DATE_FORMAT(w.date, "%d") = "13", 1,  NULL )) AS "tgl13" 
+										,SUM(IF(DATE_FORMAT(w.date, "%d") = "14", 1,  NULL )) AS "tgl14" 
+										,SUM(IF(DATE_FORMAT(w.date, "%d") = "15", 1,  NULL )) AS "tgl15" 
+										,SUM(IF(DATE_FORMAT(w.date, "%d") = "16", 1,  NULL )) AS "tgl16" 
+										,SUM(IF(DATE_FORMAT(w.date, "%d") = "17", 1,  NULL )) AS "tgl17" 
+										,SUM(IF(DATE_FORMAT(w.date, "%d") = "18", 1,  NULL )) AS "tgl18" 
+										,SUM(IF(DATE_FORMAT(w.date, "%d") = "18", 1,  NULL )) AS "tgl19" 
+										,SUM(IF(DATE_FORMAT(w.date, "%d") = "20", 1,  NULL )) AS "tgl20" 
+
+										,SUM(IF(DATE_FORMAT(w.date, "%d") = "21", 1,  NULL )) AS "tgl21" 
+										,SUM(IF(DATE_FORMAT(w.date, "%d") = "22", 1,  NULL )) AS "tgl22" 
+										,SUM(IF(DATE_FORMAT(w.date, "%d") = "23", 1,  NULL )) AS "tgl23" 
+										,SUM(IF(DATE_FORMAT(w.date, "%d") = "24", 1,  NULL )) AS "tgl24" 
+										,SUM(IF(DATE_FORMAT(w.date, "%d") = "25", 1,  NULL )) AS "tgl25" 
+										,SUM(IF(DATE_FORMAT(w.date, "%d") = "26", 1,  NULL )) AS "tgl26" 
+										,SUM(IF(DATE_FORMAT(w.date, "%d") = "27", 1,  NULL )) AS "tgl27" 
+										,SUM(IF(DATE_FORMAT(w.date, "%d") = "28", 1,  NULL )) AS "tgl28" 
+										,SUM(IF(DATE_FORMAT(w.date, "%d") = "28", 1,  NULL )) AS "tgl29" 
+										,SUM(IF(DATE_FORMAT(w.date, "%d") = "30", 1,  NULL )) AS "tgl30" 
+										,SUM(IF(DATE_FORMAT(w.date, "%d") = "31", 1,  NULL )) AS "tgl31" 
+
+									FROM amc_t_work w
+									LEFT JOIN amc_m_user u
+									ON w.id_user = u.id
+
+									WHERE date_format(w.date, "%Y-%m") = date_format(now(), "%Y-%m")
+									GROUP BY u.id
+								');
+	}
+
 }
 
 ?>

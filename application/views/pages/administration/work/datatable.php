@@ -26,9 +26,9 @@
 									<?php }?>
 								</select>      			
 				            	<b>Date : </b>
-				            	<input class="text-center" type="text" id="min" name="min" value="<?php echo ($min == '') ? date('Y-m-01') : $min;?>"> <b>To</b>&nbsp;
+				            	<input class="text-center" type="text" id="min" name="min" value="<?php echo ($min == '') ? date('Y-m-d') : $min;?>"> <b>To</b>&nbsp;
 
-				            	<input class="text-center" type="text" id="max" name="max" value="<?php echo ($max == '') ? date('Y-m-31') : $max;?>">
+				            	<input class="text-center" type="text" id="max" name="max" value="<?php echo ($max == '') ? date('Y-m-d') : $max;?>">
 
 				            	<input type="submit" class="btn btn-success btn-sm" value="Select">
 				            </td>
@@ -53,7 +53,7 @@
 							<th width="8%"  align="center">Action</th>
 						</tr>
 						</thead>
-						</tbody>
+						<tbody>
 							<?php 
 							$id = 1;	
 											foreach($work_by_date as $w){ 
@@ -209,6 +209,7 @@
 							<div class="form-group ">
 								<label for="inputdefault">Worker:</label>
 								<select class="form-control" id="id_user" name="id_user" required>
+									<option value="<?php echo $this->session->userdata('id') ?>"><?php echo $this->session->userdata('name') ?></option>
 									<option value="">Pilih</option>
 									<?php 
 									foreach($user as $u){ 

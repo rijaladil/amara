@@ -14,6 +14,7 @@ class m_data_user extends CI_Model{
 										u.department, 
 										u.user_level, 
 										u.client_id,
+										u.last_login,
 										c.name as company 
 								FROM `amc_m_user` u
 								LEFT JOIN amc_m_client c

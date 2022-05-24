@@ -22,7 +22,7 @@
 							<th>Contact</th>
 							<th>Department</th>
 							<th>User Level</th>
-							<th>Company</th>
+							<th>Last Login</th>
 							<th width="10%">Action</th>
 						</tr>
 
@@ -50,7 +50,7 @@
 									<?php else: ?> Customer
 									<?php endif; ?>
 								</td>
-								<td><?php echo $u->client_id ?></td>
+								<td><?php if ($u->last_login == '0000-00-00 00:00:00') {echo 'never login';}else {echo $u->last_login;} ?></td>
 								<td>
 							
 

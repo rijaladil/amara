@@ -27,11 +27,16 @@ class dashboard extends CI_Controller{
 	
 	//DASHBOARD
 	public function index(){
+
+	
 		$data['client'] = $this->t_dashboard->get_data_client_all()->result();
 		$data['prospective'] = $this->t_dashboard->get_data_client_prospective()->result();
 		$data['process'] = $this->t_dashboard->get_data_client_process()->result();
 		$data['closing'] = $this->t_dashboard->get_data_client_closing()->result();	
-		$data['project'] = $this->t_dashboard->get_data_project()->result();			
+		$data['project'] = $this->t_dashboard->get_data_project()->result();	
+
+		$data['score'] =  $this->t_dashboard->get_score_working_log()->result();		
+
 		$this->load->view('template/header/index');
 		$this->load->view('template/menu/index');
 		$this->load->view('pages/dashboard/index',$data);

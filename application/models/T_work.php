@@ -13,16 +13,16 @@ class t_work extends CI_Model{
 		$this->db->from('amc_t_work');
 		
 
-
-
 		if ($min <> '') {
             $this->db->where('date >= ', $min);
         }else{
+        	 $this->db->where('date = ', date("Y-m-d"));
         }
 
         if ($max <> '') {
             $this->db->where('date <= ', $max);
         }else{
+        	 $this->db->where('date = ', date("Y-m-d"));
         }
 
 	  if (empty($id_user)) {
