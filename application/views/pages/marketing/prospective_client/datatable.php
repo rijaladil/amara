@@ -15,6 +15,53 @@
 					  <?php }?>
             </div>
             <div class="card-body">
+
+				<!-- Contact Web -->
+            	<h5>Contact Web</h5>
+              	<div class="table-responsive ">
+	                <table class="table table-bordered" id="dataTable1" width="100%" cellspacing="0">
+	                 <thead class=" btn-info">
+						<tr>
+							<th width="2%">No</th>
+							<th width="20%">Company Name</th>
+							<th width="25%">Info</th>
+							<th>Address</th>
+							<th width="10%">Contact</th>
+							<th width="10%">Email</th>
+							<th width="5%">Action</th>
+						</tr>
+					 </thead>
+						<tbody>
+							<?php 
+							$id = 1;
+							foreach($contact_web as $cw){ 
+							?>
+							<tr>
+								<td><?php echo $id++ ?></td>
+								<td><b><?php echo $cw->name ?></b></td>
+								<td><?php echo $cw->information ?></td>
+								<td><?php echo $cw->address ?>, 
+								<b><?php echo $cw->city_kabupaten ?></b>, 
+								<b><i><?php echo $cw->province ?></b></i></td>
+								<td><?php echo $cw->contact ?></td>
+								<td><?php echo $cw->email ?></td>
+								<td  class="row justify-content-center">
+								<?php if ( (in_array($this->session->userdata('level'), array(1,2))) ) { ?>									
+					                  <a href="#" class="btn btn-success btn-circle btn-sm" data-toggle="modal" data-target="#Fedit<?php echo $cw->id ?>">
+					                    <span class="icon text-white-50">
+					                      <i class="fas fa-edit"></i>
+					                    </span>
+					                  </a>
+
+					                  
+									  <?php }?>
+								</td>
+							</tr>
+							<?php } ?>
+						</tbody>
+					</table>
+			   	</div>
+
             	<!-- Prospective Client -->
             	<h5>Prospective Client</h5>
               	<div class="table-responsive ">

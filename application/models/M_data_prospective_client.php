@@ -34,6 +34,13 @@
 
 	}
 
+	public function get_data_contact_web(){
+		$this->db->from('amc_m_contact_web');
+        $this->db->order_by('id', 'DESC');
+        $query = $this->db->get();
+        return $query->result();
+	}
+
 	public function get_data_sector(){
 		$this->db->from('amc_m_sector');
         $this->db->order_by('id', 'DESC');

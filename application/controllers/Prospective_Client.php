@@ -31,6 +31,7 @@ class prospective_client extends CI_Controller{
 	 public function index(){
 	 
 		$data['prospective_client'] = $this->m_data_prospective_client->get_data_prospec();
+		$data['contact_web'] = $this->m_data_prospective_client->get_data_contact_web();
 		$data['sector'] = $this->m_data_prospective_client->get_data_sector();
 		$data['products'] = $this->m_data_prospective_client->get_data_products();
 		$data['project'] = $this->m_data_prospective_client->get_data_project();
@@ -43,6 +44,7 @@ class prospective_client extends CI_Controller{
 		$this->load->view('pages/marketing/prospective_client/datatable',$data);
 		$this->load->view('template/footer/index');
 	}
+
 
 	// process input
 	public function p_input(){
@@ -77,8 +79,6 @@ class prospective_client extends CI_Controller{
 		$this->m_data_prospective_client->input_data($data,'amc_m_client');
 		$insert_id = $this->db->insert_id(); 
 		
-
-
 
 		// INPUT EMAIL
 		$this->form_validation->set_rules('email[]', 'email', 'required|trim|xss_clean');
@@ -142,8 +142,6 @@ class prospective_client extends CI_Controller{
 			     );
 		    }    
 	    $this->db->insert_batch('amc_m_client_pic_contact', $result4); 
-
-
 		redirect('Prospective_Client/index');
 		
 		
