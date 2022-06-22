@@ -77,7 +77,6 @@ class User extends CI_Controller{
 		$contact = $this->input->post('contact');
 		$department = $this->input->post('department');
 		$user_level = $this->input->post('user_level');
-		$password = $this->input->post('password');
 		$client_id = $this->input->post('client_id');
 		
 		$data = array(
@@ -86,7 +85,6 @@ class User extends CI_Controller{
 			'email' => $email,
 			'contact' => $contact,
 			'department' => $department,
-			'password' => sha1($password),
 			'user_level'=> $user_level,
 			'client_id' => $client_id
 		);

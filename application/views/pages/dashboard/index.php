@@ -144,11 +144,7 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">AMC Smart System</h1>
-    <p class="mb-4">
-                    Enginering, Management Consultant &
-                    Services for the Environment, Safety & Health
-    </p>
+
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
