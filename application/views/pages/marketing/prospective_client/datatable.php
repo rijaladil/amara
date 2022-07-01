@@ -91,13 +91,13 @@
 								<b><i><?php echo $c->province ?></b></i></td>
 								<td><?php echo $c->product_name ?><br>
 									<?php if ( $c->status_client  === '1'): ?>
-									        <b><p style="color:orange;">Process</p></b>
+									        <b><span style="color:orange;">Process</span></b>
 									<?php elseif ( $c->status_client  === '2'): ?>
-									        <b><p style="color:blue;">Closing</p></b>
+									        <b><span style="color:blue;">Closing</span></b>
 									<?php elseif ( $c->status_client  === '0'): ?>
-									        <b><p style="color:blue;">Prospective</p></b>
+									        <b><span style="color:blue;">Prospective</span></b>
 									<?php else: ?>
-									        <b><p style="color:red;">Black List</p></b>
+									        <b><span style="color:red;">Black List</span></b>
 									<?php endif; ?>
 								</td>
 								<td  class="row justify-content-center">
@@ -150,13 +150,13 @@
 								<b><i><?php echo $c->province ?></b></i></td>
 								<td><?php echo $c->product_name ?><br>
 									<?php if ( $c->status_client  === '1'): ?>
-									        <b><p style="color:orange;">Process</p></b>
+									        <b><span style="color:orange;">Process</span></b>
 									<?php elseif ( $c->status_client  === '2'): ?>
-									        <b><p style="color:blue;">Closing</p></b>
+									        <b><span style="color:blue;">Closing</span></b>
 									<?php elseif ( $c->status_client  === '0'): ?>
-									        <b><p style="color:blue;">Prospective</p></b>
+									        <b><span style="color:blue;">Prospective</span></b>
 									<?php else: ?>
-									        <b><p style="color:red;">Black List</p></b>
+									        <b><span style="color:red;">Black List</span></b>
 									<?php endif; ?>
 								</td>
 								<td  class="row justify-content-center">
@@ -209,13 +209,13 @@
 								<b><i><?php echo $c->province ?></b></i></td>
 								<td><?php echo $c->product_name ?><br>
 									<?php if ( $c->status_client  === '1'): ?>
-									        <b><p style="color:orange;">Process</p></b>
+									        <b><span style="color:orange;">Process</span></b>
 									<?php elseif ( $c->status_client  === '2'): ?>
-									        <b><p style="color:blue;">Closing</p></b>
+									        <b><span style="color:blue;">Closing</span></b>
 									<?php elseif ( $c->status_client  === '0'): ?>
-									        <b><p style="color:blue;">Prospective</p></b>
+									        <b><span style="color:blue;">Prospective</span></b>
 									<?php else: ?>
-									        <b><p style="color:red;">Black List</p></b>
+									        <b><span style="color:red;">Black List</span></b>
 									<?php endif; ?>
 								</td>
 								<td  class="row justify-content-center">
@@ -268,13 +268,13 @@
 								<b><i><?php echo $c->province ?></b></i></td>
 								<td><?php echo $c->product_name ?><br>
 									<?php if ( $c->status_client  === '1'): ?>
-									        <b><p style="color:orange;">Process</p></b>
+									        <b><span style="color:orange;">Process</span></b>
 									<?php elseif ( $c->status_client  === '2'): ?>
-									        <b><p style="color:blue;">Closing</p></b>
+									        <b><span style="color:blue;">Closing</span></b>
 									<?php elseif ( $c->status_client  === '0'): ?>
-									        <b><p style="color:blue;">Prospective</p></b>
+									        <b><span style="color:blue;">Prospective</span></b>
 									<?php else: ?>
-									        <b><p style="color:red;">Black List</p></b>
+									        <b><span style="color:red;">Black List</span></b>
 									<?php endif; ?>
 								</td>
 								<td  class="row justify-content-center">

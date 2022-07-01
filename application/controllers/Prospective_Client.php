@@ -191,9 +191,9 @@ class prospective_client extends CI_Controller{
 			'province2' => $province2,
 			'sector_id' => $sector_id,
 			'id_user'=> $id_user,
-			'status_client'=>$status_client,
-			'editUser'=>$user_id,
-			'editDate'=>date('Y-m-d H:i:s')
+			'status_client'=> $status_client,
+			'editUser'=> $user_id,
+			'editDate'=> date('Y-m-d H:i:s')
 		);
 
 		$where = array(
@@ -205,6 +205,7 @@ class prospective_client extends CI_Controller{
 		//EDIT EMAIL
 		$where = array("client_id" => $id);
 		$this->m_data_prospective_client->delete_data($where,'amc_m_client_email');
+
 		$this->form_validation->set_rules('email[]', 'email', 'required|trim|xss_clean');
 		$hid= $this->input->post('id');
 		$id_email= $this->input->post('id_email');
@@ -224,6 +225,7 @@ class prospective_client extends CI_Controller{
 	    // EDIT TELP
 	    $where = array("client_id" => $id);
 		$this->m_data_prospective_client->delete_data($where,'amc_m_client_tlp');
+
 		$this->form_validation->set_rules('contact[]', 'contact', 'required|trim|xss_clean');
 		$hid= $this->input->post('id');
 		$id_tlp= $this->input->post('id_tlp');
@@ -243,6 +245,7 @@ class prospective_client extends CI_Controller{
 	   // EDIT PRODUCT	   
 	    $where = array("client_id" => $id);
 	    $this->m_data_prospective_client->delete_data($where,'amc_m_client_project');   
+
 		$this->form_validation->set_rules('project_id[]', 'project_id', 'required|trim|xss_clean');
 		$hid= $this->input->post('id');
 		$id_project= $this->input->post('id_project');
@@ -263,6 +266,7 @@ class prospective_client extends CI_Controller{
 	 	// EDIT PIC CONTACT	    
 	    $where = array("client_id" => $id);
 		$this->m_data_prospective_client->delete_data($where,'amc_m_client_pic_contact');
+
 		$this->form_validation->set_rules('pic[]' , 'pic', 'required|trim|xss_clean');
 		$this->form_validation->set_rules('pic_contact[]' , 'pic_contact', 'required|trim|xss_clean');
 		$this->form_validation->set_rules('pic_email[]' , 'pic_email', 'required|trim|xss_clean');

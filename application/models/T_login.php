@@ -19,11 +19,11 @@ class T_login extends CI_Model
                 'name'      => $row->name,
                 'email'     => $row->email,
                 'level'     => $row->user_level,
-                'department'     => $row->department,
+                'department'=> $row->department,
                 'loggin'    => TRUE
             );
 
-               $this->db->where('amc_m_user.email', $email);
+             $this->db->where('amc_m_user.email', $email);
              $this->db->update('amc_m_user', 
                   array('last_login'=> date('Y-m-d H:i:s'))
                  );
