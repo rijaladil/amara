@@ -167,12 +167,15 @@ class prospective_client extends CI_Controller{
 		$name = $this->input->post('name');
 		$npwp = $this->input->post('npwp');
 		$information = $this->input->post('information');
+		
 		$address = $this->input->post('address');
 		$city_kabupaten = $this->input->post('city_kabupaten');
 		$province = $this->input->post('province');
+		
 		$address2 = $this->input->post('address2');
 		$city_kabupaten2 = $this->input->post('city_kabupaten2');
 		$province2 = $this->input->post('province2');
+		
 		$sector_id = $this ->input->post('sector_id');
 		$id_user = $this ->input->post('id_user');
 		$status_client = $this ->input->post('status_client');
@@ -183,12 +186,15 @@ class prospective_client extends CI_Controller{
 			'name' => $name,
 			'npwp' =>$npwp,
 			'information' => $information,
+			
 			'address' => $address,
 			'city_kabupaten' => $city_kabupaten,
 			'province' => $province,
+			
 			'address2' => $address2,
 			'city_kabupaten2' => $city_kabupaten2,
 			'province2' => $province2,
+			
 			'sector_id' => $sector_id,
 			'id_user'=> $id_user,
 			'status_client'=> $status_client,

@@ -563,7 +563,7 @@
 												 if($t->client_id == $c->id) {?>									
 										<div id="inputFormRow_contact_<?php echo $t->id ?>">											
 										 	<div class="input-group mb-3">	
-										 		<input type="hidden" name="id" value="<?php echo $t->id ?> " >		
+										 		<!-- <input type="hidden" name="id" value="<?php echo $t->id ?> " >		 -->
 										 		<input type="hidden" name="id_tlp" value="<?php echo $t->id_tlp ?> " >																					 		 
 												<input class="form-control" id="" type="text" name="contact[]"  placeholder="Company Contact" value="<?php echo $t->tlp ?>">										
 												<div class="input-group-append">
@@ -584,7 +584,7 @@
 								 			if( $c->id == $e->client_id) { ?>
 										  <div id="inputFormRow_email_<?php echo $e->id ?>">
 										 	<div class="input-group mb-3">
-										 		<input type="hidden" name="id" value="<?php echo $e->id ?> " >
+										 		<!-- <input type="hidden" name="id" value="<?php echo $e->id ?> " > -->
 										 		<input type="hidden" name="id_email" value="<?php echo $e->id_email ?> " >
 												<input type="email" class="form-control" id=""  name="email[]" placeholder="company@example.com" value="<?php echo $e->email ?>">
 												<div class="input-group-append">
@@ -622,7 +622,7 @@
 									<div class="form-group ">
 										<label for="inputdefault">Status Project:</label>
 										<?php foreach($project as $pj){ ?>
-											<input type="hidden" name="id" value="<?php echo $pj->id ?> " >
+											<!-- <input type="hidden" name="id" value="<?php echo $pj->id ?> " > -->
 											<input type="hidden" name="id_project" value="<?php echo $pj->id_project ?> " >
 										 <div id="inputFormRow_project_<?php echo $pj->id ?>">										 	
 												<?php if($c->id == $pj->client_id) { ?>
@@ -666,7 +666,7 @@
 							            <div id="inputFormRow_pic_<?php echo $p->id ?>">
 							            	
 							                <div class="input-group mb-3">
-							                	<input type="hidden" name="id" value="<?php echo $p->id ?> " >
+							                	<!-- <input type="hidden" name="id" value="<?php echo $p->id ?> " > -->
 							                	<input type="hidden" name="id_pic" value="<?php echo $p->id_pic ?> " >
 							                    <input size="100" type="text" name="pic[]" class="form-control m-input" placeholder="Pic Name" autocomplete="off" value="<?php echo $p->pic ?>">
 							                    <input type="text" name="pic_contact[]" class="form-control m-input" placeholder="Contact Pic" autocomplete="off" value="<?php echo $p->pic_contact ?>">

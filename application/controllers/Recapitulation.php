@@ -35,7 +35,6 @@ class recapitulation extends CI_Controller{
 		$data['data_product'] = $this->t_recapitulation->get_data_products()->result();		
 		$this->load->view('template/header/index');
 		$this->load->view('template/menu/index');
-		// $this->load->view('upload_form', array('error' => ' ' ));
 		$this->load->view('pages/administration/recapitulation/datatable',$data);
 		$this->load->view('template/footer/index');
 	}
@@ -44,23 +43,25 @@ class recapitulation extends CI_Controller{
 	public function p_input(){
 		$client_id = $this->input->post('client_id');
 		$no_order = $this->input->post('no_order');
-		//$no_report = $this->input->post('no_report');
 		$contract_start_date = $this->input->post('contract_start_date');
 		$contract_finish_date = $this->input->post('contract_finish_date');
 		$project_activity = $this ->input->post('project_activity');
+		$termin = $this ->input->post('termin');
+		$output_pekerjaan = $this ->input->post('output_pekerjaan');
+		$denda = $this ->input->post('denda');
 		$user_id = $this ->input->post('user_id');
-        //$percentage = $this ->input->post('percentage');
 		
 
 		$data = array(
 			'client_id' => $client_id,
 			'no_order' => $no_order,
-            //'no_report' => $no_report,
             'contract_start_date'=> $contract_start_date,
 			'contract_finish_date' => $contract_finish_date,
 			'project_activity' => $project_activity,
+			'termin' => $termin,
+			'output_pekerjaan' => $output_pekerjaan,
+			'denda' => $denda,
 			'user_id' => $user_id,
-			//'percentage'=>$percentage,
 			'createDate'=>date('Y-m-d H:i:s')
             );
             
@@ -83,22 +84,24 @@ class recapitulation extends CI_Controller{
 		$id= $this->input->post('id');
 		$client_id = $this->input->post('client_id');
 		$no_order = $this->input->post('no_order');
-		// $no_report = $this->input->post('no_report');
 		$contract_start_date = $this->input->post('contract_start_date');
 		$contract_finish_date = $this->input->post('contract_finish_date');
 		$project_activity = $this ->input->post('project_activity');
+		$termin = $this ->input->post('termin');
+		$output_pekerjaan = $this ->input->post('output_pekerjaan');
+		$denda = $this ->input->post('denda');
 		$user_id = $this ->input->post('user_id');
-        // $percentage = $this ->input->post('percentage');
 
 		$data = array(
 			'client_id' => $client_id,
 			'no_order' => $no_order,
-            // 'no_report' => $no_report,
             'contract_start_date'=> $contract_start_date,
 			'contract_finish_date' => $contract_finish_date,
 			'project_activity' => $project_activity,
+			'termin' => $termin,
+			'output_pekerjaan' => $output_pekerjaan,
+			'denda' => $denda,
 			'user_id' => $user_id,
-			// 'percentage'=>$percentage,
 			'editDate'=>date('Y-m-d H:i:s')
 		);
 

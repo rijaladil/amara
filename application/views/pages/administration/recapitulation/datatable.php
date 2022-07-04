@@ -25,6 +25,9 @@
 							<th>Product Document</th>
 							<th>Company</th>
 							<th>Project Activity</th>
+							<th>Termin</th>
+							<th>Output Pekerjaan</th>
+							<th>Denda</th>
 							<th>PIC</th>
 							<th width="10%">Action</th>
 						</tr>
@@ -53,6 +56,9 @@
 								</td>
 								<td class="text-left"><?php echo $r->name ?></a></td>
 								<td class="text-left"><?php echo $r->project_activity ?></td>
+								<td class="text-left"><?php echo $r->termin ?></td>
+								<td class="text-left"><?php echo $r->output_pekerjaan ?></td>
+								<td class="text-left"><?php echo $r->denda ?></td>
 								<td><?php echo $r->user_name ?></td>
 								<td  class="row justify-content-center">	
 								
@@ -91,7 +97,7 @@
 			</div>
 
 			<!-- INPUT DATA  -->
-			<div class="modal fade" id="Finput" role="dialog">
+<!-- 			<div class="modal fade" id="Finput" role="dialog">
 				<div class="modal-dialog modal-lg">
 				<div class="modal-content">
 					<div class="modal-header">	
@@ -152,6 +158,14 @@
 							<tr>
 								<td>
 									<div class="form-group ">
+										<label for="inputdefault">Review SPK:</label>
+										<textarea class="form-control" rows="5" id="" name="termin"></textarea>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="form-group ">
 										<label for="inputdefault">PIC:</label>
 										<select class="form-control" name="user_id">
 											<option value="0">Pilih</option>
@@ -173,7 +187,7 @@
 					</form>	
 				</div>
 				</div>
-			</div>
+			</div> -->
 
 
 			<!-- UPLOAD DATA  -->
@@ -280,7 +294,31 @@
 								<td>
 									<div class="form-group ">
 										<label for="inputdefault">Project Activity:</label>
-										<textarea class="form-control" rows="5" id="" name="project_activity" ><?php echo $r->project_activity ?></textarea>
+										<textarea class="form-control" rows="5" id="" name="project_activity" readonly><?php echo $r->project_activity ?></textarea>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="form-group ">
+										<label for="inputdefault">Termin:</label>
+										<textarea class="form-control" rows="5" id="" name="termin"><?php echo $r->termin ?></textarea>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="form-group ">
+										<label for="inputdefault">Output Pekerjaan:</label>
+										<textarea class="form-control" rows="5" id="" name="output_pekerjaan"><?php echo $r->output_pekerjaan ?></textarea>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="form-group ">
+										<label for="inputdefault">Denda:</label>
+										<textarea class="form-control" rows="5" id="" name="denda"><?php echo $r->denda ?></textarea>
 									</div>
 								</td>
 							</tr>
@@ -391,6 +429,30 @@
 									<div class="form-group ">
 										<label for="inputdefault">Project Activity:</label>
 										<textarea class="form-control" rows="3" id="" name="project_activity" disabled ><?php echo $r->project_activity ?></textarea>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="3">
+									<div class="form-group ">
+										<label for="inputdefault">Termin:</label>
+										<textarea class="form-control" rows="3" id="" name="termin" disabled><?php echo $r->termin ?></textarea>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="3">
+									<div class="form-group ">
+										<label for="inputdefault">Output Pekerjaan:</label>
+										<textarea class="form-control" rows="3" id="" name="output_pekerjaan" disabled><?php echo $r->output_pekerjaan ?></textarea>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="3">
+									<div class="form-group ">
+										<label for="inputdefault">Denda:</label>
+										<textarea class="form-control" rows="3" id="" name="denda" disabled><?php echo $r->denda ?></textarea>
 									</div>
 								</td>
 							</tr>
