@@ -1,3 +1,5 @@
+<script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 <div class="container-fluid">
        <div class="card shadow mb-4">
             <div class="card-header py-3">
@@ -308,9 +310,51 @@
 							</tr>
 							<tr>
 								<td>
+							        <div class="form-group">
+							        	<label for="inputdefault">Termin:</label>
+							            <div id="inputFormRow_termin">
+							                <div class="input-group mb-1">
+							                    <input type="text" id="termin" name="termin[]" class="form-control m-input" placeholder="Termin" >
+							                    <input type="text" id="percentage" name="percentage[]" class="form-control m-input" placeholder="Percentage" autocomplete="off">
+							                    <input type="text" id="nominal" name="nominal[]" class="form-control m-input" placeholder="Nominal" autocomplete="off">
+							                     <div class="input-group-append">                
+							                        <button id="removeRow_termin" type="button" class="btn btn-danger btn-sm">-</button>
+							                    </div>
+							                </div>
+							                <div class="input-group mb-1">
+							                	<textarea class="form-control m-input" rows="2" id="information" name="information[]" placeholder="Information" ></textarea>							                	
+							                </div>
+							                 <div class="input-group mb-3">
+							                    <textarea class="form-control m-input" rows="2" id="status" name="status[]" placeholder="Status" ></textarea>
+							                </div>
+							            </div>
+							            <div id="newRow_termin"></div>
+							            <button id="addRow_termin" type="button" class="btn btn-facebook">+Add</button>
+							        </div>
+								</td>
+							</tr>
+							<tr>
+								<td>
 									<div class="form-group ">
 										<label for="inputdefault">Output Pekerjaan:</label>
 										<textarea class="form-control" rows="5" id="" name="output_pekerjaan"><?php echo $r->output_pekerjaan ?></textarea>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td valign="top" width=50%>
+									<div class="form-group ">
+										<label for="inputdefault">Contact:</label>
+										<div id="inputFormRow_contact">
+										 	<div class="input-group mb-3">
+												<input class="form-control" id="contact" type="text" name="contact[]"  placeholder="Company Contact">
+												<div class="input-group-append">
+													<button id="removeRow_contact" type="button" class="btn btn-danger btn-sm">-</button>
+												</div>
+											</div>
+										</div>
+										<div id="newRow_contact"></div>
+							            <button id="addRow_contact" type="button" class="btn btn-facebook">+Add</button>
 									</div>
 								</td>
 							</tr>
@@ -513,3 +557,72 @@
 		</div>
 </div>
 
+
+<script type="text/javascript">
+	
+    // add row pic
+    $("#addRow_termin").click(function () {
+        var html = '';
+        html += '<div id="inputFormRow_termin">';
+        html += '<div class="input-group mb-1">';
+        html += '<input type="text" id="termin" name="termin[]" class="form-control m-input" placeholder="Termin" >';
+        html += '<input type="text" id="percentage" name="percentage[]" class="form-control m-input" placeholder="Percentage" autocomplete="off">';
+        html += '<input type="text" id="nominal" name="nominal[]" class="form-control m-input" placeholder="Nominal" autocomplete="off">';
+        html += '<div class="input-group-append">';
+        html += '<button id="removeRow_termin" type="button" class="btn btn-danger btn-sm">-</button>';
+        html += '</div>';
+        html += '</div>';
+        html += '<div class="input-group mb-1">';
+       	html += '<textarea class="form-control m-input" rows="2" id="information" name="information[]" placeholder="Information" ></textarea>';							                	
+        html += '</div>';
+        html += '<div class="input-group mb-3">';
+        html += '<textarea class="form-control m-input" rows="2" id="status" name="status[]" placeholder="Status" ></textarea>';
+        html += '</div>';
+    	html += '</div>';
+
+        $('#newRow_termin').append(html);
+    });
+    
+    //edit row pic
+
+
+    // ================================================//
+    // add row contact
+    $("#addRow_contact").click(function () {
+        var html = '';
+        html += '<div id="inputFormRow_contact">';
+        html += '<div class="input-group mb-3">';
+        html += '<input class="form-control" id="contact" type="text" name="contact[]" placeholder="Company Contact">';
+        html += '<div class="input-group-append">';
+        html += '<button id="removeRow_contact" type="button" class="btn btn-danger">-</button>';
+        html += '</div>';
+        html += '</div>';
+
+        $('#newRow_contact').append(html);
+    });
+    
+
+
+
+
+
+										
+
+
+
+    // remove row pic
+    $(document).on('click', '#removeRow_pic', function () {
+        $(this).closest('#inputFormRow_pic').remove();
+    });
+
+    // remove row contact
+    $(document).on('click', '#removeRow_contact', function () {
+        $(this).closest('#inputFormRow_contact').remove();
+    });
+
+
+
+
+
+
+</script>
