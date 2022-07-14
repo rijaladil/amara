@@ -325,24 +325,27 @@
 								<td>
 							        <div class="form-group">
 							        	<label for="inputdefault">Termin:</label>
-							            <div id="inputFormRow_termin">
+							        	<?php foreach($termin as $t){
+												 if($t->recapitulation_id == $r->id) {?>
+							            <div id="inputFormRow_termin_<?php echo $t->recapitulation_id ?>">
 							                <div class="input-group mb-1">
-							                    <input type="text" id="termin" name="termin[]" class="form-control m-input" placeholder="Termin" >
-							                    <input type="text" id="percentage" name="percentage[]" class="form-control m-input" placeholder="Percentage" autocomplete="off">
-							                    <input type="text" id="nominal" name="nominal[]" class="form-control m-input" placeholder="Nominal" autocomplete="off">
+							                    <input type="text" id="termin" name="termin[]" class="form-control m-input" placeholder="Termin"  value="<?php echo $t->termin ?>">
+							                    <input type="text" id="percentage" name="percentage[]" class="form-control m-input" placeholder="Percentage" autocomplete="off" value="<?php echo $t->percentage ?>">
+							                    <input type="text" id="nominal" name="nominal[]" class="form-control m-input" placeholder="Nominal" autocomplete="off" value="<?php echo $t->nominal ?>">
 							                     <div class="input-group-append">                
-							                        <button id="removeRow_termin" type="button" class="btn btn-danger btn-sm">-</button>
+							                        <!-- <button id="removeRow_termin" type="button" class="btn btn-danger btn-sm">-</button> -->
 							                    </div>
 							                </div>
 							                <div class="input-group mb-1">
-							                	<textarea class="form-control m-input" rows="2" id="information" name="information[]" placeholder="Information" ></textarea>							                	
+							                	<textarea class="form-control m-input" rows="2" id="information" name="information[]" placeholder="Information" ><?php echo $t->information ?></textarea>							                	
 							                </div>
 							                 <div class="input-group mb-3">
-							                    <textarea class="form-control m-input" rows="2" id="status" name="status[]" placeholder="Status" ></textarea>
+							                    <textarea class="form-control m-input" rows="2" id="status" name="status[]" placeholder="Status" ><?php echo $t->status ?></textarea>
 							                </div>
+							                <?php }  }?>
 							            </div>
-							            <div id="newRow_termin"></div>
-							            <button id="addRow_termin" type="button" class="btn btn-facebook">+Add</button>
+							            <div id="newRow_termin_<?php echo $r->client_id ?>"></div>
+							            <button id="addRow_termin_<?php echo $r->client_id?>" type="button" class="btn btn-facebook mb-1">+Add</button>
 							        </div>
 								</td>
 							</tr>
@@ -350,16 +353,19 @@
 								<td valign="top" width=50%>
 									<div class="form-group ">
 										<label for="inputdefault">Output Pekerjaan:</label>
-										<div id="inputFormRow_contact">
+										<?php foreach($output as $o){
+												 if($o->recapitulation_id == $r->id) {?>
+										<div id="inputFormRow_output_<?php echo $t->recapitulation_id ?>">
 										 	<div class="input-group mb-2">
-												<input class="form-control" id="output" type="text" name="output[]"  placeholder="Output Job">
+												<input class="form-control" id="output" type="text" name="output[]"  placeholder="Output Job" value="<?php echo $o->output_pekerjaan ?>">
 												<div class="input-group-append">
-													<button id="removeRow_contact" type="button" class="btn btn-danger btn-sm">-</button>
+													<!-- <button id="removeRow_output" type="button" class="btn btn-danger btn-sm">-</button> -->
 												</div>
 											</div>
+											  <?php }  }?>
 										</div>
-										<div id="newRow_output"></div>
-							            <button id="addRow_output" type="button" class="btn btn-facebook">+Add</button>
+										<div id="newRow_output_<?php echo $r->client_id ?>"></div>
+							            <button id="addRow_output_<?php echo $r->client_id ?>" type="button" class="btn btn-facebook mb-1">+Add</button>
 									</div>
 								</td>
 							</tr>
@@ -564,9 +570,9 @@
 
 
 <script type="text/javascript">
-	
-    // add row pic
-    $("#addRow_termin").click(function () {
+<?php $id = 1; 	foreach($recapitulation as $r){ ?>
+    // edit row termin
+    $("#addRow_termin_<?php echo $r->client_id ?>").click(function () {
         var html = '';
         html += '<div id="inputFormRow_termin">';
         html += '<div class="input-group mb-1">';
@@ -585,49 +591,50 @@
         html += '</div>';
     	html += '</div>';
 
-        $('#newRow_termin').append(html);
+        $('#newRow_termin_<?php echo $r->client_id ?>').append(html);
+         console.log('#newRow_termin_<?php echo $r->client_id ?>');
     });
-    
-    //edit row pic
+
+
 
 
     // ================================================//
     // add row contact
-    $("#addRow_output").click(function () {
+    $("#addRow_output_<?php echo $r->client_id ?>").click(function () {
         var html = '';
-        html += '<div id="inputFormRow_contact">';
+        html += '<div id="inputFormRow_output">';
         html += '<div class="input-group mb-2">';
         html += '<input class="form-control" id="output" type="text" name="output[]"  placeholder="Output Job">';
         html += '<div class="input-group-append">';
-        html += '<button id="removeRow_contact" type="button" class="btn btn-danger btn-sm">-</button>';
+        html += '<button id="removeRow_output" type="button" class="btn btn-danger btn-sm">-</button>';
         html += '</div>';
         html += '</div>';
 
-        $('#newRow_output').append(html);
+        $('#newRow_output_<?php echo $r->client_id ?>').append(html);
+        console.log('#newRow_output_<?php echo $r->client_id ?>');
     });
     
 
-
-
-
-
-										
-
-
-
-    // remove row pic
-    $(document).on('click', '#removeRow_pic', function () {
-        $(this).closest('#inputFormRow_pic').remove();
+    // remove row termin
+    $(document).on('click', '#removeRow_termin', function () {
+        $(this).closest('#inputFormRow_termin').remove();
     });
 
-    // remove row contact
-    $(document).on('click', '#removeRow_contact', function () {
-        $(this).closest('#inputFormRow_contact').remove();
+    // remove row output
+    $(document).on('click', '#removeRow_output', function () {
+        $(this).closest('#inputFormRow_output').remove();
     });
 
 
+    // remove row termin
+    $(document).on('click', '#removeRow_termin_<?php echo $r->id ?>', function () {
+        $(this).closest('#inputFormRow_termin_<?php echo $r->id ?>').remove();
+    });
 
-
-
+    // remove row output
+    $(document).on('click', '#removeRow_output_<?php echo $r->id ?>', function () {
+        $(this).closest('#inputFormRow_output_<?php echo $r->id ?>').remove();
+    });
+ <?php } ?>   
 
 </script>

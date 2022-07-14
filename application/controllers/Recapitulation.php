@@ -32,7 +32,9 @@ class recapitulation extends CI_Controller{
 		$data['client'] = $this->t_recapitulation->get_data_client()->result();
 		$data['user'] = $this->t_recapitulation->get_data_user()->result();
 		$data['teknik'] = $this->t_teknik->get_data()->result();
-		$data['data_product'] = $this->t_recapitulation->get_data_products()->result();		
+		$data['data_product'] = $this->t_recapitulation->get_data_products()->result();	
+		$data['termin'] = $this->t_recapitulation->get_data_recapitulation_project_termin();
+		$data['output'] = $this->t_recapitulation->get_data_recapitulation_project_output();	
 		$this->load->view('template/header/index');
 		$this->load->view('template/menu/index');
 		$this->load->view('pages/administration/recapitulation/datatable',$data);
@@ -114,6 +116,7 @@ class recapitulation extends CI_Controller{
 		      $this->t_recapitulation->update_data($where,$data,'amc_t_recapitulation_project');
 		   } else {
 		      $this->t_recapitulation->input_data($data,'amc_t_recapitulation_project');
+		      $insert_id = $this->db->insert_id(); 
 		   }
 
 		//$this->t_recapitulation->update_data($where,$data,'amc_t_recapitulation_project');

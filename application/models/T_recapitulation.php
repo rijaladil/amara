@@ -58,6 +58,39 @@
 		);
 	}
 
+
+	public function get_data_recapitulation_project_output($id=''){
+		$this->db->select('
+							poo.id, 
+							poo.recapitulation_id, 
+							poo.output_pekerjaan
+						  ');
+		$this->db->from('amc_t_recapitulation_project_output poo');
+		$this->db->join('amc_t_recapitulation_project po', 'poo.recapitulation_id = po.id', 'left');		
+		$this->db->order_by('id', 'DESC');
+		$query = $this->db->get();
+        return $query->result();
+	}
+
+	public function  get_data_recapitulation_project_termin($id=''){
+		$this->db->select('
+							pot.id, 
+							pot.recapitulation_id, 
+							pot.termin, 
+							pot.percentage, 
+							pot.nominal, 
+							pot.information, 
+							pot.status
+						  ');
+		$this->db->from('amc_t_recapitulation_project_termin pot');
+		$this->db->join('amc_t_recapitulation_project po','pot.recapitulation_id = po.id', 'left');		
+		$this->db->order_by('id', 'DESC');
+		$query = $this->db->get();
+        return $query->result();
+	}
+
+
+
 	function input_data($data,$table){
 		$this->db->insert($table,$data);
 	}
