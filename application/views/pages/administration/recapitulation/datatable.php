@@ -300,7 +300,9 @@
 									</div>
 								</td>
 							</tr>
-							<tr>
+
+							<!-- TERMIN -->
+							<tr hidden>
 								<td>
 									<div class="form-group ">
 										<label for="inputdefault">Termin:</label>
@@ -308,6 +310,17 @@
 									</div>
 								</td>
 							</tr>
+						
+							<!-- OUTPUT PEKERJAAN -->
+							<tr hidden>
+								<td>
+									<div class="form-group ">
+										<label for="inputdefault">Output Pekerjaan:</label>
+										<textarea class="form-control" rows="5" id="" name="output_pekerjaan"><?php echo $r->output_pekerjaan ?></textarea>
+									</div>
+								</td>
+							</tr>
+
 							<tr>
 								<td>
 							        <div class="form-group">
@@ -334,27 +347,19 @@
 								</td>
 							</tr>
 							<tr>
-								<td>
-									<div class="form-group ">
-										<label for="inputdefault">Output Pekerjaan:</label>
-										<textarea class="form-control" rows="5" id="" name="output_pekerjaan"><?php echo $r->output_pekerjaan ?></textarea>
-									</div>
-								</td>
-							</tr>
-							<tr>
 								<td valign="top" width=50%>
 									<div class="form-group ">
-										<label for="inputdefault">Contact:</label>
+										<label for="inputdefault">Output Pekerjaan:</label>
 										<div id="inputFormRow_contact">
-										 	<div class="input-group mb-3">
-												<input class="form-control" id="contact" type="text" name="contact[]"  placeholder="Company Contact">
+										 	<div class="input-group mb-2">
+												<input class="form-control" id="output" type="text" name="output[]"  placeholder="Output Job">
 												<div class="input-group-append">
 													<button id="removeRow_contact" type="button" class="btn btn-danger btn-sm">-</button>
 												</div>
 											</div>
 										</div>
-										<div id="newRow_contact"></div>
-							            <button id="addRow_contact" type="button" class="btn btn-facebook">+Add</button>
+										<div id="newRow_output"></div>
+							            <button id="addRow_output" type="button" class="btn btn-facebook">+Add</button>
 									</div>
 								</td>
 							</tr>
@@ -588,17 +593,17 @@
 
     // ================================================//
     // add row contact
-    $("#addRow_contact").click(function () {
+    $("#addRow_output").click(function () {
         var html = '';
         html += '<div id="inputFormRow_contact">';
-        html += '<div class="input-group mb-3">';
-        html += '<input class="form-control" id="contact" type="text" name="contact[]" placeholder="Company Contact">';
+        html += '<div class="input-group mb-2">';
+        html += '<input class="form-control" id="output" type="text" name="output[]"  placeholder="Output Job">';
         html += '<div class="input-group-append">';
-        html += '<button id="removeRow_contact" type="button" class="btn btn-danger">-</button>';
+        html += '<button id="removeRow_contact" type="button" class="btn btn-danger btn-sm">-</button>';
         html += '</div>';
         html += '</div>';
 
-        $('#newRow_contact').append(html);
+        $('#newRow_output').append(html);
     });
     
 

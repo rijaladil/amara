@@ -367,7 +367,7 @@
 										 	<div class="input-group mb-3">
 												<input class="form-control" id="contact" type="text" name="contact[]"  placeholder="Company Contact">
 												<div class="input-group-append">
-													<button id="removeRow_contact" type="button" class="btn btn-danger">-</button>
+													<button id="removeRow_contact" type="button" class="btn btn-danger btn-sm">-</button>
 												</div>
 											</div>
 										</div>
@@ -382,7 +382,7 @@
 										 	<div class="input-group mb-3">
 												<input type="email" class="form-control" id="email"  name="email[]" placeholder="company@example.com">
 												<div class="input-group-append">
-													<button id="removeRow_email" type="button" class="btn btn-danger">-</button>
+													<button id="removeRow_email" type="button" class="btn btn-danger btn-sm">-</button>
 												</div>
 											</div>
 										</div>
@@ -417,7 +417,7 @@
 													<?php }?>
 												</select>
 												<div class="input-group-append">
-													<button id="removeRow_project" type="button" class="btn btn-danger">-</button>
+													<button id="removeRow_project" type="button" class="btn btn-danger btn-sm">-</button>
 												</div>
 											</div>
 										</div>
@@ -444,7 +444,7 @@
 							                    <input type="text" id="pic_contact" name="pic_contact[]" class="form-control m-input" placeholder="Contact Pic" autocomplete="off">
 							                    <input type="email" id="pic_email" name="pic_email[]" class="form-control m-input" placeholder="pic@example.com" autocomplete="off">
 							                    <div class="input-group-append">                
-							                        <button id="removeRow_pic" type="button" class="btn btn-danger">-</button>
+							                        <button id="removeRow_pic" type="button" class="btn btn-danger btn-sm">-</button>
 							                    </div>
 							                </div>
 							            </div>
@@ -754,7 +754,7 @@
         html += '<input type="text" name="pic_contact[]" class="form-control m-input" placeholder="Contact Pic" autocomplete="off">';
         html += '<input type="text" name="pic_email[]" class="form-control m-input" placeholder="pic@example.com" autocomplete="off">';
         html += '<div class="input-group-append">';
-        html += '<button id="removeRow_pic" type="button" class="btn btn-danger">-</button>';
+        html += '<button id="removeRow_pic" type="button" class="btn btn-danger btn-sm">-</button>';
         html += '</div>';
         html += '</div>';
 
@@ -771,7 +771,7 @@
         html += '<input type="text" name="pic_contact[]" class="form-control m-input" placeholder="Contact Pic" autocomplete="off">';
         html += '<input type="text" name="pic_email[]" class="form-control m-input" placeholder="pic@example.com" autocomplete="off">';
         html += '<div class="input-group-append">';
-        html += '<button id="removeRow_pic" type="button" class="btn btn-danger">-</button>';
+        html += '<button id="removeRow_pic" type="button" class="btn btn-danger btn-sm">-</button>';
         html += '</div>';
         html += '</div>';
 
@@ -791,7 +791,7 @@
         html += '<div class="input-group mb-3">';
         html += '<input class="form-control" id="contact" type="text" name="contact[]" placeholder="Company Contact">';
         html += '<div class="input-group-append">';
-        html += '<button id="removeRow_contact" type="button" class="btn btn-danger">-</button>';
+        html += '<button id="removeRow_contact" type="button" class="btn btn-danger btn-sm">-</button>';
         html += '</div>';
         html += '</div>';
 
@@ -807,7 +807,7 @@
         html += '<div class="input-group mb-3">';
         html += '<input class="form-control" id="contact" type="text" name="contact[]" placeholder="Company Contact">';
         html += '<div class="input-group-append">';
-        html += '<button id="removeRow_contact" type="button" class="btn btn-danger">-</button>';
+        html += '<button id="removeRow_contact" type="button" class="btn btn-danger btn-sm">-</button>';
         html += '</div>';
         html += '</div>';
 
@@ -827,7 +827,7 @@
 		<?php }?>
 		 html += '</select>';
 		 html += '<div class="input-group-append">';
-		 html += '<button id="removeRow_project" type="button" class="btn btn-danger">-</button>';
+		 html += '<button id="removeRow_project" type="button" class="btn btn-danger btn-sm">-</button>';
 		 html += '</div>';
 		 html += '</div>';
 
@@ -847,7 +847,7 @@
 		<?php }?>
 		 html += '</select>';
 		 html += '<div class="input-group-append">';
-		 html += '<button id="removeRow_project" type="button" class="btn btn-danger">-</button>';
+		 html += '<button id="removeRow_project" type="button" class="btn btn-danger btn-sm">-</button>';
 		 html += '</div>';
 		 html += '</div>';
 
@@ -864,7 +864,7 @@
         html += '<div class="input-group mb-3">';
         html += '<input type="email" class="form-control" id="email"  name="email[]" placeholder="company@example.com">';
         html += '<div class="input-group-append">';
-        html += '<button id="removeRow_email" type="button" class="btn btn-danger">-</button>';
+        html += '<button id="removeRow_email" type="button" class="btn btn-danger btn-sm">-</button>';
         html += '</div>';
         html += '</div>';
 
@@ -879,7 +879,7 @@
         html += '<div class="input-group mb-3">';
         html += '<input type="email" class="form-control" id="email"  name="email[]" placeholder="company@example.com">';
         html += '<div class="input-group-append">';
-        html += '<button id="removeRow_email" type="button" class="btn btn-danger">-</button>';
+        html += '<button id="removeRow_email" type="button" class="btn btn-danger btn-sm">-</button>';
         html += '</div>';
         html += '</div>';
 
