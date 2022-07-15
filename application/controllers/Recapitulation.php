@@ -119,6 +119,58 @@ class recapitulation extends CI_Controller{
 		      $insert_id = $this->db->insert_id(); 
 		   }
 
+
+	// INPUT TERMIN
+		$where = array("recapitulation_id" => $id);
+		$this->t_recapitulation->delete_data($where,'amc_t_recapitulation_project_termin');
+
+		$this->form_validation->set_rules('termin[]', 'termin', 'required|trim|xss_clean');
+		$this->form_validation->set_rules('percentage[]', 'percentage', 'required|trim|xss_clean');
+		$this->form_validation->set_rules('nominal[]', 'nominal', 'required|trim|xss_clean');
+		$this->form_validation->set_rules('information[]', 'information', 'required|trim|xss_clean');
+		$this->form_validation->set_rules('status[]', 'status', 'required|trim|xss_clean');
+		$trm = $this->input->post('termin');
+		$trm = $this->input->post('percentage');
+		$trm = $this->input->post('nominal');
+		$trm = $this->input->post('information');
+		$trm = $this->input->post('status');
+		$result1 = array();
+			 foreach($trm AS $key => $val){
+			     $result1[] = array(
+			     	  "recapitulation_id" =>$id,
+			     	  "client_id" => $client_id,
+				      "termin"  => $_POST['termin'][$key],
+				      "percentage"  => $_POST['percentage'][$key],
+				      "nominal"  => $_POST['nominal'][$key],
+				      "information"  => $_POST['information'][$key],
+				      "status"  => $_POST['status'][$key],
+				      "editUser" => $user_id,
+					  "editDate"=>date('Y-m-d H:i:s')
+			     );
+		    }    
+		$this->db->insert_batch('amc_t_recapitulation_project_termin', $result1);
+
+	// INPUT OUTPUT PEKERJAAN
+		$where = array("recapitulation_id" => $id);
+		$this->t_recapitulation->delete_data($where,'amc_t_recapitulation_project_output');
+
+		$this->form_validation->set_rules('output[]', 'output', 'required|trim|xss_clean');
+		$out = $this->input->post('output');
+		$result2 = array();
+			 foreach($out AS $key => $val){
+			     $result2[] = array(
+			     	  "recapitulation_id" =>$id,
+			     	  "client_id" => $client_id,
+				      "output_pekerjaan"  => $_POST['output'][$key],
+				      "editUser" => $user_id,
+					  "editDate"=>date('Y-m-d H:i:s')
+			     );
+		    }    
+		$this->db->insert_batch('amc_t_recapitulation_project_output', $result2);
+
+
+
+
 		//$this->t_recapitulation->update_data($where,$data,'amc_t_recapitulation_project');
 		redirect('recapitulation/index');
 	}
@@ -137,6 +189,11 @@ class recapitulation extends CI_Controller{
 	public function delete($id){
 		$where = array('id' => $id);
 		$this->t_recapitulation->delete_data($where,'amc_t_recapitulation_project');
+
+		$where1 = array("client_id" => $id);
+		$this->t_recapitulation->delete_data($where1,'amc_t_recapitulation_project_termin');
+		$this->t_recapitulation->delete_data($where1,'amc_t_recapitulation_project_output');
+
 		redirect('recapitulation/index');
 	}
 

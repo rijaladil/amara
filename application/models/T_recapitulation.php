@@ -16,14 +16,14 @@
 								rp.contract_start_date,
 								rp.contract_finish_date,
 								cp.project_activity,
-								rp.termin,
-								rp.output_pekerjaan,
+				
 								rp.denda,
 								rp.user_id,
 								rp.upload,
 								u.name as user_name,
 								rp.percentage,
 								p.name as product_name
+
 
         				FROM amc_t_client_po po 
         				LEFT JOIN amc_t_recapitulation_project rp on po.client_id = rp.client_id 
@@ -67,7 +67,7 @@
 						  ');
 		$this->db->from('amc_t_recapitulation_project_output poo');
 		$this->db->join('amc_t_recapitulation_project po', 'poo.recapitulation_id = po.id', 'left');		
-		$this->db->order_by('id', 'DESC');
+		$this->db->order_by('id', 'ASC');
 		$query = $this->db->get();
         return $query->result();
 	}
@@ -84,7 +84,7 @@
 						  ');
 		$this->db->from('amc_t_recapitulation_project_termin pot');
 		$this->db->join('amc_t_recapitulation_project po','pot.recapitulation_id = po.id', 'left');		
-		$this->db->order_by('id', 'DESC');
+		$this->db->order_by('id', 'ASC');
 		$query = $this->db->get();
         return $query->result();
 	}

@@ -16,7 +16,7 @@
             </div>
             <div class="card-body">
               	<div class="table-responsive">
-	                <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
+	                <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="1">
 	                 <thead>
 						<tr >
 							<th width="2%">No</th>
@@ -56,40 +56,58 @@
 									} }?>
 										
 								</td>
-								<td class="text-left"><?php echo $r->name ?></a></td>
+								<td class="text-left"><b><?php echo $r->name ?></b></a></td>
 								<td class="text-left"><?php echo $r->project_activity ?></td>
-								<td class="text-left"><?php echo $r->termin ?></td>
-								<td class="text-left"><?php echo $r->output_pekerjaan ?></td>
+							 	<td class="text-left">
+								<?php foreach($termin as $t){
+									if($t->recapitulation_id == $r->id) {
+										echo '<b>Termin '.$t->termin .'</b><br>';
+										echo $t->percentage .'-';
+										echo $t->nominal  .'<br>';
+										echo $t->information  .'-';
+										echo $t->status .'-<hr>';
+										
+									} }
+								?></td> 
+								<td class="text-left">
+									<?php foreach($output as $o){
+									if($o->recapitulation_id == $r->id) {
+									 echo $o->output_pekerjaan."<hr>";
+									
+								   } }
+								?></td>
 								<td class="text-left"><?php echo $r->denda ?></td>
 								<td><?php echo $r->user_name ?></td>
-								<td  class="row justify-content-center">	
-								
-									<a href="#" class="btn btn-info btn-circle btn-sm" data-toggle="modal" data-target="#View<?php echo $r->id ?>">
-					                    <span class="icon text-white-50">
-					                      <i class="fas fa-check"></i>
-					                    </span>
-					                  </a>	
-									 &#160;		
-									 <a href="#" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#Upload<?php echo $r->id ?>">
-					                    <span class="icon text-white-50">
-					                      <i class="fas fa-upload"></i>
-					                    </span>
-					                  </a>	
-									 &#160;	
-									 <?php if ( (in_array($this->session->userdata('level'), array(1,3))) ) { ?>					
+								<td  class="row justify-content-left">	
+									
+									<?php if ( (in_array($this->session->userdata('level'), array(1,3))) ) { ?>					
 					                  <a href="#" class="btn btn-success btn-circle btn-sm" data-toggle="modal" data-target="#Fedit<?php echo $r->client_id ?>">
 					                    <span class="icon text-white-50">
 					                      <i class="fas fa-edit"></i>
 					                    </span>
 					                  </a>
-
-									  &#160;	
+					                <?php }?>
+					                <?php if($r->id != ''){ ?>
+					                	 &#160;	
+									<a href="#" class="btn btn-info btn-circle btn-sm" data-toggle="modal" data-target="#View<?php echo $r->id ?>">
+					                    <span class="icon text-white-50">
+					                      <i class="fas fa-check"></i>
+					                    </span>
+					                  </a>	
+									 &#160;	
+									 <a href="#" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#Upload<?php echo $r->id ?>">
+					                    <span class="icon text-white-50">
+					                      <i class="fas fa-upload"></i>
+					                    </span>
+					                  </a>	
+									 &#160;						  
 					                   <a href="<?php echo base_url(). 'index.php/recapitulation/delete/'.$r->id ; ?>" class="btn btn-danger btn-circle btn-sm" >
 					                    <span class="icon text-white-50">
 					                      <i class="fas fa-trash"></i>
 					                    </span>					                    
 					                  </a>
-								<?php }?>
+					              	 <?php }?>
+								
 								</td>
 							</tr>
 							<?php } ?>
@@ -491,7 +509,36 @@
 								<td colspan="3">
 									<div class="form-group ">
 										<label for="inputdefault">Termin:</label>
-										<textarea class="form-control" rows="3" id="" name="termin" disabled><?php echo $r->termin ?></textarea>
+										<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+						                 <thead>
+											<tr>
+											    <th width="2%">No</th>
+											    <th>Termin</th>
+											    <th>Percentage</th>
+											    <th>Nominal</th>
+											    <th>Information</th>
+											    <th>Status</th>
+											  </tr>
+										 </thead>
+											</tbody>
+												<?php 
+												$id = 1;
+												foreach($termin as $t){
+												if($t->recapitulation_id == $r->id) { ?>
+												<tr>
+										
+													<td><?php echo $id++ ?></td>
+													<td><?php echo $t->termin?></td>
+													<td><?php echo $t->percentage?></td>
+													<td><?php echo $t->nominal?></td>
+													<td><?php echo $t->information?></td>		
+													<td><?php echo $t->status?></td>								
+
+												</tr>
+												<?php } }?> 
+											</tbody>
+										</table>
+
 									</div>
 								</td>
 							</tr>
@@ -499,7 +546,27 @@
 								<td colspan="3">
 									<div class="form-group ">
 										<label for="inputdefault">Output Pekerjaan:</label>
-										<textarea class="form-control" rows="3" id="" name="output_pekerjaan" disabled><?php echo $r->output_pekerjaan ?></textarea>
+										<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+						                 <thead>
+											<tr>
+											    <th width="2%">No</th>
+											    <th>Output Pekerjaan</th>
+											  </tr>
+										 </thead>
+											</tbody>
+												<?php 
+												$id = 1;
+												foreach($output as $o){
+												if($o->recapitulation_id == $r->id) { ?>
+												<tr>
+										
+													<td><?php echo $id++ ?></td>
+													<td><?php echo $o->output_pekerjaan?></td>						
+
+												</tr>
+												<?php } }?> 
+											</tbody>
+										</table>
 									</div>
 								</td>
 							</tr>
