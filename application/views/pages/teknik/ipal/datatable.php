@@ -2,7 +2,7 @@
        <div class="card shadow mb-4">
             <div class="card-header py-3">
             		<h6 class="m-0 font-weight-bold text-primary">Data Progress Pekerjaan Teknik</h6>
-          		<h2 class="m-0 font-weight-bold text-primary">PERTEK</h2>
+          		<h2 class="m-0 font-weight-bold text-primary">IPAL</h2>
 
 			  		<?php if ( (in_array($this->session->userdata('level'), array(1,4))) ) { ?>
                			<a href="#" class="btn btn-primary btn-icon-split" style="float: right;" data-toggle="modal" data-target="#Finput">
@@ -16,7 +16,7 @@
             </div>
             <div class="card-body">
               	<div class="table-responsive">
-              		<form method="post" action="<?php echo base_url(); ?>index.php/TeknikPertek/index">
+              		<form method="post" action="<?php echo base_url(); ?>index.php/TeknikIpal/index">
               		<table border="0" cellspacing="5" cellpadding="5" align="right">
 							      <tbody>
 							      	<tr>
