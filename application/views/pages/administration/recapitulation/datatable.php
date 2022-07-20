@@ -320,24 +320,24 @@
 							</tr>
 
 							<!-- TERMIN -->
-							<tr hidden>
+				<!-- 			<tr hidden>
 								<td>
 									<div class="form-group ">
 										<label for="inputdefault">Termin:</label>
 										<textarea class="form-control" rows="5" id="" name="termin"><?php echo $r->termin ?></textarea>
 									</div>
 								</td>
-							</tr>
+							</tr> -->
 						
 							<!-- OUTPUT PEKERJAAN -->
-							<tr hidden>
+						<!-- 	<tr hidden>
 								<td>
 									<div class="form-group ">
 										<label for="inputdefault">Output Pekerjaan:</label>
 										<textarea class="form-control" rows="5" id="" name="output_pekerjaan"><?php echo $r->output_pekerjaan ?></textarea>
 									</div>
 								</td>
-							</tr>
+							</tr> -->
 
 							<tr>
 								<td>

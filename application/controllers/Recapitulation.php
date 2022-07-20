@@ -89,8 +89,8 @@ class recapitulation extends CI_Controller{
 		$contract_start_date = $this->input->post('contract_start_date');
 		$contract_finish_date = $this->input->post('contract_finish_date');
 		$project_activity = $this ->input->post('project_activity');
-		$termin = $this ->input->post('termin');
-		$output_pekerjaan = $this ->input->post('output_pekerjaan');
+		// $termin = $this ->input->post('termin');
+		// $output_pekerjaan = $this ->input->post('output_pekerjaan');
 		$denda = $this ->input->post('denda');
 		$user_id = $this ->input->post('user_id');
 
@@ -100,8 +100,8 @@ class recapitulation extends CI_Controller{
             'contract_start_date'=> $contract_start_date,
 			'contract_finish_date' => $contract_finish_date,
 			'project_activity' => $project_activity,
-			'termin' => $termin,
-			'output_pekerjaan' => $output_pekerjaan,
+			// 'termin' => $termin,
+			// 'output_pekerjaan' => $output_pekerjaan,
 			'denda' => $denda,
 			'user_id' => $user_id,
 			'editDate'=>date('Y-m-d H:i:s')
