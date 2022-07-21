@@ -79,23 +79,23 @@
         if ($min <> '') {
             $this->db->where('tk.start_date >= ', $min);
         }else{
-         //   $this->db->where('tk.start_date >= ', date('Y-m'));
+            $this->db->where('tk.start_date >= ', date('Y-m'));
         }
 
         if ($max <> '') {
             $this->db->where('tk.start_date <= ', $max);
         }else{
-          //  $this->db->where('tk.start_date <= ', date('Y-m'));
+            $this->db->where('tk.start_date <= ', date('Y-m'));
         }
 
         if (empty($name)) {
-			$this->db->where('c.name >', '');            
+		//	$this->db->where('c.name >', '%');            
         }else{
         	$this->db->where('c.name', $name);
         }
 
 		if (empty($product)) {
-			$this->db->where('p.product >', '');            
+			//$this->db->where('p.product >', '%');            
         }else{
         	$this->db->where('p.product', $product);
         }

@@ -166,7 +166,7 @@
                     </tbody>
                 </table>
                 </form>
-               <table class="table table-bordered" id="dataTablex" width="100%" cellspacing="0" border="1">
+               <table class="table table-bordered " id="dataTablex" width="100%" cellspacing="0" border="1">
                 <thead>
                  <tr>
                     <th rowspan="2" width="2%">No</th>
@@ -174,38 +174,38 @@
                     <th colspan="31" >Bulan <?php echo date('M');?></th>
                     <th rowspan="2" width="2%">Total</th>
                   </tr>
-                  <tr>
-                    <th>1</th>
-                    <th>2</th>
-                    <th>3</th>
-                    <th>4</th>
-                    <th>5</th>
-                    <th>6</th>
-                    <th>7</th>
-                    <th>8</th>
-                    <th>8</th>
-                    <th>10</th>
-                    <th>11</th>
-                    <th>12</th>
-                    <th>13</th>
-                    <th>14</th>
-                    <th>15</th>
-                    <th>16</th>
-                    <th>17</th>
-                    <th>18</th>
-                    <th>18</th>
-                    <th>20</th>
-                    <th>21</th>
-                    <th>22</th>
-                    <th>23</th>
-                    <th>24</th>
-                    <th>25</th>
-                    <th>26</th>
-                    <th>27</th>
-                    <th>28</th>
-                    <th>28</th>
-                    <th>30</th>
-                    <th>31</th>
+                  <tr class="text-center">
+                    <th width="3%">1</th>
+                    <th width="3%">2</th>
+                    <th width="3%">3</th>
+                    <th width="3%">4</th>
+                    <th width="3%">5</th>
+                    <th width="3%">6</th>
+                    <th width="3%">7</th>
+                    <th width="3%">8</th>
+                    <th width="3%">8</th>
+                    <th width="3%">10</th>
+                    <th width="3%">11</th>
+                    <th width="3%">12</th>
+                    <th width="3%">13</th>
+                    <th width="3%">14</th>
+                    <th width="3%">15</th>
+                    <th width="3%">16</th>
+                    <th width="3%">17</th>
+                    <th width="3%">18</th>
+                    <th width="3%">18</th>
+                    <th width="3%">20</th>
+                    <th width="3%">21</th>
+                    <th width="3%">22</th>
+                    <th width="3%">23</th>
+                    <th width="3%">24</th>
+                    <th width="3%">25</th>
+                    <th width="3%">26</th>
+                    <th width="3%">27</th>
+                    <th width="3%">28</th>
+                    <th width="3%">28</th>
+                    <th width="3%">30</th>
+                    <th width="3%">31</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -213,40 +213,40 @@
      
                     
                     { ?>
-                  <tr>
+                  <tr class="text-center">
                     <td><?php echo $id++ ?></td>
-                    <td><?php echo $swl->name ?></td>
-                    <td><?php echo $swl->tgl1; ?></td>
-                    <td><?php echo $swl->tgl2; ?></td>
-                    <td><?php echo $swl->tgl3; ?></td>
-                    <td><?php echo $swl->tgl4; ?></td>
-                    <td><?php echo $swl->tgl5; ?></td>
-                    <td><?php echo $swl->tgl6; ?></td>
-                    <td><?php echo $swl->tgl7; ?></td>
-                    <td><?php echo $swl->tgl8; ?></td>
-                    <td><?php echo $swl->tgl9; ?></td>
-                    <td><?php echo $swl->tgl10; ?></td>
-                    <td><?php echo $swl->tgl11; ?></td>
-                    <td><?php echo $swl->tgl12; ?></td>
-                    <td><?php echo $swl->tgl13; ?></td>
-                    <td><?php echo $swl->tgl14; ?></td>
-                    <td><?php echo $swl->tgl15; ?></td>
-                    <td><?php echo $swl->tgl16; ?></td>
-                    <td><?php echo $swl->tgl17; ?></td>
-                    <td><?php echo $swl->tgl18; ?></td>
-                    <td><?php echo $swl->tgl19; ?></td>
-                    <td><?php echo $swl->tgl20; ?></td>
-                    <td><?php echo $swl->tgl21; ?></td>
-                    <td><?php echo $swl->tgl22; ?></td>
-                    <td><?php echo $swl->tgl23; ?></td>
-                    <td><?php echo $swl->tgl24; ?></td>
-                    <td><?php echo $swl->tgl25; ?></td>
-                    <td><?php echo $swl->tgl26; ?></td>
-                    <td><?php echo $swl->tgl27; ?></td>
-                    <td><?php echo $swl->tgl28; ?></td>
-                    <td><?php echo $swl->tgl29; ?></td>
-                    <td><?php echo $swl->tgl30; ?></td>
-                    <td><?php echo $swl->tgl31; ?></td>
+                    <td class="text-left"><?php echo $swl->name ?></td>
+                    <td <?php if( $swl->tgl1!='') {?>class=" bg-success text-white"<?php }?>><?php echo $swl->tgl1; ?></td>
+                    <td <?php if( $swl->tgl2!='') {?>class=" bg-success text-white"<?php }?>><?php echo $swl->tgl2; ?></td>
+                    <td <?php if( $swl->tgl3!='') {?>class=" bg-success text-white"<?php }?>><?php echo $swl->tgl3; ?></td>
+                    <td <?php if( $swl->tgl4!='') {?>class=" bg-success text-white"<?php }?>><?php echo $swl->tgl4; ?></td>
+                    <td <?php if( $swl->tgl5!='') {?>class=" bg-success text-white"<?php }?>><?php echo $swl->tgl5; ?></td>
+                    <td <?php if( $swl->tgl6!='') {?>class=" bg-success text-white"<?php }?>><?php echo $swl->tgl6; ?></td>
+                    <td <?php if( $swl->tgl7!='') {?>class=" bg-success text-white"<?php }?>><?php echo $swl->tgl7; ?></td>
+                    <td <?php if( $swl->tgl8!='') {?>class=" bg-success text-white"<?php }?>><?php echo $swl->tgl8; ?></td>
+                    <td <?php if( $swl->tgl9!='') {?>class=" bg-success text-white"<?php }?>><?php echo $swl->tgl9; ?></td>
+                    <td <?php if( $swl->tgl10!='') {?>class=" bg-success text-white"<?php }?>><?php echo $swl->tgl10; ?></td>
+                    <td <?php if( $swl->tgl11!='') {?>class=" bg-success text-white"<?php }?>><?php echo $swl->tgl11; ?></td>
+                    <td <?php if( $swl->tgl12!='') {?>class=" bg-success text-white"<?php }?>><?php echo $swl->tgl12; ?></td>
+                    <td <?php if( $swl->tgl13!='') {?>class=" bg-success text-white"<?php }?>><?php echo $swl->tgl13; ?></td>
+                    <td <?php if( $swl->tgl14!='') {?>class=" bg-success text-white"<?php }?>><?php echo $swl->tgl14; ?></td>
+                    <td <?php if( $swl->tgl15!='') {?>class=" bg-success text-white"<?php }?>><?php echo $swl->tgl15; ?></td>
+                    <td <?php if( $swl->tgl16!='') {?>class=" bg-success text-white"<?php }?>><?php echo $swl->tgl16; ?></td>
+                    <td <?php if( $swl->tgl17!='') {?>class=" bg-success text-white"<?php }?>><?php echo $swl->tgl17; ?></td>
+                    <td <?php if( $swl->tgl18!='') {?>class=" bg-success text-white"<?php }?>><?php echo $swl->tgl18; ?></td>
+                    <td <?php if( $swl->tgl19!='') {?>class=" bg-success text-white"<?php }?>><?php echo $swl->tgl19; ?></td>
+                    <td <?php if( $swl->tgl20!='') {?>class=" bg-success text-white"<?php }?>><?php echo $swl->tgl20; ?></td>
+                    <td <?php if( $swl->tgl21!='') {?>class=" bg-success text-white"<?php }?>><?php echo $swl->tgl21; ?></td>
+                    <td <?php if( $swl->tgl22!='') {?>class=" bg-success text-white"<?php }?>><?php echo $swl->tgl22; ?></td>
+                    <td <?php if( $swl->tgl23!='') {?>class=" bg-success text-white"<?php }?>><?php echo $swl->tgl23; ?></td>
+                    <td <?php if( $swl->tgl24!='') {?>class=" bg-success text-white"<?php }?>><?php echo $swl->tgl24; ?></td>
+                    <td <?php if( $swl->tgl25!='') {?>class=" bg-success text-white"<?php }?>><?php echo $swl->tgl25; ?></td>
+                    <td <?php if( $swl->tgl26!='') {?>class=" bg-success text-white"<?php }?>><?php echo $swl->tgl26; ?></td>
+                    <td <?php if( $swl->tgl27!='') {?>class=" bg-success text-white"<?php }?>><?php echo $swl->tgl27; ?></td>
+                    <td <?php if( $swl->tgl28!='') {?>class=" bg-success text-white"<?php }?>><?php echo $swl->tgl28; ?></td>
+                    <td <?php if( $swl->tgl29!='') {?>class=" bg-success text-white"<?php }?>><?php echo $swl->tgl29; ?></td>
+                    <td <?php if( $swl->tgl30!='') {?>class=" bg-success text-white"<?php }?>><?php echo $swl->tgl30; ?></td>
+                    <td <?php if( $swl->tgl31!='') {?>class=" bg-success text-white"<?php }?>><?php echo $swl->tgl31; ?></td>
                                  <?php $total= $swl->tgl1+$swl->tgl2+$swl->tgl3+$swl->tgl4+$swl->tgl5+$swl->tgl6+$swl->tgl7+$swl->tgl8+$swl->tgl9+$swl->tgl10+$swl->tgl11+$swl->tgl12+$swl->tgl13+$swl->tgl14+$swl->tgl15+$swl->tgl16+$swl->tgl17+$swl->tgl18+$swl->tgl19+$swl->tgl20+$swl->tgl21+$swl->tgl22+$swl->tgl23+$swl->tgl24+$swl->tgl25+$swl->tgl26+$swl->tgl27+$swl->tgl28+$swl->tgl29+$swl->tgl30+$swl->tgl31 ; ?>
 
                      <td><b><?php echo $total ; ?></b></td> 
